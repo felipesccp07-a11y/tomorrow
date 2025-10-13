@@ -1,396 +1,678 @@
-<!DOCTYPE html>
+<!doctype html> 
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tomorrow — SNN: Seja Nome, Não Número</title>
-  <meta name="description" content="Tomorrow — Método SNN para posicionar sua empresa como referência real: clareza de percepção, autoridade e previsibilidade de receita." />
-  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="SNN — Método para posicionar sua empresa como referência real: clareza de percepção, autoridade e previsibilidade de receita. Sem frescura.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='100%25' height='100%25' fill='%23000'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' fill='%23fff'%3ET%3C/text%3E%3C/svg%3E" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Tomorrow — SNN" />
-  <meta property="og:url" content="https://agenciatomorrow.com" />
-  <meta property="og:title" content="Tomorrow — SNN: Seja Nome, Não Número" />
-  <meta property="og:description" content="Posicionamento, autoridade e previsibilidade de receita. Sem frescura." />
-  <meta property="og:image" content="https://agenciatomorrow.com/og-image.jpg" />
-
-  <!-- Fonts & UI -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
   <style>
+    /* ------------------------------
+      RESET BÁSICO
+    ------------------------------ */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    img{max-width:100%;display:block}
+    a{text-decoration:none}
+    button,input,textarea,select{font:inherit}
     :root{
-      --black:#000; --dark:#111; --mid:#1a1a1a; --muted:#8D8D8D; --light:#f8f8f8; --primary:#F5DE04;
+      --bg:#0b0b0c;
+      --surface:#111214;
+      --muted:#1a1c20;
+      --text:#e9eaed;
+      --text-2:#b7bcc6;
+      --brand:#d2ff1d;       /* verde ácido pra contraste */
+      --brand-2:#8fff00;
+      --danger:#ff4d4f;
+      --ok:#37c977;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+      --radius:14px;
+      --radius-sm:10px;
+      --radius-lg:28px;
+      --maxw:1180px;
     }
-    *{box-sizing:border-box}
-    body{background:#fff;font-family:'Space Grotesk',sans-serif;color:#222}
-    h1,h2,h3{letter-spacing:.2px}
-    .text-primary{color:var(--primary)!important}
-    .bg-black{background:var(--black)!important}
-    .bg-dark{background:#2D2D2D!important}
-    .bg-mid{background:var(--mid)!important}
-    .bg-light{background:#EEE!important}
-    .bg-light-gray{background:var(--light)!important}
-    .btn.btn-primary,.btn.btn-secondary:hover{background:var(--primary);border-color:#D0BF1D;color:#111;font-weight:700;padding:14px 18px;transition:.3s}
-    .btn.btn-primary:hover,.btn.btn-secondary{background:#fff;border-color:var(--primary);color:#111;transform:scale(1.06)}
-    .badge-icon{background:var(--primary);padding:6px 12px;border-radius:8px;display:inline-block;margin-bottom:10px}
-    .icon-light{background:#F1F1F1;padding:10px 16px;border-radius:8px;color:#737;display:inline-block;font-size:28px}
-    .video-container{position:relative;width:100%;padding-bottom:56.25%;height:0;overflow:hidden}
-    .video-container iframe{position:absolute;inset:0;width:100%;height:100%}
-    .shadow-soft{box-shadow:0 10px 24px rgba(0,0,0,.18)}
-    .section-title{color:#595959;font-weight:500}
-    .lead-muted{color:#cfcfcf}
-    .list-check{list-style:none;padding-left:0;margin:0}
-    .list-check li{display:flex;gap:10px;align-items:flex-start;margin:12px 0}
-    .list-check i{color:var(--primary);margin-top:2px}
-    .divider{height:1px;background:#e7e7e7;margin:24px 0}
-    .pill{display:inline-block;border:1px solid #333;color:#fff;border-radius:999px;padding:8px 14px;font-size:14px;margin:6px 6px 0 0}
-    .grid-logos img{filter:grayscale(100%);opacity:.9}
-    .grid-logos img:hover{filter:none;opacity:1}
+
+    body{
+      background: radial-gradient(1200px 600px at 20% -10%, #192022 0%, rgba(18,19,22,0.6) 60%, rgba(11,11,12,1) 100%), var(--bg);
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      line-height:1.6;
+    }
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+    .grid{display:grid; gap:24px}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 20px; border-radius:var(--radius-sm); border:1px solid #2a2d33; background:linear-gradient(180deg,#1b1e23 0%, #14161a 100%); color:var(--text); box-shadow:var(--shadow); transition:.2s}
+    .btn:hover{transform:translateY(-1px); border-color:#3a3f47}
+    .btn.brand{background:linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%); color:#0b0b0c; border:none; font-weight:700}
+    .chip{display:inline-flex; align-items:center; gap:8px; font-size:12px; color:#0b0b0c; background:var(--brand); padding:6px 10px; border-radius:999px; font-weight:700; letter-spacing:.2px}
+    .muted{color:var(--text-2)}
+    .card{background:linear-gradient(180deg,#15171a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
+    .surface{background:linear-gradient(180deg,#14161a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:var(--radius)}
+    .center{text-align:center}
+    .sep{height:1px;background:#1f2226;border:0;margin:8px 0 16px}
+    .kpi{font-size:42px; font-weight:800; line-height:1.1}
+    .tag{font-size:12px; color:#8a909b; border:1px solid #2a2e35; padding:6px 10px; border-radius:999px}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Consolas","Liberation Mono","Courier New", monospace}
+
+    h1{font-size:44px; line-height:1.1; margin:0 0 12px}
+    h2{font-size:32px; line-height:1.2; margin:0 0 10px}
+    h3{font-size:20px; line-height:1.3; margin:0 0 8px}
+    p{margin:0 0 10px}
+
+    /* ------------------------------
+      NAV
+    ------------------------------ */
+    .nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(8px); background:rgba(12,12,14,.75); border-bottom:1px solid #1c1e22}
+    .nav-wrap{display:flex; align-items:center; justify-content:space-between; height:64px}
+    .brand{display:flex; align-items:center; gap:12px}
+    .logo{width:28px;height:28px;border-radius:8px;background:#000;display:grid;place-items:center;border:1px solid #2a2d33}
+    .logo span{font-weight:900}
+    .nav a{color:var(--text-2)}
+    .nav-links{display:flex; gap:18px; align-items:center}
+    .nav-links a:hover{color:var(--text)}
+
+    /* ------------------------------
+      HERO
+    ------------------------------ */
+    .hero{padding:86px 0 56px}
+    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
+    .hero .lead{font-size:19px; color:#c5cad3}
+    .hero .cta-group{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
+
+    .hero-card{padding:22px; border-radius:var(--radius); border:1px solid #23262b; background:linear-gradient(160deg,#13161a 0%, #0a0b0d 100%)}
+    .hero-card .row{display:flex; align-items:center; justify-content:space-between}
+    .hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px}
+    .mini{font-size:12px; color:#9aa0aa}
+
+    /* ------------------------------
+      SOCIAL PROOF
+    ------------------------------ */
+    .logos{display:grid; grid-template-columns:repeat(5,1fr); gap:18px; padding:30px 0}
+    .logos .logo-item{height:56px; border:1px dashed #2b2f36; border-radius:12px; display:grid; place-items:center; color:#8b909a}
+    .quote{display:flex; gap:16px; align-items:flex-start}
+
+    /* ------------------------------
+      MÉTODO SNN
+    ------------------------------ */
+    .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+    .step .num{width:34px;height:34px;border-radius:10px;background:var(--brand); color:#0b0b0c; display:grid;place-items:center; font-weight:800}
+    .step p{color:#c1c6cf}
+
+    /* ------------------------------
+      CASES
+    ------------------------------ */
+    .cases{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .case .cover{height:170px; border-radius:12px; background:linear-gradient(135deg, #23282f 0%, #15181d 100%); border:1px solid #2a2e35; display:grid; place-items:center; color:#9aa0aa}
+    .case .metric{display:flex; gap:10px; align-items:center; margin-top:8px}
+    .badge{padding:6px 10px; border-radius:999px; background:#192022; border:1px solid #2a2e35; color:#a7aeb9; font-size:12px}
+
+    /* ------------------------------
+      OFERTA / PACOTES
+    ------------------------------ */
+    .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .price{font-size:36px; font-weight:900}
+    .ul{margin:10px 0 0; padding:0; list-style:none}
+    .ul li{display:flex; gap:10px; align-items:flex-start; margin:8px 0}
+    .ul svg{flex:0 0 18px}
+
+    /* ------------------------------
+      PROCESSO
+    ------------------------------ */
+    .process{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
+    .process .dot{width:10px; height:10px; background:var(--brand); border-radius:999px; display:inline-block; margin-right:8px}
+
+    /* ------------------------------
+      FAQ
+    ------------------------------ */
+    details{background:linear-gradient(180deg,#15171a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:12px; padding:16px 18px}
+    summary{cursor:pointer; list-style:none}
+    summary::-webkit-details-marker{display:none}
+    details + details{margin-top:12px}
+
+    /* ------------------------------
+      FORM / CONTATO
+    ------------------------------ */
+    .form{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .form .full{grid-column:1/-1}
+    label{font-size:12px; color:#9aa0aa}
+    input,textarea{width:100%; padding:12px 14px; border-radius:10px; background:#111216; border:1px solid #272b31; color:var(--text)}
+    textarea{min-height:120px; resize:vertical}
+    .alert{padding:12px 14px; border-radius:10px; border:1px solid #2b2f36; background:#15171a; color:#aeb4be}
+
+    /* ------------------------------
+      FOOTER
+    ------------------------------ */
+    footer{border-top:1px solid #1b1e22; margin-top:56px}
+    .foot{display:flex; gap:18px; align-items:center; justify-content:space-between; padding:26px 0; flex-wrap:wrap}
+    .foot a{color:#9fa6b2}
+    .foot a:hover{color:#d7dbe2}
+
+    /* ------------------------------
+      RESPONSIVO
+    ------------------------------ */
+    @media (max-width:1024px){
+      .hero-grid{grid-template-columns:1fr}
+      .steps{grid-template-columns:repeat(2,1fr)}
+      .cases{grid-template-columns:repeat(2,1fr)}
+      .plans{grid-template-columns:1fr 1fr}
+      .process{grid-template-columns:repeat(2,1fr)}
+      .logos{grid-template-columns:repeat(4,1fr)}
+    }
+    @media (max-width:720px){
+      h1{font-size:36px}
+      h2{font-size:26px}
+      .logos{grid-template-columns:repeat(2,1fr)}
+      .cases{grid-template-columns:1fr}
+      .steps{grid-template-columns:1fr}
+      .plans{grid-template-columns:1fr}
+      .process{grid-template-columns:1fr}
+      .form{grid-template-columns:1fr}
+      .hero{padding:64px 0 40px}
+      .nav-wrap{height:58px}
+    }
   </style>
-
-  <!-- PIXELS (substitua pelos seus IDs reais) -->
-  <!-- TikTok Pixel Code Start -->
-  <script>
-  !function (w, d, t) {
-    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-  var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-  ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-    ttq.load('TIKTOK_PIXEL_ID'); // TODO substituir
-    ttq.page();
-  }(window, document, 'ttq');
-  </script>
-  <!-- TikTok Pixel Code End -->
-  <!-- Facebook Pixel Code -->
-  <script>
-      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
-      n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);
-      t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
-      }(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init','FACEBOOK_PIXEL_ID'); // TODO substituir
-      fbq('track','PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=FACEBOOK_PIXEL_ID&ev=PageView&noscript=1"/></noscript>
-
-  <!-- Google Ads / gtag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);} gtag('js', new Date());
-    gtag('config', 'AW-XXXXXXX'); // TODO substituir
-  </script>
 </head>
 <body>
-  <!-- HERO -->
-  <section class="bg-black text-center text-md-start position-relative py-5">
-    <div class="container py-5" style="z-index:10;">
-      <div class="row g-4 align-items-center">
-        <div class="col-md-6">
-          <img src="assets/tomorrow-logo-light.svg" alt="Tomorrow" class="mb-5" width="216" height="66" onerror="this.src='';this.style.display='none'">
-          <h1 class="text-white">
-            <strong class="text-primary">SNN — Seja Nome, Não Número</strong><br/>
-            Branding, posicionamento e lucros previsíveis
-          </h1>
-          <p class="text-white lead-muted">Chega de fórmula saturada. Construímos percepção forte de marca e um funil real de vendas. Direto, prático e medido no caixa.</p>
-          <div class="row mt-3 align-items-center">
-            <div class="col-md-7">
-              <a href="javascript:leadShark.toggleForm()" class="btn btn-primary w-100 text-uppercase">Quero o Raio‑X de Percepção (R$ 500)</a>
-            </div>
-            <div class="col-md-5 text-center">
-              <span class="pill">Posicionamento</span>
-              <span class="pill">Autoridade</span>
-              <span class="pill">Previsibilidade</span>
-            </div>
+  <!-- ===========================
+       NAV
+  ============================ -->
+  <nav class="nav">
+    <div class="wrap nav-wrap">
+      <div class="brand">
+        <div class="logo"><span style="color:#fff">T</span></div>
+        <strong>Tomorrow</strong>
+        <span class="tag">SNN</span>
+      </div>
+      <div class="nav-links">
+        <a href="#metodo">método</a>
+        <a href="#cases">cases</a>
+        <a href="#planos">planos</a>
+        <a href="#faq">faq</a>
+        <a href="#contato" class="btn brand">falar com a tomorrow</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===========================
+       HERO
+  ============================ -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="chip">Seja Nome, Não Número</span>
+        <h1>Posicionamos sua empresa pra ser levada a sério — e lembrada.</h1>
+        <p class="lead">
+          Chega de virar massa no feed. O <strong>SNN</strong> muda a percepção do seu mercado sobre você:
+          imagem profissional, narrativa clara e presença que gera respeito e venda recorrente.
+        </p>
+        <div class="cta-group">
+          <a href="#planos" class="btn brand">ver planos e começar</a>
+          <a href="#metodo" class="btn">entender o método</a>
+        </div>
+        <p class="mini" style="margin-top:8px">Sem contrato amarrado. Começo simples, impacto rápido, visão de longo prazo.</p>
+      </div>
+      <div class="hero-card">
+        <div class="row">
+          <div>
+            <div class="mini">Percepção & Autoridade</div>
+            <div class="kpi">SNN</div>
+          </div>
+          <div class="badge">framework proprietário</div>
+        </div>
+        <div class="hero-kpis">
+          <div class="card">
+            <div class="mini">Taxa de resposta</div>
+            <div class="kpi">+46%</div>
+            <div class="mini">após reposicionamento</div>
+          </div>
+          <div class="card">
+            <div class="mini">Leads qualificados</div>
+            <div class="kpi">2,3x</div>
+            <div class="mini">em 60–90 dias</div>
+          </div>
+          <div class="card">
+            <div class="mini">CAC</div>
+            <div class="kpi">-31%</div>
+            <div class="mini">com funil 3A3R</div>
           </div>
         </div>
-        <div class="col-md-6">
-          <img src="assets/hero-notebook-dark.png" class="img-fluid" alt="Preview"/>
+        <div class="alert" style="margin-top:12px">
+          Não é “postar por postar”. É <strong>posicionamento + narrativa + presença</strong> que abre portas (e fecha contratos).
         </div>
       </div>
+    </div>
+  </header>
 
-      <div class="rounded px-4 py-5 text-center shadow-soft text-white mt-5" style="background:#1C1C1C">
-        <div class="row g-4 justify-content-center">
-          <div class="col-6 col-md-2"><span class="badge-icon text-dark"><i class="bi bi-bullseye"></i></span><div>SNN Roadmap</div></div>
-          <div class="col-6 col-md-2"><span class="badge-icon text-dark"><i class="bi bi-megaphone"></i></span><div>Ads (QND PRECISA)</div></div>
-          <div class="col-6 col-md-2"><span class="badge-icon text-dark"><i class="bi bi-window-sidebar"></i></span><div>Landing que converte</div></div>
-          <div class="col-6 col-md-2"><span class="badge-icon text-dark"><i class="bi bi-camera-reels"></i></span><div>Conteúdo de Autoridade</div></div>
-          <div class="col-6 col-md-2"><span class="badge-icon text-dark"><i class="bi bi-laptop"></i></span><div>CRM e Follow‑ups</div></div>
-          <div class="col-6 col-md-2"><span class="badge-icon text-dark"><i class="bi bi-graph-up-arrow"></i></span><div>Relatório que importa</div></div>
-        </div>
+  <!-- ===========================
+       SOCIAL PROOF
+  ============================ -->
+  <section>
+    <div class="wrap">
+      <div class="logos">
+        <div class="logo-item mono">ARCEARTE</div>
+        <div class="logo-item mono">CARIJÓ</div>
+        <div class="logo-item mono">ARCEBURGO VEÍCULOS</div>
+        <div class="logo-item mono">REZENHA</div>
+        <div class="logo-item mono">GRUPO TOMORROW</div>
+      </div>
+      <div class="card quote">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 11H6a4 4 0 1 1 4-4v4Zm8 0h-4a4 4 0 1 1 4-4v4Z"/></svg>
+        <p class="muted">“Eu não queria mais ‘técnicas’ e relatórios que ninguém lê. Queria respeito do meu mercado
+           e uma presença que vendesse sem mendigar. O SNN fez exatamente isso.”</p>
       </div>
     </div>
   </section>
 
-  <!-- PRODUTOS SNN -->
-  <section class="py-5">
-    <div class="container">
-      <h4 class="text-center">ESCADA DE PRODUTOS</h4>
-      <h2 class="section-title text-center mb-5">O método SNN na prática</h2>
-
-      <div class="row g-4 align-items-stretch">
-        <div class="col-md-6 col-lg-3">
-          <div class="shadow h-100 rounded p-4">
-            <span class="badge-icon"><i class="bi bi-search"></i></span>
-            <h3>Raio‑X de Percepção</h3>
-            <p>Diagnóstico direto sobre como sua marca é vista hoje. Entrega: vídeo de 30–40 min com correções imediatas.</p>
-            <ul class="list-check">
-              <li><i class="bi bi-check2"></i> Claridade de posicionamento</li>
-              <li><i class="bi bi-check2"></i> Ideias aplicáveis já</li>
-            </ul>
-            <a href="javascript:leadShark.toggleForm()" class="btn btn-primary mt-3 w-100">Agendar (R$ 500)</a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="shadow h-100 rounded p-4">
-            <span class="badge-icon"><i class="bi bi-bezier"></i></span>
-            <h3>Guia Estratégico</h3>
-            <p>Documento enxuto e poderoso para virar referência local/segmento. Mensagem, oferta, canal e calendário.</p>
-            <ul class="list-check">
-              <li><i class="bi bi-check2"></i> Branding/linguagem</li>
-              <li><i class="bi bi-check2"></i> Conteúdos âncora</li>
-            </ul>
-            <a href="javascript:leadShark.toggleForm()" class="btn btn-secondary mt-3 w-100">Solicitar</a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="shadow h-100 rounded p-4">
-            <span class="badge-icon"><i class="bi bi-diagram-3"></i></span>
-            <h3>Funil 6 Meses (3A3R)</h3>
-            <p>Arquitetura de aquisição e retenção. Conteúdo, páginas, ofertas e rotina comercial.</p>
-            <ul class="list-check">
-              <li><i class="bi bi-check2"></i> Captação previsível</li>
-              <li><i class="bi bi-check2"></i> Maturação de autoridade</li>
-            </ul>
-            <a href="javascript:leadShark.toggleForm()" class="btn btn-secondary mt-3 w-100">Ver cronograma</a>
-          </div>
-        </div>
-        <div class="col-md-6 col-lg-3">
-          <div class="shadow h-100 rounded p-4">
-            <span class="badge-icon"><i class="bi bi-lightning-charge"></i></span>
-            <h3>Execução Total</h3>
-            <p>Operação all‑in: criativos, landing, mídia (se fizer sentido), CRM e rotina de follow‑ups.</p>
-            <ul class="list-check">
-              <li><i class="bi bi-check2"></i> Time operando por você</li>
-              <li><i class="bi bi-check2"></i> Foco em resultado no caixa</li>
-            </ul>
-            <a href="javascript:leadShark.toggleForm()" class="btn btn-secondary mt-3 w-100">Aplicar para vaga</a>
-          </div>
-        </div>
+  <!-- ===========================
+       MÉTODO SNN
+  ============================ -->
+  <section id="metodo" class="wrap" style="padding:56px 0">
+    <div class="center" style="margin-bottom:22px">
+      <span class="chip">método snn</span>
+      <h2>O caminho direto: clareza → percepção → autoridade → receita</h2>
+      <p class="muted">Sem jargão. É “vamos fazer isso, isso e aquilo”. Ponto.</p>
+    </div>
+    <div class="steps">
+      <div class="card step">
+        <div class="num">1</div>
+        <h3>Raio-X de Percepção</h3>
+        <p>Cirurgia em como você é visto hoje. Diagnóstico direto, sem ego ferido, com plano prático de correção.</p>
+        <hr class="sep">
+        <span class="tag">vídeo de 30–40min</span>
+      </div>
+      <div class="card step">
+        <div class="num">2</div>
+        <h3>Guia Estratégico</h3>
+        <p>Mensagem central, narrativa, tom de voz, visual e diretrizes. Tudo documentado e pronto para execução.</p>
+        <hr class="sep">
+        <span class="tag">manual vivo</span>
+      </div>
+      <div class="card step">
+        <div class="num">3</div>
+        <h3>Funil 3A3R (6 meses)</h3>
+        <p>Agenda, Autoridade, Alcance → Reforço, Ritmo, Receita. Cadência semanal que dá previsibilidade.</p>
+        <hr class="sep">
+        <span class="tag">cadência semanal</span>
+      </div>
+      <div class="card step">
+        <div class="num">4</div>
+        <h3>Execução Total</h3>
+        <p>Quando você quer tudo: branding, conteúdo, mídia, páginas, criativos e acompanhamento. Sem novela.</p>
+        <hr class="sep">
+        <span class="tag">all-in</span>
       </div>
     </div>
   </section>
 
-  <!-- BLOCOS DE PROVA / BENEFÍCIOS -->
-  <section class="py-5 text-center text-md-start bg-mid text-white">
-    <div class="container">
-      <div class="row g-4 align-items-center justify-content-between">
-        <div class="col-md-6">
-          <h4 class="text-muted">MÉTRICAS QUE IMPORTAM</h4>
-          <h2 class="text-white mb-4">Relatório sem frescura: o que mexe no ponteiro</h2>
-          <ul class="list-check">
-            <li><i class="bi bi-check2"></i> Leads qualificados entrando.</li>
-            <li><i class="bi bi-check2"></i> Conversas certas acontecendo.</li>
-            <li><i class="bi bi-check2"></i> Fechamentos com ticket e prazo.</li>
+  <!-- ===========================
+       CASES
+  ============================ -->
+  <section id="cases" style="padding:20px 0 56px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">resultados reais</span>
+        <h2>Antes e depois que o mercado sente</h2>
+        <p class="muted">Não é sorte. É estrutura + narrativa certa + presença consistente.</p>
+      </div>
+      <div class="cases">
+        <article class="card case">
+          <div class="cover">case — restaurante</div>
+          <h3>Carijó (gastronomia)</h3>
+          <p class="muted">Reestruturação de presença + narrativa “domingo de família”.</p>
+          <div class="metric"><span class="badge">+72% reservas</span> <span class="badge">ticket ↑ 18%</span></div>
+        </article>
+        <article class="card case">
+          <div class="cover">case — varejo auto</div>
+          <h3>Arceburgo Veículos</h3>
+          <p class="muted">Autoridade local + anúncios cirúrgicos.</p>
+          <div class="metric"><span class="badge">2,1x leads qualificados</span> <span class="badge">CAC ↓ 24%</span></div>
+        </article>
+        <article class="card case">
+          <div class="cover">case — institucional</div>
+          <h3>ARCEARTE</h3>
+          <p class="muted">Peça institucional com apelo emocional + identidade sólida.</p>
+          <div class="metric"><span class="badge">alcance orgânico ↑</span> <span class="badge">marca lembrada</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       OFERTA / PLANOS
+  ============================ -->
+  <section id="planos" style="padding:20px 0 56px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">começo simples, impacto rápido</span>
+        <h2>Escolha como entrar. Cresça na cadência certa.</h2>
+        <p class="muted">Sem contrato amarrado. Você fica porque funciona.</p>
+      </div>
+      <div class="plans">
+        <!-- ENTRADA -->
+        <div class="card">
+          <div class="badge">entrada</div>
+          <h3>Raio-X de Percepção</h3>
+          <div class="price">R$ 500</div>
+          <ul class="ul">
+            <li>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="m20 6-11 11-5-5"/></svg>
+              Diagnóstico direto (vídeo 30–40min)
+            </li>
+            <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>3 correções imediatas</li>
+            <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Checklist de ajustes</li>
           </ul>
-          <a href="javascript:leadShark.toggleForm()" class="btn btn-primary mt-3">Quero previsibilidade</a>
+          <div style="margin-top:16px" class="grid">
+            <a href="#contato" class="btn brand">começar aqui</a>
+            <a href="#metodo" class="btn">entender mais</a>
+          </div>
         </div>
-        <div class="col-md-5">
-          <img src="assets/chart-preview.png" class="img-fluid rounded shadow-soft" alt="Gráfico" />
+        <!-- IMPACTO -->
+        <div class="card" style="border-width:2px">
+          <div class="badge">impacto</div>
+          <h3>Guia Estratégico</h3>
+          <div class="price">R$ 2.500 – 5.000</div>
+          <ul class="ul">
+            <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Mensagem central e narrativa</li>
+            <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Diretrizes visuais e de conteúdo</li>
+            <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Plano de 90 dias</li>
+          </ul>
+          <div style="margin-top:16px" class="grid">
+            <a href="#contato" class="btn brand">falar sobre o guia</a>
+          </div>
+        </div>
+        <!-- BANDEIRA -->
+        <div class="card">
+          <div class="badge">bandeira</div>
+          <h3>Funil 3A3R (6 meses)</h3>
+          <div class="price">R$ 4.000 – 8.000 /mês</div>
+          <ul class="ul">
+            <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Cadência semanal de autoridade</li>
+            <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Monitoramento de percepção</li>
+            <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Ads e páginas cirúrgicas</li>
+          </ul>
+          <div style="margin-top:16px" class="grid">
+            <a href="#contato" class="btn brand">reservar vaga</a>
+          </div>
+        </div>
+      </div>
+      <p class="mini center" style="margin-top:10px">*Execução Total (All-In): sob proposta — quando você quer tudo rodando fim a fim.</p>
+    </div>
+  </section>
+
+  <!-- ===========================
+       PROCESSO (DIA A DIA)
+  ============================ -->
+  <section style="padding:20px 0 56px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">como funciona na prática</span>
+        <h2>Sem mistério. Nosso dia a dia com você.</h2>
+      </div>
+      <div class="process">
+        <div class="card">
+          <h3><span class="dot"></span>Kickoff</h3>
+          <p class="muted">Briefing direto, alinhamento de objetivos e coleta de ativos. A gente entra no seu contexto.</p>
+        </div>
+        <div class="card">
+          <h3><span class="dot"></span>Setup de presença</h3>
+          <p class="muted">Ajustes visuais, páginas essenciais e base de conteúdo para transmitir seriedade.</p>
+        </div>
+        <div class="card">
+          <h3><span class="dot"></span>Cadência semanal</h3>
+          <p class="muted">Conteúdos-chave e anúncios táticos. Ritmo e coerência — sem estresse.</p>
+        </div>
+        <div class="card">
+          <h3><span class="dot"></span>Revisões mensais</h3>
+          <p class="muted">Acompanhamento de percepção do mercado, aprendizados e próximos passos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- VÍDEO / MANIFESTO  -->
-  <section class="bg-light py-5">
-    <div class="container">
-      <div class="row g-4 align-items-center justify-content-center">
-        <div class="col-md-10">
-          <div class="video-container">
-            <iframe class="rounded" src="https://www.youtube.com/embed/tmmruf3J2Ls?si=1uFl_Mp8tl-iVBos" title="Manifesto Tomorrow" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <!-- ===========================
+       ABOUT
+  ============================ -->
+  <section style="padding:20px 0 56px">
+    <div class="wrap grid" style="grid-template-columns: .9fr 1.1fr">
+      <div class="surface" style="padding:26px">
+        <h3>Quem puxa a fila</h3>
+        <p class="muted">Felipe Leandro — fundador da Tomorrow. Direto ao ponto, anti-firula, obcecado por posicionamento e por transformar marcas locais em referências reais.</p>
+        <hr class="sep">
+        <ul class="ul">
+          <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Branding, narrativa e funis focados em receita</li>
+          <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Tom provocativo e execução enxuta</li>
+          <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Metodologia SNN — o caos do oposto</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Por que isso funciona</h3>
+        <p class="muted">Porque a maioria repete fórmulas de internet. A gente faz o oposto: organiza percepção e presença para que o mercado o trate como referência — e então anúncios e páginas passam a converter melhor.</p>
+        <div class="grid" style="grid-template-columns:repeat(3,1fr); margin-top:16px">
+          <div class="surface" style="padding:18px">
+            <div class="mini">Velocidade</div>
+            <div class="kpi">T0 → T7</div>
+            <div class="mini">ajustes em 7 dias</div>
+          </div>
+          <div class="surface" style="padding:18px">
+            <div class="mini">Previsão</div>
+            <div class="kpi">90D</div>
+            <div class="mini">plano fechado</div>
+          </div>
+          <div class="surface" style="padding:18px">
+            <div class="mini">Ritmo</div>
+            <div class="kpi">6M</div>
+            <div class="mini">cadência 3A3R</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROVA SOCIAL / LOGOS -->
-  <section class="bg-dark py-5 text-center text-md-start">
-    <div class="container">
-      <div class="row g-4 align-items-center justify-content-between">
-        <div class="col-md-5">
-          <h4 class="text-muted">EMPRESAS ATENDIDAS</h4>
-          <h2 class="text-white mb-4">Parcerias que criam referência</h2>
-          <div class="bg-white p-4 rounded"><span class="badge-icon"><i class="bi bi-patch-check"></i></span> <strong>+500</strong> projetos executados</div>
-        </div>
-        <div class="col-md-6 grid-logos">
-          <div class="row g-2 align-items-center">
-            <div class="col-3"><img src="assets/logos/carijo.png" class="img-fluid rounded" alt="Carijó"/></div>
-            <div class="col-3"><img src="assets/logos/arceburgo-veiculos.png" class="img-fluid rounded" alt="Arceburgo Veículos"/></div>
-            <div class="col-3"><img src="assets/logos/cliente-3.png" class="img-fluid rounded" alt="Cliente"/></div>
-            <div class="col-3"><img src="assets/logos/cliente-4.png" class="img-fluid rounded" alt="Cliente"/></div>
-            <div class="col-3"><img src="assets/logos/cliente-5.png" class="img-fluid rounded" alt="Cliente"/></div>
-            <div class="col-3"><img src="assets/logos/cliente-6.png" class="img-fluid rounded" alt="Cliente"/></div>
-            <div class="col-3"><img src="assets/logos/cliente-7.png" class="img-fluid rounded" alt="Cliente"/></div>
-            <div class="col-3"><img src="assets/logos/cliente-8.png" class="img-fluid rounded" alt="Cliente"/></div>
+  <!-- ===========================
+       FAQ
+  ============================ -->
+  <section id="faq" style="padding:20px 0 56px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">faq honesta</span>
+        <h2>Perguntas que cortam o caminho</h2>
+      </div>
+      <details open>
+        <summary><strong>Isso é social media?</strong></summary>
+        <p class="muted">Não. Postar por postar não constrói autoridade. SNN organiza percepção, narrativa e presença. Conteúdo e anúncios são meios, não o fim.</p>
+      </details>
+      <details>
+        <summary><strong>Em quanto tempo dá pra sentir efeito?</strong></summary>
+        <p class="muted">Ajustes de percepção em 7–14 dias. Mudança de tratamento do mercado em 30–60 dias. Previsibilidade cai no colo entre 60–90 dias.</p>
+      </details>
+      <details>
+        <summary><strong>Vocês travam contrato longo?</strong></summary>
+        <p class="muted">Não. A gente não prende ninguém. Você renova porque vale a pena.</p>
+      </details>
+      <details>
+        <summary><strong>Minha equipe toca parte da execução?</strong></summary>
+        <p class="muted">Sem problema. O método é modular: entregamos estratégia e cadência; você decide o quanto executa interno vs. com a Tomorrow.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ===========================
+       CONTATO / LEAD
+  ============================ -->
+  <section id="contato" style="padding:20px 0 64px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">vamos conversar</span>
+        <h2>Consulta gratuita. 15 minutos. Sem promessa milagrosa.</h2>
+        <p class="muted">Se fizer sentido, seguimos. Se não, você sai com clareza e 3 ações práticas.</p>
+      </div>
+
+      <div class="grid" style="grid-template-columns:1.1fr .9fr">
+        <form class="card form" onsubmit="return sendLead(event)">
+          <div class="full">
+            <label>Nome</label>
+            <input id="f-name" required placeholder="Seu nome" />
           </div>
-        </div>
+          <div>
+            <label>WhatsApp</label>
+            <input id="f-whats" required placeholder="(xx) xxxxx-xxxx" inputmode="tel" />
+          </div>
+          <div>
+            <label>E-mail</label>
+            <input id="f-mail" type="email" required placeholder="voce@empresa.com" />
+          </div>
+          <div class="full">
+            <label>Empresa (opcional)</label>
+            <input id="f-company" placeholder="Razão social / marca" />
+          </div>
+          <div class="full">
+            <label>Resumo do momento</label>
+            <textarea id="f-msg" placeholder="Explique em uma frase o problema que quer resolver."></textarea>
+          </div>
+          <div class="full grid" style="grid-template-columns:1fr auto; align-items:center">
+            <span class="mini">Ao enviar, você concorda em receber um contato sobre sua solicitação.</span>
+            <button class="btn brand" type="submit">quero a consulta</button>
+          </div>
+          <div id="form-status" class="full mini" style="display:none"></div>
+        </form>
+
+        <aside class="card">
+          <h3>Como é a conversa?</h3>
+          <p class="muted">15 min pra entender cenário, objetivo e gargalo. Se não der match, você leva 3 ações práticas e vida que segue.</p>
+          <hr class="sep">
+          <div class="grid">
+            <div class="surface" style="padding:16px">
+              <div class="mini">E-mail</div>
+              <p><a href="mailto:contato@agenciatomorrow.com">contato@agenciatomorrow.com</a></p>
+            </div>
+            <div class="surface" style="padding:16px">
+              <div class="mini">WhatsApp</div>
+              <p><a href="#" onclick="openWhatsPrefill();return false;">abrir conversa</a></p>
+            </div>
+            <div class="surface" style="padding:16px">
+              <div class="mini">Atendimento</div>
+              <p class="muted">Seg–Sex, 9h–18h (BRT)</p>
+            </div>
+          </div>
+          <hr class="sep">
+          <p class="mini">Garantia de clareza: se a conversa não te ajudar em nada, você nos diz e a gente te manda um checklist prático por e-mail. Simples.</p>
+        </aside>
       </div>
     </div>
   </section>
 
-  <!-- CHAMADA SNN  -->
-  <section class="bg-black py-5 text-center text-md-start text-white">
-    <div class="container">
-      <div class="bg-primary p-5 rounded text-dark">
-        <div class="row g-4 align-items-center">
-          <div class="col-md-7">
-            <h4>CONHEÇA O MÉTODO</h4>
-            <h2><strong>SNN</strong>: posicionamento, autoridade e funil que fecha.</h2>
-          </div>
-          <div class="col-md-5 text-center text-md-end">
-            <a href="javascript:leadShark.toggleForm()" class="btn btn-secondary">Agendar Raio‑X</a>
-          </div>
+  <!-- ===========================
+       FOOTER
+  ============================ -->
+  <footer>
+    <div class="wrap foot">
+      <div style="display:flex; align-items:center; gap:10px">
+        <div class="logo"><span style="color:#fff">T</span></div>
+        <div>
+          <strong>Tomorrow</strong> <span class="tag">SNN</span><br>
+          <span class="mini">© <span id="year"></span> Tomorrow Marketing — Todos os direitos reservados.</span>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- SOBRE O FUNDADOR  -->
-  <section class="py-5 text-center text-md-start text-white" style="background:#000">
-    <div class="container">
-      <div class="row g-4 align-items-center justify-content-center">
-        <div class="col-md-6">
-          <h4>Founder da Tomorrow</h4>
-          <h2 class="text-white">Felipe Leandro</h2>
-          <p class="text-white">Criador do SNN — Seja Nome, Não Número. Minha missão é simples: transformar marcas locais em referência real, com linguagem clara, estética forte e operação que gera caixa.</p>
-          <p class="text-white">Trabalho com um princípio: <em>o que está em evidência perde força — o oposto bem feito cria resultado</em>. É o Caos do Oposto aplicado ao seu negócio.</p>
-          <p class="text-white">Quer parar de ser só mais um perfil postando qualquer coisa? Então vamos organizar sua comunicação, alinhar proposta de valor e construir um funil que realmente fecha.</p>
-          <a href="javascript:leadShark.toggleForm()" class="btn btn-primary mt-2">Falar com a Tomorrow</a>
-        </div>
-        <div class="col-md-4">
-          <img src="assets/felipe-leandro.jpg" class="img-fluid rounded" alt="Felipe Leandro" />
-        </div>
+      <div style="display:flex; gap:14px; align-items:center">
+        <a href="#metodo">método</a>
+        <a href="#cases">cases</a>
+        <a href="#planos">planos</a>
+        <a href="#faq">faq</a>
+        <a href="#contato" class="btn">contato</a>
       </div>
-    </div>
-  </section>
-
-  <!-- COMO TRABALHAMOS (SEM JARGÃO) -->
-  <section class="py-5">
-    <div class="container">
-      <h4 class="text-center">COMO ISSO SERÁ FEITO</h4>
-      <h2 class="section-title text-center mb-5">Sem técnica chata. É isso, isso e aquilo.</h2>
-      <div class="row g-4 align-items-stretch">
-        <div class="col-md-4">
-          <div class="bg-light-gray h-100 p-4 rounded">
-            <strong>1) Arrumar sua imagem</strong>
-            <ul class="list-check mt-2">
-              <li><i class="bi bi-check2"></i> Logo, cores, tom e fotos que passam seriedade</li>
-              <li><i class="bi bi-check2"></i> Página que explica e vende</li>
-              <li><i class="bi bi-check2"></i> Conteúdos âncora para virar referência</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="bg-light-gray h-100 p-4 rounded">
-            <strong>2) Trazer gente certa</strong>
-            <ul class="list-check mt-2">
-              <li><i class="bi bi-check2"></i> Tráfego quando fizer sentido (Meta/Google)</li>
-              <li><i class="bi bi-check2"></i> Canais orgânicos que de fato funcionam</li>
-              <li><i class="bi bi-check2"></i> Ofertas claras e fáceis de aceitar</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="bg-light-gray h-100 p-4 rounded">
-            <strong>3) Fechar e repetir</strong>
-            <ul class="list-check mt-2">
-              <li><i class="bi bi-check2"></i> CRM simples, follow‑ups e régua</li>
-              <li><i class="bi bi-check2"></i> Rotina semanal com tarefas objetivas</li>
-              <li><i class="bi bi-check2"></i> Relatório do que importa (sem blablablá)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="text-center mt-4"><a href="javascript:leadShark.toggleForm()" class="btn btn-primary">Quero começar</a></div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="py-5 text-center text-md-start bg-dark text-white">
-    <div class="container py-4">
-      <h2 class="text-center text-white">Quer entender como aplicar isso no seu negócio?</h2>
-      <p class="text-center">Agende o <strong>Raio‑X de Percepção</strong> e saia com clareza, plano e próximos passos.</p>
-      <div class="text-center"><a href="javascript:leadShark.toggleForm()" class="btn btn-primary">Agendar agora</a></div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-light-gray py-5">
-    <div class="container text-center">
-      <img src="assets/tomorrow-logo-dark.svg" class="mb-4" width="216" height="66" alt="Tomorrow" onerror="this.src='';this.style.display='none'" />
-      <div class="mt-3 text-muted">TOMORROW — SNN: Seja Nome, Não Número • Todos os direitos reservados</div>
-      <div class="text-muted" style="font-size:12px">Agência Tomorrow • agenciatomorrow.com</div>
     </div>
   </footer>
 
-  <!-- WIDGET WHATSAPP LEAD SHARK (mantido) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    .lead-shark-widget{z-index:10000000;font-family:Arial,sans-serif;font-size:14px}
-    .lead-shark-btn{position:fixed;bottom:20px;right:20px;background-color:#25d366;color:#fff;padding:10px 15px;border-radius:50px;font-weight:bold;font-size:16px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,.2);border:none}
-    .lead-shark-btn:hover{background-color:#128C7E}
-    .lead-shark-form-wrapper{display:none;position:fixed;bottom:90px;right:20px;background:#fff;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,.2);max-width:350px;width:100%;z-index:10000001}
-    .lead-shark-header{background-color:#1e2d4c;color:#fff;padding:15px;border-top-left-radius:15px;border-top-right-radius:15px;display:flex;justify-content:space-between;align-items:center}
-    .lead-shark-close{background:none;border:none;color:#fff;font-size:18px;cursor:pointer}
-    .lead-shark-body{padding:20px}
-    .lead-shark-body label{display:block;margin-top:10px;font-weight:bold}
-    .lead-shark-body input,.lead-shark-body textarea{width:100%;padding:10px;margin-top:5px;border:1px solid #ccc;border-radius:8px}
-    .lead-shark-send{background-color:#25d366;border:none;padding:10px 20px;color:#fff;border-radius:20px;margin-top:15px;cursor:pointer;width:100%}
-    .lead-shark-send:hover{background-color:#128C7E}
-  </style>
-
-  <div class="lead-shark-widget">
-    <button class="lead-shark-btn" onclick="leadShark.toggleForm()"><i class="fab fa-whatsapp"></i> Fale conosco</button>
-    <div class="lead-shark-form-wrapper" id="leadSharkForm">
-      <div class="lead-shark-header">
-        <span>Fale com um especialista</span>
-        <button class="lead-shark-close" onclick="leadShark.toggleForm()">×</button>
-      </div>
-      <form id="leadSharkFormEl" action="https://hooks.zapier.com/hooks/catch/18799351/u28fb9u/" method="post">
-        <div class="lead-shark-body">
-          <p>Olá! Informe seus dados para continuar no WhatsApp.</p>
-          <label for="ls_name">Nome</label>
-          <input type="text" id="ls_name" name="name" required>
-          <label for="ls_phone">Telefone</label>
-          <input type="tel" id="ls_phone" name="phone" required placeholder="(__) _____-____">
-          <label for="ls_email">Email</label>
-          <input type="email" id="ls_email" name="email" required>
-          <label for="ls_msg">Mensagem</label>
-          <textarea id="ls_msg" name="metatags[mensagem]">Olá, gostaria de falar com um especialista</textarea>
-          <button class="lead-shark-send" type="submit">Conversar no WhatsApp</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
+  <!-- ===========================
+       SCRIPTS
+  ============================ -->
   <script>
-    const leadShark={
-      toggleForm:()=>{const f=document.getElementById('leadSharkForm');f.style.display=(f.style.display==='block')?'none':'block'},
-      formatPhone:(v)=>{v=v.replace(/\D/g,'');v=v.replace(/^(\d{2})(\d)/g,'($1) $2');v=v.replace(/(\d)(\d{4})$/,'$1-$2');return v},
-      isValidPhone:(v)=>/^\(\d{2}\) \d{5}-\d{4}$/.test(v),
-      fireConversion:()=>{if(typeof gtag==='function'){gtag('event','conversion',{send_to:'AW-XXXXXXX/XXXXXXXX'});} if(typeof fbq==='function'){fbq('track','Lead');}},
-      sendToZapier:async(fd)=>{const url='https://hooks.zapier.com/hooks/catch/18799351/u28fb9u/';try{const r=await fetch(url,{method:'POST',body:fd});if(r.ok){document.getElementById('leadSharkFormEl').innerHTML=`<div style="padding:20px;font-size:16px;color:#2d2d2d;text-align:center;"><p><strong>Obrigado!</strong> Sua mensagem foi enviada.</p><p>Em breve um especialista entrará em contato via WhatsApp.</p></div>`;}else{alert('Erro ao enviar. Tente novamente.')}}catch(e){console.error('Erro:',e);alert('Erro de conexão. Tente novamente mais tarde.')}},
-      init:()=>{const form=document.getElementById('leadSharkFormEl');const phone=document.getElementById('ls_phone');['input','change','keyup'].forEach(evt=>phone.addEventListener(evt,()=>{phone.value=leadShark.formatPhone(phone.value);}));form.addEventListener('submit',async function(e){e.preventDefault();if(!leadShark.isValidPhone(phone.value)){alert('Telefone inválido. Use o formato (99) 99999-9999');return false;}leadShark.fireConversion();const fd=new FormData(form);await leadShark.sendToZapier(fd);});}
-    };
-    document.addEventListener('DOMContentLoaded',leadShark.init);
+    // Ano no footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll suave para âncoras internas
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id = a.getAttribute('href');
+        if(id.length > 1){
+          e.preventDefault();
+          document.querySelector(id)?.scrollIntoView({behavior:'smooth', block:'start'});
+          history.pushState(null, '', id);
+        }
+      });
+    });
+
+    // Máscara simples de WhatsApp
+    const fWhats = document.getElementById('f-whats');
+    if (fWhats) {
+      fWhats.addEventListener('input', () => {
+        let v = fWhats.value.replace(/\D/g,'').slice(0,11);
+        if (v.length > 6) fWhats.value = `(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+        else if (v.length > 2) fWhats.value = `(${v.slice(0,2)}) ${v.slice(2)}`;
+        else fWhats.value = v;
+      });
+    }
+
+    // Abre WhatsApp com mensagem padrão (sem depender do form)
+    function openWhatsPrefill(){
+      const tel = (document.getElementById('f-whats')?.value || '').replace(/\D/g,'');
+      const nome = (document.getElementById('f-name')?.value || 'Novo lead').trim();
+      const msg = `Oi, aqui é ${nome}. Quero conversar sobre o SNN (consulta de 15 minutos).`;
+      const phone = tel && tel.length >= 10 ? tel : '5599999999999'; // fallback
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    // Envio de lead (estático): abre WhatsApp e prepara e-mail fallback
+    function sendLead(e){
+      e.preventDefault();
+      const name = document.getElementById('f-name').value.trim();
+      const whats = document.getElementById('f-whats').value.replace(/\D/g,'');
+      const mail  = document.getElementById('f-mail').value.trim();
+      const comp  = document.getElementById('f-company').value.trim();
+      const msg   = document.getElementById('f-msg').value.trim();
+
+      // Mensagem unificada
+      const texto = [
+        `Novo lead — Landing SNN`,
+        `Nome: ${name}`,
+        `WhatsApp: ${whats}`,
+        `E-mail: ${mail}`,
+        comp ? `Empresa: ${comp}` : null,
+        msg  ? `Resumo: ${msg}` : null
+      ].filter(Boolean).join('\n');
+
+      // 1) WhatsApp
+      const phoneDestino = '5535999999999'; // <-- SUBSTITUA PELO NÚMERO OFICIAL DA TOMORROW (com DDI 55)
+      const wa = `https://wa.me/${phoneDestino}?text=${encodeURIComponent(texto)}`;
+      window.open(wa, '_blank');
+
+      // 2) Fallback e-mail (abre cliente de e-mail)
+      const mailto = `mailto:contato@agenciatomorrow.com?subject=${encodeURIComponent('Novo lead — Landing SNN')}&body=${encodeURIComponent(texto)}`;
+      setTimeout(()=>{ window.location.href = mailto; }, 400);
+
+      // 3) Feedback visual
+      const status = document.getElementById('form-status');
+      status.style.display = 'block';
+      status.textContent = 'Pronto! Abrimos um WhatsApp com sua mensagem e preparamos um e-mail de backup. Obrigado.';
+
+      // Não recarrega a página
+      return false;
+    }
   </script>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- SEO básico estruturado (opcional) -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"Tomorrow Marketing",
+    "url":"https://felipesccp07-a11y.github.io/tomorrow/",
+    "logo":"https://felipesccp07-a11y.github.io/tomorrow/favicon.svg",
+    "sameAs":[
+      "https://www.instagram.com/",
+      "https://www.linkedin.com/"
+    ]
+  }
+  </script>
 </body>
 </html>
