@@ -21,11 +21,8 @@
       --muted:#1a1c20;
       --text:#e9eaed;
       --text-2:#b7bcc6;
-
-      /* BRAND — agora laranja */
-      --brand:#ff7b00;
-      --brand-2:#ff9a3c;
-
+      --brand:#ff7b00;         /* laranja principal */
+      --brand-2:#ff9a3c;       /* laranja claro p/ gradiente/hover */
       --danger:#ff4d4f;
       --ok:#37c977;
       --shadow:0 10px 30px rgba(0,0,0,.35);
@@ -44,7 +41,7 @@
     .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
     .grid{display:grid; gap:24px}
 
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 20px; border-radius:var(--radius-sm); border:1px solid #2a2d33; background:linear-gradient(180deg,#1b1e23 0%, #14161a 100%); color:var(--text); box-shadow:var(--shadow); transition:.15s}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 20px; border-radius:var(--radius-sm); border:1px solid #2a2d33; background:linear-gradient(180deg,#1b1e23 0%, #14161a 100%); color:var(--text); box-shadow:var(--shadow); transition:.15s; text-transform:capitalize}
     .btn:hover{transform:translateY(-1px); border-color:#3a3f47}
     .btn.brand{background:linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%); color:#0b0b0c; border:none; font-weight:700}
     .btn.brand:hover{filter:brightness(.95)}
@@ -64,9 +61,7 @@
     h3{font-size:20px; line-height:1.3; margin:0 0 8px}
     p{margin:0 0 10px}
 
-    /* ------------------------------
-      NAV
-    ------------------------------ */
+    /* NAV */
     .nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(8px); background:rgba(12,12,14,.75); border-bottom:1px solid #1c1e22}
     .nav-wrap{display:flex; align-items:center; justify-content:space-between; height:64px}
     .brand{display:flex; align-items:center; gap:12px}
@@ -75,58 +70,38 @@
     .nav-links{display:flex; gap:18px; align-items:center}
     .nav-links a:hover{color:var(--text)}
 
-    /* ------------------------------
-      HERO
-    ------------------------------ */
+    /* HERO */
     .hero{padding:86px 0 56px}
     .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
     .hero .lead{font-size:19px; color:#c5cad3}
     .hero .cta-group{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
-
     .hero-card{padding:22px; border-radius:var(--radius); border:1px solid #23262b; background:linear-gradient(160deg,#13161a 0%, #0a0b0d 100%)}
     .hero-card .row{display:flex; align-items:center; justify-content:space-between}
     .hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px}
     .mini{font-size:12px; color:#9aa0aa}
 
-    /* ------------------------------
-      SOCIAL PROOF
-    ------------------------------ */
-    .logos{display:grid; grid-template-columns:repeat(5,1fr); gap:18px; padding:30px 0}
-    .logos .logo-item{height:56px; border:1px dashed #2b2f36; border-radius:12px; display:grid; place-items:center; color:#8b909a}
-    .quote{display:flex; gap:16px; align-items:flex-start}
-
-    /* ------------------------------
-      MÉTODO SNN (passo a passo)
-    ------------------------------ */
+    /* MÉTODO SNN */
     .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
     .step .num{width:34px;height:34px;border-radius:10px;background:var(--brand); color:#0b0b0c; display:grid;place-items:center; font-weight:800}
     .step p{color:#c1c6cf}
 
-    /* ------------------------------
-      PASSO A PASSO (ex-planos)
-    ------------------------------ */
+    /* PASSO A PASSO */
     .passos{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
     .ul{margin:10px 0 0; padding:0; list-style:none}
     .ul li{display:flex; gap:10px; align-items:flex-start; margin:8px 0}
     .ul svg{flex:0 0 18px}
 
-    /* ------------------------------
-      PROCESSO
-    ------------------------------ */
+    /* PROCESSO */
     .process{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
     .process .dot{width:10px; height:10px; background:var(--brand); border-radius:999px; display:inline-block; margin-right:8px}
 
-    /* ------------------------------
-      FAQ
-    ------------------------------ */
+    /* FAQ */
     details{background:linear-gradient(180deg,#15171a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:12px; padding:16px 18px}
     summary{cursor:pointer; list-style:none}
     summary::-webkit-details-marker{display:none}
     details + details{margin-top:12px}
 
-    /* ------------------------------
-      FORM / CONTATO
-    ------------------------------ */
+    /* FORM / CONTATO */
     .form{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     .form .full{grid-column:1/-1}
     label{font-size:12px; color:#9aa0aa}
@@ -134,28 +109,22 @@
     textarea{min-height:120px; resize:vertical}
     .alert{padding:12px 14px; border-radius:10px; border:1px solid #2b2f36; background:#15171a; color:#aeb4be}
 
-    /* ------------------------------
-      FOOTER
-    ------------------------------ */
+    /* FOOTER */
     footer{border-top:1px solid #1b1e22; margin-top:56px}
     .foot{display:flex; gap:18px; align-items:center; justify-content:space-between; padding:26px 0; flex-wrap:wrap}
     .foot a{color:#9fa6b2}
     .foot a:hover{color:#d7dbe2}
 
-    /* ------------------------------
-      RESPONSIVO
-    ------------------------------ */
+    /* RESPONSIVO */
     @media (max-width:1024px){
       .hero-grid{grid-template-columns:1fr}
       .steps{grid-template-columns:repeat(2,1fr)}
       .passos{grid-template-columns:1fr 1fr}
       .process{grid-template-columns:repeat(2,1fr)}
-      .logos{grid-template-columns:repeat(4,1fr)}
     }
     @media (max-width:720px){
       h1{font-size:36px}
       h2{font-size:26px}
-      .logos{grid-template-columns:repeat(2,1fr)}
       .steps{grid-template-columns:1fr}
       .passos{grid-template-columns:1fr}
       .process{grid-template-columns:1fr}
@@ -166,30 +135,25 @@
   </style>
 </head>
 <body>
-  <!-- ===========================
-       NAV
-  ============================ -->
+  <!-- NAV -->
   <nav class="nav">
     <div class="wrap nav-wrap">
       <div class="brand">
-        <!-- Suba o arquivo do logo em assets/tmw-logo.png -->
         <img class="logo-img" src="assets/tmw-logo.png" alt="Tomorrow">
         <strong>Tomorrow</strong>
         <span class="tag">SNN</span>
       </div>
       <div class="nav-links">
         <a href="#metodo">método</a>
-        <a href="#cases">cases</a>
         <a href="#passo-a-passo">passo a passo</a>
+        <a href="#garantia">garantia</a>
         <a href="#faq">faq</a>
-        <a href="#contato" class="btn brand">falar com a tomorrow</a>
+        <a href="#contato" class="btn brand">Falar Com a Tomorrow</a>
       </div>
     </div>
   </nav>
 
-  <!-- ===========================
-       HERO
-  ============================ -->
+  <!-- HERO -->
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
@@ -200,8 +164,8 @@
           imagem profissional, narrativa clara e presença que gera respeito e venda recorrente.
         </p>
         <div class="cta-group">
-          <a href="#passo-a-passo" class="btn brand">ver o passo a passo</a>
-          <a href="#metodo" class="btn">entender o método</a>
+          <a href="#passo-a-passo" class="btn brand">Ver o Passo a Passo</a>
+          <a href="#metodo" class="btn">Entender o Método</a>
         </div>
         <p class="mini" style="margin-top:8px">Sem contrato amarrado. Começo simples, impacto rápido, visão de longo prazo.</p>
       </div>
@@ -237,30 +201,52 @@
     </div>
   </header>
 
-  <!-- ===========================
-       SOCIAL PROOF
-  ============================ -->
-  <section>
+  <!-- BANDA DE PROVA SOCIAL: +180 EMPRESAS -->
+  <section aria-label="+180 empresas atendidas" style="padding:0 0 24px">
     <div class="wrap">
-      <div class="logos">
-        <div class="logo-item mono">ARCEARTE</div>
-        <div class="logo-item mono">CARIJÓ</div>
-        <div class="logo-item mono">ARCEBURGO VEÍCULOS</div>
-        <div class="logo-item mono">REZENHA</div>
-        <div class="logo-item mono">GRUPO TOMORROW</div>
-      </div>
-      <div class="card quote">
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 11H6a4 4 0 1 1 4-4v4Zm8 0h-4a4 4 0 1 1 4-4v4Z"/></svg>
-        <p class="muted">“Eu não queria mais ‘técnicas’ e relatórios que ninguém lê. Queria respeito do meu mercado
-           e uma presença que vendesse sem mendigar. O SNN fez exatamente isso.”</p>
+      <div class="surface" style="padding:20px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; align-items:center; text-align:center">
+        <div>
+          <div class="mini">Atendidas</div>
+          <div class="kpi">+180</div>
+          <div class="mini">empresas</div>
+        </div>
+        <div>
+          <div class="mini">Foco</div>
+          <div class="kpi">SNN</div>
+          <div class="mini">posicionamento que vende</div>
+        </div>
+        <div>
+          <div class="mini">Modelo</div>
+          <div class="kpi">ALL-IN</div>
+          <div class="mini">fim a fim</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ===========================
-       MÉTODO SNN
-  ============================ -->
-  <section id="metodo" class="wrap" style="padding:56px 0">
+  <!-- TESTEMUNHOS -->
+  <section aria-label="depoimentos" style="padding:20px 0 40px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">o que clientes dizem</span>
+        <h2>Feedback real, sem firula</h2>
+      </div>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card">
+          <p class="muted">“Em apenas um mês após esse rebranding eu fechei um ótimo contrato de prestação de serviços para a minha empresa.”</p>
+        </div>
+        <div class="card">
+          <p class="muted">“Eu sempre prezo por entregar mais do que o combinado aos meus clientes — e a Tomorrow, desde o primeiro dia, entregou mais do que o combinado pra mim nos serviços.”</p>
+        </div>
+        <div class="card">
+          <p class="muted">“Eu não queria mais ‘técnicas’ e relatórios que ninguém lê. Queria respeito do meu mercado e uma presença que vendesse sem mendigar. O SNN fez exatamente isso.”</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MÉTODO SNN -->
+  <section id="metodo" class="wrap" style="padding:20px 0 40px">
     <div class="center" style="margin-bottom:22px">
       <span class="chip">método snn</span>
       <h2>O caminho direto: clareza → percepção → autoridade → receita</h2>
@@ -271,46 +257,38 @@
         <div class="num">1</div>
         <h3>Raio-X de Percepção</h3>
         <p>Cirurgia em como você é visto hoje. Diagnóstico direto, sem ego ferido, com plano prático de correção.</p>
-        <hr class="sep">
-        <span class="tag">vídeo de 30–40min</span>
+        <hr class="sep"><span class="tag">vídeo de 30–40min</span>
       </div>
       <div class="card step">
         <div class="num">2</div>
         <h3>Guia Estratégico</h3>
         <p>Mensagem central, narrativa, tom de voz, visual e diretrizes. Tudo documentado e pronto para execução.</p>
-        <hr class="sep">
-        <span class="tag">manual vivo</span>
+        <hr class="sep"><span class="tag">manual vivo</span>
       </div>
       <div class="card step">
         <div class="num">3</div>
         <h3>Funil 3A3R (6 meses)</h3>
         <p>Agenda, Autoridade, Alcance → Reforço, Ritmo, Receita. Cadência semanal que dá previsibilidade.</p>
-        <hr class="sep">
-        <span class="tag">cadência semanal</span>
+        <hr class="sep"><span class="tag">cadência semanal</span>
       </div>
       <div class="card step">
         <div class="num">4</div>
         <h3>Execução Total</h3>
         <p>Quando você quer tudo: branding, conteúdo, mídia, páginas, criativos e acompanhamento. Sem novela.</p>
-        <hr class="sep">
-        <span class="tag">all-in</span>
+        <hr class="sep"><span class="tag">all-in</span>
       </div>
     </div>
   </section>
 
-  <!-- ===========================
-       PASSO A PASSO (ex-planos)
-  ============================ -->
-  <section id="passo-a-passo" style="padding:20px 0 40px">
+  <!-- PASSO A PASSO (sem “planos”) -->
+  <section id="passo-a-passo" style="padding:0 0 40px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
         <span class="chip">começo simples, impacto rápido</span>
         <h2>Passo a passo do projeto (ALL-IN)</h2>
         <p class="muted">É um caminho único. Sem escadinha de serviços.</p>
       </div>
-
       <div class="passos">
-        <!-- PASSO 1 -->
         <div class="card">
           <div class="badge">fase 1</div>
           <h3>Diagnóstico & Direção</h3>
@@ -320,25 +298,21 @@
             <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Diretrizes visuais e de conteúdo</li>
           </ul>
           <div style="margin-top:16px" class="grid">
-            <a href="#contato" class="btn brand">começar aqui</a>
+            <a href="#contato" class="btn brand">Começar Aqui</a>
           </div>
         </div>
-
-        <!-- PASSO 2 -->
         <div class="card" style="border-width:2px">
           <div class="badge">fase 2</div>
-          <h3>Setup & Páginas que vendem</h3>
+          <h3>Setup & Páginas Que Vendem</h3>
           <ul class="ul">
             <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Ajustes de presença (bio, perfis, vitrines)</li>
             <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Página de oferta/lead (copy + layout)</li>
             <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Criativos base p/ tráfego e autoridade</li>
           </ul>
           <div style="margin-top:16px" class="grid">
-            <a href="#processo" class="btn brand">ver o passo a passo</a>
+            <a href="#processo" class="btn brand">Ver o Passo a Passo</a>
           </div>
         </div>
-
-        <!-- PASSO 3 -->
         <div class="card">
           <div class="badge">fase 3</div>
           <h3>Cadência & Tráfego (3A3R)</h3>
@@ -348,34 +322,28 @@
             <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Ads e otimizações quinzenais</li>
           </ul>
           <div style="margin-top:16px" class="grid">
-            <a href="#contato" class="btn brand">fechar o all-in</a>
+            <a href="#contato" class="btn brand">Fechar o All-In</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ===========================
-       OFERTA ALL-IN
-  ============================ -->
-  <section style="padding:0 0 56px">
+  <!-- GARANTIA / CANCELE QUANDO QUISER -->
+  <section id="garantia" style="padding:0 0 56px">
     <div class="wrap">
-      <div class="card" style="display:grid; gap:12px; align-items:center">
-        <div class="chip">ALL-IN SNN</div>
-        <h2>Tudo que importa, rodando fim a fim</h2>
-        <p class="muted">Posicionamento, narrativa, páginas que convertem, cadência 3A3R e tráfego contínuo. Sem novela, sem amarras.</p>
+      <div class="card" style="display:grid; grid-template-columns:.15fr 1fr; gap:16px; align-items:flex-start">
+        <div class="chip" title="Garantia">✓</div>
         <div>
-          <a href="#contato" class="btn brand">reservar uma conversa</a>
+          <h2>Garantia: cancele quando quiser</h2>
+          <p class="muted">Aqui, você não fica preso por contratos. Se por algum motivo você não estiver satisfeito com os serviços prestados, pode solicitar o cancelamento, sem multa — cumprindo apenas o aviso prévio combinado.</p>
         </div>
-        <p class="mini">Sob proposta — ajustado ao seu contexto e ambição.</p>
       </div>
     </div>
   </section>
 
-  <!-- ===========================
-       PROCESSO (DIA A DIA)
-  ============================ -->
-  <section id="processo" style="padding:20px 0 56px">
+  <!-- PROCESSO -->
+  <section id="processo" style="padding:0 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
         <span class="chip">como funciona na prática</span>
@@ -402,10 +370,8 @@
     </div>
   </section>
 
-  <!-- ===========================
-       ABOUT
-  ============================ -->
-  <section style="padding:20px 0 56px">
+  <!-- ABOUT -->
+  <section style="padding:0 0 56px">
     <div class="wrap grid" style="grid-template-columns: .9fr 1.1fr">
       <div class="surface" style="padding:26px">
         <h3>Quem puxa a fila</h3>
@@ -441,10 +407,8 @@
     </div>
   </section>
 
-  <!-- ===========================
-       FAQ
-  ============================ -->
-  <section id="faq" style="padding:20px 0 56px">
+  <!-- FAQ -->
+  <section id="faq" style="padding:0 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
         <span class="chip">faq honesta</span>
@@ -469,10 +433,8 @@
     </div>
   </section>
 
-  <!-- ===========================
-       CONTATO / LEAD
-  ============================ -->
-  <section id="contato" style="padding:20px 0 64px">
+  <!-- CONTATO -->
+  <section id="contato" style="padding:0 0 64px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
         <span class="chip">vamos conversar</span>
@@ -504,7 +466,7 @@
           </div>
           <div class="full grid" style="grid-template-columns:1fr auto; align-items:center">
             <span class="mini">Ao enviar, você concorda em receber um contato sobre sua solicitação.</span>
-            <button class="btn brand" type="submit">quero a consulta</button>
+            <button class="btn brand" type="submit">Quero a Consulta</button>
           </div>
           <div id="form-status" class="full mini" style="display:none"></div>
         </form>
@@ -520,11 +482,11 @@
             </div>
             <div class="surface" style="padding:16px">
               <div class="mini">WhatsApp</div>
-              <p><a href="#" onclick="openWhatsPrefill();return false;">abrir conversa</a></p>
+              <p><a href="#" onclick="openWhatsPrefill();return false;">Abrir Conversa</a></p>
             </div>
             <div class="surface" style="padding:16px">
               <div class="mini">Atendimento</div>
-              <p class="muted">Seg–Sex, 9h–18h (BRT)</p>
+              <p class="muted">Seg–Sex, 08h–18h • Sáb, 08h–12h (BRT)</p>
             </div>
           </div>
           <hr class="sep">
@@ -534,9 +496,7 @@
     </div>
   </section>
 
-  <!-- ===========================
-       FOOTER
-  ============================ -->
+  <!-- FOOTER -->
   <footer>
     <div class="wrap foot">
       <div style="display:flex; align-items:center; gap:10px">
@@ -548,17 +508,14 @@
       </div>
       <div style="display:flex; gap:14px; align-items:center">
         <a href="#metodo">método</a>
-        <a href="#cases">cases</a>
         <a href="#passo-a-passo">passo a passo</a>
+        <a href="#garantia">garantia</a>
         <a href="#faq">faq</a>
-        <a href="#contato" class="btn">contato</a>
+        <a href="#contato" class="btn">Contato</a>
       </div>
     </div>
   </footer>
 
-  <!-- ===========================
-       SCRIPTS
-  ============================ -->
   <script>
     // Ano no footer
     document.getElementById('year').textContent = new Date().getFullYear();
@@ -586,7 +543,7 @@
       });
     }
 
-    // Abre WhatsApp com mensagem padrão (sem depender do form)
+    // Abre WhatsApp com mensagem padrão
     function openWhatsPrefill(){
       const tel = (document.getElementById('f-whats')?.value || '').replace(/\D/g,'');
       const nome = (document.getElementById('f-name')?.value || 'Novo lead').trim();
@@ -596,7 +553,7 @@
       window.open(url, '_blank');
     }
 
-    // Envio de lead (estático): abre WhatsApp e prepara e-mail fallback
+    // Envio de lead: WhatsApp + fallback e-mail
     function sendLead(e){
       e.preventDefault();
       const name = document.getElementById('f-name').value.trim();
@@ -614,25 +571,21 @@
         msg  ? `Resumo: ${msg}` : null
       ].filter(Boolean).join('\n');
 
-      // 1) WhatsApp oficial
       const phoneDestino = '5535984468504';
       const wa = `https://wa.me/${phoneDestino}?text=${encodeURIComponent(texto)}`;
       window.open(wa, '_blank');
 
-      // 2) Fallback e-mail
       const mailto = `mailto:felipe@agenciatomorrow.com?subject=${encodeURIComponent('Novo lead — Landing SNN')}&body=${encodeURIComponent(texto)}`;
       setTimeout(()=>{ window.location.href = mailto; }, 400);
 
-      // 3) Feedback visual
       const status = document.getElementById('form-status');
       status.style.display = 'block';
       status.textContent = 'Pronto! Abrimos um WhatsApp com sua mensagem e preparamos um e-mail de backup. Obrigado.';
-
       return false;
     }
   </script>
 
-  <!-- SEO básico estruturado (opcional) -->
+  <!-- SEO estruturado -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -640,10 +593,7 @@
     "name":"Tomorrow Marketing",
     "url":"https://felipesccp07-a11y.github.io/tomorrow/",
     "logo":"https://felipesccp07-a11y.github.io/tomorrow/assets/tmw-logo.png",
-    "sameAs":[
-      "https://www.instagram.com/",
-      "https://www.linkedin.com/"
-    ]
+    "sameAs":[]
   }
   </script>
 </body>
