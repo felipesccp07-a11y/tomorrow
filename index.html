@@ -148,7 +148,6 @@
     <div class="wrap nav-wrap">
       <div class="brand">
         <img class="logo-img" src="assets/tmw-logo.png" alt="Tomorrow">
-        <!-- removidos: nome textual e tag -->
       </div>
       <div class="nav-links">
         <a href="#metodo">Método</a>
@@ -231,7 +230,7 @@
     </div>
   </section>
 
-  <!-- NOVA SEÇÃO 1: VOCÊ NÃO TEM LUCRO... -->
+  <!-- VOCÊ NÃO TEM LUCRO... -->
   <section aria-label="por que falta lucro, previsibilidade e escala" style="padding:20px 0 40px">
     <div class="wrap">
       <div class="card">
@@ -260,7 +259,7 @@
     </div>
   </section>
 
-  <!-- NOVA SEÇÃO 2: 3A3R (COMO) -->
+  <!-- 3A3R -->
   <section aria-label="Nosso funil de vendas 3A3R" style="padding:0 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
@@ -270,42 +269,36 @@
       </div>
 
       <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-        <!-- Assimilação -->
         <div class="card">
           <h3>Assimilação</h3>
           <p class="muted"><strong>O que é:</strong> O público finalmente entende quem você é e por que existe.</p>
           <hr class="sep">
           <p class="muted"><strong>Como:</strong> Anúncios segmentados corretamente com criativos que refletem a identidade da marca, copy clara e testes estruturados. Foco em percepção, não em empurrar produto.</p>
         </div>
-        <!-- Aquisição -->
         <div class="card">
           <h3>Aquisição</h3>
           <p class="muted"><strong>O que é:</strong> Interesse real. A pessoa entra no seu ecossistema.</p>
           <hr class="sep">
           <p class="muted"><strong>Como:</strong> Páginas e fluxos de captura de alta conversão com prova social, proposta de valor objetiva e CTAs estratégicos. Tráfego certo, mensagem certa, momento certo.</p>
         </div>
-        <!-- Ativação -->
         <div class="card">
           <h3>Ativação</h3>
           <p class="muted"><strong>O que é:</strong> O cliente compra — porque foi preparado pra confiar.</p>
           <hr class="sep">
           <p class="muted"><strong>Como:</strong> Copy de decisão, design que reduz atrito e follow-ups (automação/CRM) que reforçam segurança. A venda acontece sem forçar.</p>
         </div>
-        <!-- Retenção -->
         <div class="card">
           <h3>Retenção</h3>
           <p class="muted"><strong>O que é:</strong> O cliente volta e continua no plano.</p>
           <hr class="sep">
           <p class="muted"><strong>Como:</strong> Pós-venda ativo, calendários de valor, remarketing e rituais de relacionamento. A experiência vira rotina — e a recompra, consequência.</p>
         </div>
-        <!-- Receita -->
         <div class="card">
           <h3>Receita</h3>
           <p class="muted"><strong>O que é:</strong> Previsibilidade e lucro constantes.</p>
           <hr class="sep">
           <p class="muted"><strong>Como:</strong> Métricas que importam (LTV, CAC, payback), diagnóstico de campanhas e escala do que funciona. Processo no lugar de tentativa e erro.</p>
         </div>
-        <!-- Recomendação -->
         <div class="card">
           <h3>Recomendação</h3>
           <p class="muted"><strong>O que é:</strong> Seus clientes viram embaixadores.</p>
@@ -342,7 +335,7 @@
     </div>
   </section>
 
-  <!-- MÉTODO (cards 1..4) -->
+  <!-- MÉTODO -->
   <section id="metodo" class="wrap" style="padding:20px 0 40px">
     <div class="center" style="margin-bottom:22px">
       <span class="chip">Método — Sistema de Performance Tomorrow</span>
@@ -377,7 +370,7 @@
     </div>
   </section>
 
-  <!-- PASSO A PASSO (sem “planos”) -->
+  <!-- PASSO A PASSO -->
   <section id="passo-a-passo" style="padding:0 0 40px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
@@ -426,7 +419,7 @@
     </div>
   </section>
 
-  <!-- GARANTIA / CANCELE QUANDO QUISER -->
+  <!-- GARANTIA -->
   <section id="garantia" style="padding:0 0 56px">
     <div class="wrap">
       <div class="card" style="display:grid; grid-template-columns:.15fr 1fr; gap:16px; align-items:flex-start">
@@ -579,7 +572,7 @@
             </div>
             <div class="surface" style="padding:16px">
               <div class="mini">WhatsApp</div>
-              <p><a href="#" onclick="openWhatsPrefill();return false;">Abrir Conversa</a></p>
+              <p><a href="https://wa.me/5535984468504" target="_blank" rel="noopener">Abrir Conversa</a></p>
             </div>
             <div class="surface" style="padding:16px">
               <div class="mini">Atendimento</div>
@@ -614,10 +607,14 @@
   </footer>
 
   <script>
-    // Ano no footer
+    /* ===== CONFIGURAÇÕES ===== */
+    // URL do Web App (Apps Script) — já com o seu endpoint:
+    const APPSCRIPT_ENDPOINT = "https://script.google.com/macros/s/AKfycbznizxf4YCjYA6b8MLq9qBO-CsBZ469esOV-nZe6Wuu8fJn-Ld-sCbt1xKCRd28NNOE/exec";
+
+    // Atualiza ano no footer
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Scroll suave para âncoras internas
+    // Scroll suave
     document.querySelectorAll('a[href^="#"]').forEach(a=>{
       a.addEventListener('click', e=>{
         const id = a.getAttribute('href');
@@ -629,7 +626,7 @@
       });
     });
 
-    // Máscara simples de WhatsApp
+    // Máscara simples do WhatsApp
     const fWhats = document.getElementById('f-whats');
     if (fWhats) {
       fWhats.addEventListener('input', () => {
@@ -640,44 +637,47 @@
       });
     }
 
-    // Abre WhatsApp com mensagem padrão
-    function openWhatsPrefill(){
-      const tel = (document.getElementById('f-whats')?.value || '').replace(/\D/g,'');
-      const nome = (document.getElementById('f-name')?.value || 'Novo lead').trim();
-      const msg = `Oi, aqui é ${nome}. Quero conversar sobre o Sistema de Performance Tomorrow (consulta de 15 minutos).`;
-      const phone = tel && tel.length >= 10 ? tel : '5535984468504';
-      const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-      window.open(url, '_blank');
-    }
-
-    // Envio de lead: WhatsApp + fallback e-mail
-    function sendLead(e){
+    // Envio do lead (Apps Script: planilha + e-mail) e abre WhatsApp SEM mensagem
+    async function sendLead(e){
       e.preventDefault();
+
       const name = document.getElementById('f-name').value.trim();
       const whats = (document.getElementById('f-whats').value || '').replace(/\D/g,'');
       const mail  = document.getElementById('f-mail').value.trim();
       const comp  = document.getElementById('f-company').value.trim();
       const msg   = document.getElementById('f-msg').value.trim();
 
-      const texto = [
-        `Novo lead — Landing Sistema de Performance Tomorrow`,
-        `Nome: ${name}`,
-        `WhatsApp: ${whats}`,
-        `E-mail: ${mail}`,
-        comp ? `Empresa: ${comp}` : null,
-        msg  ? `Resumo: ${msg}` : null
-      ].filter(Boolean).join('\n');
-
-      const phoneDestino = '5535984468504';
-      const wa = `https://wa.me/${phoneDestino}?text=${encodeURIComponent(texto)}`;
-      window.open(wa, '_blank');
-
-      const mailto = `mailto:felipe@agenciatomorrow.com?subject=${encodeURIComponent('Novo lead — Landing Sistema de Performance Tomorrow')}&body=${encodeURIComponent(texto)}`;
-      setTimeout(()=>{ window.location.href = mailto; }, 400);
+      const payload = {
+        nome: name,
+        whatsapp: whats,
+        email: mail,
+        empresa: comp,
+        resumo: msg,
+        origem: "Landing SPT"
+      };
 
       const status = document.getElementById('form-status');
       status.style.display = 'block';
-      status.textContent = 'Pronto! Abrimos um WhatsApp com sua mensagem e preparamos um e-mail de backup. Obrigado.';
+      status.textContent = 'Enviando com segurança...';
+
+      try {
+        const res = await fetch(APPSCRIPT_ENDPOINT, {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) throw new Error('Falha HTTP ' + res.status);
+
+        status.textContent = 'Recebido! Abrindo WhatsApp...';
+
+        // WhatsApp sem mensagem
+        window.open('https://wa.me/5535984468504', '_blank');
+
+      } catch (err) {
+        console.error(err);
+        status.textContent = 'Falha no envio. Pode me chamar no WhatsApp: (35) 98446-8504.';
+      }
       return false;
     }
   </script>
@@ -688,8 +688,8 @@
     "@context":"https://schema.org",
     "@type":"Organization",
     "name":"Tomorrow Marketing",
-    "url":"https://felipesccp07-a11y.github.io/tomorrow/",
-    "logo":"https://felipesccp07-a11y.github.io/tomorrow/assets/tmw-logo.png",
+    "url":"https://www.agenciatomorrow.com",
+    "logo":"https://www.agenciatomorrow.com/assets/tmw-logo.png",
     "description":"Sistema de Performance Tomorrow — posicionamento, narrativa e cadência para previsibilidade de receita.",
     "sameAs":[]
   }
