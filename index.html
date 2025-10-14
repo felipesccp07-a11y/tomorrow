@@ -534,33 +534,32 @@
 
       <div class="grid" style="grid-template-columns:1.1fr .9fr">
         <form class="card form" onsubmit="return sendLead(event)">
-  <div class="full">
-    <label>Nome</label>
-    <input id="f-name" required placeholder="Seu nome" />
-  </div>
-  <div>
-    <label>WhatsApp</label>
-    <input id="f-whats" required placeholder="(35) 98446-8504" inputmode="tel" />
-  </div>
-  <div>
-    <label>E-mail</label>
-    <input id="f-mail" type="email" required placeholder="felipe@agenciatomorrow.com" />
-  </div>
-  <div class="full">
-    <label>Empresa (opcional)</label>
-    <input id="f-company" placeholder="Razão social / marca" />
-  </div>
-  <div class="full">
-    <label>Resumo do momento</label>
-    <textarea id="f-msg" placeholder="Explique em uma frase o problema que quer resolver."></textarea>
-  </div>
-  <div class="full grid" style="grid-template-columns:1fr auto; align-items:center">
-    <span class="mini">Ao enviar, você concorda em receber um contato sobre sua solicitação.</span>
-    <button class="btn brand" type="submit">Quero a Consulta</button>
-  </div>
-  <!-- status SEM texto e oculto -->
-  <div id="form-status" class="full mini" style="display:none"></div>
-</form>
+          <div class="full">
+            <label>Nome</label>
+            <input id="f-name" required placeholder="Seu nome" />
+          </div>
+          <div>
+            <label>WhatsApp</label>
+            <input id="f-whats" required placeholder="(35) 98446-8504" inputmode="tel" />
+          </div>
+          <div>
+            <label>E-mail</label>
+            <input id="f-mail" type="email" required placeholder="felipe@agenciatomorrow.com" />
+          </div>
+          <div class="full">
+            <label>Empresa (opcional)</label>
+            <input id="f-company" placeholder="Razão social / marca" />
+          </div>
+          <div class="full">
+            <label>Resumo do momento</label>
+            <textarea id="f-msg" placeholder="Explique em uma frase o problema que quer resolver."></textarea>
+          </div>
+          <div class="full grid" style="grid-template-columns:1fr auto; align-items:center">
+            <span class="mini">Ao enviar, você concorda em receber um contato sobre sua solicitação.</span>
+            <button class="btn brand" type="submit">Quero a Consulta</button>
+          </div>
+          <div id="form-status" class="full mini" style="display:none"></div>
+        </form>
 
         <aside class="card">
           <h3>Como é a conversa?</h3>
@@ -639,67 +638,49 @@
     }
 
     // Envio do lead (Apps Script: planilha + e-mail) e abre WhatsApp SEM mensagem
-    <script>
-  <script>
-  async function sendLead(e){
-    e.preventDefault();
+    async function sendLead(e){
+      e.preventDefault();
 
-    const name = document.getElementById('f-name').value.trim();
-    const whats = (document.getElementById('f-whats').value || '').replace(/\D/g,'');
-    const mail  = document.getElementById('f-mail').value.trim();
-    const comp  = document.getElementById('f-company').value.trim();
-    const msg   = document.getElementById('f-msg').value.trim();
+      const name = document.getElementById('f-name').value.trim();
+      const whats = (document.getElementById('f-whats').value || '').replace(/\D/g,'');
+      const mail  = document.getElementById('f-mail').value.trim();
+      const comp  = document.getElementById('f-company').value.trim();
+      const msg   = document.getElementById('f-msg').value.trim();
 
-    const payload = {
-      nome: name,
-      whatsapp: whats,
-      email: mail,
-      empresa: comp,
-      resumo: msg,
-      origem: "Landing SPT"
-    };
+      const payload = {
+        nome: name,
+        whatsapp: whats,
+        email: mail,
+        empresa: comp,
+        resumo: msg,
+        origem: "Landing SPT"
+      };
 
-    const status = document.getElementById('form-status');
-    status.style.display = 'block';
-    status.textContent = 'Enviando com segurança...';
+      const status = document.getElementById('form-status');
+      status.style.display = 'block';
+      status.textContent = 'Enviando com segurança...';
 
-    const bodyStr = JSON.stringify(payload);
-    let delivered = false;
-
-    try {
-      // 1) Preferimos sendBeacon (envia em background sem CORS e sem bloquear a navegação)
-      if (navigator.sendBeacon) {
-        const blob = new Blob([bodyStr], { type: 'text/plain;charset=utf-8' });
-        delivered = navigator.sendBeacon(APPSCRIPT_ENDPOINT, blob);
-      } else {
-        // 2) Fallback: dispara e não espera resposta (no-cors)
-        await fetch(APPSCRIPT_ENDPOINT, {
+      try {
+        const res = await fetch(APPSCRIPT_ENDPOINT, {
           method: "POST",
-          mode: "no-cors",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: bodyStr
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify(payload)
         });
-        delivered = true; // não dá pra confirmar, mas consideramos enviado
+
+        if (!res.ok) throw new Error('Falha HTTP ' + res.status);
+
+        status.textContent = 'Recebido! Abrindo WhatsApp...';
+
+        // WhatsApp sem mensagem
+        window.open('https://wa.me/5535984468504', '_blank');
+
+      } catch (err) {
+        console.error(err);
+        status.textContent = 'Falha no envio. Pode me chamar no WhatsApp: (35) 98446-8504.';
       }
-    } catch(e){
-      // mesmo com erro de rede local, abrimos o WhatsApp e deixamos recado
-      console.error('Envio background falhou:', e);
+      return false;
     }
-
-    // Seguimos a UX: consideramos recebido e abrimos o WhatsApp LIMPO
-    status.textContent = 'Recebido! Abrindo WhatsApp...';
-    window.open('https://wa.me/5535984468504', '_blank');
-
-    // Feedback final pro usuário
-    setTimeout(()=>{
-      status.textContent = delivered
-        ? 'Lead enviado com sucesso. Te chamamos por WhatsApp/e-mail.'
-        : 'Não consegui confirmar o envio, mas abrimos o WhatsApp. Se preferir, me chame por lá.';
-    }, 400);
-
-    return false;
-  }
-</script>
+  </script>
 
   <!-- SEO estruturado -->
   <script type="application/ld+json">
