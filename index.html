@@ -49,9 +49,9 @@
     /* chips um pouco maiores */
     .chip{
       display:inline-flex; align-items:center; gap:8px;
-      font-size:13.5px;             /* antes: 12px */
+      font-size:13.5px;
       color:#0b0b0c; background:var(--brand);
-      padding:8px 12px;             /* antes: 6px 10px */
+      padding:8px 12px;
       border-radius:999px; font-weight:700; letter-spacing:.2px
     }
 
@@ -661,16 +661,14 @@
       status.textContent = 'Enviando com segurança...';
 
       try {
-        const res = await fetch(APPSCRIPT_ENDPOINT, {
+        // Envia como text/plain para evitar preflight OPTIONS
+        await fetch(APPSCRIPT_ENDPOINT, {
           method: "POST",
-          headers: {"Content-Type":"application/json"},
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload)
         });
 
-        if (!res.ok) throw new Error('Falha HTTP ' + res.status);
-
         status.textContent = 'Recebido! Abrindo WhatsApp...';
-
         // WhatsApp sem mensagem
         window.open('https://wa.me/5535984468504', '_blank');
 
