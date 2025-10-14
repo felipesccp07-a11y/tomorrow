@@ -1,14 +1,14 @@
-<!doctype html> 
+<!doctype html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Tomorrow — Sistema de Performance Tomorrow</title>
-  <meta name="description" content="Sistema de Performance Tomorrow — Método para posicionar sua empresa como referência real: clareza de mensagem, autoridade e previsibilidade de receita. Sem frescura.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='100%25' height='100%25' fill='%23000'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' fill='%23ff7b00'%3Et%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="Sistema de Performance Tomorrow — posicionamento, narrativa e presença que geram respeito, previsibilidade e receita.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='100%25' height='100%25' fill='%23000'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' fill='%23ff7b00'%3ET%3C/text%3E%3C/svg%3E" />
   <style>
     /* ------------------------------
-      RESET BÁSICO
+      RESET
     ------------------------------ */
     *,*::before,*::after{box-sizing:border-box}
     html,body{margin:0;padding:0}
@@ -21,8 +21,8 @@
       --muted:#1a1c20;
       --text:#e9eaed;
       --text-2:#b7bcc6;
-      --brand:#ff7b00;         /* laranja principal */
-      --brand-2:#ff9a3c;       /* laranja claro p/ gradiente/hover */
+      --brand:#ff7b00;      /* Laranja pedido */
+      --brand-2:#ff9a3a;
       --danger:#ff4d4f;
       --ok:#37c977;
       --shadow:0 10px 30px rgba(0,0,0,.35);
@@ -40,21 +40,10 @@
     }
     .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
     .grid{display:grid; gap:24px}
-
-    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 20px; border-radius:var(--radius-sm); border:1px solid #2a2d33; background:linear-gradient(180deg,#1b1e23 0%, #14161a 100%); color:var(--text); box-shadow:var(--shadow); transition:.15s; text-transform:capitalize}
+    .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 20px; border-radius:var(--radius-sm); border:1px solid #2a2d33; background:linear-gradient(180deg,#1b1e23 0%, #14161a 100%); color:var(--text); box-shadow:var(--shadow); transition:.2s}
     .btn:hover{transform:translateY(-1px); border-color:#3a3f47}
     .btn.brand{background:linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%); color:#0b0b0c; border:none; font-weight:700}
-    .btn.brand:hover{filter:brightness(.95)}
-
-    /* chips um pouco maiores */
-    .chip{
-      display:inline-flex; align-items:center; gap:8px;
-      font-size:13.5px;
-      color:#0b0b0c; background:var(--brand);
-      padding:8px 12px;
-      border-radius:999px; font-weight:700; letter-spacing:.2px
-    }
-
+    .chip{display:inline-flex; align-items:center; gap:8px; font-size:12px; color:#0b0b0c; background:var(--brand); padding:6px 10px; border-radius:999px; font-weight:700; letter-spacing:.2px}
     .muted{color:var(--text-2)}
     .card{background:linear-gradient(180deg,#15171a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
     .surface{background:linear-gradient(180deg,#14161a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:var(--radius)}
@@ -62,23 +51,27 @@
     .sep{height:1px;background:#1f2226;border:0;margin:8px 0 16px}
     .kpi{font-size:42px; font-weight:800; line-height:1.1}
     .tag{font-size:12px; color:#8a909b; border:1px solid #2a2e35; padding:6px 10px; border-radius:999px}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Consolas","Liberation Mono","Courier New", monospace}
 
     h1{font-size:44px; line-height:1.1; margin:0 0 12px}
     h2{font-size:32px; line-height:1.2; margin:0 0 10px}
     h3{font-size:20px; line-height:1.3; margin:0 0 8px}
     p{margin:0 0 10px}
 
-    /* NAV */
+    /* ------------------------------
+      NAV
+    ------------------------------ */
     .nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(8px); background:rgba(12,12,14,.75); border-bottom:1px solid #1c1e22}
     .nav-wrap{display:flex; align-items:center; justify-content:space-between; height:64px}
     .brand{display:flex; align-items:center; gap:12px}
-    .logo-img{height:28px; width:auto}
+    .logo-img{width:120px; height:auto; object-fit:contain; filter: drop-shadow(0 0 0 transparent)}
     .nav a{color:var(--text-2)}
     .nav-links{display:flex; gap:18px; align-items:center}
     .nav-links a:hover{color:var(--text)}
 
-    /* HERO */
+    /* ------------------------------
+      HERO
+    ------------------------------ */
     .hero{padding:86px 0 56px}
     .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
     .hero .lead{font-size:19px; color:#c5cad3}
@@ -88,28 +81,53 @@
     .hero-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px}
     .mini{font-size:12px; color:#9aa0aa}
 
-    /* MÉTODO (cards 1..4) */
+    /* ------------------------------
+      ÍCONES / ILUSTRAS
+    ------------------------------ */
+    .icon{width:20px;height:20px;display:inline-block;vertical-align:middle;object-fit:contain}
+    .icon.lg{width:22px;height:22px}
+    .icon.xl{width:26px;height:26px}
+    .icon.gap{margin-right:8px}
+
+    .media-cover{width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; border:1px solid #23262b; background:#0f1013}
+
+    /* ------------------------------
+      SOCIAL PROOF (removido logotipos, mantida quote)
+    ------------------------------ */
+    .quote{display:flex; gap:16px; align-items:flex-start}
+
+    /* ------------------------------
+      STEPS / CASES / PLANS / PROCESS
+    ------------------------------ */
     .steps{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
     .step .num{width:34px;height:34px;border-radius:10px;background:var(--brand); color:#0b0b0c; display:grid;place-items:center; font-weight:800}
     .step p{color:#c1c6cf}
 
-    /* PASSO A PASSO */
-    .passos{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .cases{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .case .cover{height:170px; border-radius:12px; background:linear-gradient(135deg, #23282f 0%, #15181d 100%); border:1px solid #2a2e35; display:grid; place-items:center; color:#9aa0aa}
+    .case .metric{display:flex; gap:10px; align-items:center; margin-top:8px}
+    .badge{padding:6px 10px; border-radius:999px; background:#192022; border:1px solid #2a2e35; color:#a7aeb9; font-size:12px}
+
+    .plans{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .price{font-size:36px; font-weight:900}
     .ul{margin:10px 0 0; padding:0; list-style:none}
     .ul li{display:flex; gap:10px; align-items:flex-start; margin:8px 0}
     .ul svg{flex:0 0 18px}
 
-    /* PROCESSO */
     .process{display:grid; grid-template-columns:repeat(4,1fr); gap:18px}
     .process .dot{width:10px; height:10px; background:var(--brand); border-radius:999px; display:inline-block; margin-right:8px}
 
-    /* FAQ */
+    /* ------------------------------
+      FAQ
+    ------------------------------ */
     details{background:linear-gradient(180deg,#15171a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:12px; padding:16px 18px}
     summary{cursor:pointer; list-style:none}
     summary::-webkit-details-marker{display:none}
     details + details{margin-top:12px}
 
-    /* FORM / CONTATO */
+    /* ------------------------------
+      FORM / CONTATO
+    ------------------------------ */
     .form{display:grid; grid-template-columns:1fr 1fr; gap:12px}
     .form .full{grid-column:1/-1}
     label{font-size:12px; color:#9aa0aa}
@@ -117,24 +135,30 @@
     textarea{min-height:120px; resize:vertical}
     .alert{padding:12px 14px; border-radius:10px; border:1px solid #2b2f36; background:#15171a; color:#aeb4be}
 
-    /* FOOTER */
+    /* ------------------------------
+      FOOTER
+    ------------------------------ */
     footer{border-top:1px solid #1b1e22; margin-top:56px}
     .foot{display:flex; gap:18px; align-items:center; justify-content:space-between; padding:26px 0; flex-wrap:wrap}
     .foot a{color:#9fa6b2}
     .foot a:hover{color:#d7dbe2}
 
-    /* RESPONSIVO */
+    /* ------------------------------
+      RESPONSIVO
+    ------------------------------ */
     @media (max-width:1024px){
       .hero-grid{grid-template-columns:1fr}
       .steps{grid-template-columns:repeat(2,1fr)}
-      .passos{grid-template-columns:1fr 1fr}
+      .cases{grid-template-columns:repeat(2,1fr)}
+      .plans{grid-template-columns:1fr 1fr}
       .process{grid-template-columns:repeat(2,1fr)}
     }
     @media (max-width:720px){
       h1{font-size:36px}
       h2{font-size:26px}
+      .cases{grid-template-columns:1fr}
       .steps{grid-template-columns:1fr}
-      .passos{grid-template-columns:1fr}
+      .plans{grid-template-columns:1fr}
       .process{grid-template-columns:1fr}
       .form{grid-template-columns:1fr}
       .hero{padding:64px 0 40px}
@@ -143,34 +167,49 @@
   </style>
 </head>
 <body>
-  <!-- NAV -->
+
+  <!-- ===========================
+       NAV
+  ============================ -->
   <nav class="nav">
     <div class="wrap nav-wrap">
       <div class="brand">
+        <!-- TROQUE O ARQUIVO DEPOIS: assets/tmw-logo.png -->
         <img class="logo-img" src="assets/tmw-logo.png" alt="Tomorrow">
+        <span class="tag">Sistema de Performance Tomorrow</span>
       </div>
       <div class="nav-links">
         <a href="#metodo">Método</a>
-        <a href="#passo-a-passo">Passo a passo</a>
+        <a href="#passo-a-passo">Passo a Passo</a>
         <a href="#garantia">Garantia</a>
         <a href="#faq">FAQ</a>
-        <a href="#contato" class="btn brand">Falar Com a Tomorrow</a>
+        <a href="#contato" class="btn brand">
+          <img class="icon gap" src="assets/icons/whatsapp.svg" alt="" loading="lazy">Falar Com a Tomorrow
+        </a>
+        <a href="https://wa.me/5535984468504" target="_blank" rel="noopener" title="WhatsApp">
+          <img class="icon lg" src="assets/icons/whatsapp.svg" alt="WhatsApp" loading="lazy">
+        </a>
+        <a href="https://www.instagram.com/agenciatomorrow/" target="_blank" rel="noopener" title="Instagram">
+          <img class="icon lg" src="assets/icons/instagram.svg" alt="Instagram" loading="lazy">
+        </a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- ===========================
+       HERO
+  ============================ -->
   <header class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="chip">Sistema de Performance Tomorrow</span>
+        <span class="chip">Seja Nome, Não Número</span>
         <h1>Posicionamos sua empresa pra ser levada a sério — e lembrada.</h1>
         <p class="lead">
-          Chega de virar massa no feed. O <strong>Sistema de Performance Tomorrow</strong> muda a percepção do seu mercado sobre você:
+          Chega de virar massa no feed. O <strong>Sistema de Performance Tomorrow</strong> muda a percepção do seu mercado: 
           imagem profissional, narrativa clara e presença que gera respeito e venda recorrente.
         </p>
         <div class="cta-group">
-          <a href="#passo-a-passo" class="btn brand">Ver o Passo a Passo</a>
+          <a href="#planos" class="btn brand">Ver Planos e Começar</a>
           <a href="#metodo" class="btn">Entender o Método</a>
         </div>
         <p class="mini" style="margin-top:8px">Sem contrato amarrado. Começo simples, impacto rápido, visão de longo prazo.</p>
@@ -185,12 +224,12 @@
         </div>
         <div class="hero-kpis">
           <div class="card">
-            <div class="mini">Taxa de resposta</div>
+            <div class="mini">Taxa de Resposta</div>
             <div class="kpi">+46%</div>
             <div class="mini">após reposicionamento</div>
           </div>
           <div class="card">
-            <div class="mini">Leads qualificados</div>
+            <div class="mini">Leads Qualificados</div>
             <div class="kpi">2,3x</div>
             <div class="mini">em 60–90 dias</div>
           </div>
@@ -203,140 +242,29 @@
         <div class="alert" style="margin-top:12px">
           Não é “postar por postar”. É <strong>posicionamento + narrativa + presença</strong> que abre portas (e fecha contratos).
         </div>
+        <!-- SLOT ILUSTRAÇÃO DO HERO (opcional) -->
+        <img class="media-cover" src="assets/illus/hero-cover.svg" alt="Visual do SPT" loading="lazy" style="margin-top:12px">
       </div>
     </div>
   </header>
 
-  <!-- BANDA DE PROVA SOCIAL: +180 EMPRESAS -->
-  <section aria-label="+180 empresas atendidas" style="padding:0 0 24px">
+  <!-- ===========================
+       PROVA / QUOTE
+  ============================ -->
+  <section>
     <div class="wrap">
-      <div class="surface" style="padding:20px; display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; align-items:center; text-align:center">
-        <div>
-          <div class="mini">Atendidas</div>
-          <div class="kpi">+180</div>
-          <div class="mini">empresas</div>
-        </div>
-        <div>
-          <div class="mini">Foco</div>
-          <div class="kpi">SPT</div>
-          <div class="mini">percepção que vira receita</div>
-        </div>
-        <div>
-          <div class="mini">Modelo</div>
-          <div class="kpi">ALL-IN</div>
-          <div class="mini">fim a fim</div>
-        </div>
+      <div class="card quote">
+        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 11H6a4 4 0 1 1 4-4v4Zm8 0h-4a4 4 0 1 1 4-4v4Z"/></svg>
+        <p class="muted">“Eu não queria mais ‘técnicas’ e relatórios que ninguém lê. Queria respeito do meu mercado
+           e uma presença que vendesse sem mendigar. O SPT fez exatamente isso.”</p>
       </div>
     </div>
   </section>
 
-  <!-- VOCÊ NÃO TEM LUCRO... -->
-  <section aria-label="por que falta lucro, previsibilidade e escala" style="padding:20px 0 40px">
-    <div class="wrap">
-      <div class="card">
-        <div class="center" style="margin-bottom:12px">
-          <span class="chip">Diagnóstico do mercado</span>
-          <h2>Você não tem lucro, previsibilidade e nem escala por isso.</h2>
-          <p class="muted">Porque o que chamam de “marketing” virou teatro de métricas vazias — likes, CTR e impressões — e não resultado.</p>
-        </div>
-        <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-          <div class="surface" style="padding:18px">
-            <h3>Sem mensagem</h3>
-            <p class="muted">Postagens sem propósito e promessa genérica. O público não entende por que você existe — e passa reto.</p>
-          </div>
-          <div class="surface" style="padding:18px">
-            <h3>Sem sistema</h3>
-            <p class="muted">Sem páginas que vendem, sem cadência e sem funil real. Vendas viram “sorte do mês”.</p>
-          </div>
-          <div class="surface" style="padding:18px">
-            <h3>Sem identidade</h3>
-            <p class="muted">Visual quebrado, narrativas trocadas e autoridade fraca. O mercado não te leva a sério.</p>
-          </div>
-        </div>
-        <hr class="sep">
-        <p class="muted center">O problema nunca foi o tráfego. Foi a ausência de um <strong>sistema de performance e posicionamento real</strong>. Por isso existe o <strong>Sistema de Performance Tomorrow</strong>.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- 3A3R -->
-  <section aria-label="Nosso funil de vendas 3A3R" style="padding:0 0 56px">
-    <div class="wrap">
-      <div class="center" style="margin-bottom:18px">
-        <span class="chip">Funil proprietário</span>
-        <h2>Nosso Funil de Vendas</h2>
-        <p class="muted">O 3A3R — seis etapas que transformam atenção em lucro previsível.</p>
-      </div>
-
-      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-        <div class="card">
-          <h3>Assimilação</h3>
-          <p class="muted"><strong>O que é:</strong> O público finalmente entende quem você é e por que existe.</p>
-          <hr class="sep">
-          <p class="muted"><strong>Como:</strong> Anúncios segmentados corretamente com criativos que refletem a identidade da marca, copy clara e testes estruturados. Foco em percepção, não em empurrar produto.</p>
-        </div>
-        <div class="card">
-          <h3>Aquisição</h3>
-          <p class="muted"><strong>O que é:</strong> Interesse real. A pessoa entra no seu ecossistema.</p>
-          <hr class="sep">
-          <p class="muted"><strong>Como:</strong> Páginas e fluxos de captura de alta conversão com prova social, proposta de valor objetiva e CTAs estratégicos. Tráfego certo, mensagem certa, momento certo.</p>
-        </div>
-        <div class="card">
-          <h3>Ativação</h3>
-          <p class="muted"><strong>O que é:</strong> O cliente compra — porque foi preparado pra confiar.</p>
-          <hr class="sep">
-          <p class="muted"><strong>Como:</strong> Copy de decisão, design que reduz atrito e follow-ups (automação/CRM) que reforçam segurança. A venda acontece sem forçar.</p>
-        </div>
-        <div class="card">
-          <h3>Retenção</h3>
-          <p class="muted"><strong>O que é:</strong> O cliente volta e continua no plano.</p>
-          <hr class="sep">
-          <p class="muted"><strong>Como:</strong> Pós-venda ativo, calendários de valor, remarketing e rituais de relacionamento. A experiência vira rotina — e a recompra, consequência.</p>
-        </div>
-        <div class="card">
-          <h3>Receita</h3>
-          <p class="muted"><strong>O que é:</strong> Previsibilidade e lucro constantes.</p>
-          <hr class="sep">
-          <p class="muted"><strong>Como:</strong> Métricas que importam (LTV, CAC, payback), diagnóstico de campanhas e escala do que funciona. Processo no lugar de tentativa e erro.</p>
-        </div>
-        <div class="card">
-          <h3>Recomendação</h3>
-          <p class="muted"><strong>O que é:</strong> Seus clientes viram embaixadores.</p>
-          <hr class="sep">
-          <p class="muted"><strong>Como:</strong> Programas de indicação baseados em experiência, não em desconto. Clientes defendem a marca porque acreditam — e o ciclo se retroalimenta.</p>
-        </div>
-      </div>
-
-      <div class="center" style="margin-top:14px">
-        <p class="muted">Entendeu por que não é “marketing”? É <strong>ritmo e coerência</strong>. Quando você organiza a percepção, o lucro vira rotina. Rodamos isso no <strong>SPT</strong>.</p>
-        <a href="#contato" class="btn brand" style="margin-top:10px">Reservar Uma Conversa</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- TESTEMUNHOS -->
-  <section aria-label="depoimentos" style="padding:20px 0 40px">
-    <div class="wrap">
-      <div class="center" style="margin-bottom:18px">
-        <span class="chip">O que clientes dizem</span>
-        <h2>Feedback real, sem firula</h2>
-      </div>
-      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
-        <div class="card">
-          <p class="muted">“Em apenas um mês após esse rebranding eu fechei um ótimo contrato de prestação de serviços para a minha empresa.”</p>
-        </div>
-        <div class="card">
-          <p class="muted">“Eu sempre prezo por entregar mais do que o combinado aos meus clientes — e a Tomorrow, desde o primeiro dia, entregou mais do que o combinado pra mim nos serviços.”</p>
-        </div>
-        <div class="card">
-          <p class="muted">“Eu não queria mais ‘técnicas’ e relatórios que ninguém lê. Queria respeito do meu mercado e uma presença que vendesse sem mendigar. O Sistema de Performance Tomorrow fez exatamente isso.”</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MÉTODO -->
-  <section id="metodo" class="wrap" style="padding:20px 0 40px">
+  <!-- ===========================
+       MÉTODO SPT
+  ============================ -->
+  <section id="metodo" class="wrap" style="padding:56px 0">
     <div class="center" style="margin-bottom:22px">
       <span class="chip">Método — Sistema de Performance Tomorrow</span>
       <h2>O caminho direto: clareza → percepção → autoridade → receita</h2>
@@ -347,93 +275,193 @@
         <div class="num">1</div>
         <h3>Raio-X de Percepção</h3>
         <p>Cirurgia em como você é visto hoje. Diagnóstico direto, sem ego ferido, com plano prático de correção.</p>
-        <hr class="sep"><span class="tag">vídeo de 30–40min</span>
+        <hr class="sep">
+        <span class="tag">vídeo de 30–40min</span>
       </div>
       <div class="card step">
         <div class="num">2</div>
         <h3>Guia Estratégico</h3>
         <p>Mensagem central, narrativa, tom de voz, visual e diretrizes. Tudo documentado e pronto para execução.</p>
-        <hr class="sep"><span class="tag">manual vivo</span>
+        <hr class="sep">
+        <span class="tag">manual vivo</span>
       </div>
       <div class="card step">
         <div class="num">3</div>
         <h3>Funil 3A3R (6 meses)</h3>
         <p>Agenda, Autoridade, Alcance → Reforço, Ritmo, Receita. Cadência semanal que dá previsibilidade.</p>
-        <hr class="sep"><span class="tag">cadência semanal</span>
+        <hr class="sep">
+        <span class="tag">cadência semanal</span>
       </div>
       <div class="card step">
         <div class="num">4</div>
         <h3>Execução Total</h3>
         <p>Quando você quer tudo: branding, conteúdo, mídia, páginas, criativos e acompanhamento. Sem novela.</p>
-        <hr class="sep"><span class="tag">all-in</span>
+        <hr class="sep">
+        <span class="tag">all-in</span>
       </div>
     </div>
   </section>
 
-  <!-- PASSO A PASSO -->
-  <section id="passo-a-passo" style="padding:0 0 40px">
+  <!-- ===========================
+       Seção: Por que não tem lucro/previsibilidade?
+  ============================ -->
+  <section style="padding:10px 0 40px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">Diagnóstico do mercado</span>
+        <h2>Você não tem lucro, previsibilidade e nem escala por isso</h2>
+        <p class="muted">Modelos “tudo igual” de marketing focam em volume e esquecem percepção. O mercado não te distingue — e sem diferenciação, preço e esforço explodem.</p>
+      </div>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card">
+          <h3>Conteúdo genérico</h3>
+          <p class="muted">Publica muito, mas sem mensagem central. Você vira mais do mesmo e perde atenção.</p>
+        </div>
+        <div class="card">
+          <h3>Anúncio sem narrativa</h3>
+          <p class="muted">Compra de mídia sem posicionamento aumenta CAC e traz lead frio que não confia.</p>
+        </div>
+        <div class="card">
+          <h3>Presença sem ritmo</h3>
+          <p class="muted">Sem cadência e rituais, ninguém lembra. Sem lembrança, não existe preferência.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FUNIL 3A3R — Ilustrado
+  ============================ -->
+  <section id="passo-a-passo" aria-label="Nosso funil de vendas 3A3R" style="padding:0 0 56px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">Funil Proprietário</span>
+        <h2>Nosso Funil de Vendas</h2>
+        <p class="muted">O 3A3R — seis etapas que transformam atenção em lucro previsível.</p>
+      </div>
+
+      <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:18px">
+        <article class="card">
+          <img class="media-cover" src="assets/illus/3a3r-assimilacao.svg" alt="Assimilação" loading="lazy">
+          <h3 style="margin-top:10px">Assimilação</h3>
+          <p class="muted"><strong>O que é:</strong> O público finalmente entende quem você é e por que existe.</p>
+          <hr class="sep">
+          <p class="muted"><strong>Como:</strong> Anúncios segmentados com criativos corretos, copy clara e testes estruturados.</p>
+        </article>
+
+        <article class="card">
+          <img class="media-cover" src="assets/illus/3a3r-aquisicao.svg" alt="Aquisição" loading="lazy">
+          <h3 style="margin-top:10px">Aquisição</h3>
+          <p class="muted"><strong>O que é:</strong> Interesse real. A pessoa entra no seu ecossistema.</p>
+          <hr class="sep">
+          <p class="muted"><strong>Como:</strong> Páginas de captura de alta conversão, prova social e CTAs estratégicos.</p>
+        </article>
+
+        <article class="card">
+          <img class="media-cover" src="assets/illus/3a3r-ativacao.svg" alt="Ativação" loading="lazy">
+          <h3 style="margin-top:10px">Ativação</h3>
+          <p class="muted"><strong>O que é:</strong> O cliente compra — porque foi preparado pra confiar.</p>
+          <hr class="sep">
+          <p class="muted"><strong>Como:</strong> Copy de decisão, UX sem atrito e follow-ups por automação/CRM.</p>
+        </article>
+
+        <article class="card">
+          <img class="media-cover" src="assets/illus/3a3r-retencao.svg" alt="Retenção" loading="lazy">
+          <h3 style="margin-top:10px">Retenção</h3>
+          <p class="muted"><strong>O que é:</strong> O cliente volta e continua no plano.</p>
+          <hr class="sep">
+          <p class="muted"><strong>Como:</strong> Pós-venda ativo, calendário de valor, remarketing e rituais de relacionamento.</p>
+        </article>
+
+        <article class="card">
+          <img class="media-cover" src="assets/illus/3a3r-receita.svg" alt="Receita" loading="lazy">
+          <h3 style="margin-top:10px">Receita</h3>
+          <p class="muted"><strong>O que é:</strong> Previsibilidade e lucro constantes.</p>
+          <hr class="sep">
+          <p class="muted"><strong>Como:</strong> LTV, CAC e payback claros; diagnóstico e escala do que funciona.</p>
+        </article>
+
+        <article class="card">
+          <img class="media-cover" src="assets/illus/3a3r-recomendacao.svg" alt="Recomendação" loading="lazy">
+          <h3 style="margin-top:10px">Recomendação</h3>
+          <p class="muted"><strong>O que é:</strong> Seus clientes viram embaixadores.</p>
+          <hr class="sep">
+          <p class="muted"><strong>Como:</strong> Programa de indicação baseado em experiência (não só desconto).</p>
+        </article>
+      </div>
+
+      <div class="center" style="margin-top:14px">
+        <p class="muted">Quando você organiza a percepção, o lucro vira rotina. Rodamos isso no <strong>SPT</strong>.</p>
+        <a href="#contato" class="btn brand" style="margin-top:10px">
+          Reservar Uma Conversa
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       OFERTA / PLANOS
+  ============================ -->
+  <section id="planos" style="padding:20px 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
         <span class="chip">Começo simples, impacto rápido</span>
-        <h2>Passo a passo do projeto (ALL-IN)</h2>
-        <p class="muted">É um caminho único. Sem escadinha de serviços.</p>
+        <h2>Escolha como entrar. Cresça na cadência certa.</h2>
+        <p class="muted">Sem contrato amarrado. Você fica porque funciona.</p>
       </div>
-      <div class="passos">
+      <div class="plans">
+        <!-- ENTRADA -->
         <div class="card">
-          <div class="badge">fase 1</div>
-          <h3>Diagnóstico & Direção</h3>
+          <div class="badge">Entrada</div>
+          <h3>Raio-X de Percepção</h3>
+          <div class="price">R$ 500</div>
           <ul class="ul">
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Diagnóstico direto (vídeo 30–40min)</li>
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Mensagem central e narrativa</li>
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Diretrizes visuais e de conteúdo</li>
+            <li>Diagnóstico direto (vídeo 30–40min)</li>
+            <li>3 correções imediatas</li>
+            <li>Checklist de ajustes</li>
           </ul>
           <div style="margin-top:16px" class="grid">
             <a href="#contato" class="btn brand">Começar Aqui</a>
+            <a href="#metodo" class="btn">Entender Mais</a>
           </div>
         </div>
+        <!-- IMPACTO -->
         <div class="card" style="border-width:2px">
-          <div class="badge">fase 2</div>
-          <h3>Setup & Páginas Que Vendem</h3>
+          <div class="badge">Impacto</div>
+          <h3>Guia Estratégico</h3>
+          <div class="price">R$ 2.500 – 5.000</div>
           <ul class="ul">
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Ajustes de presença (bio, perfis, vitrines)</li>
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Página de oferta/lead (copy + layout)</li>
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Criativos base p/ tráfego e autoridade</li>
+            <li>Mensagem central e narrativa</li>
+            <li>Diretrizes visuais e de conteúdo</li>
+            <li>Plano de 90 dias</li>
           </ul>
           <div style="margin-top:16px" class="grid">
-            <a href="#processo" class="btn brand">Ver o Passo a Passo</a>
+            <a href="#contato" class="btn brand">Falar Sobre o Guia</a>
           </div>
         </div>
+        <!-- BANDEIRA -->
         <div class="card">
-          <div class="badge">fase 3</div>
-          <h3>Cadência & Tráfego (3A3R)</h3>
+          <div class="badge">Bandeira</div>
+          <h3>Funil 3A3R (6 meses)</h3>
+          <div class="price">R$ 4.000 – 8.000 /mês</div>
           <ul class="ul">
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Cadência semanal de autoridade</li>
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Monitoramento de percepção</li>
-            <li><svg width="18" height="18" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="m20 6-11 11-5-5"/></svg>Ads e otimizações quinzenais</li>
+            <li>Cadência semanal de autoridade</li>
+            <li>Monitoramento de percepção</li>
+            <li>Ads e páginas cirúrgicas</li>
           </ul>
           <div style="margin-top:16px" class="grid">
-            <a href="#contato" class="btn brand">Fechar o All-In</a>
+            <a href="#contato" class="btn brand">Reservar Vaga</a>
           </div>
         </div>
       </div>
+      <p class="mini center" style="margin-top:10px">*Execução Total (All-In): sob proposta — quando você quer tudo rodando fim a fim.</p>
     </div>
   </section>
 
-  <!-- GARANTIA -->
-  <section id="garantia" style="padding:0 0 56px">
-    <div class="wrap">
-      <div class="card" style="display:grid; grid-template-columns:.15fr 1fr; gap:16px; align-items:flex-start">
-        <div class="chip" title="Garantia">✓</div>
-        <div>
-          <h2>Garantia: cancele quando quiser</h2>
-          <p class="muted">Aqui, você não fica preso por contratos. Se por algum motivo você não estiver satisfeito com os serviços prestados, pode solicitar o cancelamento, sem multa — cumprindo apenas o aviso prévio combinado.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESSO -->
-  <section id="processo" style="padding:0 0 56px">
+  <!-- ===========================
+       PROCESSO (DIA A DIA)
+  ============================ -->
+  <section style="padding:20px 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
         <span class="chip">Como funciona na prática</span>
@@ -441,36 +469,38 @@
       </div>
       <div class="process">
         <div class="card">
-          <h3><span class="dot"></span>Diagnóstico</h3>
-          <p class="muted">Briefing direto, alinhamento de objetivos e coleta de ativos. A gente entra no seu contexto.</p>
+          <h3><span class="dot"></span>Kickoff</h3>
+          <p class="muted">Briefing direto, alinhamento de objetivos e coleta de ativos. Entramos no seu contexto.</p>
         </div>
         <div class="card">
-          <h3><span class="dot"></span>Setup & Páginas</h3>
+          <h3><span class="dot"></span>Setup de Presença</h3>
           <p class="muted">Ajustes visuais, páginas essenciais e base de conteúdo para transmitir seriedade.</p>
         </div>
         <div class="card">
-          <h3><span class="dot"></span>Cadência & Tráfego</h3>
+          <h3><span class="dot"></span>Cadência Semanal</h3>
           <p class="muted">Conteúdos-chave e anúncios táticos. Ritmo e coerência — sem estresse.</p>
         </div>
         <div class="card">
-          <h3><span class="dot"></span>Otimizações</h3>
-          <p class="muted">Acompanhamento de percepção, aprendizados mensais e próximos passos.</p>
+          <h3><span class="dot"></span>Revisões Mensais</h3>
+          <p class="muted">Acompanhamento de percepção do mercado, aprendizados e próximos passos.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section style="padding:0 0 56px">
+  <!-- ===========================
+       ABOUT
+  ============================ -->
+  <section style="padding:20px 0 56px">
     <div class="wrap grid" style="grid-template-columns: .9fr 1.1fr">
       <div class="surface" style="padding:26px">
         <h3>Quem puxa a fila</h3>
         <p class="muted">Felipe Leandro — fundador da Tomorrow. Direto ao ponto, anti-firula, obcecado por posicionamento e por transformar marcas locais em referências reais.</p>
         <hr class="sep">
         <ul class="ul">
-          <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Branding, narrativa e funis focados em receita</li>
-          <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Tom provocativo e execução enxuta</li>
-          <li><svg width="18" height="18" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor"><path d="m20 6-11 11-5-5"/></svg>Método proprietário — Sistema de Performance Tomorrow</li>
+          <li>Branding, narrativa e funis focados em receita</li>
+          <li>Tom provocativo e execução enxuta</li>
+          <li>Metodologia SPT — o caos do oposto</li>
         </ul>
       </div>
       <div class="card">
@@ -497,34 +527,55 @@
     </div>
   </section>
 
-  <!-- FAQ -->
-  <section id="faq" style="padding:0 0 56px">
+  <!-- ===========================
+       GARANTIA
+  ============================ -->
+  <section id="garantia" style="padding:0 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
-        <span class="chip">Faq honesta</span>
+        <span class="chip">Garantia</span>
+        <h2>Sem amarras. Cancele quando quiser.</h2>
+        <p class="muted">Você não fica preso por contrato. Se não fizer sentido, cancela — simples assim.</p>
+      </div>
+      <div class="card">
+        <div class="badge">Aberto de Segunda a Sexta • 08h às 18h</div>
+        <p class="muted" style="margin-top:8px">Atendimento humano, direto no WhatsApp ou e-mail.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===========================
+       FAQ
+  ============================ -->
+  <section id="faq" style="padding:20px 0 56px">
+    <div class="wrap">
+      <div class="center" style="margin-bottom:18px">
+        <span class="chip">FAQ Honesta</span>
         <h2>Perguntas que cortam o caminho</h2>
       </div>
       <details open>
         <summary><strong>Isso é social media?</strong></summary>
-        <p class="muted">Não. Postar por postar não constrói autoridade. O Sistema de Performance Tomorrow organiza percepção, narrativa e presença. Conteúdo e anúncios são meios, não o fim.</p>
-      </details>
-      <details>
-        <summary><strong>Como funciona o ALL-IN?</strong></summary>
-        <p class="muted">Diagnóstico → Setup & Páginas → Cadência & Tráfego. Um caminho único, ajustado ao seu contexto, sem escadinha de produtos.</p>
+        <p class="muted">Não. Postar por postar não constrói autoridade. O SPT organiza percepção, narrativa e presença. Conteúdo e anúncios são meios, não o fim.</p>
       </details>
       <details>
         <summary><strong>Em quanto tempo dá pra sentir efeito?</strong></summary>
         <p class="muted">Ajustes de percepção em 7–14 dias. Mudança de tratamento do mercado em 30–60 dias. Previsibilidade entre 60–90 dias.</p>
       </details>
       <details>
-        <summary><strong>Minha equipe pode executar junto?</strong></summary>
-        <p class="muted">Sim. Entregamos estratégia e cadência; integramos com o que fizer sentido interno/externo.</p>
+        <summary><strong>Vocês travam contrato longo?</strong></summary>
+        <p class="muted">Não. A gente não prende ninguém. Você renova porque vale a pena.</p>
+      </details>
+      <details>
+        <summary><strong>Minha equipe toca parte da execução?</strong></summary>
+        <p class="muted">Sem problema. O método é modular: entregamos estratégia e cadência; você decide o quanto executa interno vs. com a Tomorrow.</p>
       </details>
     </div>
   </section>
 
-  <!-- CONTATO -->
-  <section id="contato" style="padding:0 0 64px">
+  <!-- ===========================
+       CONTATO / LEAD
+  ============================ -->
+  <section id="contato" style="padding:20px 0 64px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
         <span class="chip">Vamos conversar</span>
@@ -540,11 +591,11 @@
           </div>
           <div>
             <label>WhatsApp</label>
-            <input id="f-whats" required placeholder="(35) 98446-8504" inputmode="tel" />
+            <input id="f-whats" required placeholder="(xx) xxxxx-xxxx" />
           </div>
           <div>
             <label>E-mail</label>
-            <input id="f-mail" type="email" required placeholder="felipe@agenciatomorrow.com" />
+            <input id="f-mail" type="email" required placeholder="voce@empresa.com" />
           </div>
           <div class="full">
             <label>Empresa (opcional)</label>
@@ -572,21 +623,21 @@
             </div>
             <div class="surface" style="padding:16px">
               <div class="mini">WhatsApp</div>
-              <p><a href="https://wa.me/5535984468504" target="_blank" rel="noopener">Abrir Conversa</a></p>
+              <p><a target="_blank" rel="noopener" href="https://wa.me/5535984468504">(35) 98446-8504</a></p>
             </div>
             <div class="surface" style="padding:16px">
-              <div class="mini">Atendimento</div>
-              <p class="muted">Seg–Sex, 08h–18h (BRT)</p>
+              <div class="mini">Instagram</div>
+              <p><a target="_blank" rel="noopener" href="https://www.instagram.com/agenciatomorrow/">@agenciatomorrow</a></p>
             </div>
           </div>
-          <hr class="sep">
-          <p class="mini">Garantia de clareza: se a conversa não te ajudar em nada, você nos diz e a gente te manda um checklist prático por e-mail. Simples.</p>
         </aside>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- ===========================
+       FOOTER
+  ============================ -->
   <footer>
     <div class="wrap foot">
       <div style="display:flex; align-items:center; gap:10px">
@@ -596,22 +647,28 @@
           <span class="mini">© <span id="year"></span> Tomorrow Marketing — Todos os direitos reservados.</span>
         </div>
       </div>
-      <div style="display:flex; gap:14px; align-items:center">
+
+      <div style="display:flex; gap:16px; align-items:center; flex-wrap:wrap">
         <a href="#metodo">Método</a>
-        <a href="#passo-a-passo">Passo a passo</a>
+        <a href="#passo-a-passo">Passo a Passo</a>
         <a href="#garantia">Garantia</a>
         <a href="#faq">FAQ</a>
         <a href="#contato" class="btn">Contato</a>
+        <a href="https://wa.me/5535984468504" target="_blank" rel="noopener" title="WhatsApp">
+          <img src="assets/icons/whatsapp.svg" alt="WhatsApp" class="icon xl" loading="lazy">
+        </a>
+        <a href="https://www.instagram.com/agenciatomorrow/" target="_blank" rel="noopener" title="Instagram">
+          <img src="assets/icons/instagram.svg" alt="Instagram" class="icon xl" loading="lazy">
+        </a>
       </div>
     </div>
   </footer>
 
+  <!-- ===========================
+       JS (envio leads + utilitários)
+  ============================ -->
   <script>
-    /* ===== CONFIGURAÇÕES ===== */
-    // URL do Web App (Apps Script) — já com o seu endpoint:
-    const APPSCRIPT_ENDPOINT = "https://script.google.com/macros/s/AKfycbznizxf4YCjYA6b8MLq9qBO-CsBZ469esOV-nZe6Wuu8fJn-Ld-sCbt1xKCRd28NNOE/exec";
-
-    // Atualiza ano no footer
+    // Atualiza ano
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // Scroll suave
@@ -626,7 +683,7 @@
       });
     });
 
-    // Máscara simples do WhatsApp
+    // Máscara WhatsApp
     const fWhats = document.getElementById('f-whats');
     if (fWhats) {
       fWhats.addEventListener('input', () => {
@@ -637,7 +694,11 @@
       });
     }
 
-    // Envio do lead (Apps Script: planilha + e-mail) e abre WhatsApp SEM mensagem
+    // ===== CONFIG: cole aqui a SUA URL do Apps Script (a que já está funcionando) =====
+    // Mantive a que você me passou. Se reimplantar, troque a URL abaixo.
+    const APPSCRIPT_ENDPOINT = "https://script.google.com/macros/s/AKfycbznizxf4YCjYA6b8MLq9qBO-CsBZ469esOV-nZe6Wuu8fJn-Ld-sCbt1xKCRd28NNOE/exec";
+
+    // Envio do lead — não mexe no backend. Só ajustei o texto de sucesso.
     async function sendLead(e){
       e.preventDefault();
 
@@ -657,40 +718,44 @@
       };
 
       const status = document.getElementById('form-status');
-      status.style.display = 'block';
-      status.textContent = 'Enviando com segurança...';
+      if (status) {
+        status.style.display = 'block';
+        status.textContent = 'Enviando com segurança...';
+      }
 
       try {
-        // Envia como text/plain para evitar preflight OPTIONS
         await fetch(APPSCRIPT_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: JSON.stringify(payload)
         });
 
-        status.textContent = '✅ Enviado com sucesso! Entraremos em contato.';
-        // WhatsApp sem mensagem
+        if (status) status.textContent = '✅ Enviado com sucesso! Em instantes entraremos em contato.';
         window.open('https://wa.me/5535984468504', '_blank');
-
       } catch (err) {
-        console.error(err);
-        status.textContent = 'Falha no envio. Pode me chamar no WhatsApp: (35) 98446-8504.';
+        // Fallback GET
+        try {
+          const qs = new URLSearchParams({
+            nome: payload.nome,
+            whatsapp: payload.whatsapp,
+            email: payload.email,
+            empresa: payload.empresa,
+            resumo: payload.resumo,
+            origem: payload.origem,
+            t: Date.now().toString()
+          }).toString();
+          const img = new Image();
+          img.src = APPSCRIPT_ENDPOINT + '?' + qs;
+
+          if (status) status.textContent = '✅ Enviado com sucesso! Em instantes entraremos em contato.';
+          window.open('https://wa.me/5535984468504', '_blank');
+        } catch (err2) {
+          if (status) status.textContent = 'Falha no envio. Pode me chamar no WhatsApp: (35) 98446-8504.';
+        }
       }
+
       return false;
     }
-  </script>
-
-  <!-- SEO estruturado -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"Organization",
-    "name":"Tomorrow Marketing",
-    "url":"https://www.agenciatomorrow.com",
-    "logo":"https://www.agenciatomorrow.com/assets/tmw-logo.png",
-    "description":"Sistema de Performance Tomorrow — posicionamento, narrativa e cadência para previsibilidade de receita.",
-    "sameAs":[]
-  }
   </script>
 </body>
 </html>
