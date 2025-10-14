@@ -534,32 +534,33 @@
 
       <div class="grid" style="grid-template-columns:1.1fr .9fr">
         <form class="card form" onsubmit="return sendLead(event)">
-          <div class="full">
-            <label>Nome</label>
-            <input id="f-name" required placeholder="Seu nome" />
-          </div>
-          <div>
-            <label>WhatsApp</label>
-            <input id="f-whats" required placeholder="(35) 98446-8504" inputmode="tel" />
-          </div>
-          <div>
-            <label>E-mail</label>
-            <input id="f-mail" type="email" required placeholder="felipe@agenciatomorrow.com" />
-          </div>
-          <div class="full">
-            <label>Empresa (opcional)</label>
-            <input id="f-company" placeholder="Razão social / marca" />
-          </div>
-          <div class="full">
-            <label>Resumo do momento</label>
-            <textarea id="f-msg" placeholder="Explique em uma frase o problema que quer resolver."></textarea>
-          </div>
-          <div class="full grid" style="grid-template-columns:1fr auto; align-items:center">
-            <span class="mini">Ao enviar, você concorda em receber um contato sobre sua solicitação.</span>
-            <button class="btn brand" type="submit">Quero a Consulta</button>
-          </div>
-          <div id="form-status" class="full mini" style="display:none"></div>
-        </form>
+  <div class="full">
+    <label>Nome</label>
+    <input id="f-name" required placeholder="Seu nome" />
+  </div>
+  <div>
+    <label>WhatsApp</label>
+    <input id="f-whats" required placeholder="(35) 98446-8504" inputmode="tel" />
+  </div>
+  <div>
+    <label>E-mail</label>
+    <input id="f-mail" type="email" required placeholder="felipe@agenciatomorrow.com" />
+  </div>
+  <div class="full">
+    <label>Empresa (opcional)</label>
+    <input id="f-company" placeholder="Razão social / marca" />
+  </div>
+  <div class="full">
+    <label>Resumo do momento</label>
+    <textarea id="f-msg" placeholder="Explique em uma frase o problema que quer resolver."></textarea>
+  </div>
+  <div class="full grid" style="grid-template-columns:1fr auto; align-items:center">
+    <span class="mini">Ao enviar, você concorda em receber um contato sobre sua solicitação.</span>
+    <button class="btn brand" type="submit">Quero a Consulta</button>
+  </div>
+  <!-- status SEM texto e oculto -->
+  <div id="form-status" class="full mini" style="display:none"></div>
+</form>
 
         <aside class="card">
           <h3>Como é a conversa?</h3>
