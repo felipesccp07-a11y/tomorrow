@@ -639,47 +639,46 @@
 
     // Envio do lead (Apps Script: planilha + e-mail) e abre WhatsApp SEM mensagem
     async function sendLead(e){
-      e.preventDefault();
+  e.preventDefault();
 
-      const name = document.getElementById('f-name').value.trim();
-      const whats = (document.getElementById('f-whats').value || '').replace(/\D/g,'');
-      const mail  = document.getElementById('f-mail').value.trim();
-      const comp  = document.getElementById('f-company').value.trim();
-      const msg   = document.getElementById('f-msg').value.trim();
+  const name = document.getElementById('f-name').value.trim();
+  const whats = (document.getElementById('f-whats').value || '').replace(/\D/g,'');
+  const mail  = document.getElementById('f-mail').value.trim();
+  const comp  = document.getElementById('f-company').value.trim();
+  const msg   = document.getElementById('f-msg').value.trim();
 
-      const payload = {
-        nome: name,
-        whatsapp: whats,
-        email: mail,
-        empresa: comp,
-        resumo: msg,
-        origem: "Landing SPT"
-      };
+  const payload = {
+    nome: name,
+    whatsapp: whats,
+    email: mail,
+    empresa: comp,
+    resumo: msg,
+    origem: "Landing SPT"
+  };
 
-      const status = document.getElementById('form-status');
-      status.style.display = 'block';
-      status.textContent = 'Enviando com segurança...';
+  const status = document.getElementById('form-status');
+  status.style.display = 'block';
+  status.textContent = 'Enviando com segurança...';
 
-      try {
-        const res = await fetch(APPSCRIPT_ENDPOINT, {
-          method: "POST",
-          headers: {"Content-Type":"application/json"},
-          body: JSON.stringify(payload)
-        });
+  try {
+    // Envia como text/plain para evitar preflight OPTIONS
+    await fetch(APPSCRIPT_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    });
 
-        if (!res.ok) throw new Error('Falha HTTP ' + res.status);
+    status.textContent = 'Recebido! Abrindo WhatsApp...';
+    // Abre o WhatsApp sem mensagem pré-preenchida
+    window.open('https://wa.me/5535984468504', '_blank');
 
-        status.textContent = 'Recebido! Abrindo WhatsApp...';
+  } catch (err) {
+    console.error(err);
+    status.textContent = 'Falha no envio. Pode me chamar no WhatsApp: (35) 98446-8504.';
+  }
+  return false;
+}
 
-        // WhatsApp sem mensagem
-        window.open('https://wa.me/5535984468504', '_blank');
-
-      } catch (err) {
-        console.error(err);
-        status.textContent = 'Falha no envio. Pode me chamar no WhatsApp: (35) 98446-8504.';
-      }
-      return false;
-    }
   </script>
 
   <!-- SEO estruturado -->
