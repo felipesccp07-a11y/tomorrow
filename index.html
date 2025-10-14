@@ -46,7 +46,15 @@
     .btn.brand{background:linear-gradient(180deg, var(--brand) 0%, var(--brand-2) 100%); color:#0b0b0c; border:none; font-weight:700}
     .btn.brand:hover{filter:brightness(.95)}
 
-    .chip{display:inline-flex; align-items:center; gap:8px; font-size:12px; color:#0b0b0c; background:var(--brand); padding:6px 10px; border-radius:999px; font-weight:700; letter-spacing:.2px}
+    /* chips um pouco maiores */
+    .chip{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:13.5px;             /* antes: 12px */
+      color:#0b0b0c; background:var(--brand);
+      padding:8px 12px;             /* antes: 6px 10px */
+      border-radius:999px; font-weight:700; letter-spacing:.2px
+    }
+
     .muted{color:var(--text-2)}
     .card{background:linear-gradient(180deg,#15171a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:var(--radius); padding:24px; box-shadow:var(--shadow)}
     .surface{background:linear-gradient(180deg,#14161a 0%, #0f1013 100%); border:1px solid #23262b; border-radius:var(--radius)}
@@ -140,14 +148,13 @@
     <div class="wrap nav-wrap">
       <div class="brand">
         <img class="logo-img" src="assets/tmw-logo.png" alt="Tomorrow">
-        <strong>Tomorrow</strong>
-        <span class="tag">Sistema de Performance Tomorrow</span>
+        <!-- removidos: nome textual e tag -->
       </div>
       <div class="nav-links">
-        <a href="#metodo">método</a>
-        <a href="#passo-a-passo">passo a passo</a>
-        <a href="#garantia">garantia</a>
-        <a href="#faq">faq</a>
+        <a href="#metodo">Método</a>
+        <a href="#passo-a-passo">Passo a passo</a>
+        <a href="#garantia">Garantia</a>
+        <a href="#faq">FAQ</a>
         <a href="#contato" class="btn brand">Falar Com a Tomorrow</a>
       </div>
     </div>
@@ -229,7 +236,7 @@
     <div class="wrap">
       <div class="card">
         <div class="center" style="margin-bottom:12px">
-          <span class="chip">diagnóstico do mercado</span>
+          <span class="chip">Diagnóstico do mercado</span>
           <h2>Você não tem lucro, previsibilidade e nem escala por isso.</h2>
           <p class="muted">Porque o que chamam de “marketing” virou teatro de métricas vazias — likes, CTR e impressões — e não resultado.</p>
         </div>
@@ -257,7 +264,7 @@
   <section aria-label="Nosso funil de vendas 3A3R" style="padding:0 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
-        <span class="chip">funil proprietário</span>
+        <span class="chip">Funil proprietário</span>
         <h2>Nosso Funil de Vendas</h2>
         <p class="muted">O 3A3R — seis etapas que transformam atenção em lucro previsível.</p>
       </div>
@@ -318,7 +325,7 @@
   <section aria-label="depoimentos" style="padding:20px 0 40px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
-        <span class="chip">o que clientes dizem</span>
+        <span class="chip">O que clientes dizem</span>
         <h2>Feedback real, sem firula</h2>
       </div>
       <div class="grid" style="grid-template-columns:repeat(3,1fr)">
@@ -338,7 +345,7 @@
   <!-- MÉTODO (cards 1..4) -->
   <section id="metodo" class="wrap" style="padding:20px 0 40px">
     <div class="center" style="margin-bottom:22px">
-      <span class="chip">método — sistema de performance tomorrow</span>
+      <span class="chip">Método — Sistema de Performance Tomorrow</span>
       <h2>O caminho direto: clareza → percepção → autoridade → receita</h2>
       <p class="muted">Sem jargão. É “vamos fazer isso, isso e aquilo”. Ponto.</p>
     </div>
@@ -374,7 +381,7 @@
   <section id="passo-a-passo" style="padding:0 0 40px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
-        <span class="chip">começo simples, impacto rápido</span>
+        <span class="chip">Começo simples, impacto rápido</span>
         <h2>Passo a passo do projeto (ALL-IN)</h2>
         <p class="muted">É um caminho único. Sem escadinha de serviços.</p>
       </div>
@@ -436,7 +443,7 @@
   <section id="processo" style="padding:0 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
-        <span class="chip">como funciona na prática</span>
+        <span class="chip">Como funciona na prática</span>
         <h2>Sem mistério. Nosso dia a dia com você.</h2>
       </div>
       <div class="process">
@@ -501,7 +508,7 @@
   <section id="faq" style="padding:0 0 56px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
-        <span class="chip">faq honesta</span>
+        <span class="chip">Faq honesta</span>
         <h2>Perguntas que cortam o caminho</h2>
       </div>
       <details open>
@@ -527,7 +534,7 @@
   <section id="contato" style="padding:0 0 64px">
     <div class="wrap">
       <div class="center" style="margin-bottom:18px">
-        <span class="chip">vamos conversar</span>
+        <span class="chip">Vamos conversar</span>
         <h2>Consulta gratuita. 15 minutos. Sem promessa milagrosa.</h2>
         <p class="muted">Se fizer sentido, seguimos. Se não, você sai com clareza e 3 ações práticas.</p>
       </div>
@@ -576,7 +583,7 @@
             </div>
             <div class="surface" style="padding:16px">
               <div class="mini">Atendimento</div>
-              <p class="muted">Seg–Sex, 08h–18h • Sáb, 08h–12h (BRT)</p>
+              <p class="muted">Seg–Sex, 08h–18h (BRT)</p>
             </div>
           </div>
           <hr class="sep">
@@ -597,10 +604,10 @@
         </div>
       </div>
       <div style="display:flex; gap:14px; align-items:center">
-        <a href="#metodo">método</a>
-        <a href="#passo-a-passo">passo a passo</a>
-        <a href="#garantia">garantia</a>
-        <a href="#faq">faq</a>
+        <a href="#metodo">Método</a>
+        <a href="#passo-a-passo">Passo a passo</a>
+        <a href="#garantia">Garantia</a>
+        <a href="#faq">FAQ</a>
         <a href="#contato" class="btn">Contato</a>
       </div>
     </div>
