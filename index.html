@@ -638,48 +638,67 @@
     }
 
     // Envio do lead (Apps Script: planilha + e-mail) e abre WhatsApp SEM mensagem
-    async function sendLead(e){
-  e.preventDefault();
+    <script>
+  async function sendLead(e){
+    e.preventDefault();
 
-  const name = document.getElementById('f-name').value.trim();
-  const whats = (document.getElementById('f-whats').value || '').replace(/\D/g,'');
-  const mail  = document.getElementById('f-mail').value.trim();
-  const comp  = document.getElementById('f-company').value.trim();
-  const msg   = document.getElementById('f-msg').value.trim();
+    const name = document.getElementById('f-name').value.trim();
+    const whats = (document.getElementById('f-whats').value || '').replace(/\D/g,'');
+    const mail  = document.getElementById('f-mail').value.trim();
+    const comp  = document.getElementById('f-company').value.trim();
+    const msg   = document.getElementById('f-msg').value.trim();
 
-  const payload = {
-    nome: name,
-    whatsapp: whats,
-    email: mail,
-    empresa: comp,
-    resumo: msg,
-    origem: "Landing SPT"
-  };
+    const payload = {
+      nome: name,
+      whatsapp: whats,
+      email: mail,
+      empresa: comp,
+      resumo: msg,
+      origem: "Landing SPT"
+    };
 
-  const status = document.getElementById('form-status');
-  status.style.display = 'block';
-  status.textContent = 'Enviando com segurança...';
+    const status = document.getElementById('form-status');
+    status.style.display = 'block';
+    status.textContent = 'Enviando com segurança...';
 
-  try {
-    // Envia como text/plain para evitar preflight OPTIONS
-    await fetch(APPSCRIPT_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(payload)
-    });
+    const bodyStr = JSON.stringify(payload);
+    let delivered = false;
 
+    try {
+      // 1) Preferimos sendBeacon (envia em background sem CORS e sem bloquear a navegação)
+      if (navigator.sendBeacon) {
+        const blob = new Blob([bodyStr], { type: 'text/plain;charset=utf-8' });
+        delivered = navigator.sendBeacon(APPSCRIPT_ENDPOINT, blob);
+      } else {
+        // 2) Fallback: dispara e não espera resposta (no-cors)
+        await fetch(APPSCRIPT_ENDPOINT, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: bodyStr
+        });
+        delivered = true; // não dá pra confirmar, mas consideramos enviado
+      }
+    } catch(e){
+      // mesmo com erro de rede local, abrimos o WhatsApp e deixamos recado
+      console.error('Envio background falhou:', e);
+    }
+
+    // Seguimos a UX: consideramos recebido e abrimos o WhatsApp LIMPO
     status.textContent = 'Recebido! Abrindo WhatsApp...';
-    // Abre o WhatsApp sem mensagem pré-preenchida
     window.open('https://wa.me/5535984468504', '_blank');
 
-  } catch (err) {
-    console.error(err);
-    status.textContent = 'Falha no envio. Pode me chamar no WhatsApp: (35) 98446-8504.';
-  }
-  return false;
-}
+    // Feedback final pro usuário
+    setTimeout(()=>{
+      status.textContent = delivered
+        ? 'Lead enviado com sucesso. Te chamamos por WhatsApp/e-mail.'
+        : 'Não consegui confirmar o envio, mas abrimos o WhatsApp. Se preferir, me chame por lá.';
+    }, 400);
 
-  </script>
+    return false;
+  }
+</script>
+
 
   <!-- SEO estruturado -->
   <script type="application/ld+json">
