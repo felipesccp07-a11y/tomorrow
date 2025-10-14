@@ -640,6 +640,7 @@
 
     // Envio do lead (Apps Script: planilha + e-mail) e abre WhatsApp SEM mensagem
     <script>
+  <script>
   async function sendLead(e){
     e.preventDefault();
 
@@ -659,47 +660,46 @@
     };
 
     const status = document.getElementById('form-status');
-    if (status){
-      status.style.display = 'block';
-      status.textContent = 'Enviando com segurança...';
-    }
+    status.style.display = 'block';
+    status.textContent = 'Enviando com segurança...';
 
     const bodyStr = JSON.stringify(payload);
+    let delivered = false;
 
     try {
-      // 1) Preferência: sendBeacon (não depende de resposta / sem CORS)
+      // 1) Preferimos sendBeacon (envia em background sem CORS e sem bloquear a navegação)
       if (navigator.sendBeacon) {
         const blob = new Blob([bodyStr], { type: 'text/plain;charset=utf-8' });
-        navigator.sendBeacon(APPSCRIPT_ENDPOINT, blob);
+        delivered = navigator.sendBeacon(APPSCRIPT_ENDPOINT, blob);
       } else {
-        // 2) Fallback: no-cors (dispara sem esperar resposta)
-        fetch(APPSCRIPT_ENDPOINT, {
+        // 2) Fallback: dispara e não espera resposta (no-cors)
+        await fetch(APPSCRIPT_ENDPOINT, {
           method: "POST",
           mode: "no-cors",
           headers: { "Content-Type": "text/plain;charset=utf-8" },
           body: bodyStr
         });
+        delivered = true; // não dá pra confirmar, mas consideramos enviado
       }
-    } catch (err) {
-      // ignoramos erros locais para não alarmar o usuário,
-      // pois o servidor recebe do mesmo jeito (como você já viu)
-      console.warn('Envio em background: ', err);
+    } catch(e){
+      // mesmo com erro de rede local, abrimos o WhatsApp e deixamos recado
+      console.error('Envio background falhou:', e);
     }
 
-    if (status) status.textContent = 'Recebido! Abrindo WhatsApp...';
-    // Abre WhatsApp sem texto
+    // Seguimos a UX: consideramos recebido e abrimos o WhatsApp LIMPO
+    status.textContent = 'Recebido! Abrindo WhatsApp...';
     window.open('https://wa.me/5535984468504', '_blank');
 
-    // Mensagem final amigável
+    // Feedback final pro usuário
     setTimeout(()=>{
-      if (status) status.textContent = 'Tudo certo! Te chamamos por WhatsApp/e-mail.';
-    }, 600);
+      status.textContent = delivered
+        ? 'Lead enviado com sucesso. Te chamamos por WhatsApp/e-mail.'
+        : 'Não consegui confirmar o envio, mas abrimos o WhatsApp. Se preferir, me chame por lá.';
+    }, 400);
 
     return false;
   }
 </script>
-
-
 
   <!-- SEO estruturado -->
   <script type="application/ld+json">
