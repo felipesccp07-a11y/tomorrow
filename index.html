@@ -125,6 +125,14 @@
     .icon.gap{margin-right:8px}
     .media-cover{width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; border:1px solid #23262b; background:#0f1013}
 
+    /* HERO (override): não cortar nem distorcer a imagem */
+.hero-card .hero-cover{
+  width:100%;
+  height:auto;
+  aspect-ratio:auto;   /* remove o 16/9 fixo */
+  object-fit:contain;  /* sem crop */
+}
+
     /* ------------------------------
       STEPS / CASES / PLANS / PROCESS
     ------------------------------ */
@@ -448,7 +456,7 @@
           Não é “postar por postar”. É <strong>posicionamento + narrativa + presença</strong> que abre portas (e fecha contratos).
         </div>
         <!-- SLOT ILUSTRAÇÃO DO HERO (opcional) -->
-        <img class="media-cover" src="assets/illus/hero-cover.png" alt="Sistema de Performance Tomorrow com gráficos de crescimento" width="1280" height="720" loading="lazy" decoding="async" style="margin-top:12px">
+        <img class="media-cover hero-cover" src="assets/illus/hero-cover.png" alt="Sistema de Performance Tomorrow com gráficos de crescimento" loading="eager" decoding="async" style="margin-top:12px">
       </div>
     </div>
   </header>
