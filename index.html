@@ -166,33 +166,72 @@
     }
  
 /* ===============================
-   RESPONSIVIDADE MOBILE AJUSTADA
-=============================== */
+   MOBILE PRIME (<= 768px)
+   Melhorias de leitura, centragem, grades e botões
+================================ */
 @media (max-width: 768px) {
-  h1 { font-size: 28px; line-height: 1.2; }
-  h2 { font-size: 22px; }
-  p, .lead { font-size: 15px; }
+  :root{
+    --maxw: 640px;
+  }
 
-  .hero { padding: 40px 0 20px; }
-  .hero-grid { grid-template-columns: 1fr; gap: 20px; }
-  .hero-card { padding: 16px; }
+  /* estrutura & tipografia */
+  .wrap{ padding: 0 18px; }
+  h1{ font-size: 32px; line-height: 1.25; }
+  h2{ font-size: 24px; line-height: 1.25; }
+  p, .lead{ font-size: 16px; }
 
-  .wrap { padding: 0 14px; }
-  .btn { padding: 12px 16px; font-size: 14px; }
+  /* nav compacta */
+  .nav-wrap{ height: auto; padding: 10px 0; gap: 10px; flex-direction: column; }
+  .brand .tag{ display: none; }         /* esconde “Sistema de Performance…” no topo */
+  .logo-img{ width: 96px; }
+  .nav-links{ flex-wrap: wrap; justify-content: center; gap: 12px; }
 
-  .steps, .cases, .plans, .process { grid-template-columns: 1fr; gap: 16px; }
+  /* hero centrado */
+  .hero{ padding: 48px 0 28px; }
+  .hero-grid{ grid-template-columns: 1fr; gap: 18px; }
+  .hero h1, .hero .lead, .hero .mini{ text-align: center; }
+  .hero .cta-group{ flex-direction: column; gap: 10px; }
+  .hero .cta-group .btn{ width: 100%; }
+  .hero-card{ padding: 16px; }
+  .hero-kpis{ grid-template-columns: 1fr; gap: 10px; }
+  .kpi{ font-size: 30px; }
 
-  .card { padding: 18px; }
-  .quote { flex-direction: column; }
+  /* cards & listas */
+  .card{ padding: 18px; }
+  .ul li{ margin: 10px 0; }
 
-  .nav-wrap { flex-direction: column; gap: 10px; height: auto; padding: 10px 0; }
-  .nav-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  /* grades viram 1 coluna */
+  .steps,
+  .plans,
+  .process{ grid-template-columns: 1fr; gap: 16px; }
 
-  .form { grid-template-columns: 1fr; }
-  input, textarea { font-size: 14px; }
+  /* 3A3R especificamente */
+  #passo-a-passo .grid{ grid-template-columns: 1fr !important; gap: 16px; }
+  .media-cover{ border-radius: 12px; }
 
-  footer .foot { flex-direction: column; align-items: flex-start; gap: 14px; }
+  /* quote & footer mais elegantes */
+  .quote{ flex-direction: column; align-items: flex-start; }
+  footer .foot{ flex-direction: column; align-items: flex-start; gap: 14px; }
+
+  /* botões maiores */
+  .btn{ padding: 12px 16px; font-size: 15px; }
+  .icon{ width: 20px; height: 20px; }
+  .icon.lg{ width: 22px; height: 22px; }
+  .icon.xl{ width: 24px; height: 24px; }
 }
+
+/* ===============================
+   MOBILE SMALL (<= 420px)
+   Refino pra telas bem pequenas
+================================ */
+@media (max-width: 420px) {
+  h1{ font-size: 28px; }
+  h2{ font-size: 22px; }
+  .logo-img{ width: 88px; }
+  .btn{ padding: 12px 14px; font-size: 14.5px; }
+  .wrap{ padding: 0 16px; }
+}
+
 </style>
 
   </style>
