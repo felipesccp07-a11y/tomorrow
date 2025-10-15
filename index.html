@@ -339,6 +339,41 @@
   .nav-wrap{flex-direction: column; gap: 10px; height: auto;}
   .nav-links{flex-wrap: wrap; justify-content: center; gap: 12px;}
 }
+/* ===============================
+   CORREÇÃO DE OVERFLOW MOBILE
+   (impede arraste lateral e força centragem)
+=============================== */
+html, body {
+  width: 100%;
+  overflow-x: hidden !important;
+  margin: 0;
+  padding: 0;
+}
+
+section, .wrap, .hero, footer, .container, .grid {
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+/* Ajusta grids que possam estar "vazando" */
+.steps, .plans, .process, .cases {
+  grid-template-columns: 1fr !important;
+  justify-items: center;
+}
+
+/* Centraliza cards e textos dentro das seções */
+.card, .quote, .hero-grid, .foot, .media-cover {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Remove margens e paddings fantasmas */
+* {
+  box-sizing: border-box;
+}
 
 </style>
 
