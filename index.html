@@ -290,6 +290,56 @@
     padding: 0 16px;
   }
 }
+    /* ===============================
+   PATCH DE CENTRALIZAÇÃO FINAL (iOS)
+   — garante largura total e centragem dos cards
+================================ */
+@media (max-width: 768px){
+  /* a .wrap ocupa a tela toda */
+  .wrap{
+    max-width: 100vw !important;
+    width: 100% !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* força grades 1 coluna em todas as seções */
+  .hero-grid,
+  .steps,
+  .plans,
+  .process,
+  #passo-a-passo .grid{
+    grid-template-columns: 1fr !important;
+    gap: 18px;
+  }
+
+  /* todos os cartões com a mesma margem nas laterais */
+  .hero-card,
+  section .card{
+    margin: 0 16px 20px 16px !important;
+  }
+
+  /* textos do bloco “center” realmente centralizados */
+  .center, 
+  .center *{
+    text-align: center !important;
+  }
+
+  /* chip do topo centralizado */
+  .chip{ display:inline-block; margin-left:auto; margin-right:auto; }
+
+  /* botão principal ocupando toda a largura com respiro */
+  .btn.brand{
+    width: calc(100% - 32px);
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  /* nav mais compacta e central */
+  .nav-wrap{flex-direction: column; gap: 10px; height: auto;}
+  .nav-links{flex-wrap: wrap; justify-content: center; gap: 12px;}
+}
+
 </style>
 
   </style>
@@ -371,7 +421,7 @@
           Não é “postar por postar”. É <strong>posicionamento + narrativa + presença</strong> que abre portas (e fecha contratos).
         </div>
         <!-- SLOT ILUSTRAÇÃO DO HERO (opcional) -->
-        <img class="media-cover" src="assets/illus/hero-cover.png" alt="Visual do SPT" loading="lazy" style="margin-top:12px"
+        <img class="media-cover" src="assets/illus/hero-cover.png" alt="Visual do SPT" loading="lazy" style="margin-top:12px">
       </div>
     </div>
   </header>
@@ -470,7 +520,7 @@
 
       <div class="grid" style="grid-template-columns:repeat(3,1fr); gap:18px">
         <article class="card">
-          <img class="media-cover" src="assets/illus/3a3r-assimilacao.png" alt="Assimilação" loading="lazy"
+          <img class="media-cover" src="assets/illus/3a3r-assimilacao.png" alt="Assimilação" loading="lazy">
           <h3 style="margin-top:10px">Assimilação</h3>
           <p class="muted"><strong>O que é:</strong> O público finalmente entende quem você é e por que existe.</p>
           <hr class="sep">
@@ -478,7 +528,7 @@
         </article>
 
         <article class="card">
-          <img class="media-cover" src="assets/illus/3a3r-aquisicao.png" alt="Aquisição" loading="lazy"
+          <img class="media-cover" src="assets/illus/3a3r-aquisicao.png" alt="Aquisição" loading="lazy">
           <h3 style="margin-top:10px">Aquisição</h3>
           <p class="muted"><strong>O que é:</strong> Interesse real. A pessoa entra no seu ecossistema.</p>
           <hr class="sep">
@@ -486,7 +536,7 @@
         </article>
 
         <article class="card">
-          <img class="media-cover" src="assets/illus/3a3r-ativacao.png" alt="Ativação" loading="lazy"
+          <img class="media-cover" src="assets/illus/3a3r-ativacao.png" alt="Ativação" loading="lazy">
           <h3 style="margin-top:10px">Ativação</h3>
           <p class="muted"><strong>O que é:</strong> O cliente compra — porque foi preparado pra confiar.</p>
           <hr class="sep">
@@ -494,7 +544,7 @@
         </article>
 
         <article class="card">
-          <img class="media-cover" src="assets/illus/3a3r-retencao.png" alt="Retenção" loading="lazy"
+          <img class="media-cover" src="assets/illus/3a3r-retencao.png" alt="Retenção" loading="lazy">
           <h3 style="margin-top:10px">Retenção</h3>
           <p class="muted"><strong>O que é:</strong> O cliente volta e continua no plano.</p>
           <hr class="sep">
@@ -502,7 +552,7 @@
         </article>
 
         <article class="card">
-          <img class="media-cover" src="assets/illus/3a3r-receita.png" alt="Receita" loading="lazy"
+          <img class="media-cover" src="assets/illus/3a3r-receita.png" alt="Receita" loading="lazy">
           <h3 style="margin-top:10px">Receita</h3>
           <p class="muted"><strong>O que é:</strong> Previsibilidade e lucro constantes.</p>
           <hr class="sep">
@@ -510,7 +560,7 @@
         </article>
 
         <article class="card">
-          <img class="media-cover" src="assets/illus/3a3r-recomendacao.png" alt="Receita" loading="lazy"
+          <img class="media-cover" src="assets/illus/3a3r-recomendacao.png" alt="Receita" loading="lazy">
           <h3 style="margin-top:10px">Recomendação</h3>
           <p class="muted"><strong>O que é:</strong> Seus clientes viram embaixadores.</p>
           <hr class="sep">
