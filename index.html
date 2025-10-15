@@ -6,9 +6,10 @@
   <title>Tomorrow — Sistema de Performance Tomorrow</title>
   <meta name="description" content="Sistema de Performance Tomorrow — posicionamento, narrativa e presença que geram respeito, previsibilidade e receita.">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64'%3E%3Crect width='100%25' height='100%25' fill='%23000'/%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' fill='%23ff7b00'%3ET%3C/text%3E%3C/svg%3E" />
+
   <style>
     /* ------------------------------
-      RESET
+      RESET / TOKENS
     ------------------------------ */
     *,*::before,*::after{box-sizing:border-box}
     html,body{margin:0;padding:0}
@@ -21,7 +22,7 @@
       --muted:#1a1c20;
       --text:#e9eaed;
       --text-2:#b7bcc6;
-      --brand:#ff7b00;      /* Laranja pedido */
+      --brand:#ff7b00;
       --brand-2:#ff9a3a;
       --danger:#ff4d4f;
       --ok:#37c977;
@@ -38,6 +39,7 @@
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       line-height:1.6;
     }
+
     .wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
     .grid{display:grid; gap:24px}
     .btn{display:inline-flex; align-items:center; justify-content:center; gap:10px; padding:14px 20px; border-radius:var(--radius-sm); border:1px solid #2a2d33; background:linear-gradient(180deg,#1b1e23 0%, #14161a 100%); color:var(--text); box-shadow:var(--shadow); transition:.2s}
@@ -51,7 +53,7 @@
     .sep{height:1px;background:#1f2226;border:0;margin:8px 0 16px}
     .kpi{font-size:42px; font-weight:800; line-height:1.1}
     .tag{font-size:12px; color:#8a909b; border:1px solid #2a2e35; padding:6px 10px; border-radius:999px}
-    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Consolas","Liberation Mono","Courier New", monospace}
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono","Courier New", monospace}
 
     h1{font-size:44px; line-height:1.1; margin:0 0 12px}
     h2{font-size:32px; line-height:1.2; margin:0 0 10px}
@@ -64,7 +66,7 @@
     .nav{position:sticky; top:0; z-index:40; backdrop-filter:saturate(140%) blur(8px); background:rgba(12,12,14,.75); border-bottom:1px solid #1c1e22}
     .nav-wrap{display:flex; align-items:center; justify-content:space-between; height:64px}
     .brand{display:flex; align-items:center; gap:12px}
-    .logo-img{width:120px; height:auto; object-fit:contain; filter: drop-shadow(0 0 0 transparent)}
+    .logo-img{width:120px; height:auto; object-fit:contain}
     .nav a{color:var(--text-2)}
     .nav-links{display:flex; gap:18px; align-items:center}
     .nav-links a:hover{color:var(--text)}
@@ -73,7 +75,7 @@
       HERO
     ------------------------------ */
     .hero{padding:86px 0 56px}
-    .hero-grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:32px; align-items:center}
+    .hero-grid{display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:center}
     .hero .lead{font-size:19px; color:#c5cad3}
     .hero .cta-group{display:flex; gap:12px; flex-wrap:wrap; margin-top:18px}
     .hero-card{padding:22px; border-radius:var(--radius); border:1px solid #23262b; background:linear-gradient(160deg,#13161a 0%, #0a0b0d 100%)}
@@ -88,13 +90,7 @@
     .icon.lg{width:22px;height:22px}
     .icon.xl{width:26px;height:26px}
     .icon.gap{margin-right:8px}
-
     .media-cover{width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; border:1px solid #23262b; background:#0f1013}
-
-    /* ------------------------------
-      SOCIAL PROOF (removido logotipos, mantida quote)
-    ------------------------------ */
-    .quote{display:flex; gap:16px; align-items:flex-start}
 
     /* ------------------------------
       STEPS / CASES / PLANS / PROCESS
@@ -104,7 +100,7 @@
     .step p{color:#c1c6cf}
 
     .cases{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
-    .case .cover{height:170px; border-radius:12px; background:linear-gradient(135deg, #23282f 0%, #15181d 100%); border:1px solid #2a2e35; display:grid; place-items:center; color:#9aa0aa}
+    .case .cover{height:170px; border-radius:12px; background:linear-gradient(135deg,#23282f 0%, #15181d 100%); border:1px solid #2a2e35; display:grid; place-items:center; color:#9aa0aa}
     .case .metric{display:flex; gap:10px; align-items:center; margin-top:8px}
     .badge{padding:6px 10px; border-radius:999px; background:#192022; border:1px solid #2a2e35; color:#a7aeb9; font-size:12px}
 
@@ -144,7 +140,7 @@
     .foot a:hover{color:#d7dbe2}
 
     /* ------------------------------
-      RESPONSIVO
+      RESPONSIVO BASE
     ------------------------------ */
     @media (max-width:1024px){
       .hero-grid{grid-template-columns:1fr}
@@ -164,221 +160,87 @@
       .hero{padding:64px 0 40px}
       .nav-wrap{height:58px}
     }
- 
-/* ===============================
-   MOBILE PRIME (<= 768px)
-   Melhorias de leitura, centragem, grades e botões
-================================ */
-@media (max-width: 768px) {
-  :root{
-    --maxw: 640px;
-  }
 
-  /* estrutura & tipografia */
-  .wrap{ padding: 0 18px; }
-  h1{ font-size: 32px; line-height: 1.25; }
-  h2{ font-size: 24px; line-height: 1.25; }
-  p, .lead{ font-size: 16px; }
-
-  /* nav compacta */
-  .nav-wrap{ height: auto; padding: 10px 0; gap: 10px; flex-direction: column; }
-  .brand .tag{ display: none; }         /* esconde “Sistema de Performance…” no topo */
-  .logo-img{ width: 96px; }
-  .nav-links{ flex-wrap: wrap; justify-content: center; gap: 12px; }
-
-  /* hero centrado */
-  .hero{ padding: 48px 0 28px; }
-  .hero-grid{ grid-template-columns: 1fr; gap: 18px; }
-  .hero h1, .hero .lead, .hero .mini{ text-align: center; }
-  .hero .cta-group{ flex-direction: column; gap: 10px; }
-  .hero .cta-group .btn{ width: 100%; }
-  .hero-card{ padding: 16px; }
-  .hero-kpis{ grid-template-columns: 1fr; gap: 10px; }
-  .kpi{ font-size: 30px; }
-
-  /* cards & listas */
-  .card{ padding: 18px; }
-  .ul li{ margin: 10px 0; }
-
-  /* grades viram 1 coluna */
-  .steps,
-  .plans,
-  .process{ grid-template-columns: 1fr; gap: 16px; }
-
-  /* 3A3R especificamente */
-  #passo-a-passo .grid{ grid-template-columns: 1fr !important; gap: 16px; }
-  .media-cover{ border-radius: 12px; }
-
-  /* quote & footer mais elegantes */
-  .quote{ flex-direction: column; align-items: flex-start; }
-  footer .foot{ flex-direction: column; align-items: flex-start; gap: 14px; }
-
-  /* botões maiores */
-  .btn{ padding: 12px 16px; font-size: 15px; }
-  .icon{ width: 20px; height: 20px; }
-  .icon.lg{ width: 22px; height: 22px; }
-  .icon.xl{ width: 24px; height: 24px; }
-}
-
-/* ===============================
-   MOBILE SMALL (<= 420px)
-   Refino pra telas bem pequenas
-================================ */
-@media (max-width: 420px) {
-  h1{ font-size: 28px; }
-  h2{ font-size: 22px; }
-  .logo-img{ width: 88px; }
-  .btn{ padding: 12px 14px; font-size: 14.5px; }
-  .wrap{ padding: 0 16px; }
-}
-/* ===============================
-   FULL WIDTH MOBILE EXPERIENCE
-=============================== */
-@media (max-width: 768px) {
-  /* remove o limite lateral e centraliza tudo */
-  .wrap {
-    max-width: none !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
-
-  /* hero e seções principais ocupam 100% */
-  .hero,
-  section,
-  footer {
-    width: 100%;
-    margin: 0 auto;
-  }
-
-  /* força centralização do conteúdo */
-  .center,
-  h1, h2, h3, p {
-    text-align: center;
-  }
-
-  /* padding interno agradável */
-  section .card,
-  .hero-card,
-  .steps .card,
-  .plans .card,
-  .process .card {
-    margin: 0 16px 20px 16px;
-  }
-
-  /* imagens e mídias */
-  .media-cover {
-    width: 100%;
-    border-radius: 10px;
-  }
-
-  /* botão principal ocupa toda a largura */
-  .btn.brand {
-    width: calc(100% - 32px);
-    margin: 0 16px;
-  }
-
-  /* espaçamento entre seções */
-  section {
-    padding-left: 0;
-    padding-right: 0;
-    padding-top: 24px;
-    padding-bottom: 24px;
-  }
-
-  /* citação e texto mais centralizados */
-  .quote {
-    padding: 0 16px;
-  }
-}
     /* ===============================
-   PATCH DE CENTRALIZAÇÃO FINAL (iOS)
-   — garante largura total e centragem dos cards
-================================ */
-@media (max-width: 768px){
-  /* a .wrap ocupa a tela toda */
-  .wrap{
-    max-width: 100vw !important;
-    width: 100% !important;
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
+       MOBILE PRIME (<= 768px)
+       (centralização total + sem overflow)
+    ================================ */
+    @media (max-width:768px){
+      :root{ --maxw:640px; }
 
-  /* força grades 1 coluna em todas as seções */
-  .hero-grid,
-  .steps,
-  .plans,
-  .process,
-  #passo-a-passo .grid{
-    grid-template-columns: 1fr !important;
-    gap: 18px;
-  }
+      html, body{ overflow-x:hidden; }
 
-  /* todos os cartões com a mesma margem nas laterais */
-  .hero-card,
-  section .card{
-    margin: 0 16px 20px 16px !important;
-  }
+      /* Estrutura */
+      .wrap{
+        max-width:100vw !important;
+        width:100% !important;
+        padding-left:0 !important;
+        padding-right:0 !important;
+        margin:0 auto;
+      }
+      section, .hero, footer{ width:100%; margin:0 auto; }
 
-  /* textos do bloco “center” realmente centralizados */
-  .center, 
-  .center *{
-    text-align: center !important;
-  }
+      /* Tipografia */
+      .wrap{ padding:0 18px; }
+      h1{ font-size:32px; line-height:1.25; }
+      h2{ font-size:24px; line-height:1.25; }
+      p, .lead{ font-size:16px; }
+      .center, .center *{ text-align:center; }
+      .chip{ display:inline-block; margin-left:auto; margin-right:auto; }
 
-  /* chip do topo centralizado */
-  .chip{ display:inline-block; margin-left:auto; margin-right:auto; }
+      /* Nav compacta */
+      .nav-wrap{ height:auto; padding:10px 0; gap:10px; flex-direction:column; }
+      .brand .tag{ display:none; }
+      .logo-img{ width:96px; }
+      .nav-links{ flex-wrap:wrap; justify-content:center; gap:12px; }
 
-  /* botão principal ocupando toda a largura com respiro */
-  .btn.brand{
-    width: calc(100% - 32px);
-    margin-left: 16px;
-    margin-right: 16px;
-  }
+      /* Hero */
+      .hero{ padding:48px 0 28px; }
+      .hero-grid{ grid-template-columns:1fr !important; gap:18px; }
+      .hero .cta-group{ flex-direction:column; gap:10px; }
+      .hero .cta-group .btn{ width:100%; }
+      .hero-card{ padding:16px; }
+      .hero-kpis{ grid-template-columns:1fr; gap:10px; }
+      .kpi{ font-size:30px; }
 
-  /* nav mais compacta e central */
-  .nav-wrap{flex-direction: column; gap: 10px; height: auto;}
-  .nav-links{flex-wrap: wrap; justify-content: center; gap: 12px;}
-}
-/* ===============================
-   CORREÇÃO DE OVERFLOW MOBILE
-   (impede arraste lateral e força centragem)
-=============================== */
-html, body {
-  width: 100%;
-  overflow-x: hidden !important;
-  margin: 0;
-  padding: 0;
-}
+      /* Grades viram 1 coluna */
+      .steps, .plans, .process{ grid-template-columns:1fr !important; gap:16px; }
+      #passo-a-passo .grid{ grid-template-columns:1fr !important; gap:16px; }
 
-section, .wrap, .hero, footer, .container, .grid {
-  max-width: 100vw !important;
-  overflow-x: hidden !important;
-  box-sizing: border-box;
-  margin: 0 auto;
-}
+      /* Quebra de grids com style inline (ABOUT e CONTATO) */
+      section .wrap.grid{ grid-template-columns:1fr !important; gap:16px !important; }
+      #contato .grid{ grid-template-columns:1fr !important; }
+      #contato .card, #contato .surface{ margin:0 16px 18px 16px; }
 
-/* Ajusta grids que possam estar "vazando" */
-.steps, .plans, .process, .cases {
-  grid-template-columns: 1fr !important;
-  justify-items: center;
-}
+      /* Cards / mídia / botões */
+      .card{ padding:18px; }
+      section .card, .hero-card{ margin:0 16px 20px 16px !important; }
+      .media-cover{ width:100%; border-radius:12px; }
+      .btn{ padding:12px 16px; font-size:15px; }
+      .btn.brand{ width:calc(100% - 32px); margin:0 16px; }
 
-/* Centraliza cards e textos dentro das seções */
-.card, .quote, .hero-grid, .foot, .media-cover {
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
+      /* Footer & quote */
+      .quote{ flex-direction:column; align-items:flex-start; padding:0 16px; }
+      footer .foot{ flex-direction:column; align-items:flex-start; gap:14px; }
 
-/* Remove margens e paddings fantasmas */
-* {
-  box-sizing: border-box;
-}
+      /* Segurança contra “vazamentos” de largura */
+      .card, .surface{ min-width:0; }
+      h1,h2,h3,p,.badge,.tag{ overflow-wrap:anywhere; word-break:break-word; }
+    }
 
-</style>
-
+    /* ===============================
+       MOBILE SMALL (<= 420px)
+    ================================ */
+    @media (max-width:420px){
+      h1{ font-size:28px; }
+      h2{ font-size:22px; }
+      .logo-img{ width:88px; }
+      .btn{ padding:12px 14px; font-size:14.5px; }
+      .wrap{ padding:0 16px; }
+    }
   </style>
 </head>
+
 <body>
 
   <!-- ===========================
