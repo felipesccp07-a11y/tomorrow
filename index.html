@@ -231,7 +231,65 @@
   .btn{ padding: 12px 14px; font-size: 14.5px; }
   .wrap{ padding: 0 16px; }
 }
+/* ===============================
+   FULL WIDTH MOBILE EXPERIENCE
+=============================== */
+@media (max-width: 768px) {
+  /* remove o limite lateral e centraliza tudo */
+  .wrap {
+    max-width: none !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 
+  /* hero e seções principais ocupam 100% */
+  .hero,
+  section,
+  footer {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  /* força centralização do conteúdo */
+  .center,
+  h1, h2, h3, p {
+    text-align: center;
+  }
+
+  /* padding interno agradável */
+  section .card,
+  .hero-card,
+  .steps .card,
+  .plans .card,
+  .process .card {
+    margin: 0 16px 20px 16px;
+  }
+
+  /* imagens e mídias */
+  .media-cover {
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  /* botão principal ocupa toda a largura */
+  .btn.brand {
+    width: calc(100% - 32px);
+    margin: 0 16px;
+  }
+
+  /* espaçamento entre seções */
+  section {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 24px;
+    padding-bottom: 24px;
+  }
+
+  /* citação e texto mais centralizados */
+  .quote {
+    padding: 0 16px;
+  }
+}
 </style>
 
   </style>
