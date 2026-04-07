@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linha Editorial — Tomorrow Marketing</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#fff;--bg2:#f7f6f4;--text:#1a1a1a;--text2:#555;--text3:#999;--border:rgba(0,0,0,.1);--border2:rgba(0,0,0,.18);--O:#E8761E;--r:12px;--rs:8px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+#app{max-width:660px;margin:0 auto;padding:2rem 1.25rem}
+.card{background:var(--bg);border:.5px solid var(--border);border-radius:var(--r);padding:1.5rem}
+.btn{display:block;width:100%;padding:.875rem 1.25rem;border-radius:var(--rs);font-size:15px;font-weight:500;cursor:pointer;border:none;font-family:inherit;transition:opacity .15s}
+.bp{background:var(--O);color:#fff}.bp:hover{opacity:.9}
+.bg{background:transparent;color:var(--text2);border:.5px solid var(--border2)}.bg:hover{background:var(--bg2)}
+input{width:100%;padding:.75rem 1rem;border-radius:var(--rs);border:.5px solid var(--border2);background:var(--bg);color:var(--text);font-size:15px;font-family:inherit;outline:none;display:block;transition:border-color .15s,box-shadow .15s}
+input:focus{border-color:var(--O);box-shadow:0 0 0 3px rgba(232,118,30,.12)}
+.opt{width:100%;text-align:left;padding:.875rem 1rem;border:.5px solid var(--border);border-radius:var(--rs);background:var(--bg);color:var(--text);font-size:14px;cursor:pointer;display:block;font-family:inherit;margin-bottom:.5rem;transition:border-color .12s,background .12s,color .12s;line-height:1.45}
+.opt:hover{border-color:var(--O);background:rgba(232,118,30,.04)}
+.opt.sel{border-color:var(--O);background:rgba(232,118,30,.09);color:var(--O);font-weight:500}
+.pt{height:3px;background:var(--border);border-radius:2px;margin-bottom:1.5rem}
+.pf{height:100%;border-radius:2px;background:var(--O);transition:width .4s}
+.logo{font-size:32px;font-weight:800;color:var(--O);letter-spacing:-2px}
+.dh{background:#0D1620;border-radius:var(--r);padding:2rem 1.5rem;text-align:center;margin-bottom:1.25rem}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(142px,1fr));gap:.625rem;margin-bottom:1.25rem}
+.ci{padding:.875rem 1rem;border:.5px solid var(--border);border-radius:var(--rs);cursor:pointer;font-family:inherit;background:var(--bg);color:var(--text);font-size:13.5px;text-align:left;transition:border-color .12s,background .12s;line-height:1.3;font-weight:500}
+.ci:hover{border-color:var(--O);background:rgba(232,118,30,.04)}
+.ci.sel{border-color:var(--O);background:rgba(232,118,30,.09);color:var(--O)}
+.ci small{display:block;font-size:11px;color:var(--text3);font-weight:400;margin-top:3px}
+.ci.sel small{color:rgba(232,118,30,.7)}
+@media(max-width:480px){#app{padding:1.25rem 1rem}.card{padding:1.25rem}.cg{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const O='#E8761E';
+
+// Clusters: [nome, exemplos, pilares[[nome,desc]], posts semana1[[pilar,sugestão]]]
+const CL=[
+  ['Alimentação','Restaurante · Lanchonete · Confeitaria',
+    [['Bastidores & Processo','O que acontece antes do prato chegar na mesa'],
+     ['Produto em Destaque','O que você vende com qualidade visual e contexto'],
+     ['Prova Social','Depoimentos, lotação e momentos reais com clientes'],
+     ['Educação Gastronômica','Curiosidades, origens e dicas do chef'],
+     ['Promoções & Sazonalidade','Datas, combos, urgência e novidades do cardápio']],
+    [['Bastidores','Mostre 15 segundos do preparo do prato mais pedido. Bastidores geram mais engajamento que qualquer anúncio.'],
+     ['Produto','Foto com contexto: prato + mesa + ambiente. Descreva o sabor na legenda como se o cliente estivesse sentado ali.'],
+     ['Prova Social','Repost de cliente satisfeito com permissão. Mencione, agradeça — mostre que sua casa tem vida.']]
+  ],
+  ['Saúde & Estética','Clínica · Dentista · Nutricionista · Salão',
+    [['Educação & Prevenção','Conteúdo que resolve dúvidas reais e educa o paciente'],
+     ['Transformação & Resultados','Antes e depois com consentimento e contexto emocional'],
+     ['Bastidores da Prática','A rotina, o ambiente e a equipe por trás do atendimento'],
+     ['Desmistificação','Mitos frequentes do seu segmento desvendados com clareza'],
+     ['Autoridade Profissional','Formação, conquistas, casos e certificações relevantes']],
+    [['Educação','Escolha 1 dúvida que você responde 5 vezes por semana e faça um Reel respondendo. Isso é autoridade em 30 segundos.'],
+     ['Transformação','Antes e depois com a história em 3 linhas. Resultado visual + contexto emocional — a combinação que converte.'],
+     ['Desmistificação','Mito vs Verdade sobre algo do seu segmento. Simples, direto, altamente compartilhável.']]
+  ],
+  ['Serviços Profissionais','Advocacia · Contabilidade · Consultoria',
+    [['Educação & Autoridade','Conteúdo que mostra domínio sem entregar tudo de graça'],
+     ['Cases & Resultados','Histórias de clientes: problema, solução e resultado mensurável'],
+     ['Humanização','A rotina, a equipe e o lado humano do escritório'],
+     ['Dúvidas Frequentes','As perguntas que chegam todo dia, respondidas em linguagem acessível'],
+     ['Processo & Método','Como você trabalha — o que diferencia sua abordagem dos outros']],
+    [['Educação','Pegue uma pergunta que responde toda semana e explique em linguagem simples. Quem entende o que você faz, contrata.'],
+     ['Case','Problema + o que você fez + resultado. Sem nome se necessário — o impacto é o que importa.'],
+     ['Dúvida Frequente','Escolha um mito ou confusão do seu setor e desmonte em 4 linhas. Direto e compartilhável.']]
+  ],
+  ['Varejo','Loja de roupa · Calçados · Pet shop · Farmácia',
+    [['Produto em Destaque','O item certo com contexto visual de qualidade e preço claro'],
+     ['Lifestyle & Uso','O produto no contexto real de vida do cliente ideal'],
+     ['Promoções & Urgência','Ofertas com tempo, exclusividade e escassez real'],
+     ['Bastidores & Equipe','A loja por dentro: chegada de mercadoria, equipe, rotina'],
+     ['Depoimentos & Resultados','Clientes reais usando, sentindo e aprovando']],
+    [['Lifestyle','Mostre o produto sendo usado, não apenas fotografado. Contexto de vida vende mais que catálogo.'],
+     ['Produto','Destaque 1 item por post: qualidade visual, nome, preço, disponibilidade. Sem enrolação.'],
+     ['Bastidores','Chegada de mercadoria nova em Reel de 20 segundos. Gera antecipação e mostra que o negócio está vivo.']]
+  ],
+  ['Educação & Coaching','Escola · Curso · Mentor · Coach',
+    [['Conteúdo Educativo','Valor gratuito que demonstra o que vem no produto pago'],
+     ['Transformação & Resultados','Alunos e mentorados com resultados reais documentados'],
+     ['Processo & Método','Como você ensina, qual sua abordagem, o que te diferencia'],
+     ['Desmistificação','Crenças limitantes e mitos do seu nicho desmontados'],
+     ['Comunidade & Pertencimento','A turma, os bastidores, o ambiente de aprendizado']],
+    [['Educativo','Ensine algo pequeno mas útil de graça. Quem aprende com você gratuitamente compra de você mais tarde.'],
+     ['Transformação','Resultado de aluno com transformação em 1 frase: antes, depois, período. Direto ao ponto.'],
+     ['Método','Explique 1 passo do seu processo como se fosse para um leigo. Clareza sobre como você trabalha gera confiança.']]
+  ],
+  ['Construção & Imóveis','Construtora · Imobiliária · Arquiteto',
+    [['Portfólio & Antes/Depois','Projetos com evolução visual e contexto da entrega'],
+     ['Processo & Obra','Acompanhamento em tempo real do que está sendo construído'],
+     ['Educação Técnica','O que o cliente não sabe mas precisa saber antes de comprar'],
+     ['Depoimentos','Clientes que entregaram e receberam o que foi prometido'],
+     ['Tendências & Referências','O que está sendo feito de relevante no mercado']],
+    [['Portfólio','Antes e depois de um projeto com 3 linhas contando o desafio. Resultado visual é argumento de venda.'],
+     ['Processo','Atualização de obra em andamento — 30 segundos de Reel mostra progresso e gera confiança imediata.'],
+     ['Educação','Erro comum que o cliente comete ao contratar no seu setor. Útil, honesto e altamente compartilhável.']]
+  ],
+  ['Moda & Lifestyle','Moda · Acessórios · Decoração · Bem-estar',
+    [['Produto em Contexto','O item no universo de vida que ele representa'],
+     ['Tendências & Inspiração','O que está acontecendo no mundo filtrado pela sua marca'],
+     ['Bastidores da Marca','Como é feito, quem faz, de onde vem'],
+     ['Lifestyle da Marca','O universo estético que sua marca habita e constrói'],
+     ['Prova Social','Clientes reais usando, sentindo e vivendo o produto']],
+    [['Contexto','Vista o produto no estilo de vida do cliente ideal. Você não vende peça — vende identidade.'],
+     ['Tendência','Escolha 1 trend relevante e filtre pela perspectiva da sua marca. Posicionamento é editorial.'],
+     ['Bastidores','Processo de criação ou seleção em 20 segundos. Transparência gera conexão real com a marca.']]
+  ],
+  ['Tecnologia & Digital','Agência · Software · Freela · SaaS',
+    [['Educação & Autoridade','Conceitos, tutoriais e insights do seu domínio de forma acessível'],
+     ['Cases & Resultados','Projetos entregues com dados e contexto de impacto real'],
+     ['Humanização','Quem está por trás do código, do projeto, da estratégia'],
+     ['Processo & Método','Como você trabalha, pensa e entrega — diferencial visível'],
+     ['Tendências do Setor','O que está mudando e o que isso significa para o cliente']],
+    [['Educação','Explique um conceito técnico em linguagem de cliente. Quem entende o que você faz, contrata.'],
+     ['Case','Problema + solução + resultado em número. Dados concretos vendem mais que portfólio bonito.'],
+     ['Humanização','Mostre quem está por trás do trabalho. Pessoas compram de pessoas — mesmo em tech.']]
+  ]
+];
+
+// Perguntas: [texto, [[label, score]]]
+const qs=[
+  ['Com que frequência você publica hoje?',[
+    ['Não publico ou menos de 1x por semana',0],
+    ['1 a 2 vezes por semana',1],
+    ['3 a 4 vezes por semana',3],
+    ['5 ou mais vezes por semana',4]
+  ]],
+  ['Você tem pilares de conteúdo definidos?',[
+    ['Não sei o que são pilares',0],
+    ['Sei o que são mas não tenho definido',1],
+    ['Tenho na cabeça mas não documentado',2],
+    ['Tenho documentado e sigo com consistência',4]
+  ]],
+  ['Qual é o objetivo principal do conteúdo hoje?',[
+    ['Não tenho objetivo claro',0],
+    ['Vender direto em todos os posts',1],
+    ['Gerar reconhecimento de marca',2],
+    ['Educar, posicionar e atrair clientes ao mesmo tempo',4]
+  ]],
+  ['Quem produz o conteúdo da empresa?',[
+    ['Ninguém — não estamos produzindo',0],
+    ['Eu mesmo, quando sobra tempo',1],
+    ['Eu mesmo, com alguma regularidade',2],
+    ['Tenho apoio: editor, designer ou agência',4]
+  ]],
+  ['Qual formato você mais usa nas redes?',[
+    ['Nenhum com regularidade',0],
+    ['Só foto de produto',1],
+    ['Foto com legenda',2],
+    ['Mix: carrossel, Reel, story com estratégia',4]
+  ]],
+  ['Como você decide o que publicar?',[
+    ['Publico o que aparece ou quando lembro',0],
+    ['Sigo datas comemorativas e tendências',1],
+    ['Misturo venda com conteúdo sem critério claro',2],
+    ['Sigo um calendário com temas planejados',4]
+  ]],
+  ['Você mede os resultados do conteúdo?',[
+    ['Não acompanho nada',0],
+    ['Só olho curtidas e seguidores',1],
+    ['Olho alcance e salvamentos às vezes',2],
+    ['Tenho análise mensal e ajusto a estratégia',4]
+  ]],
+  ['Qual é o seu maior desafio com conteúdo hoje?',[
+    ['Não sei o que publicar — falta pauta',0],
+    ['Sei o que publicar mas não tenho tempo',1],
+    ['Produzo mas não gera resultado',2],
+    ['Meu conteúdo não representa minha marca',3],
+    ['Quero escalar mas não sei como sistematizar',4]
+  ]]
+];
+
+const GAPS=[
+  ['Definição de pauta','Você precisa de pilares claros antes de qualquer calendário. Sem estratégia, frequência não resolve — só gera barulho.'],
+  ['Processo de produção','A estratégia existe mas trava na execução. Você precisa de um fluxo de produção que funcione sem depender de inspiração ou tempo sobrando.'],
+  ['Estratégia e método','Você produz mas sem critério de análise. Conteúdo sem leitura de resultado é esforço sem direção — você repete o que não funciona.'],
+  ['Posicionamento de marca','Sua comunicação não representa quem você é. Antes do calendário, você precisa de uma identidade editorial clara e definida.'],
+  ['Escala e sistematização','Você já tem base sólida. O que falta é um sistema que rode sem você no centro de tudo — processo, delegação e replicação.']
+];
+
+const S={screen:'landing',company:'',cluster:-1,qi:0,ans:new Array(8).fill(-1),email:'',phone:''};
+
+function calcScore(){
+  let s=0;
+  for(let i=0;i<7;i++) if(S.ans[i]>=0) s+=qs[i][1][S.ans[i]][1];
+  return Math.round(s/28*100);
+}
+
+function getStatus(s){
+  if(s<35)return{l:'Sem estrutura',c:'#A32D2D'};
+  if(s<56)return{l:'Iniciando',c:'#854F0B'};
+  if(s<76)return{l:'Desenvolvendo',c:'#2D6A9F'};
+  return{l:'Consolidado',c:'#2D7A50'};
+}
+
+function Landing(){
+  return`<div style="text-align:center;padding:2rem 0 .5rem">
+    <div class="logo" style="margin-bottom:1.75rem">tmw</div>
+    <h1 style="font-size:28px;font-weight:600;line-height:1.2;margin-bottom:.75rem">Linha Editorial</h1>
+    <p style="color:var(--text2);font-size:15px;margin-bottom:2rem;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.7">Descubra o que falta na sua estratégia de conteúdo e veja um preview da sua linha editorial.</p>
+    <div class="card" style="max-width:520px;margin:0 auto;text-align:left">
+      <label style="display:block;font-size:13.5px;color:var(--text2);margin-bottom:.5rem">Nome da empresa</label>
+      <input id="ci" type="text" placeholder="Ex: ACME" value="${S.company}" style="margin-bottom:1.25rem">
+      <label style="display:block;font-size:13.5px;color:var(--text2);margin-bottom:.625rem">Segmento do negócio</label>
+      <div class="cg">
+        ${CL.map((c,i)=>`<button class="ci${S.cluster===i?' sel':''}" onclick="pickC(${i})">
+          ${c[0]}<small>${c[1].split(' · ').slice(0,2).join(' · ')}</small>
+        </button>`).join('')}
+      </div>
+      <button class="btn bp" onclick="go()" style="${S.cluster<0?'opacity:.5':''}">Iniciar diagnóstico →</button>
+    </div>
+  </div>`;
+}
+
+function Question(){
+  const q=qs[S.qi],n=S.qi+1,prog=n/8*100;
+  return`<div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.375rem">
+      <span style="font-size:11.5px;font-weight:600;color:${O};text-transform:uppercase;letter-spacing:.08em">Diagnóstico Editorial</span>
+      <span style="font-size:13px;color:var(--text2)">${n} / 8</span>
+    </div>
+    <div class="pt"><div class="pf" style="width:${prog}%"></div></div>
+    <div class="card">
+      <p style="font-size:17px;font-weight:500;margin-bottom:1.25rem;line-height:1.45">${n}. ${q[0]}</p>
+      ${q[1].map((o,i)=>`<button class="opt${S.ans[S.qi]===i?' sel':''}" onclick="pick(${i})">${o[0]}</button>`).join('')}
+    </div>
+    ${S.qi>0?`<button class="btn bg" onclick="bk()" style="margin-top:.625rem;width:auto;padding:.5rem 1rem;font-size:13px">← Voltar</button>`:''}
+  </div>`;
+}
+
+function Gate(){
+  return`<div style="padding:1rem 0">
+    <div class="card" style="max-width:440px;margin:0 auto;text-align:center">
+      <div style="width:52px;height:52px;border-radius:50%;background:rgba(232,118,30,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${O}" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      </div>
+      <h2 style="font-size:22px;font-weight:600;margin-bottom:.5rem">Diagnóstico pronto!</h2>
+      <p style="color:var(--text2);font-size:14px;margin-bottom:1.5rem;line-height:1.7">${S.company?`<strong>${S.company}</strong>, analisamos`:'Analisamos'} sua estratégia de conteúdo. Preencha para liberar o relatório.</p>
+      <label style="display:block;font-size:13.5px;color:var(--text2);margin-bottom:.5rem;text-align:left">E-mail profissional</label>
+      <input id="ei" type="email" placeholder="seu@email.com" value="${S.email}" style="margin-bottom:1rem">
+      <label style="display:block;font-size:13.5px;color:var(--text2);margin-bottom:.5rem;text-align:left">WhatsApp</label>
+      <input id="pi" type="tel" placeholder="(16) 99999-9999" value="${S.phone}" style="margin-bottom:1.25rem">
+      <button class="btn bp" onclick="gate()">Ver meu diagnóstico →</button>
+      <p style="font-size:12px;color:var(--text3);margin-top:.75rem">Dados seguros. Não enviamos spam.</p>
+      <button style="background:none;border:none;color:var(--text2);font-size:13px;cursor:pointer;font-family:inherit;margin-top:.5rem;text-decoration:underline" onclick="S.screen='questions';S.qi=7;render()">← Editar respostas</button>
+    </div>
+  </div>`;
+}
+
+function Results(){
+  const score=calcScore(),st=getStatus(score),cl=CL[S.cluster];
+  const gapIdx=S.ans[7]>=0?S.ans[7]:0,gap=GAPS[gapIdx];
+  const sec=[];
+  if(S.ans[0]>=0&&S.ans[0]<=1)sec.push('Frequência inconsistente');
+  if(S.ans[1]>=0&&S.ans[1]<=1)sec.push('Sem pilares definidos');
+  if(S.ans[5]>=0&&S.ans[5]<=1)sec.push('Sem planejamento editorial');
+  if(S.ans[6]>=0&&S.ans[6]<=1)sec.push('Sem análise de resultado');
+  const pillars=cl[2],posts=cl[3],days=['Segunda','Quarta','Sexta'];
+
+  return`<div>
+    <div class="dh">
+      <div style="font-size:11px;font-weight:600;color:${O};text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">Diagnóstico Editorial</div>
+      <div style="font-size:24px;font-weight:700;color:#fff;margin-bottom:.25rem">${S.company||'Sua Empresa'}</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-bottom:1.5rem">${cl[0]}</div>
+      <div style="font-size:44px;font-weight:700;color:${st.c};line-height:1">${score}</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.4);margin-top:4px;margin-bottom:8px">de 100</div>
+      <span style="display:inline-block;padding:3px 12px;border-radius:20px;font-size:12px;font-weight:600;background:${st.c}25;color:${st.c}">${st.l}</span>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div style="font-size:15px;font-weight:600;margin-bottom:.75rem">Maturidade editorial</div>
+      <div style="height:6px;background:var(--border);border-radius:3px;margin-bottom:1rem">
+        <div style="height:100%;width:${score}%;background:${st.c};border-radius:3px"></div>
+      </div>
+      <div style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--text3);margin-bottom:.375rem">Gargalo principal</div>
+      <div style="font-size:15px;font-weight:600;margin-bottom:.375rem">${gap[0]}</div>
+      <p style="font-size:14px;color:var(--text2);line-height:1.7${sec.length?';margin-bottom:1rem':''}">${gap[1]}</p>
+      ${sec.length?`<div style="display:flex;gap:.5rem;flex-wrap:wrap">${sec.map(g=>`<span style="padding:3px 9px;border-radius:20px;font-size:12px;background:rgba(0,0,0,.06);color:var(--text2)">${g}</span>`).join('')}</div>`:``}
+    </div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.875rem">
+        <div style="font-size:15px;font-weight:600">Pilares recomendados</div>
+        <span style="font-size:12px;color:var(--text3)">3 de 5 — plano completo inclui todos</span>
+      </div>
+      ${pillars.slice(0,3).map((p,i)=>`<div style="display:flex;gap:.75rem;align-items:flex-start;margin-bottom:.75rem">
+        <div style="width:28px;height:28px;border-radius:50%;background:${O};color:#fff;font-size:12px;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0">${i+1}</div>
+        <div><div style="font-size:14px;font-weight:500">${p[0]}</div><div style="font-size:13px;color:var(--text2);margin-top:1px">${p[1]}</div></div>
+      </div>`).join('')}
+      <div style="border-top:.5px solid var(--border);padding-top:.75rem;display:flex;gap:.5rem;align-items:center">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span style="font-size:13px;color:var(--text3)">+ ${pillars.slice(3).map(p=>p[0]).join(' e ')} no plano completo</span>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:.875rem">
+        <div style="font-size:15px;font-weight:600">Preview — Semana 1</div>
+        <span style="font-size:12px;color:${O};font-weight:500">seg · qua · sex</span>
+      </div>
+      ${posts.map((p,i)=>`<div style="border:.5px solid var(--border);border-radius:var(--rs);padding:1rem;margin-bottom:.625rem">
+        <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem">
+          <span style="font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:${O}">${days[i]}</span>
+          <span style="font-size:11px;color:var(--text3)">·</span>
+          <span style="font-size:12px;color:var(--text2)">${p[0]}</span>
+        </div>
+        <p style="font-size:13.5px;line-height:1.65">${p[1]}</p>
+      </div>`).join('')}
+      <div style="border:.5px dashed var(--border2);border-radius:var(--rs);padding:1.25rem;text-align:center">
+        <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;margin-bottom:.375rem">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span style="font-size:13px;font-weight:500;color:var(--text2)">Semana 2 — bloqueada</span>
+        </div>
+        <p style="font-size:13px;color:var(--text3)">Mais 3 posts com roteiros e direção criativa no plano completo</p>
+      </div>
+    </div>
+
+    <div class="card" style="text-align:center;border-color:rgba(232,118,30,.22);background:rgba(232,118,30,.04);margin-bottom:2rem">
+      <div style="font-size:16px;font-weight:600;margin-bottom:.5rem">Sua linha de 3 meses está a uma reunião de distância.</div>
+      <p style="color:var(--text2);font-size:14px;margin-bottom:1.25rem;line-height:1.7">Calendário completo, roteiros por post, direção criativa e ajustes mensais — tudo gerenciado pela Tomorrow Marketing.</p>
+      <a href="https://agenciatomorrow.com" target="_blank" rel="noopener"
+        style="display:block;max-width:300px;margin:0 auto;padding:.875rem 1.25rem;background:${O};color:#fff;border-radius:var(--rs);text-decoration:none;font-weight:500;font-size:15px;text-align:center">
+        Quero minha linha editorial →
+      </a>
+    </div>
+  </div>`;
+}
+
+function render(){
+  document.getElementById('app').innerHTML=
+    S.screen==='landing'?Landing():
+    S.screen==='questions'?Question():
+    S.screen==='gate'?Gate():Results();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function pickC(i){S.cluster=i;render();}
+function go(){
+  const v=document.getElementById('ci')?.value?.trim();
+  if(!v){document.getElementById('ci').style.borderColor='#A32D2D';return;}
+  if(S.cluster<0)return;
+  S.company=v;S.screen='questions';render();
+}
+function pick(i){S.ans[S.qi]=i;render();setTimeout(()=>{S.qi<7?(S.qi++,render()):(S.screen='gate',render());},190);}
+function bk(){if(S.qi>0){S.qi--;render();}}
+function gate(){
+  const e=document.getElementById('ei')?.value?.trim();
+  if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
+  S.email=e;S.phone=document.getElementById('pi')?.value?.trim()||'';
+  S.screen='results';render();
+}
+render();
+</script>
+</body>
+</html>
