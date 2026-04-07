@@ -932,9 +932,66 @@
   .reveal-delay-4 { transition-delay: 0.4s; }
 
   /* ── RESPONSIVE ── */
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+    background: none;
+    border: none;
+  }
+
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--black);
+    border-radius: 2px;
+    transition: all 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: var(--black);
+    z-index: 99;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .mobile-menu.open { display: flex; }
+
+  .mobile-menu a {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+
+  .mobile-menu a:hover { color: var(--orange); }
+
+  .mobile-menu .close-btn {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-size: 32px;
+    color: var(--white);
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1;
+  }
+
   @media (max-width: 900px) {
     nav { padding: 18px 24px; }
     .nav-links { display: none; }
+    .hamburger { display: flex; }
     section, .hero, .manifesto, .diff, .portfolio, .cta-banner, footer, .case-destaque { padding-left: 24px; padding-right: 24px; }
     .manifesto-grid { grid-template-columns: 1fr; gap: 48px; }
     .services-grid { grid-template-columns: 1fr; }
@@ -942,14 +999,16 @@
     .process-steps::before { display: none; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item.large { grid-column: span 1; }
-    .case-grid { grid-template-columns: 1fr; gap: 40px; }
+    .case-grid { grid-template-columns: 1fr; gap: 24px; }
     .case-img.large { grid-column: span 1; }
+    .case-images { grid-template-columns: 1fr; }
     .hero-stats { position: static; margin-top: 60px; justify-content: flex-start; }
     .footer-top { flex-direction: column; gap: 40px; }
     .footer-links { gap: 40px; }
     .services-header { flex-direction: column; gap: 20px; align-items: flex-start; }
     .diff-row { grid-template-columns: 1fr; }
-    .diff-col.no-col { display: none; }
+    .diff-col.no-col { display: block; }
+    .diff-col.no-col p { color: rgba(250,250,250,0.25); font-size: 13px; }
   }
 </style>
 </head>
@@ -966,7 +1025,19 @@
     <li><a href="#trabalhos">Trabalhos</a></li>
     <li><a href="#contato" class="nav-cta">Falar com a Tomorrow</a></li>
   </ul>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-btn" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+  <a href="#servicos" onclick="document.getElementById('mobileMenu').classList.remove('open')">Serviços</a>
+  <a href="#metodo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Método</a>
+  <a href="#trabalhos" onclick="document.getElementById('mobileMenu').classList.remove('open')">Trabalhos</a>
+  <a href="#contato" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--orange);">Falar com a Tomorrow</a>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="inicio">
