@@ -1,0 +1,348 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diagnóstico de Marketing — Tomorrow Marketing</title>
+<meta name="description" content="Descubra os pontos fortes e fracos da sua estratégia de marketing em 5 minutos.">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#ffffff;--bg2:#f7f6f4;--bg3:#f0efe9;
+    --text:#1a1a1a;--text2:#555;--text3:#999;
+    --border:rgba(0,0,0,.1);--border2:rgba(0,0,0,.18);
+    --orange:#E8761E;--orange-bg:rgba(232,118,30,.08);--orange-ring:rgba(232,118,30,.15);
+    --radius:12px;--radius-sm:8px;
+  }
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
+  #app{max-width:660px;margin:0 auto;padding:2rem 1.25rem;min-height:100vh}
+
+  /* Cards */
+  .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+
+  /* Buttons */
+  .btn{display:block;width:100%;padding:.875rem 1.25rem;border-radius:var(--radius-sm);font-size:15px;font-weight:500;cursor:pointer;border:none;font-family:inherit;transition:opacity .15s,transform .1s;text-align:center}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--orange);color:#fff}
+  .btn-primary:hover{opacity:.9}
+  .btn-ghost{background:transparent;color:var(--text2);border:.5px solid var(--border2)}
+  .btn-ghost:hover{background:var(--bg2)}
+
+  /* Inputs */
+  input[type=text],input[type=email],input[type=tel]{
+    width:100%;padding:.75rem 1rem;border-radius:var(--radius-sm);
+    border:.5px solid var(--border2);background:var(--bg);
+    color:var(--text);font-size:15px;font-family:inherit;outline:none;display:block;
+    transition:border-color .15s,box-shadow .15s
+  }
+  input:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-ring)}
+
+  /* Options */
+  .opt{
+    width:100%;text-align:left;padding:.875rem 1rem;
+    border:.5px solid var(--border);border-radius:var(--radius-sm);
+    background:var(--bg);color:var(--text);font-size:14px;
+    cursor:pointer;display:block;font-family:inherit;
+    margin-bottom:.5rem;transition:border-color .12s,background .12s,color .12s;
+    line-height:1.45
+  }
+  .opt:hover{border-color:var(--orange);background:rgba(232,118,30,.04)}
+  .opt.sel{border-color:var(--orange);background:rgba(232,118,30,.09);color:var(--orange);font-weight:500}
+
+  /* Progress */
+  .progress-track{height:3px;background:var(--border);border-radius:2px;margin-bottom:1.5rem}
+  .progress-fill{height:100%;border-radius:2px;background:var(--orange);transition:width .45s ease}
+
+  /* Tags */
+  .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:500}
+  .tag-cr{background:rgba(226,75,74,.12);color:#A32D2D}
+  .tag-at{background:rgba(239,159,39,.12);color:#854F0B}
+  .tag-bm{background:rgba(99,153,34,.12);color:#3B6D11}
+  .tag-ex{background:rgba(29,158,117,.12);color:#0F6E56}
+
+  /* Logo */
+  .logo{font-size:32px;font-weight:800;color:var(--orange);letter-spacing:-2px;line-height:1}
+
+  /* Feature pills */
+  .pill-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
+  .pill{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.125rem;text-align:center;flex:1;min-width:120px;max-width:175px}
+  .pill-num{font-size:24px;font-weight:600;color:var(--orange);margin-bottom:2px}
+  .pill-label{font-size:13px;color:var(--text2)}
+
+  /* Dark header */
+  .dark-header{background:#0D1620;border-radius:var(--radius);padding:2.25rem 1.5rem;text-align:center;margin-bottom:1.25rem}
+
+  /* Category bar */
+  .bar-track{height:5px;background:rgba(0,0,0,.08);border-radius:3px;margin-bottom:1rem}
+  .bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+
+  /* Util */
+  .label{display:block;font-size:13.5px;color:var(--text2);margin-bottom:.5rem}
+  .sub{font-size:12px;color:var(--text3)}
+  .ghost-link{background:none;border:none;color:var(--text2);font-size:13px;cursor:pointer;font-family:inherit;padding:.25rem;text-decoration:underline;text-decoration-color:var(--border2)}
+  .ghost-link:hover{color:var(--text)}
+
+  @media(max-width:480px){
+    #app{padding:1.25rem 1rem}
+    .card{padding:1.25rem}
+    .pill{padding:.875rem .75rem}
+  }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+const O='#E8761E';
+const cats=[{l:'Posicionamento'},{l:'Estratégia de Conteúdo'},{l:'Audiência & Segmentação'},{l:'Distribuição'},{l:'Métricas & Resultados'}];
+const qs=[
+  {c:0,q:'Seu posicionamento de marca está definido?',o:[{l:'Não sabemos explicar o que fazemos',v:0},{l:'Temos ideia, mas não formalizada',v:2},{l:'Sabemos internamente, mas não comunicamos bem',v:3},{l:'Definido, diferenciado e aplicado em tudo',v:5}]},
+  {c:0,q:'Seu diferencial é perceptível para o cliente?',o:[{l:'Somos parecidos com a concorrência',v:0},{l:'Talvez, mas nunca testamos',v:2},{l:'Sim, recebemos feedbacks sobre isso',v:3},{l:'É nosso principal ativo de venda',v:5}]},
+  {c:0,q:'Sua identidade visual reflete a proposta de valor?',o:[{l:'Temos logo mas sem diretrizes',v:0},{l:'Temos marca mas sem aplicação consistente',v:2},{l:'Temos guia de marca básico',v:3},{l:'Identidade visual robusta e totalmente consistente',v:5}]},
+  {c:1,q:'Você tem calendário editorial estruturado?',o:[{l:'Publicamos quando dá',v:0},{l:'Temos ideias mas sem calendário',v:1},{l:'Temos calendário mas não seguimos',v:2},{l:'Seguimos um calendário semanal',v:3},{l:'Planejamento mensal com pilares definidos',v:5}]},
+  {c:1,q:'O conteúdo está alinhado com a jornada de compra?',o:[{l:'Não pensamos nisso',v:0},{l:'Focamos só em vender',v:1},{l:'Misturamos educação e venda sem estratégia',v:2},{l:'Temos conteúdo para diferentes etapas',v:3},{l:'Funil de conteúdo mapeado e executado',v:5}]},
+  {c:1,q:'Você testa e analisa os formatos de conteúdo?',o:[{l:'Nunca testamos',v:0},{l:'Fazemos o que achamos que funciona',v:1},{l:'Olhamos os números às vezes',v:2},{l:'Testamos formatos regularmente',v:3},{l:'Processo de teste e otimização constante',v:5}]},
+  {c:2,q:'A persona do cliente ideal está documentada?',o:[{l:'Não temos personas definidas',v:0},{l:'Temos uma ideia vaga do público',v:1},{l:'Público-alvo definido, mas sem persona detalhada',v:2},{l:'Persona básica documentada',v:3},{l:'Persona detalhada com dores e jornada mapeada',v:5}]},
+  {c:2,q:'Você segmenta a comunicação por perfil de cliente?',o:[{l:'Falamos igual para todo mundo',v:0},{l:'Mudamos o tom às vezes, sem critério',v:1},{l:'Temos perfis mas sem segmentação real',v:2},{l:'Segmentamos em alguns canais',v:3},{l:'Segmentação ativa em todos os canais',v:5}]},
+  {c:2,q:'Você sabe onde seu cliente ideal passa o tempo online?',o:[{l:'Não sabemos',v:0},{l:'Achamos que sabemos, sem dados',v:1},{l:'Suposições baseadas em feeling',v:2},{l:'Dados básicos de comportamento',v:3},{l:'Comportamento online mapeado com dados reais',v:5}]},
+  {c:3,q:'Em quantos canais você está ativo com consistência?',o:[{l:'Nenhum canal ativo',v:0},{l:'1 canal, mas irregularmente',v:1},{l:'1 canal com consistência',v:2},{l:'2 canais com consistência',v:3},{l:'3+ canais com estratégia integrada',v:5}]},
+  {c:3,q:'Como você usa tráfego pago na estratégia?',o:[{l:'Nunca usamos',v:0},{l:'Já tentamos mas sem resultado claro',v:1},{l:'Usamos esporadicamente',v:2},{l:'Usamos com regularidade',v:3},{l:'Integrado à estratégia orgânica',v:5}]},
+  {c:3,q:'Você tem estratégia de SEO ou busca orgânica?',o:[{l:'Nunca pensamos nisso',v:0},{l:'Conhecemos mas não aplicamos',v:1},{l:'Fazemos SEO básico no site',v:2},{l:'Temos estratégia de palavras-chave',v:3},{l:'SEO com blog, backlinks e monitoramento',v:5}]},
+  {c:4,q:'Você monitora métricas de marketing regularmente?',o:[{l:'Não acompanhamos nada',v:0},{l:'Só olhamos seguidores e curtidas',v:1},{l:'Vemos algumas métricas quando lembramos',v:2},{l:'Temos relatório mensal básico',v:3},{l:'Dashboard com KPIs e análise semanal',v:5}]},
+  {c:4,q:'Você sabe o custo de aquisição de cliente (CAC)?',o:[{l:'Não sabemos o que é isso',v:0},{l:'Sabemos o conceito mas não calculamos',v:1},{l:'Temos uma estimativa grosseira',v:2},{l:'Calculamos periodicamente',v:3},{l:'CAC monitorado e otimizado constantemente',v:5}]},
+  {c:4,q:'Você testa variações de copy e criativos?',o:[{l:'Nunca testamos',v:0},{l:'Testamos raramente, sem método',v:1},{l:'Fazemos testes informais',v:2},{l:'Temos processo básico de A/B test',v:3},{l:'Testes sistemáticos com conclusões documentadas',v:5}]}
+];
+const recs=[
+  {cr:['Defina sua proposta de valor em 1 frase antes de qualquer ação de marketing','Documente quem você é, para quem atende e por que é diferente','Audite toda comunicação visual e alinhe com o posicionamento'],at:['Comunique melhor o posicionamento externamente em todos os canais','Treine a equipe para transmitir a proposta de valor com consistência','Alinhe identidade visual com um guia de marca básico'],bm:['Teste o posicionamento com clientes reais e colete feedbacks','Refine a mensagem com base em dados de percepção de marca','Expanda o guia de marca para todos os touchpoints'],ex:['Monitore a percepção de marca com pesquisas periódicas','Explore sub-posicionamentos por segmento de cliente','Use o posicionamento como filtro para todas as decisões criativas']},
+  {cr:['Defina 3 pilares de conteúdo que reflitam seu posicionamento','Crie um calendário semanal mínimo de 2 a 3 posts','Mapeie a jornada do cliente para alinhar os temas de conteúdo'],at:['Diversifique formatos: vídeo, carrossel e artigos longos','Teste diferentes narrativas e meça o que performa melhor','Implemente calendário editorial com 2 semanas de antecedência'],bm:['Aprofunde o funil com material de fundo de funil','Invista em conteúdo evergreen que gera resultado no longo prazo','Documente o que funciona e replique com variações inteligentes'],ex:['Escale os formatos que mais convertem com consistência','Explore distribuição cross-platform do mesmo conteúdo','Crie um processo editorial replicável sem depender de você']},
+  {cr:['Entreviste 5 clientes atuais esta semana para mapear dores reais','Defina 1 persona primária baseada em dados reais','Segmente a base existente por comportamento de compra'],at:['Aprofunde a persona com dados de comportamento online','Crie comunicações diferentes para leads frios e quentes','Use Meta Insights e Analytics para validar suposições'],bm:['Teste mensagens diferentes por segmento de cliente','Expanda para personas secundárias de forma gradual','Monitore mudanças de comportamento da audiência trimestralmente'],ex:['Use dados comportamentais para antecipar necessidades','Implemente segmentação dinâmica nas campanhas pagas','Crie experiências personalizadas por estágio de relacionamento']},
+  {cr:['Escolha 1 canal e domine antes de tentar expandir','Defina frequência mínima e cumpra por 90 dias seguidos','Teste tráfego pago com budget mínimo para validar audiência'],at:['Escolha 2 canais estratégicos e foque neles com consistência','Comece com tráfego pago mesmo com budget limitado','Implemente SEO básico no site o quanto antes'],bm:['Integre canais orgânicos e pagos na mesma estratégia','Crie fluxos de retargeting para visitantes do site','Explore canais além de redes sociais: email, WhatsApp, SEO'],ex:['Construa uma estratégia omnichannel verdadeiramente integrada','Automatize fluxos de nutrição por canal','Monitore a jornada completa do lead nos diferentes canais']},
+  {cr:['Defina 3 KPIs essenciais para monitorar todo mês','Configure Meta Business Suite e Google Analytics corretamente','Comece a calcular agora quanto custa adquirir um cliente'],at:['Monte um dashboard simples com os principais indicadores','Estabeleça uma reunião mensal de análise de resultados','Comece a testar criativos e copys de forma sistemática'],bm:['Implemente UTMs em todas as campanhas para rastrear origem','Crie relatórios semanais e aja sobre os dados com agilidade','Defina metas SMART para cada canal de marketing'],ex:['Implemente atribuição multi-touch para entender o real ROI','Crie modelos preditivos com dados históricos acumulados','Use dados para antecipar tendências e ajustar a estratégia']}
+];
+
+const S={screen:'landing',company:'',qi:0,ans:new Array(15).fill(-1),email:'',phone:''};
+
+function st(p){
+  if(p<40)return{l:'Crítico',cls:'cr',col:'#A32D2D'};
+  if(p<60)return{l:'Atenção',cls:'at',col:'#854F0B'};
+  if(p<80)return{l:'Bom',cls:'bm',col:'#3B6D11'};
+  return{l:'Excelente',cls:'ex',col:'#0F6E56'};
+}
+
+function calcS(){
+  const cp=[0,0,0,0,0];
+  qs.forEach((q,i)=>{if(S.ans[i]>=0)cp[q.c]+=S.ans[i];});
+  return{cp,pct:cp.map(p=>Math.round(p/15*100)),tot:Math.round(cp.reduce((a,b)=>a+b,0)/75*100)};
+}
+
+function arcSVG(score){
+  const r=70,cx=100,cy=100,circ=2*Math.PI*r;
+  const dash=(score/100*circ).toFixed(1),gap=(circ*(1-score/100)).toFixed(1);
+  const s=st(score);
+  return`<svg viewBox="0 0 200 210" style="width:160px;height:168px">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.col}" stroke-width="9"
+      stroke-dasharray="${dash} ${gap}" stroke-linecap="round"
+      transform="rotate(-90 ${cx} ${cy})"/>
+    <text x="${cx}" y="${cy-2}" text-anchor="middle" font-size="38" font-weight="600"
+      fill="#ffffff" font-family="-apple-system,sans-serif">${score}</text>
+    <text x="${cx}" y="${cy+18}" text-anchor="middle" font-size="12"
+      fill="rgba(255,255,255,0.4)" font-family="-apple-system,sans-serif">de 100</text>
+    <text x="${cx}" y="${cy+38}" text-anchor="middle" font-size="13" font-weight="500"
+      fill="${s.col}" font-family="-apple-system,sans-serif">${s.l}</text>
+  </svg>`;
+}
+
+function radarSVG(pct){
+  const cx=145,cy=145,R=95;
+  const angs=[-90,-18,54,126,198].map(a=>a*Math.PI/180);
+  const pt=(i,r)=>[cx+r*Math.cos(angs[i]),cy+r*Math.sin(angs[i])];
+  const labs=['Posicionamento','Conteúdo','Audiência','Distribuição','Métricas'];
+  let s=`<svg viewBox="0 0 290 310" style="width:100%;max-width:270px">`;
+  [.25,.5,.75,1].forEach(sc=>{
+    const pts=angs.map((_,i)=>pt(i,R*sc).join(',')).join(' ');
+    s+=`<polygon points="${pts}" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="0.5"/>`;
+  });
+  angs.forEach((_,i)=>{
+    const[x,y]=pt(i,R);
+    s+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(0,0,0,.08)" stroke-width="0.5"/>`;
+  });
+  const dp=pct.map((p,i)=>pt(i,R*p/100).join(',')).join(' ');
+  s+=`<polygon points="${dp}" fill="${O}" fill-opacity="0.15" stroke="${O}" stroke-width="1.5"/>`;
+  pct.forEach((p,i)=>{
+    const[x,y]=pt(i,R*p/100);
+    s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" fill="${O}"/>`;
+  });
+  angs.forEach((a,i)=>{
+    const[x,y]=pt(i,R+28);
+    const anch=Math.cos(a)<-0.1?'end':Math.cos(a)>0.1?'start':'middle';
+    const dy=Math.sin(a)>0.1?12:-4;
+    s+=`<text x="${x.toFixed(1)}" y="${(y+dy).toFixed(1)}" text-anchor="${anch}"
+      font-size="11" fill="#777" font-family="-apple-system,sans-serif">${labs[i]}</text>`;
+  });
+  return s+'</svg>';
+}
+
+/* ── SCREENS ── */
+function Landing(){
+  return`<div style="text-align:center;padding:2.5rem 0 1rem">
+    <div class="logo" style="margin-bottom:2.5rem">tmw</div>
+    <h1 style="font-size:30px;font-weight:600;line-height:1.2;margin-bottom:.75rem">Diagnóstico de Marketing</h1>
+    <p style="color:var(--text2);font-size:16px;margin-bottom:2.75rem;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.7">
+      Descubra os pontos fortes e fracos da sua estratégia em 5 minutos.
+    </p>
+    <div class="pill-row">
+      ${[['15','Perguntas estratégicas'],['5','Áreas analisadas'],['1','Relatório personalizado']].map(([n,l])=>
+        `<div class="pill"><div class="pill-num">${n}</div><div class="pill-label">${l}</div></div>`
+      ).join('')}
+    </div>
+    <div class="card" style="max-width:420px;margin:0 auto">
+      <label class="label">Nome da sua empresa</label>
+      <input id="ci" type="text" placeholder="Ex: ACME" value="${S.company}" style="margin-bottom:1rem"
+        onkeydown="if(event.key==='Enter')go()">
+      <button class="btn btn-primary" onclick="go()">Iniciar diagnóstico →</button>
+    </div>
+  </div>`;
+}
+
+function Question(){
+  const q=qs[S.qi],cat=cats[q.c],n=S.qi+1,prog=S.qi/15*100;
+  return`<div>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.375rem">
+      <span style="font-size:11.5px;font-weight:600;color:${O};text-transform:uppercase;letter-spacing:.08em">${cat.l}</span>
+      <span style="font-size:13px;color:var(--text2)">${n} / 15</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" style="width:${prog}%"></div></div>
+    <div class="card">
+      <p style="font-size:17px;font-weight:500;margin-bottom:1.25rem;line-height:1.45">${n}. ${q.q}</p>
+      ${q.o.map(o=>`<button class="opt${S.ans[S.qi]===o.v?' sel':''}" onclick="pick(${o.v})">${o.l}</button>`).join('')}
+    </div>
+    ${S.qi>0?`<button class="btn btn-ghost" onclick="bk()" style="margin-top:.625rem;width:auto;padding:.5rem 1rem;font-size:13px">← Voltar</button>`:''}
+  </div>`;
+}
+
+function Gate(){
+  return`<div style="padding:1rem 0">
+    <div class="card" style="max-width:440px;margin:0 auto;text-align:center">
+      <div style="width:52px;height:52px;border-radius:50%;background:rgba(232,118,30,.1);
+        display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${O}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+        </svg>
+      </div>
+      <h2 style="font-size:22px;font-weight:600;margin-bottom:.5rem">Diagnóstico concluído!</h2>
+      <p style="color:var(--text2);font-size:14px;margin-bottom:1.5rem;line-height:1.7">
+        ${S.company?`<strong>${S.company}</strong>, preparamos`:'Preparamos'} uma análise completa para você.
+        Preencha abaixo para liberar o acesso.
+      </p>
+      <label class="label" style="text-align:left">E-mail profissional</label>
+      <input id="ei" type="email" placeholder="seu@email.com" value="${S.email}" style="margin-bottom:1rem">
+      <label class="label" style="text-align:left">WhatsApp</label>
+      <input id="pi" type="tel" placeholder="(16) 99999-9999" value="${S.phone}" style="margin-bottom:1.25rem">
+      <button class="btn btn-primary" onclick="gate()">Liberar meu diagnóstico →</button>
+      <p class="sub" style="margin-top:.75rem">Dados seguros. Não enviamos spam.</p>
+      <button class="ghost-link" style="margin-top:.625rem" onclick="S.screen='questions';S.qi=14;render()">← Editar respostas</button>
+    </div>
+  </div>`;
+}
+
+function Results(){
+  const{pct,tot}=calcS();
+  const ov=tot<40?'Sua estratégia precisa de atenção urgente. Existem lacunas fundamentais que impedem o crescimento do negócio.':
+    tot<60?'Você tem uma base, mas áreas importantes precisam ser fortalecidas para alcançar resultados consistentes.':
+    tot<80?'Boa estrutura geral. Refinamentos nas áreas mais fracas podem elevar significativamente seus resultados.':
+    'Estratégia sólida e bem estruturada. Foco em otimização contínua e escala sustentável.';
+  return`<div>
+    <div class="dark-header">
+      <div style="font-size:11px;font-weight:600;color:${O};text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">Relatório de Diagnóstico</div>
+      <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:.25rem">${S.company||'Sua Empresa'}</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-bottom:1.5rem">Marketing & Conteúdo</div>
+      ${arcSVG(tot)}
+    </div>
+
+    <div class="card" style="margin-bottom:1rem">
+      <div style="font-size:15px;font-weight:600;margin-bottom:.625rem">Visão geral</div>
+      <p style="color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:1.5rem">${ov}</p>
+      <div style="display:flex;justify-content:center">${radarSVG(pct)}</div>
+    </div>
+
+    <div style="font-size:15px;font-weight:600;margin-bottom:.875rem">Análise por categoria</div>
+    ${cats.map((cat,i)=>{
+      const p=pct[i],pts=Math.round(p/100*15),s=st(p),rk=p<40?'cr':p<60?'at':p<80?'bm':'ex';
+      return`<div class="card" style="margin-bottom:.875rem">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.625rem">
+          <div>
+            <div style="font-size:15px;font-weight:500;margin-bottom:4px">${cat.l}</div>
+            <span class="tag tag-${s.cls}">${s.l}</span>
+          </div>
+          <div style="text-align:right">
+            <div style="font-size:26px;font-weight:600;line-height:1;color:${s.col}">${p}%</div>
+            <div class="sub" style="margin-top:2px">${pts}/15 pts</div>
+          </div>
+        </div>
+        <div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${s.col}"></div></div>
+        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">Recomendações</div>
+        ${recs[i][rk].map(r=>`
+          <div style="display:flex;gap:.5rem;margin-bottom:.375rem">
+            <span style="color:${O};flex-shrink:0;font-size:15px;line-height:1.4">›</span>
+            <span style="font-size:14px;color:var(--text);line-height:1.5">${r}</span>
+          </div>`).join('')}
+      </div>`;
+    }).join('')}
+
+    <div class="card" style="text-align:center;border-color:rgba(232,118,30,.22);background:rgba(232,118,30,.04);margin-bottom:2rem">
+      <div style="font-size:16px;font-weight:600;margin-bottom:.375rem">Quer um plano de ação personalizado?</div>
+      <p style="color:var(--text2);font-size:14px;margin-bottom:1.25rem;line-height:1.7">
+        A Tomorrow Marketing transforma esse diagnóstico em estratégia executável para o seu negócio.
+      </p>
+      <a href="https://agenciatomorrow.com" target="_blank" rel="noopener"
+        style="display:block;max-width:300px;margin:0 auto;padding:.875rem 1.25rem;background:${O};
+        color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:15px;text-align:center">
+        Falar com a Tomorrow →
+      </a>
+    </div>
+  </div>`;
+}
+
+/* ── LOGIC ── */
+function render(){
+  const app=document.getElementById('app');
+  if(S.screen==='landing')app.innerHTML=Landing();
+  else if(S.screen==='questions')app.innerHTML=Question();
+  else if(S.screen==='gate')app.innerHTML=Gate();
+  else app.innerHTML=Results();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function go(){
+  const v=document.getElementById('ci')?.value?.trim();
+  if(!v){document.getElementById('ci').style.borderColor='#A32D2D';return;}
+  S.company=v;S.screen='questions';render();
+}
+
+function pick(v){
+  S.ans[S.qi]=v;
+  render();
+  setTimeout(()=>{
+    if(S.qi<14){S.qi++;render();}
+    else{S.screen='gate';render();}
+  },190);
+}
+
+function bk(){if(S.qi>0){S.qi--;render();}}
+
+function gate(){
+  const e=document.getElementById('ei')?.value?.trim();
+  if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
+  S.email=e;
+  S.phone=document.getElementById('pi')?.value?.trim()||'';
+  // ── Aqui você conecta ao seu webhook, Notion, Sheets etc. ──
+  // fetch('https://seu-webhook.com', {method:'POST', body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,scores:calcS()})})
+  S.screen='results';render();
+}
+
+render();
+</script>
+</body>
+</html>
