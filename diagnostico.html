@@ -3,7 +3,6 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<link rel="icon" type="image/png" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diagnóstico de Marketing — Tomorrow Marketing</title>
 <meta name="description" content="Descubra os pontos fortes e fracos da sua estratégia de marketing em 5 minutos.">
@@ -338,8 +337,12 @@ function gate(){
   if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
   S.email=e;
   S.phone=document.getElementById('pi')?.value?.trim()||'';
-  // ── Aqui você conecta ao seu webhook, Notion, Sheets etc. ──
-  // fetch('https://seu-webhook.com', {method:'POST', body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,scores:calcS()})})
+  const {tot} = calcS();
+  fetch('https://tmw-leads.felipe-ffa.workers.dev', {
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Diagnóstico',score:`${tot}/75`})
+  });
   S.screen='results';render();
 }
 
