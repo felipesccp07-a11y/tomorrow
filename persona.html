@@ -241,8 +241,12 @@ function gate(){
   const e=document.getElementById('ei')?.value?.trim();
   if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
   S.email=e;S.phone=document.getElementById('pi')?.value?.trim()||'';
+  const{isB}=calc(),pd=P[S.cluster],off=isB?6:0;
+  const[name,tag]=pd.slice(off,off+2);
+  const[sname,stag]=isB?pd.slice(0,2):pd.slice(6,8);
   const answers=qs.map((q,i)=>{const a=q[1]?(q[1][S.ans[i]]||''):(S.ans[i]||'');return{q:q[0],a};}).filter(({a})=>a);
-  fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Persona',score:'',answers})});
+  const result=[{q:'Persona Principal',a:`${name} — ${tag}`},{q:'Persona Secundária',a:`${sname} — ${stag}`},{q:'Segmento',a:CN[S.cluster]}];
+  fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Persona',score:'',answers,result})});
   S.screen='results';render();
 }
 render();

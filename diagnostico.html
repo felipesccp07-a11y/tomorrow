@@ -337,12 +337,14 @@ function gate(){
   if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
   S.email=e;
   S.phone=document.getElementById('pi')?.value?.trim()||'';
-  const {tot} = calcS();
-  const answers = qs.map((q,i)=>{const opt=q.o.find(o=>o.v===S.ans[i]);return{q:q.q,a:opt?opt.l:''};}).filter(({a})=>a);
+  const {tot,pct}=calcS();
+  const getLvl=p=>p<40?'Crítico':p<60?'Atenção':p<80?'Bom':'Excelente';
+  const answers=qs.map((q,i)=>{const opt=q.o.find(o=>o.v===S.ans[i]);return{q:q.q,a:opt?opt.l:''};}).filter(({a})=>a);
+  const result=[{q:'Score Total',a:`${tot}/75`},...cats.map((cat,i)=>({q:cat.l,a:`${pct[i]}% — ${getLvl(pct[i])}`}))];
   fetch('https://tmw-leads.felipe-ffa.workers.dev', {
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Diagnóstico',score:`${tot}/75`,answers})
+    body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Diagnóstico',score:`${tot}/75`,answers,result})
   });
   S.screen='results';render();
 }

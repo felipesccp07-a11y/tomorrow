@@ -350,9 +350,13 @@ function gate(){
   const e=document.getElementById('ei')?.value?.trim();
   if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
   S.email=e;S.phone=document.getElementById('pi')?.value?.trim()||'';
-  const qas=[{q:'Segmento',a:CL[S.cluster]?.[0]||''}];
+  const score=calcScore(),st=getStatus(score),cl=CL[S.cluster];
+  const gapIdx=S.ans[7]>=0?S.ans[7]:0,g=GAPS[gapIdx];
+  const pillars=cl[2].slice(0,3).map(p=>p[0]).join(', ');
+  const qas=[{q:'Segmento',a:cl[0]}];
   qs.forEach((q,i)=>{const a=q[1][S.ans[i]]?.[0]||'';if(a)qas.push({q:q[0],a});});
-  fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Linha Editorial',score:'',answers:qas})});
+  const result=[{q:'Score Editorial',a:`${score}/100 — ${st.l}`},{q:'Gargalo Principal',a:`${g[0]} — ${g[1]}`},{q:'Pilares Recomendados',a:pillars}];
+  fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Linha Editorial',score:`${score}/100`,answers:qas,result})});
   S.screen='results';render();
 }
 render();
