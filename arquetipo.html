@@ -296,7 +296,7 @@ function go(){const v=document.getElementById('ci')?.value?.trim();if(!v){docume
 function pick(i){S.ans[S.qi]=i;render();setTimeout(()=>{S.qi<16?(S.qi++,render()):(S.screen='gate',render());},190);}
 function nextOpen(){S.ans[S.qi]=document.getElementById('oa')?.value?.trim()||'';S.qi<16?(S.qi++,render()):(S.screen='gate',render());}
 function bk(){if(S.qi>0){S.qi--;render();}}
-function gate(){const e=document.getElementById('ei')?.value?.trim();if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}S.email=e;S.phone=document.getElementById('pi')?.value?.trim()||'';fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Arquétipo',score:''})});S.screen='results';render();}
+function gate(){const e=document.getElementById('ei')?.value?.trim();if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}S.email=e;S.phone=document.getElementById('pi')?.value?.trim()||'';const answers=qs.map((q,i)=>{const a=q[2]?(S.ans[i]||''):(q[3][S.ans[i]]?.[0]||'');return{q:q[1],a};}).filter(({a})=>a);fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Arquétipo',score:'',answers})});S.screen='results';render();}
 
 render();
 </script>

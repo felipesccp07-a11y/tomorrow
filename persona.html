@@ -241,7 +241,8 @@ function gate(){
   const e=document.getElementById('ei')?.value?.trim();
   if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
   S.email=e;S.phone=document.getElementById('pi')?.value?.trim()||'';
-  fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Persona',score:''})});
+  const answers=qs.map((q,i)=>{const a=q[1]?(q[1][S.ans[i]]||''):(S.ans[i]||'');return{q:q[0],a};}).filter(({a})=>a);
+  fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Persona',score:'',answers})});
   S.screen='results';render();
 }
 render();

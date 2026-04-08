@@ -338,10 +338,11 @@ function gate(){
   S.email=e;
   S.phone=document.getElementById('pi')?.value?.trim()||'';
   const {tot} = calcS();
+  const answers = qs.map((q,i)=>{const opt=q.o.find(o=>o.v===S.ans[i]);return{q:q.q,a:opt?opt.l:''};}).filter(({a})=>a);
   fetch('https://tmw-leads.felipe-ffa.workers.dev', {
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Diagnóstico',score:`${tot}/75`})
+    body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Diagnóstico',score:`${tot}/75`,answers})
   });
   S.screen='results';render();
 }

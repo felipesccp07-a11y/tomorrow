@@ -350,7 +350,9 @@ function gate(){
   const e=document.getElementById('ei')?.value?.trim();
   if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
   S.email=e;S.phone=document.getElementById('pi')?.value?.trim()||'';
-  fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Linha Editorial',score:''})});
+  const qas=[{q:'Segmento',a:CL[S.cluster]?.[0]||''}];
+  qs.forEach((q,i)=>{const a=q[1][S.ans[i]]?.[0]||'';if(a)qas.push({q:q[0],a});});
+  fetch('https://tmw-leads.felipe-ffa.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Linha Editorial',score:'',answers:qas})});
   S.screen='results';render();
 }
 render();
