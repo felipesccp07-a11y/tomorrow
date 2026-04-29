@@ -256,8 +256,10 @@ function nxt(){S.ans[S.qi]=document.getElementById('oa')?.value?.trim()||null;S.
 function bk(){if(S.qi>0){S.qi--;render();}}
 function gate(){
   const e=document.getElementById('ei')?.value?.trim();
+  const p=document.getElementById('pi')?.value?.trim();
   if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
-  S.email=e;S.phone=document.getElementById('pi')?.value?.trim()||'';
+  if(!p){document.getElementById('pi').style.borderColor='#A32D2D';return;}
+  S.email=e;S.phone=p;
   const{isB}=calc(),pd=P[S.cluster],off=isB?6:0;
   const[name,tag]=pd.slice(off,off+2);
   const[sname,stag]=isB?pd.slice(0,2):pd.slice(6,8);
