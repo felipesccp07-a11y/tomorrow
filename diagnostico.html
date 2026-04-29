@@ -351,9 +351,11 @@ function bk(){if(S.qi>0){S.qi--;render();}}
 
 function gate(){
   const e=document.getElementById('ei')?.value?.trim();
+  const p=document.getElementById('pi')?.value?.trim();
   if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
+  if(!p){document.getElementById('pi').style.borderColor='#A32D2D';return;}
   S.email=e;
-  S.phone=document.getElementById('pi')?.value?.trim()||'';
+  S.phone=p;
   const {tot,pct}=calcS();
   const getLvl=p=>p<40?'Crítico':p<60?'Atenção':p<80?'Bom':'Excelente';
   const answers=qs.map((q,i)=>{const opt=q.o.find(o=>o.v===S.ans[i]);return{q:q.q,a:opt?opt.l:''};}).filter(({a})=>a);
