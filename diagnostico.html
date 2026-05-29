@@ -1,11 +1,18 @@
+Aqui está o código atualizado da sua página **`diagnostico.html`**.
 
+Fiz a substituição completa das antigas 15 perguntas de marketing pelas **15 novas perguntas de Estrutura Comercial e Vendas** que você enviou.
+
+Além disso, adaptei a lógica do sistema: como agora são 6 blocos (e não mais 5), atualizei a matemática de pontuação do código e transformei o gráfico de radar final (que era um pentágono) em um **hexágono perfeito** para exibir as 6 novas áreas. O design elegante e a responsividade foram 100% mantidos.
+
+Pode copiar e colar:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <!-- Meta Pixel Code -->
-<script>
+ <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -20,9 +27,8 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
-<title>Diagnóstico de Marketing — Tomorrow Marketing</title>
-<meta name="description" content="Descubra os pontos fortes e fracos da sua estratégia de marketing em 5 minutos.">
+<title>Diagnóstico Comercial — Tomorrow Marketing</title>
+<meta name="description" content="Descubra onde estão os gargalos do seu fluxo de vendas em 5 minutos.">
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   :root{
@@ -112,30 +118,61 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 <div id="app"></div>
 <script>
 const O='#E8761E';
-const cats=[{l:'Posicionamento'},{l:'Estratégia de Conteúdo'},{l:'Audiência & Segmentação'},{l:'Distribuição'},{l:'Métricas & Resultados'}];
-const qs=[
-  {c:0,q:'Seu posicionamento de marca está definido?',o:[{l:'Não sabemos explicar o que fazemos',v:0},{l:'Temos ideia, mas não formalizada',v:2},{l:'Sabemos internamente, mas não comunicamos bem',v:3},{l:'Definido, diferenciado e aplicado em tudo',v:5}]},
-  {c:0,q:'Seu diferencial é perceptível para o cliente?',o:[{l:'Somos parecidos com a concorrência',v:0},{l:'Talvez, mas nunca testamos',v:2},{l:'Sim, recebemos feedbacks sobre isso',v:3},{l:'É nosso principal ativo de venda',v:5}]},
-  {c:0,q:'Sua identidade visual reflete a proposta de valor?',o:[{l:'Temos logo mas sem diretrizes',v:0},{l:'Temos marca mas sem aplicação consistente',v:2},{l:'Temos guia de marca básico',v:3},{l:'Identidade visual robusta e totalmente consistente',v:5}]},
-  {c:1,q:'Você tem calendário editorial estruturado?',o:[{l:'Publicamos quando dá',v:0},{l:'Temos ideias mas sem calendário',v:1},{l:'Temos calendário mas não seguimos',v:2},{l:'Seguimos um calendário semanal',v:3},{l:'Planejamento mensal com pilares definidos',v:5}]},
-  {c:1,q:'O conteúdo está alinhado com a jornada de compra?',o:[{l:'Não pensamos nisso',v:0},{l:'Focamos só em vender',v:1},{l:'Misturamos educação e venda sem estratégia',v:2},{l:'Temos conteúdo para diferentes etapas',v:3},{l:'Funil de conteúdo mapeado e executado',v:5}]},
-  {c:1,q:'Você testa e analisa os formatos de conteúdo?',o:[{l:'Nunca testamos',v:0},{l:'Fazemos o que achamos que funciona',v:1},{l:'Olhamos os números às vezes',v:2},{l:'Testamos formatos regularmente',v:3},{l:'Processo de teste e otimização constante',v:5}]},
-  {c:2,q:'A persona do cliente ideal está documentada?',o:[{l:'Não temos personas definidas',v:0},{l:'Temos uma ideia vaga do público',v:1},{l:'Público-alvo definido, mas sem persona detalhada',v:2},{l:'Persona básica documentada',v:3},{l:'Persona detalhada com dores e jornada mapeada',v:5}]},
-  {c:2,q:'Você segmenta a comunicação por perfil de cliente?',o:[{l:'Falamos igual para todo mundo',v:0},{l:'Mudamos o tom às vezes, sem critério',v:1},{l:'Temos perfis mas sem segmentação real',v:2},{l:'Segmentamos em alguns canais',v:3},{l:'Segmentação ativa em todos os canais',v:5}]},
-  {c:2,q:'Você sabe onde seu cliente ideal passa o tempo online?',o:[{l:'Não sabemos',v:0},{l:'Achamos que sabemos, sem dados',v:1},{l:'Suposições baseadas em feeling',v:2},{l:'Dados básicos de comportamento',v:3},{l:'Comportamento online mapeado com dados reais',v:5}]},
-  {c:3,q:'Em quantos canais você está ativo com consistência?',o:[{l:'Nenhum canal ativo',v:0},{l:'1 canal, mas irregularmente',v:1},{l:'1 canal com consistência',v:2},{l:'2 canais com consistência',v:3},{l:'3+ canais com estratégia integrada',v:5}]},
-  {c:3,q:'Como você usa tráfego pago na estratégia?',o:[{l:'Nunca usamos',v:0},{l:'Já tentamos mas sem resultado claro',v:1},{l:'Usamos esporadicamente',v:2},{l:'Usamos com regularidade',v:3},{l:'Integrado à estratégia orgânica',v:5}]},
-  {c:3,q:'Você tem estratégia de SEO ou busca orgânica?',o:[{l:'Nunca pensamos nisso',v:0},{l:'Conhecemos mas não aplicamos',v:1},{l:'Fazemos SEO básico no site',v:2},{l:'Temos estratégia de palavras-chave',v:3},{l:'SEO com blog, backlinks e monitoramento',v:5}]},
-  {c:4,q:'Você monitora métricas de marketing regularmente?',o:[{l:'Não acompanhamos nada',v:0},{l:'Só olhamos seguidores e curtidas',v:1},{l:'Vemos algumas métricas quando lembramos',v:2},{l:'Temos relatório mensal básico',v:3},{l:'Dashboard com KPIs e análise semanal',v:5}]},
-  {c:4,q:'Você sabe o custo de aquisição de cliente (CAC)?',o:[{l:'Não sabemos o que é isso',v:0},{l:'Sabemos o conceito mas não calculamos',v:1},{l:'Temos uma estimativa grosseira',v:2},{l:'Calculamos periodicamente',v:3},{l:'CAC monitorado e otimizado constantemente',v:5}]},
-  {c:4,q:'Você testa variações de copy e criativos?',o:[{l:'Nunca testamos',v:0},{l:'Testamos raramente, sem método',v:1},{l:'Fazemos testes informais',v:2},{l:'Temos processo básico de A/B test',v:3},{l:'Testes sistemáticos com conclusões documentadas',v:5}]}
+
+// 6 Categorias atualizadas (Blocos)
+const cats=[
+  {l:'Cenário & Objetivos'},
+  {l:'Mkt vs. Vendas Reais'},
+  {l:'Raio-X dos Números'},
+  {l:'Processo & Time'},
+  {l:'Maturidade de Escala'},
+  {l:'Retenção & Esteira'}
 ];
+
+// 15 Perguntas comerciais estruturadas
+const qs=[
+  // Bloco 1 (Cenário)
+  {c:0,q:'1. Qual a maturidade atual do seu negócio hoje?',o:[{l:'Totalmente offline e informal, sem processos claros',v:0},{l:'Offline, mas bem organizado e estruturado',v:2},{l:'Digitalizado, mas as vendas acontecem por acaso',v:3},{l:'Forte no digital e offline com processos de vendas claros',v:5}]},
+  {c:0,q:'2. Qual é a sua principal meta de crescimento e faturamento para os próximos 60 dias?',o:[{l:'Sobreviver, não tenho uma meta financeira clara',v:0},{l:'Apenas empatar as contas ou crescer muito pouco',v:1},{l:'Crescimento moderado, bater as metas habituais',v:3},{l:'Escala agressiva, previsível e com injeção rápida de caixa',v:5}]},
+  {c:0,q:'3. Como você define a sua receita atual?',o:[{l:'Oscila muito, vivo apagando incêndio e dependendo de indicações',v:0},{l:'Cobre os custos, mas a sobra é baixa e insegura',v:1},{l:'Cresce devagar, mas ainda não tenho segurança total',v:3},{l:'Aumento consistente e previsibilidade real de caixa todo mês',v:5}]},
+  
+  // Bloco 2 (Mkt vs Vendas)
+  {c:1,q:'4. Se você já contratou agências de marketing, sentiu que o resultado final ficou apenas na vaidade (curtidas/seguidores)?',o:[{l:'Sim, sempre entregaram só vaidade sem gerar vendas reais',v:0},{l:'Geraram algumas vendas, mas o foco sempre foi post bonito',v:2},{l:'Focaram em conversão, mas sem escalar o negócio',v:3},{l:'Nunca tive esse problema, minhas ações sempre geraram caixa',v:5}]},
+  {c:1,q:'5. Olhando para o seu momento atual, o que o seu negócio mais precisa com urgência?',o:[{l:'De mais seguidores, vídeos e publicações em redes sociais',v:0},{l:'De mais leads, mesmo que sejam desqualificados',v:1},{l:'De um alinhamento melhor entre marketing e vendas',v:3},{l:'De uma estrutura de vendas ponta a ponta focada em fechar negócios',v:5}]},
+  
+  // Bloco 3 (Números)
+  {c:2,q:'6. Você tem clareza e controle absoluto sobre qual é o lucro real e o faturamento da sua empresa hoje?',o:[{l:'Não, misturo contas ou só enxergo o faturamento bruto',v:0},{l:'Sei o faturamento, mas o lucro líquido exato é nebuloso',v:2},{l:'Tenho controle, mas não acompanho as margens em tempo real',v:3},{l:'Sim, tenho controle absoluto, sem achismos',v:5}]},
+  {c:2,q:'7. Você sabe exatamente quanto foi investido nas suas ações comerciais e qual é o Retorno Sobre o Investimento (ROI) atual?',o:[{l:'Não faço ideia de quanto invisto nem qual é o retorno',v:0},{l:'Sei o valor do investimento, mas não meço o ROI das campanhas',v:1},{l:'Calculo o retorno de algumas ações periodicamente',v:3},{l:'Acompanho ROI, CAC e indicadores rigorosamente todo mês',v:5}]},
+  
+  // Bloco 4 (Processo Comercial)
+  {c:3,q:'8. Como é feito o treinamento do seu time comercial hoje para extrair o máximo de valor de cada contato recebido?',o:[{l:'Não tenho time de vendas ou não existe nenhum treinamento',v:0},{l:'Treinamento básico apenas na entrada do vendedor',v:1},{l:'Temos reuniões esporádicas de alinhamento de vendas',v:3},{l:'Treinamento contínuo, scripts validados e meta clara',v:5}]},
+  {c:3,q:'9. Suas estratégias atuais conseguem gerar uma injeção de caixa rápida através do aumento de demanda?',o:[{l:'Não, dependo 100% de indicações e do fluxo natural',v:0},{l:'Raramente, minhas ações demoram muito para dar retorno',v:2},{l:'Sim, mas o custo por cliente adquirido ainda é alto',v:3},{l:'Sim, consigo gerar picos de caixa e demanda quando necessário',v:5}]},
+  
+  // Bloco 5 (Maturidade Comercial)
+  {c:4,q:'10. Você realiza testes rigorosos (ofertas e canais diferentes) para descobrir onde está a "mina de ouro" do negócio?',o:[{l:'Nunca testo nada, faço sempre do mesmo jeito',v:0},{l:'Faço testes por intuição, sem método ou coleta de dados',v:1},{l:'Realizo testes básicos em campanhas esporádicas',v:3},{l:'Temos um processo rigoroso e contínuo de testes validados',v:5}]},
+  {c:4,q:'11. Sua empresa consegue otimizar processos para "fazer mais com menos" antes de colocar mais dinheiro na operação?',o:[{l:'Não, se eu não gastar mais dinheiro, a empresa não cresce',v:0},{l:'Até tentamos, mas a operação é engessada e custosa',v:2},{l:'Conseguimos otimizar alguns gargalos isolados',v:3},{l:'Sim, lapidar conversão e cortar desperdício é nossa rotina',v:5}]},
+  {c:4,q:'12. Você se sente seguro hoje para aumentar o investimento e escalar o que já foi validado explorando novos mercados?',o:[{l:'Zero segurança, seria um tiro no escuro',v:0},{l:'Estou inseguro, a operação quebra se o volume aumentar muito',v:1},{l:'Segurança moderada, consigo escalar gradativamente',v:3},{l:'100% seguro, a estrutura comercial está pronta para escalar',v:5}]},
+  
+  // Bloco 6 (Extração e Retenção)
+  {c:5,q:'13. Além de buscar novos clientes, você tem um processo de extração para aproveitar ao máximo a sua lista de clientes antigos?',o:[{l:'Não, o cliente compra e nunca mais entro em contato',v:0},{l:'Mando uma mensagem em datas comemorativas e só',v:1},{l:'Faço campanhas esporádicas de remarketing na base',v:3},{l:'Processo ativo, contínuo e rentável com a carteira de clientes',v:5}]},
+  {c:5,q:'14. Você possui processos de retenção e uma esteira de produtos eficiente para o mesmo cliente comprar mais vezes?',o:[{l:'Tenho apenas um produto ou serviço, sem esteira',v:0},{l:'Até tenho outros serviços, mas não oferto ativamente',v:2},{l:'Oferto, mas a taxa de conversão em recompra é baixa',v:3},{l:'Esteira completa funcionando: o cliente sempre tem um próximo passo',v:5}]},
+  {c:5,q:'15. Existe uma estratégia ativa na sua empresa para fazer com que os clientes atuais indiquem o seu negócio?',o:[{l:'Indicações acontecem totalmente por acaso e sorte',v:0},{l:'Às vezes peço indicação de forma boca a boca informal',v:1},{l:'Temos um sistema muito básico de indicação',v:3},{l:'Estratégia ativa, incentivada e gamificada rodando todo mês',v:5}]}
+];
+
+// Recomendações por Categoria
 const recs=[
-  {cr:['Defina sua proposta de valor em 1 frase antes de qualquer ação de marketing','Documente quem você é, para quem atende e por que é diferente','Audite toda comunicação visual e alinhe com o posicionamento'],at:['Comunique melhor o posicionamento externamente em todos os canais','Treine a equipe para transmitir a proposta de valor com consistência','Alinhe identidade visual com um guia de marca básico'],bm:['Teste o posicionamento com clientes reais e colete feedbacks','Refine a mensagem com base em dados de percepção de marca','Expanda o guia de marca para todos os touchpoints'],ex:['Monitore a percepção de marca com pesquisas periódicas','Explore sub-posicionamentos por segmento de cliente','Use o posicionamento como filtro para todas as decisões criativas']},
-  {cr:['Defina 3 pilares de conteúdo que reflitam seu posicionamento','Crie um calendário semanal mínimo de 2 a 3 posts','Mapeie a jornada do cliente para alinhar os temas de conteúdo'],at:['Diversifique formatos: vídeo, carrossel e artigos longos','Teste diferentes narrativas e meça o que performa melhor','Implemente calendário editorial com 2 semanas de antecedência'],bm:['Aprofunde o funil com material de fundo de funil','Invista em conteúdo evergreen que gera resultado no longo prazo','Documente o que funciona e replique com variações inteligentes'],ex:['Escale os formatos que mais convertem com consistência','Explore distribuição cross-platform do mesmo conteúdo','Crie um processo editorial replicável sem depender de você']},
-  {cr:['Entreviste 5 clientes atuais esta semana para mapear dores reais','Defina 1 persona primária baseada em dados reais','Segmente a base existente por comportamento de compra'],at:['Aprofunde a persona com dados de comportamento online','Crie comunicações diferentes para leads frios e quentes','Use Meta Insights e Analytics para validar suposições'],bm:['Teste mensagens diferentes por segmento de cliente','Expanda para personas secundárias de forma gradual','Monitore mudanças de comportamento da audiência trimestralmente'],ex:['Use dados comportamentais para antecipar necessidades','Implemente segmentação dinâmica nas campanhas pagas','Crie experiências personalizadas por estágio de relacionamento']},
-  {cr:['Escolha 1 canal e domine antes de tentar expandir','Defina frequência mínima e cumpra por 90 dias seguidos','Teste tráfego pago com budget mínimo para validar audiência'],at:['Escolha 2 canais estratégicos e foque neles com consistência','Comece com tráfego pago mesmo com budget limitado','Implemente SEO básico no site o quanto antes'],bm:['Integre canais orgânicos e pagos na mesma estratégia','Crie fluxos de retargeting para visitantes do site','Explore canais além de redes sociais: email, WhatsApp, SEO'],ex:['Construa uma estratégia omnichannel verdadeiramente integrada','Automatize fluxos de nutrição por canal','Monitore a jornada completa do lead nos diferentes canais']},
-  {cr:['Defina 3 KPIs essenciais para monitorar todo mês','Configure Meta Business Suite e Google Analytics corretamente','Comece a calcular agora quanto custa adquirir um cliente'],at:['Monte um dashboard simples com os principais indicadores','Estabeleça uma reunião mensal de análise de resultados','Comece a testar criativos e copys de forma sistemática'],bm:['Implemente UTMs em todas as campanhas para rastrear origem','Crie relatórios semanais e aja sobre os dados com agilidade','Defina metas SMART para cada canal de marketing'],ex:['Implemente atribuição multi-touch para entender o real ROI','Crie modelos preditivos com dados históricos acumulados','Use dados para antecipar tendências e ajustar a estratégia']}
+  // 0 - Cenário e Objetivos
+  {cr:['Defina imediatamente uma meta financeira palpável para os próximos 60 dias.','Estabeleça indicadores de previsibilidade para sair do ciclo de oscilação.','Implemente organização comercial, mesmo fora do digital.'],at:['Aumente a ambição da meta: sair da sobrevivência para o crescimento ativo.','Crie rituais semanais para acompanhar se a receita está estabilizando.'],bm:['Estruture o ambiente digital para apoiar os bons processos físicos que já existem.','Crie projeções de caixa para os próximos 3 a 6 meses com segurança.'],ex:['Mantenha o rigor nos processos que garantem a previsibilidade atual.','Use seu caixa seguro para financiar testes de novos canais de tração.']},
+  // 1 - Mkt vs Vendas
+  {cr:['Pare imediatamente de investir em métricas de vaidade (likes/seguidores).','Redirecione todo o budget e esforço para campanhas de conversão direta.','Implemente uma estrutura de ponta a ponta focada apenas em fechar negócios.'],at:['Exija da sua equipe/agência relatórios baseados em leads e fechamentos.','Foque em qualificar a demanda antes de focar em volume de visualizações.'],bm:['Crie campanhas combinadas: posicionamento + oferta agressiva de venda.','Alinhe os discursos do marketing (anúncios) com o que o vendedor fala.'],ex:['Continue isolando o ruído das redes sociais e focando no caixa.','Dimensione o orçamento de branding sem comprometer a verba de vendas diretas.']},
+  // 2 - Raio-X dos Números
+  {cr:['Pare as campanhas agora e mapeie todo o seu fluxo de caixa real.','Separe contas pessoais da empresa e defina seu lucro líquido urgente.','Descubra o Retorno sobre Investimento (ROI) das suas últimas ações.'],at:['Implemente DRE mensal simples para saber de onde o dinheiro entra e sai.','Mapeie o Custo de Aquisição de Cliente (CAC) de todos os canais.'],bm:['Otimize os canais de marketing cortando os de baixo ROI.','Trabalhe para aumentar a margem de lucro líquido e não só o faturamento.'],ex:['Use seus dados de ROI previsível para alavancar e escalar novos investimentos.','Acompanhe o LTV (Lifetime Value) para saber o valor de longo prazo do cliente.']},
+  // 3 - Processo e Time
+  {cr:['Crie hoje um script básico de atendimento e quebra de objeções.','Pare de depender de boca a boca e crie campanhas ativas de demanda.','Implemente treinamento emergencial para quem atende seus leads.'],at:['Implemente uma rotina semanal de alinhamento com seu time de vendas.','Monitore as conversas do WhatsApp/CRM para auditar a qualidade do atendimento.'],bm:['Crie campanhas rápidas (flash sales) para injeção de caixa pontual.','Estabeleça metas diárias e premiações baseadas em conversão, não em esforço.'],ex:['Escale a equipe comercial mantendo a mesma qualidade do playbook atual.','Construa automações para acelerar a qualificação de leads antes de chegar no time.']},
+  // 4 - Maturidade de Escala
+  {cr:['Pare de gastar dinheiro sem antes testar pequenas ofertas validadas.','Implemente a fase de "Exploração": teste diferentes canais com orçamentos baixos.','Identifique e elimine os processos que estão encarecendo a sua operação.'],at:['Comece a fase de "Lapidação": pegue o que deu certo e tente diminuir o custo do lead.','Evite escalar investimentos até que a conversão base seja lucrativa.'],bm:['Valide processos em escala moderada para não sobrecarregar sua operação.','Aumente o investimento gradativamente focando apenas na "mina de ouro" validada.'],ex:['Vá para a fase de "Escala": aumente agressivamente a verba nos canais campeões.','Explore agressivamente novas regiões, novos formatos e aquisição de fatia de mercado.']},
+  // 5 - Retenção e Esteira
+  {cr:['Baixe sua base de clientes antigos hoje e faça uma oferta exclusiva para eles.','Crie um "Upsell" (produto superior) ou "Downsell" (produto mais barato) imediatamente.','Implemente a fase de "Extração" antes de gastar fortunas buscando novos leads.'],at:['Crie um processo estruturado de acompanhamento (pós-venda) para estimular recompras.','Comece a pedir indicações de forma sistêmica após cada entrega bem-sucedida.'],bm:['Desenhe uma Esteira de Produtos clara onde um serviço puxa a necessidade do próximo.','Implemente campanhas mensais de remarketing focadas exclusivamente na base de clientes.'],ex:['Gamifique a indicação: dê recompensas reais para clientes que trouxerem outros.','Transforme seu pós-venda em um canal de receita tão forte quanto a aquisição primária.']}
 ];
 
 const S={screen:'landing',company:'',qi:0,ans:new Array(15).fill(-1),email:'',phone:''};
@@ -148,9 +185,20 @@ function st(p){
 }
 
 function calcS(){
-  const cp=[0,0,0,0,0];
+  // 6 categorias
+  const cp=[0,0,0,0,0,0];
+  // Máximo de pontos possíveis por categoria (baseado nas 15 perguntas)
+  // Bloco 1: 3 qs = 15 pts | Bloco 2: 2 qs = 10 pts | Bloco 3: 2 qs = 10 pts
+  // Bloco 4: 2 qs = 10 pts | Bloco 5: 3 qs = 15 pts | Bloco 6: 3 qs = 15 pts
+  const maxPts = [15, 10, 10, 10, 15, 15];
+  
   qs.forEach((q,i)=>{if(S.ans[i]>=0)cp[q.c]+=S.ans[i];});
-  return{cp,pct:cp.map(p=>Math.round(p/15*100)),tot:Math.round(cp.reduce((a,b)=>a+b,0)/75*100)};
+  
+  return{
+    cp,
+    pct:cp.map((p,i)=>Math.round((p/maxPts[i])*100)),
+    tot:Math.round(cp.reduce((a,b)=>a+b,0)/75*100)
+  };
 }
 
 function arcSVG(score){
@@ -173,28 +221,38 @@ function arcSVG(score){
 
 function radarSVG(pct){
   const cx=145,cy=145,R=95;
-  const angs=[-90,-18,54,126,198].map(a=>a*Math.PI/180);
+  // 6 eixos (hexágono)
+  const angs=[-90, -30, 30, 90, 150, 210].map(a=>a*Math.PI/180);
   const pt=(i,r)=>[cx+r*Math.cos(angs[i]),cy+r*Math.sin(angs[i])];
-  const labs=['Posicionamento','Conteúdo','Audiência','Distribuição','Métricas'];
+  const labs=['Cenário','Foco Mkt','Números','Time','Escala','Retenção'];
+  
   let s=`<svg viewBox="0 0 290 310" style="width:100%;max-width:270px">`;
+  
+  // Grade de fundo (linhas radiais do polígono)
   [.25,.5,.75,1].forEach(sc=>{
     const pts=angs.map((_,i)=>pt(i,R*sc).join(',')).join(' ');
     s+=`<polygon points="${pts}" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="0.5"/>`;
   });
+  
+  // Eixos centrais
   angs.forEach((_,i)=>{
     const[x,y]=pt(i,R);
     s+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(0,0,0,.08)" stroke-width="0.5"/>`;
   });
+  
+  // Shape preenchido com a pontuação
   const dp=pct.map((p,i)=>pt(i,R*p/100).join(',')).join(' ');
   s+=`<polygon points="${dp}" fill="${O}" fill-opacity="0.15" stroke="${O}" stroke-width="1.5"/>`;
   pct.forEach((p,i)=>{
     const[x,y]=pt(i,R*p/100);
     s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" fill="${O}"/>`;
   });
+  
+  // Labels em volta do Hexágono
   angs.forEach((a,i)=>{
     const[x,y]=pt(i,R+28);
     const anch=Math.cos(a)<-0.1?'end':Math.cos(a)>0.1?'start':'middle';
-    const dy=Math.sin(a)>0.1?12:-4;
+    const dy=Math.sin(a)>0.1?12:Math.sin(a)< -0.1?-4:4;
     s+=`<text x="${x.toFixed(1)}" y="${(y+dy).toFixed(1)}" text-anchor="${anch}"
       font-size="11" fill="#777" font-family="-apple-system,sans-serif">${labs[i]}</text>`;
   });
@@ -205,20 +263,20 @@ function radarSVG(pct){
 function Landing(){
   return`<div style="text-align:center;padding:2.5rem 0 1rem">
     <div class="logo" style="margin-bottom:2.5rem">tmw</div>
-    <h1 style="font-size:30px;font-weight:600;line-height:1.2;margin-bottom:.75rem">Diagnóstico de Marketing</h1>
-    <p style="color:var(--text2);font-size:16px;margin-bottom:2.75rem;max-width:380px;margin-left:auto;margin-right:auto;line-height:1.7">
-      Descubra os pontos fortes e fracos da sua estratégia em 5 minutos.
+    <h1 style="font-size:30px;font-weight:600;line-height:1.2;margin-bottom:.75rem">Diagnóstico Comercial</h1>
+    <p style="color:var(--text2);font-size:16px;margin-bottom:2.75rem;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7">
+      Descubra exatamente onde estão os gargalos do seu fluxo de vendas em menos de 5 minutos.
     </p>
     <div class="pill-row">
-      ${[['15','Perguntas estratégicas'],['5','Áreas analisadas'],['1','Relatório personalizado']].map(([n,l])=>
+      ${[['15','Perguntas estratégicas'],['6','Áreas analisadas'],['1','Relatório personalizado']].map(([n,l])=>
         `<div class="pill"><div class="pill-num">${n}</div><div class="pill-label">${l}</div></div>`
       ).join('')}
     </div>
     <div class="card" style="max-width:420px;margin:0 auto">
       <label class="label">Nome da sua empresa</label>
-      <input id="ci" type="text" placeholder="Ex: ACME" value="${S.company}" style="margin-bottom:1rem"
+      <input id="ci" type="text" placeholder="Ex: Minha Empresa LTDA" value="${S.company}" style="margin-bottom:1rem"
         onkeydown="if(event.key==='Enter')go()">
-      <button class="btn btn-primary" onclick="go()">Iniciar diagnóstico →</button>
+      <button class="btn btn-primary" onclick="go()">Iniciar diagnóstico gratuito →</button>
     </div>
   </div>`;
 }
@@ -232,7 +290,7 @@ function Question(){
     </div>
     <div class="progress-track"><div class="progress-fill" style="width:${prog}%"></div></div>
     <div class="card">
-      <p style="font-size:17px;font-weight:500;margin-bottom:1.25rem;line-height:1.45">${n}. ${q.q}</p>
+      <p style="font-size:17px;font-weight:500;margin-bottom:1.25rem;line-height:1.45">${q.q}</p>
       ${q.o.map(o=>`<button class="opt${S.ans[S.qi]===o.v?' sel':''}" onclick="pick(${o.v})">${o.l}</button>`).join('')}
     </div>
     ${S.qi>0?`<button class="btn btn-ghost" onclick="bk()" style="margin-top:.625rem;width:auto;padding:.5rem 1rem;font-size:13px">← Voltar</button>`:''}
@@ -250,8 +308,8 @@ function Gate(){
       </div>
       <h2 style="font-size:22px;font-weight:600;margin-bottom:.5rem">Diagnóstico concluído!</h2>
       <p style="color:var(--text2);font-size:14px;margin-bottom:1.5rem;line-height:1.7">
-        ${S.company?`<strong>${S.company}</strong>, preparamos`:'Preparamos'} uma análise completa para você.
-        Preencha abaixo para liberar o acesso.
+        ${S.company?`<strong>${S.company}</strong>, processamos`:'Processamos'} a análise do seu fluxo de vendas.
+        Preencha abaixo para liberar o acesso ao relatório de gargalos.
       </p>
       <label class="label" style="text-align:left">E-mail profissional</label>
       <input id="ei" type="email" placeholder="seu@email.com" value="${S.email}" style="margin-bottom:1rem">
@@ -266,27 +324,32 @@ function Gate(){
 
 function Results(){
   const{pct,tot}=calcS();
-  const ov=tot<40?'Sua estratégia precisa de atenção urgente. Existem lacunas fundamentais que impedem o crescimento do negócio.':
-    tot<60?'Você tem uma base, mas áreas importantes precisam ser fortalecidas para alcançar resultados consistentes.':
-    tot<80?'Boa estrutura geral. Refinamentos nas áreas mais fracas podem elevar significativamente seus resultados.':
-    'Estratégia sólida e bem estruturada. Foco em otimização contínua e escala sustentável.';
+  const ov=tot<40?'Seu fluxo comercial precisa de atenção urgente. Existem gargalos graves travando o crescimento e a entrada de dinheiro no caixa da empresa.':
+    tot<60?'Você possui uma base funcional, mas áreas vitais precisam ser corrigidas para você escalar o negócio sem perder margem.':
+    tot<80?'Sua estrutura de vendas é muito boa. Focar na otimização dos processos de extração e métricas trará resultados imensos de lucro líquido.':
+    'Estrutura comercial excelente, madura e pronta para escala agressiva. Foco 100% no processo de dominação e novas oportunidades de mercado.';
+    
   return`<div>
     <div class="dark-header">
-      <div style="font-size:11px;font-weight:600;color:${O};text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">Relatório de Diagnóstico</div>
+      <div style="font-size:11px;font-weight:600;color:${O};text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">Relatório Comercial</div>
       <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:.25rem">${S.company||'Sua Empresa'}</div>
-      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-bottom:1.5rem">Marketing & Conteúdo</div>
+      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-bottom:1.5rem">Estrutura & Fluxo de Vendas</div>
       ${arcSVG(tot)}
     </div>
 
     <div class="card" style="margin-bottom:1rem">
-      <div style="font-size:15px;font-weight:600;margin-bottom:.625rem">Visão geral</div>
+      <div style="font-size:15px;font-weight:600;margin-bottom:.625rem">Visão Geral Comercial</div>
       <p style="color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:1.5rem">${ov}</p>
       <div style="display:flex;justify-content:center">${radarSVG(pct)}</div>
     </div>
 
-    <div style="font-size:15px;font-weight:600;margin-bottom:.875rem">Análise por categoria</div>
+    <div style="font-size:15px;font-weight:600;margin-bottom:.875rem">Análise e Recomendações por Bloco</div>
     ${cats.map((cat,i)=>{
-      const p=pct[i],pts=Math.round(p/100*15),s=st(p),rk=p<40?'cr':p<60?'at':p<80?'bm':'ex';
+      const p=pct[i], s=st(p), rk=p<40?'cr':p<60?'at':p<80?'bm':'ex';
+      // Ajuste de max pontos para UI exibição
+      const maxPts = [15, 10, 10, 10, 15, 15];
+      const ptsEarned = Math.round((p/100) * maxPts[i]);
+      
       return`<div class="card" style="margin-bottom:.875rem">
         <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.625rem">
           <div>
@@ -295,11 +358,11 @@ function Results(){
           </div>
           <div style="text-align:right">
             <div style="font-size:26px;font-weight:600;line-height:1;color:${s.col}">${p}%</div>
-            <div class="sub" style="margin-top:2px">${pts}/15 pts</div>
+            <div class="sub" style="margin-top:2px">${ptsEarned}/${maxPts[i]} pts</div>
           </div>
         </div>
         <div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${s.col}"></div></div>
-        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">Recomendações</div>
+        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">Plano de Ação TMW</div>
         ${recs[i][rk].map(r=>`
           <div style="display:flex;gap:.5rem;margin-bottom:.375rem">
             <span style="color:${O};flex-shrink:0;font-size:15px;line-height:1.4">›</span>
@@ -309,14 +372,14 @@ function Results(){
     }).join('')}
 
     <div class="card" style="text-align:center;border-color:rgba(232,118,30,.22);background:rgba(232,118,30,.04);margin-bottom:2rem">
-      <div style="font-size:16px;font-weight:600;margin-bottom:.375rem">Quer um plano de ação personalizado?</div>
+      <div style="font-size:16px;font-weight:600;margin-bottom:.375rem">Vamos consertar isso juntos?</div>
       <p style="color:var(--text2);font-size:14px;margin-bottom:1.25rem;line-height:1.7">
-        A Tomorrow Marketing transforma esse diagnóstico em estratégia executável para o seu negócio.
+        A Tomorrow implanta estruturas de vendas de ponta a ponta focadas em escalabilidade e previsibilidade em 60 dias.
       </p>
       <a href="https://agenciatomorrow.com" target="_blank" rel="noopener"
         style="display:block;max-width:300px;margin:0 auto;padding:.875rem 1.25rem;background:${O};
         color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:15px;text-align:center">
-        Falar com a Tomorrow →
+        Quero Falar com a Tomorrow →
       </a>
     </div>
   </div>`;
@@ -359,11 +422,11 @@ function gate(){
   const {tot,pct}=calcS();
   const getLvl=p=>p<40?'Crítico':p<60?'Atenção':p<80?'Bom':'Excelente';
   const answers=qs.map((q,i)=>{const opt=q.o.find(o=>o.v===S.ans[i]);return{q:q.q,a:opt?opt.l:''};}).filter(({a})=>a);
-  const result=[{q:'Score Total',a:`${tot}/75`},...cats.map((cat,i)=>({q:cat.l,a:`${pct[i]}% — ${getLvl(pct[i])}`}))];
+  const result=[{q:'Score Total Comercial',a:`${tot}/75`},...cats.map((cat,i)=>({q:cat.l,a:`${pct[i]}% — ${getLvl(pct[i])}`}))];
   fetch('https://tmw-leads.felipe-ffa.workers.dev', {
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Diagnóstico',score:`${tot}/75`,answers,result})
+    body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Diagnóstico Comercial',score:`${tot}/75`,answers,result})
   });
   S.screen='results';render();
 }
@@ -372,3 +435,5 @@ render();
 </script>
 </body>
 </html>
+
+```

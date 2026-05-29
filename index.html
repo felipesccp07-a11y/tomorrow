@@ -1,10 +1,16 @@
+Perfeito! Compreendido. Dessa forma o site fica com os dois melhores mundos: uma seção para quem quer fazer o teste interativo (indo para a página `diagnostico.html`) e, logo abaixo, a caixinha final de captura direta (Nome, E-mail e WhatsApp) para o lead que já quer falar direto com vocês sem passar pelas perguntas.
+
+Ajustei o link do botão de CTA do menu para apontar direto para a caixinha final (`#diagnostico`), criando um fluxo perfeito de conversão.
+
+Aqui está o código completo e unificado da sua página principal pronto para rodar:
+
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <link rel="icon" type="image/png" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -20,36 +26,24 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
-
-<!-- SEO primário -->
-<title>Tomorrow Marketing — Agência de Marketing em Ribeirão Preto, SP</title>
-<meta name="description" content="Agência de marketing em Ribeirão Preto com ponto de vista. Identidade visual, tráfego pago (Meta Ads & Google Ads), gestão de redes sociais e direção audiovisual com estratégia real.">
-<meta name="keywords" content="agência de marketing Ribeirão Preto, tráfego pago Ribeirão Preto, identidade visual, branding, Meta Ads, Google Ads, gestão de redes sociais, direção audiovisual, marketing interior SP">
+<title>Tomorrow Marketing — Estrutura Comercial e Vendas em 60 Dias</title>
+<meta name="description" content="Construa uma estrutura comercial de vendas que leve sua empresa a fase de crescimento em 60 dias. Foco total em faturamento e ROI.">
+<meta name="keywords" content="estrutura comercial, alavancagem de vendas, tráfego pago, processo de vendas, time comercial, amadurecimento digital, amadurecimento comercial">
 <meta name="author" content="Tomorrow Marketing">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://agenciatomorrow.com/">
 
-<!-- SEO local -->
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="Ribeirão Preto">
 
-<!-- Open Graph (WhatsApp, LinkedIn, Facebook) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://agenciatomorrow.com/">
-<meta property="og:title" content="Tomorrow Marketing — Marketing com Ponto de Vista">
-<meta property="og:description" content="Não fazemos conteúdo pra parecer bem. Fazemos comunicação pra vender, conectar e deixar marca. Ribeirão Preto, SP.">
+<meta property="og:title" content="Tomorrow Marketing — Estrutura Comercial de Vendas">
+<meta property="og:description" content="Você não precisa de mais marketing, você precisa de mais vendas. Descubra nosso método focado 100% em escala e lucro.">
 <meta property="og:image" content="https://agenciatomorrow.com/Principal.jpg">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="Tomorrow Marketing">
 
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tomorrow Marketing — Marketing com Ponto de Vista">
-<meta name="twitter:description" content="Não fazemos conteúdo pra parecer bem. Fazemos comunicação pra vender, conectar e deixar marca.">
-<meta name="twitter:image" content="https://agenciatomorrow.com/Principal.jpg">
-
-<!-- Schema.org: Agência local -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -57,7 +51,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   "name": "Tomorrow Marketing",
   "url": "https://agenciatomorrow.com",
   "logo": "https://agenciatomorrow.com/tmw-logo.png",
-  "description": "Agência de marketing em Ribeirão Preto com foco em identidade visual, tráfego pago e comunicação narrativa.",
+  "description": "Consultoria e implementação de estrutura comercial de vendas ponta a ponta.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Ribeirão Preto",
@@ -92,9 +86,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   html { scroll-behavior: smooth; }
-
   body {
     font-family: 'DM Sans', sans-serif;
     background: var(--white);
@@ -116,25 +108,8 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     border-bottom: 1px solid rgba(0,0,0,0.06);
     transition: all 0.3s;
   }
-
-  .nav-logo {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  .nav-logo img {
-    height: 32px;
-    width: auto;
-  }
-
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 36px;
-    list-style: none;
-  }
-
+  .nav-logo img { height: 32px; width: auto; }
+  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
   .nav-links a {
     font-size: 13px;
     font-weight: 500;
@@ -145,9 +120,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     opacity: 0.7;
     transition: opacity 0.2s;
   }
-
   .nav-links a:hover { opacity: 1; }
-
   .nav-cta {
     background: var(--orange);
     color: white !important;
@@ -156,7 +129,6 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     border-radius: 2px;
     font-weight: 700 !important;
   }
-
   .nav-cta:hover { background: var(--orange-dim); }
 
   /* ── HERO ── */
@@ -166,11 +138,10 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 120px 48px 80px;
+    padding: 140px 48px 80px;
     position: relative;
     overflow: hidden;
   }
-
   .hero::before {
     content: '';
     position: absolute;
@@ -179,7 +150,6 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     background: radial-gradient(circle, rgba(255,107,0,0.18) 0%, transparent 70%);
     pointer-events: none;
   }
-
   .hero::after {
     content: 'TMW';
     position: absolute;
@@ -191,7 +161,6 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     line-height: 1;
     letter-spacing: -0.02em;
   }
-
   .hero-tag {
     display: inline-block;
     font-size: 11px;
@@ -202,40 +171,65 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     border: 1px solid rgba(255,107,0,0.4);
     padding: 6px 14px;
     border-radius: 2px;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
     width: fit-content;
   }
-
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(64px, 10vw, 140px);
-    line-height: 0.92;
+    font-size: clamp(54px, 8.5vw, 120px);
+    line-height: 0.95;
     letter-spacing: -0.01em;
     color: var(--white);
-    max-width: 900px;
-    margin-bottom: 40px;
+    max-width: 1000px;
+    margin-bottom: 32px;
   }
-
   .hero h1 span {
     color: var(--orange);
     font-family: 'DM Serif Display', serif;
     font-style: italic;
   }
-
   .hero-sub {
-    font-size: clamp(16px, 2vw, 20px);
+    font-size: clamp(16px, 2vw, 22px);
     font-weight: 300;
-    color: rgba(250,250,250,0.6);
-    max-width: 520px;
-    line-height: 1.65;
-    margin-bottom: 56px;
+    color: rgba(250,250,250,0.75);
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 40px;
   }
 
-  .hero-actions {
+  /* Timeline Horizontal na Hero */
+  .hero-timeline {
     display: flex;
-    align-items: center;
-    gap: 24px;
+    gap: 20px;
+    max-width: 900px;
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(255,255,255,0.1);
     flex-wrap: wrap;
+  }
+  .timeline-step {
+    flex: 1;
+    min-width: 160px;
+  }
+  .timeline-day {
+    font-family: 'Bebas Neue', sans-serif;
+    color: var(--orange);
+    font-size: 18px;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .timeline-text {
+    font-size: 12px;
+    color: rgba(250,250,250,0.5);
+    line-height: 1.4;
+  }
+  .timeline-step.final .timeline-day {
+    color: var(--white);
+    background: var(--orange);
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 2px;
+    font-size: 14px;
   }
 
   .btn-primary {
@@ -246,7 +240,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     font-weight: 700;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    padding: 16px 36px;
+    padding: 18px 40px;
     border: none;
     border-radius: 2px;
     cursor: pointer;
@@ -254,1228 +248,310 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     display: inline-block;
     transition: background 0.2s, transform 0.2s;
   }
-
-  .btn-primary:hover {
-    background: var(--orange-dim);
-    transform: translateY(-2px);
-  }
-
-  .btn-ghost {
-    color: rgba(250,250,250,0.6);
-    font-size: 14px;
-    font-weight: 400;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: color 0.2s;
-  }
-
-  .btn-ghost:hover { color: white; }
-
-  .btn-ghost::after {
-    content: '↓';
-    font-size: 18px;
-  }
-
-  .hero-stats {
-    position: absolute;
-    bottom: 48px; right: 48px;
-    display: flex;
-    gap: 48px;
-  }
-
-  .stat {
-    text-align: right;
-  }
-
-  .stat-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 44px;
-    color: var(--orange);
-    line-height: 1;
-  }
-
-  .stat-label {
-    font-size: 11px;
-    color: rgba(250,250,250,0.4);
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    margin-top: 4px;
-  }
+  .btn-primary:hover { background: var(--orange-dim); transform: translateY(-2px); }
 
   /* ── MARQUEE ── */
-  .marquee-wrap {
-    background: var(--orange);
-    padding: 14px 0;
-    overflow: hidden;
-    white-space: nowrap;
-  }
-
-  .marquee-track {
-    display: inline-flex;
-    animation: marquee 22s linear infinite;
-  }
-
-  .marquee-track span {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 20px;
-    letter-spacing: 0.12em;
-    color: white;
-    padding: 0 40px;
-  }
-
-  .marquee-track span.dot {
-    color: rgba(255,255,255,0.5);
-    padding: 0;
-    font-size: 10px;
-  }
-
-  @keyframes marquee {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
+  .marquee-wrap { background: var(--orange); padding: 14px 0; overflow: hidden; white-space: nowrap; }
+  .marquee-track { display: inline-flex; animation: marquee 22s linear infinite; }
+  .marquee-track span { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: white; padding: 0 40px; }
+  .marquee-track span.dot { color: rgba(255,255,255,0.5); padding: 0; font-size: 10px; }
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
   /* ── SECTIONS COMMON ── */
   section { padding: 100px 48px; }
-
-  .section-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 20px;
-  }
-
-  .section-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(44px, 6vw, 80px);
-    line-height: 0.95;
-    letter-spacing: -0.01em;
-    color: var(--black);
-    margin-bottom: 24px;
-  }
-
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5.5vw, 76px); line-height: 0.95; letter-spacing: -0.01em; color: var(--black); margin-bottom: 24px; }
   .section-title.light { color: var(--white); }
+  .section-desc { font-size: 17px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
 
-  .section-desc {
-    font-size: 17px;
-    font-weight: 300;
-    color: var(--text-muted);
-    line-height: 1.7;
-    max-width: 560px;
-  }
+  /* ── MANIFESTO (SEÇÃO 2) ── */
+  .manifesto { background: var(--black); padding: 100px 48px; }
+  .manifesto-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; max-width: 1200px; margin: 60px auto 0; }
+  .manifesto-left .big-quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(28px, 3.5vw, 44px); color: var(--white); line-height: 1.3; border-left: 3px solid var(--orange); padding-left: 32px; }
+  .manifesto-left .big-quote em { color: var(--orange); font-style: normal; }
+  .manifesto-left .context-text { font-size: 16px; color: rgba(250,250,250,0.5); font-weight: 300; line-height: 1.6; margin-top: 32px; padding-left: 35px; }
+  .manifesto-right { display: flex; flex-direction: column; gap: 32px; }
+  .manifesto-item { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
+  .manifesto-item h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
+  .manifesto-item p { font-size: 15px; color: rgba(250,250,250,0.65); line-height: 1.6; font-weight: 300; }
 
-  /* ── MANIFESTO ── */
-  .manifesto {
-    background: var(--black);
-    padding: 100px 48px;
-  }
+  /* ── NUMBERS (SEÇÃO 3) ── */
+  .numbers-section { background: var(--white); }
+  .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 1200px; margin: 56px auto; }
+  .number-card { background: var(--white); border: 1px solid rgba(0,0,0,0.08); padding: 40px 32px; border-radius: 2px; transition: transform 0.3s, border-color 0.3s; }
+  .number-card:hover { transform: translateY(-4px); border-color: var(--orange); }
+  .number-card .card-icon { font-size: 24px; color: var(--orange); margin-bottom: 16px; }
+  .number-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--black); letter-spacing: 0.02em; }
+  .numbers-footer { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; text-align: center; color: var(--orange); margin-top: 40px; }
 
-  .manifesto-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: start;
-    max-width: 1200px;
-    margin: 60px auto 0;
-  }
+  /* ── METODO (SEÇÃO 4) ── */
+  .process { background: var(--gray-light); }
+  .process-steps { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
+  .process-step { padding: 32px 24px; background: var(--white); border-radius: 2px; border-top: 3px solid transparent; transition: all 0.3s; }
+  .process-step:hover { border-top-color: var(--orange); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--orange); margin-bottom: 16px; display: block; }
+  .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; color: var(--black); margin-bottom: 12px; }
+  .step-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
 
-  .manifesto-left .big-quote {
-    font-family: 'DM Serif Display', serif;
-    font-style: italic;
-    font-size: clamp(28px, 3.5vw, 48px);
-    color: var(--white);
-    line-height: 1.25;
-    border-left: 3px solid var(--orange);
-    padding-left: 32px;
-  }
-
-  .manifesto-left .big-quote em {
-    color: var(--orange);
-    font-style: normal;
-  }
-
-  .manifesto-right {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    padding-top: 8px;
-  }
-
-  .manifesto-item {
-    border-top: 1px solid rgba(255,255,255,0.08);
-    padding-top: 24px;
-  }
-
-  .manifesto-item h4 {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 8px;
-  }
-
-  .manifesto-item p {
-    font-size: 15px;
-    color: rgba(250,250,250,0.55);
-    line-height: 1.65;
-    font-weight: 300;
-  }
-
-  /* ── SERVICES ── */
-  .services {
-    background: var(--white);
-  }
-
-  .services-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 64px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    max-width: 1200px;
-    margin: 0 auto;
-    background: #e0e0e0;
-  }
-
-  .service-card {
-    background: var(--white);
-    padding: 52px 48px;
-    position: relative;
-    overflow: hidden;
-    cursor: default;
-    transition: background 0.3s;
-  }
-
-  .service-card:hover {
-    background: var(--black);
-  }
-
-  .service-card:hover .service-num,
-  .service-card:hover .service-title,
-  .service-card:hover .service-desc,
-  .service-card:hover .service-list li {
-    color: var(--white);
-  }
-
-  .service-card:hover .service-icon {
-    background: rgba(255,107,0,0.15);
-    color: var(--orange);
-  }
-
-  .service-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    color: var(--text-muted);
-    margin-bottom: 24px;
-    transition: color 0.3s;
-  }
-
-  .service-icon {
-    width: 52px; height: 52px;
-    background: var(--gray-light);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    margin-bottom: 24px;
-    transition: background 0.3s, color 0.3s;
-  }
-
-  .service-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 36px;
-    letter-spacing: 0.02em;
-    color: var(--black);
-    margin-bottom: 16px;
-    transition: color 0.3s;
-  }
-
-  .service-desc {
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--text-muted);
-    line-height: 1.7;
-    margin-bottom: 28px;
-    transition: color 0.3s;
-  }
-
-  .service-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  .service-list li {
-    font-size: 13px;
-    color: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    transition: color 0.3s;
-  }
-
-  .service-list li::before {
-    content: '';
-    width: 4px; height: 4px;
-    background: var(--orange);
-    border-radius: 50%;
-    flex-shrink: 0;
-  }
-
-  /* ── DIFERENCIAL / O QUE NÃO FAZEMOS ── */
-  .diff {
-    background: var(--black);
-    padding: 100px 48px;
-  }
-
-  .diff-table {
-    max-width: 900px;
-    margin: 60px auto 0;
-  }
-
-  .diff-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
-  }
-
-  .diff-row:first-child {
-    border-bottom: 1px solid rgba(255,107,0,0.4);
-    padding-bottom: 16px;
-    margin-bottom: 8px;
-  }
-
-  .diff-col {
-    padding: 20px 0;
-  }
-
-  .diff-col-header {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .diff-col-header.yes { color: var(--orange); }
-  .diff-col-header.no { color: rgba(250,250,250,0.25); }
-
-  .diff-col p {
-    font-size: 15px;
-    font-weight: 300;
-    line-height: 1.6;
-  }
-
-  .diff-col.yes-col p { color: rgba(250,250,250,0.85); }
-  .diff-col.no-col p {
-    color: rgba(250,250,250,0.25);
-    text-decoration: line-through;
-    text-decoration-color: rgba(255,107,0,0.4);
-  }
-
-  /* ── PROCESS ── */
-  .process {
-    background: var(--white);
-  }
-
-  .process-steps {
-    max-width: 1200px;
-    margin: 60px auto 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    position: relative;
-  }
-
-  .process-steps::before {
-    content: '';
-    position: absolute;
-    top: 36px; left: 10%; right: 10%;
-    height: 1px;
-    background: linear-gradient(to right, var(--orange), var(--orange-light), var(--orange));
-    opacity: 0.3;
-  }
-
-  .process-step {
-    padding: 0 24px;
-    text-align: center;
-  }
-
-  .step-num {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: var(--gray-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 28px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 28px;
-    color: var(--orange);
-    position: relative;
-    z-index: 1;
-    border: 2px solid transparent;
-    transition: background 0.3s, border-color 0.3s;
-  }
-
-  .process-step:hover .step-num {
-    background: var(--orange);
-    color: white;
-    border-color: var(--orange);
-  }
-
-  .step-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
-    letter-spacing: 0.05em;
-    color: var(--black);
-    margin-bottom: 12px;
-  }
-
-  .step-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    line-height: 1.65;
-    font-weight: 300;
-  }
-
-  /* ── CASE DESTAQUE ── */
-  .case-destaque {
-    background: var(--black);
-    padding: 100px 48px;
-  }
-
-  .case-grid {
-    max-width: 1200px;
-    margin: 60px auto 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-
-  .case-story h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(36px, 4vw, 56px);
-    color: var(--white);
-    line-height: 0.95;
-    margin-bottom: 24px;
-  }
-
+  /* ── DEPOIMENTOS (SEÇÃO 5) ── */
+  .case-destaque { background: var(--black); padding: 100px 48px; }
+  .case-grid { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .case-story h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 56px); color: var(--white); line-height: 0.95; margin-bottom: 24px; }
   .case-story h3 span { color: var(--orange); }
-
-  .case-story p {
-    font-size: 16px;
-    font-weight: 300;
-    color: rgba(250,250,250,0.55);
-    line-height: 1.7;
-    margin-bottom: 32px;
-  }
-
-  .audio-player {
-    background: rgba(255,107,0,0.08);
-    border: 1px solid rgba(255,107,0,0.2);
-    border-radius: 4px;
-    padding: 20px 24px;
-  }
-
-  .audio-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 12px;
-  }
-
-  .audio-player audio {
-    width: 100%;
-    height: 36px;
-    accent-color: var(--orange);
-  }
-
-  .audio-note {
-    font-size: 12px;
-    color: rgba(250,250,250,0.3);
-    margin-top: 10px;
-    font-style: italic;
-  }
-
-  .case-images {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
-
-  .case-img {
-    border-radius: 4px;
-    overflow: hidden;
-  }
-
-  .case-img img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.4s;
-  }
-
+  .case-story p { font-size: 16px; font-weight: 300; color: rgba(250,250,250,0.55); line-height: 1.7; margin-bottom: 32px; }
+  .audio-player { background: rgba(255,107,0,0.08); border: 1px solid rgba(255,107,0,0.2); border-radius: 4px; padding: 20px 24px; }
+  .audio-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 12px; }
+  .audio-player audio { width: 100%; height: 36px; accent-color: var(--orange); }
+  .audio-note { font-size: 12px; color: rgba(250,250,250,0.3); margin-top: 10px; font-style: italic; }
+  .case-images { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .case-img { border-radius: 4px; overflow: hidden; }
+  .case-img img { width: 100%; height: auto; display: block; transition: transform 0.4s; }
   .case-img:hover img { transform: scale(1.02); }
+  .case-img.large { grid-column: span 2; }
 
-  .case-img.large {
-    grid-column: span 2;
-  }
-
-  /* ── PORTFOLIO PLACEHOLDER ── */
-  .portfolio {
-    background: var(--gray-light);
-    padding: 100px 48px;
-  }
-
-  .portfolio-grid {
-    max-width: 1200px;
-    margin: 60px auto 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    align-items: start;
-  }
-
-  .portfolio-item {
-    background: #111;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-
-  .portfolio-item img {
-    width: 100%;
-    height: auto;
-    display: block;
-    transition: transform 0.4s;
-  }
-
+  /* PORTFOLIO (MANTER PROVAS) */
+  .portfolio { background: var(--white); padding: 100px 48px; border-top: 1px solid rgba(0,0,0,0.05); }
+  .portfolio-grid { max-width: 1200px; margin: 40px auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .portfolio-item { background: #111; border-radius: 4px; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s; }
+  .portfolio-item img { width: 100%; height: auto; display: block; transition: transform 0.4s; }
   .portfolio-item:hover img { transform: scale(1.02); }
-  .portfolio-item:hover { transform: scale(1.01); }
-
-  .portfolio-item.large {
-    grid-column: span 2;
-  }
-
-  .portfolio-item:not(.large) {
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .portfolio-item:not(.large) img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .portfolio-item.soon-item {
-    aspect-ratio: 4/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .portfolio-soon {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 100%;
-    height: 100%;
-  }
-
-  .soon-ring {
-    width: 40px; height: 40px;
-    border: 1px solid rgba(255,107,0,0.4);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .soon-dot {
-    width: 10px; height: 10px;
-    background: var(--orange);
-    border-radius: 50%;
-  }
-
-  .soon-text {
-    font-size: 11px;
-    color: rgba(255,255,255,0.25);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-  }
-
-  .portfolio-tag {
-    position: absolute;
-    bottom: 16px; left: 16px;
-    background: var(--orange);
-    color: white;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 5px 12px;
-    border-radius: 2px;
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-
+  .portfolio-item.large { grid-column: span 2; }
+  .portfolio-item:not(.large) { aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; }
+  .portfolio-item:not(.large) img { width: 100%; height: 100%; object-fit: contain; }
+  .portfolio-tag { position: absolute; bottom: 16px; left: 16px; background: var(--orange); color: white; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 5px 12px; border-radius: 2px; opacity: 0; transition: opacity 0.3s; }
   .portfolio-item:hover .portfolio-tag { opacity: 1; }
+  .portfolio-soon { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; width: 100%; height: 100%; background: #111;}
+  .soon-ring { width: 40px; height: 40px; border: 1px solid rgba(255,107,0,0.4); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+  .soon-dot { width: 10px; height: 10px; background: var(--orange); border-radius: 50%; }
+  .soon-text { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.15em; text-transform: uppercase; }
 
-  /* ── CTA BANNER ── */
-  .cta-banner {
-    background: var(--orange);
-    padding: 80px 48px;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
+  /* ── DIFERENCIAL (SEÇÃO 6) ── */
+  .diff { background: var(--black); padding: 100px 48px; }
+  .diff-content { max-width: 800px; margin: 48px auto 0; text-align: left; }
+  .diff-text { font-size: 18px; color: rgba(250,250,250,0.75); font-weight: 300; line-height: 1.7; margin-bottom: 24px; }
+  .diff-highlight { border-left: 3px solid var(--orange); padding-left: 24px; color: var(--white); font-size: 20px; font-weight: 400; margin-top: 32px; }
 
-  .cta-banner::before {
-    content: 'TOMORROW';
-    position: absolute;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(80px, 18vw, 280px);
-    color: rgba(255,255,255,0.07);
-    white-space: nowrap;
-    pointer-events: none;
-    letter-spacing: 0.05em;
-  }
-
-  .cta-banner h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(44px, 7vw, 96px);
-    color: white;
-    line-height: 0.95;
-    margin-bottom: 24px;
-    position: relative;
-  }
-
-  .cta-banner p {
-    font-size: 18px;
-    color: rgba(255,255,255,0.75);
-    font-weight: 300;
-    margin-bottom: 48px;
-    max-width: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    line-height: 1.6;
-  }
-
-  .btn-white {
-    background: white;
-    color: var(--orange);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 18px 44px;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    position: relative;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .btn-white:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(0,0,0,0.2);
-  }
+  /* ── SEÇÃO 7 (SISTEMA TMW - REDIRECIONAMENTO) ── */
+  .sistema { background: var(--black); padding: 100px 48px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
+  .sistema-layout { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; text-align: left; }
+  .sistema-info p { font-size: 18px; color: rgba(250,250,250,0.6); line-height: 1.6; font-weight: 300; }
+  
+  /* Formulário de Conversão */
+  .form-container { background: #111; padding: 48px; border: 1px solid rgba(255,107,0,0.15); border-radius: 4px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--orange); margin-bottom: 8px; }
+  .form-group input { width: 100%; background: #1a1a1a; border: 1px solid rgba(255,255,255,0.1); padding: 14px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 14px; border-radius: 2px; transition: border-color 0.2s; }
+  .form-group input:focus { outline: none; border-color: var(--orange); }
+  .btn-submit { width: 100%; background: var(--orange); color: white; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 16px; cursor: pointer; border-radius: 2px; transition: background 0.2s; margin-top: 10px; }
+  .btn-submit:hover { background: var(--orange-dim); }
 
   /* ── FOOTER ── */
-  footer {
-    background: var(--black);
-    padding: 64px 48px 40px;
-  }
-
-  .footer-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-bottom: 48px;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    margin-bottom: 40px;
-  }
-
-  .footer-logo img {
-    height: 36px;
-  }
-
-  .footer-tagline {
-    font-size: 13px;
-    color: rgba(250,250,250,0.3);
-    margin-top: 12px;
-    letter-spacing: 0.04em;
-  }
-
-  .footer-links {
-    display: flex;
-    gap: 64px;
-  }
-
-  .footer-col h5 {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 20px;
-  }
-
-  .footer-col ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .footer-col a {
-    font-size: 14px;
-    color: rgba(250,250,250,0.45);
-    text-decoration: none;
-    font-weight: 300;
-    transition: color 0.2s;
-  }
-
-  .footer-col a:hover { color: white; }
-
-  .footer-bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .footer-bottom p {
-    font-size: 12px;
-    color: rgba(250,250,250,0.2);
-    letter-spacing: 0.04em;
-  }
-
-  .footer-bottom span {
-    color: var(--orange);
-  }
+  footer { background: var(--black); padding: 64px 48px 40px; border-top: 1px solid rgba(255,255,255,0.06); }
+  .footer-top { display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 48px; }
+  .footer-logo img { height: 36px; }
+  .footer-tagline { font-size: 13px; color: rgba(250,250,250,0.3); margin-top: 12px; letter-spacing: 0.04em; }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: rgba(250,250,250,0.2); }
+  .footer-bottom span { color: var(--orange); }
 
   /* ── SCROLL ANIMATIONS ── */
-  .reveal {
-    opacity: 0;
-    transform: translateY(32px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
   .reveal-delay-1 { transition-delay: 0.1s; }
   .reveal-delay-2 { transition-delay: 0.2s; }
   .reveal-delay-3 { transition-delay: 0.3s; }
-  .reveal-delay-4 { transition-delay: 0.4s; }
 
-  /* ── RESPONSIVE ── */
-  /* ── HAMBURGER ── */
-  .hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    padding: 4px;
-    background: none;
-    border: none;
-  }
-
-  .hamburger span {
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--black);
-    border-radius: 2px;
-    transition: all 0.3s;
-  }
-
-  .mobile-menu {
-    display: none;
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: var(--black);
-    z-index: 99;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-  }
-
+  /* Hamburger Menu Mobile */
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--black); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
   .mobile-menu.open { display: flex; }
-
-  .mobile-menu a {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 48px;
-    color: var(--white);
-    text-decoration: none;
-    letter-spacing: 0.05em;
-    transition: color 0.2s;
-  }
-
-  .mobile-menu a:hover { color: var(--orange); }
-
-  .mobile-menu .close-btn {
-    position: absolute;
-    top: 24px; right: 24px;
-    font-size: 32px;
-    color: var(--white);
-    background: none;
-    border: none;
-    cursor: pointer;
-    line-height: 1;
-  }
+  .mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--white); text-decoration: none; letter-spacing: 0.05em; }
+  .mobile-menu .close-btn { position: absolute; top: 24px; right: 24px; font-size: 32px; color: var(--white); background: none; border: none; }
 
   @media (max-width: 900px) {
     nav { padding: 18px 24px; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    section, .hero, .manifesto, .diff, .portfolio, .cta-banner, footer, .case-destaque { padding-left: 24px; padding-right: 24px; }
-    .manifesto-grid { grid-template-columns: 1fr; gap: 48px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .process-steps { grid-template-columns: repeat(2, 1fr); gap: 40px; }
-    .process-steps::before { display: none; }
+    section, .hero, .manifesto, .diff, .portfolio, .sistema, footer, .case-destaque { padding-left: 24px; padding-right: 24px; }
+    .manifesto-grid, .case-grid, .sistema-layout { grid-template-columns: 1fr; gap: 40px; }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item.large { grid-column: span 1; }
-    .case-grid { grid-template-columns: 1fr; gap: 24px; }
-    .case-img.large { grid-column: span 1; }
     .case-images { grid-template-columns: 1fr; }
-    .hero-stats { position: static; margin-top: 60px; justify-content: flex-start; }
-    .footer-top { flex-direction: column; gap: 40px; }
-    .footer-links { gap: 40px; }
-    .services-header { flex-direction: column; gap: 20px; align-items: flex-start; }
-    .diff-row { grid-template-columns: 1fr; }
-    .diff-col.no-col { display: block; }
-    .diff-col.no-col p { color: rgba(250,250,250,0.25); font-size: 13px; }
+    .case-img.large { grid-column: span 1; }
+    .footer-top { flex-direction: column; gap: 32px; }
+    .form-container { padding: 28px; }
   }
-
-  /* ── SISTEMA TMW ── */
-  .sistema {
-    background: var(--black);
-    padding: 100px 48px;
-  }
-
-  .sistema-header {
-    max-width: 1200px;
-    margin: 0 auto 64px;
-  }
-
-  .sistema-intro {
-    font-size: 17px;
-    font-weight: 300;
-    color: rgba(250,250,250,0.5);
-    line-height: 1.7;
-    max-width: 520px;
-    margin-top: 20px;
-  }
-
-  .sistema-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-    max-width: 1200px;
-    margin: 0 auto 64px;
-    background: rgba(255,255,255,0.05);
-  }
-
-  .sistema-card {
-    background: var(--black);
-    padding: 48px;
-    position: relative;
-    text-decoration: none;
-    display: block;
-    transition: background 0.25s;
-    border: 1px solid transparent;
-  }
-
-  .sistema-card:hover {
-    background: #141414;
-    border-color: rgba(255,107,0,0.2);
-  }
-
-  .sistema-card-num {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 13px;
-    letter-spacing: 0.2em;
-    color: var(--orange);
-    margin-bottom: 32px;
-  }
-
-  .sistema-card-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 32px;
-    letter-spacing: 0.02em;
-    color: var(--white);
-    margin-bottom: 14px;
-    line-height: 1;
-  }
-
-  .sistema-card-desc {
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(250,250,250,0.45);
-    line-height: 1.7;
-    margin-bottom: 28px;
-  }
-
-  .sistema-card-reveal {
-    font-size: 13px;
-    color: rgba(250,250,250,0.3);
-    line-height: 1.6;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    margin-bottom: 24px;
-  }
-
-  .sistema-card-reveal strong {
-    color: var(--orange);
-    font-weight: 500;
-  }
-
-  .sistema-card-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--orange);
-    padding: 10px 18px;
-    border: 1px solid rgba(255,107,0,0.3);
-    border-radius: 2px;
-    transition: background 0.2s, border-color 0.2s;
-  }
-
-  .sistema-card:hover .sistema-card-btn {
-    background: rgba(255,107,0,0.1);
-    border-color: var(--orange);
-  }
-
-  .sistema-card-arrow {
-    position: absolute;
-    top: 48px; right: 48px;
-    font-size: 18px;
-    color: rgba(255,107,0,0.2);
-    transition: color 0.2s, transform 0.2s;
-  }
-
-  .sistema-card:hover .sistema-card-arrow {
-    color: var(--orange);
-    transform: translate(3px, -3px);
-  }
-
-  .sistema-cta {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 32px;
-    flex-wrap: wrap;
-    padding-top: 48px;
-    border-top: 1px solid rgba(255,255,255,0.06);
-  }
-
-  .sistema-cta p {
-    font-size: 15px;
-    font-weight: 300;
-    color: rgba(250,250,250,0.4);
-    line-height: 1.65;
-    max-width: 480px;
-  }
-
-  .btn-sistema {
-    background: transparent;
-    color: var(--orange);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 14px 28px;
-    border: 1px solid rgba(255,107,0,0.4);
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s, border-color 0.2s;
-    white-space: nowrap;
-  }
-
-  .btn-sistema:hover {
-    background: rgba(255,107,0,0.08);
-    border-color: var(--orange);
-  }
-
-  @media (max-width: 768px) {
-    .sistema { padding: 80px 24px; }
-    .sistema-grid { grid-template-columns: 1fr; }
-    .sistema-card { padding: 36px 28px; }
-    .sistema-cta { flex-direction: column; align-items: flex-start; }
+  @media (max-width: 600px) {
+    .process-steps { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">
     <img src="tmw-logo.png" alt="Tomorrow Marketing">
   </div>
   <ul class="nav-links">
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#metodo">Método</a></li>
-    <li><a href="#trabalhos">Trabalhos</a></li>
-    <li><a href="#sistema">Sistema TMW</a></li>
-    <li><a href="#contato" class="nav-cta">Falar com a Tomorrow</a></li>
+    <li><a href="#foco">O que Importa</a></li>
+    <li><a href="#metodo">Nosso Método</a></li>
+    <li><a href="#trabalhos">Resultados</a></li>
+    <li><a href="#diagnostico" class="nav-cta">Fazer Diagnóstico</a></li>
   </ul>
   <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
-  <a href="#servicos" onclick="document.getElementById('mobileMenu').classList.remove('open')">Serviços</a>
-  <a href="#metodo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Método</a>
-  <a href="#trabalhos" onclick="document.getElementById('mobileMenu').classList.remove('open')">Trabalhos</a>
-  <a href="#sistema" onclick="document.getElementById('mobileMenu').classList.remove('open')">Sistema TMW</a>
-  <a href="#contato" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--orange);">Falar com a Tomorrow</a>
+  <a href="#foco" onclick="document.getElementById('mobileMenu').classList.remove('open')">O que Importa</a>
+  <a href="#metodo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosso Método</a>
+  <a href="#trabalhos" onclick="document.getElementById('mobileMenu').classList.remove('open')">Resultados</a>
+  <a href="#diagnostico" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--orange);">Fazer Diagnóstico</a>
 </div>
 
-<!-- HERO -->
 <section class="hero" id="inicio">
-  <div class="hero-tag">Tomorrow Marketing — Ribeirão Preto, SP</div>
-  <h1>Marketing<br>que assume<br><span>posição.</span></h1>
-  <p class="hero-sub">Não fazemos conteúdo para parecer bem. Fazemos comunicação para vender, conectar e deixar marca. Com narrativa, estratégia e ponto de vista.</p>
+  <div class="hero-tag">Tomorrow Marketing — Estrutura de Vendas</div>
+  <h1>Construa uma<br>estrutura comercial<br>que escala em <span>60 dias.</span></h1>
+  <p class="hero-sub">Até para empresas que estão totalmente fora do digital.</p>
   <div class="hero-actions">
-    <a href="#contato" class="btn-primary">Quero trabalhar com vocês</a>
-    <a href="#servicos" class="btn-ghost">Ver serviços</a>
+    <a href="#diagnostico" class="btn-primary">Fazer diagnóstico comercial</a>
   </div>
-  <div class="hero-stats">
-    <div class="stat">
-      <div class="stat-num">4</div>
-      <div class="stat-label">Frentes de entrega</div>
+  
+  <div class="hero-timeline reveal">
+    <div class="timeline-step">
+      <div class="timeline-day">1º Dia</div>
+      <div class="timeline-text">Diagnóstico profundo do fluxo de vendas.</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">1</div>
-      <div class="stat-label">Método</div>
+    <div class="timeline-step">
+      <div class="timeline-day">5º Dia</div>
+      <div class="timeline-text">Aplicação e disparo dos primeiros testes ativos.</div>
     </div>
-    <div class="stat">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Post genérico</div>
+    <div class="timeline-step">
+      <div class="timeline-day">15º Dia</div>
+      <div class="timeline-text">Coleta detalhada e análise dos primeiros resultados.</div>
+    </div>
+    <div class="timeline-step">
+      <div class="timeline-day">20º Dia</div>
+      <div class="timeline-text">Otimização completa e ajustes do fluxo comercial.</div>
+    </div>
+    <div class="timeline-step final">
+      <div class="timeline-day">Resultado</div>
+      <div class="timeline-text" style="color:var(--white); font-weight:500;">Aumento consistente e previsibilidade real de receita.</div>
     </div>
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span>IDENTIDADE</span><span class="dot">◆</span>
-    <span>PRESENÇA ESTRATÉGICA</span><span class="dot">◆</span>
-    <span>CAMPANHA</span><span class="dot">◆</span>
-    <span>DIREÇÃO AUDIOVISUAL</span><span class="dot">◆</span>
-    <span>NARRATIVA</span><span class="dot">◆</span>
-    <span>SINCERICÍDIO</span><span class="dot">◆</span>
-    <span>IDENTIDADE</span><span class="dot">◆</span>
-    <span>PRESENÇA ESTRATÉGICA</span><span class="dot">◆</span>
-    <span>CAMPANHA</span><span class="dot">◆</span>
-    <span>DIREÇÃO AUDIOVISUAL</span><span class="dot">◆</span>
-    <span>NARRATIVA</span><span class="dot">◆</span>
-    <span>SINCERICÍDIO</span><span class="dot">◆</span>
+    <span>ESTRUTURA COMERCIAL</span><span class="dot">◆</span>
+    <span>FOCO EM VENDAS</span><span class="dot">◆</span>
+    <span>CRESCIMENTO EM 60 DIAS</span><span class="dot">◆</span>
+    <span>PREVISIBILIDADE</span><span class="dot">◆</span>
+    <span>MÉTODO VALIDADO</span><span class="dot">◆</span>
+    <span>SEM ACHISMOS</span><span class="dot">◆</span>
+    <span>ESTRUTURA COMERCIAL</span><span class="dot">◆</span>
+    <span>FOCO EM VENDAS</span><span class="dot">◆</span>
+    <span>CRESCIMENTO EM 60 DIAS</span><span class="dot">◆</span>
+    <span>PREVISIBILIDADE</span><span class="dot">◆</span>
+    <span>MÉTODO VALIDADO</span><span class="dot">◆</span>
+    <span>SEM ACHISMOS</span><span class="dot">◆</span>
   </div>
 </div>
 
-<!-- MANIFESTO -->
-<section class="manifesto">
-  <div class="section-label reveal">Nosso ponto de vista</div>
-  <div class="section-title light reveal reveal-delay-1">O problema<br>não é o mercado.</div>
+<section class="manifesto" id="foco">
+  <div class="section-label reveal">O Fim da Vaidade</div>
+  <div class="section-title light reveal reveal-delay-1">Você não precisa de mais posts.<br>Precisa de mais vendas.</div>
   <div class="manifesto-grid">
     <div class="manifesto-left reveal">
       <p class="big-quote">
-        A maioria das agências entrega <em>conteúdo.</em><br>
-        A Tomorrow entrega <em>comunicação</em> — que tem intenção, narrativa e consequência.
+        As agências tradicionais prometem resultados extraordinários, mas no fim sua empresa só fica com <em>curtidas, comentários e seguidores.</em>
+      </p>
+      <p class="context-text">
+        É exatamente por isso que a estrutura de vendas ponta a ponta da Tomorrow dedica todos os recursos, estratégias e tempo disponível para o que realmente põe dinheiro no seu caixa:
       </p>
     </div>
     <div class="manifesto-right">
       <div class="manifesto-item reveal reveal-delay-1">
-        <h4>Lógica convence. Absurdo converte.</h4>
-        <p>Construímos comunicação que cria memória emocional antes de fazer oferta. O produto aparece quando o contexto já está armado.</p>
+        <h4>Processos de Retenção</h4>
+        <p>Criamos mecanismos para reter clientes, garantindo que eles comprem mais vezes de você e ativamente indiquem o seu negócio.</p>
       </div>
       <div class="manifesto-item reveal reveal-delay-2">
-        <h4>Design é ferramenta de venda.</h4>
-        <p>Não fazemos arte bonita que ninguém compra. Fazemos peças que conduzem o olhar, criam desejo e provocam ação.</p>
+        <h4>Treinamento Comercial Comercial</h4>
+        <p>Treinamos o seu time comercial para transformar toda a nova demanda digital em oportunidades reais de fechamento, extraindo o máximo de valor de cada contato.</p>
       </div>
       <div class="manifesto-item reveal reveal-delay-3">
-        <h4>Sincericídio como estratégia.</h4>
-        <p>Honestidade radical não é fraqueza de marca — é o diferencial mais difícil de copiar. Marcas que assumem posição criam fãs, não só clientes.</p>
+        <h4>Injeção de Caixa Rápida</h4>
+        <p>Aumentamos a demanda de novos clientes usando estratégias combinadas de marketing direto e vendas agressivas para gerar resultados imediatos.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="services" id="servicos">
-  <div class="services-header reveal">
-    <div>
-      <div class="section-label">O que fazemos</div>
-      <div class="section-title">Quatro frentes.<br>Um método.</div>
-    </div>
-    <p class="section-desc">Cada entrega carrega o mesmo ponto de vista — o serviço muda de formato, o método não muda.</p>
-  </div>
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <div class="service-icon">◈</div>
-      <div class="service-title">Identidade</div>
-      <p class="service-desc">Como sua marca aparece e o que ela comunica antes mesmo de abrir a boca. Não fazemos "logo bonito" — construímos sistema visual com intenção estratégica.</p>
-      <ul class="service-list">
-        <li>Identidade visual completa</li>
-        <li>Manual de marca</li>
-        <li>Aplicações e peças institucionais</li>
-        <li>Redesign e reposicionamento visual</li>
-      </ul>
-    </div>
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">02</div>
-      <div class="service-icon">◉</div>
-      <div class="service-title">Presença Estratégica</div>
-      <p class="service-desc">Gestão de conteúdo e tráfego pago com narrativa — não calendário de posts. Sua marca existe todo dia com consistência e ponto de vista.</p>
-      <ul class="service-list">
-        <li>Gestão de social media</li>
-        <li>Estratégia de conteúdo narrativo</li>
-        <li>Tráfego pago (Meta Ads & Google Ads)</li>
-        <li>Relatórios com análise estratégica</li>
-      </ul>
-    </div>
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">03</div>
-      <div class="service-icon">◎</div>
-      <div class="service-title">Campanha</div>
-      <p class="service-desc">Projetos com começo, meio e fim. Conceito criativo, narrativa de campanha, mídia e produção. Do briefing ao ar — com intenção cinematográfica.</p>
-      <ul class="service-list">
-        <li>Conceito e estratégia criativa</li>
-        <li>Desenvolvimento de campanha 360°</li>
-        <li>Planejamento e veiculação de mídia</li>
-        <li>Direção de arte e produção</li>
-      </ul>
-    </div>
-    <div class="service-card reveal reveal-delay-3">
-      <div class="service-num">04</div>
-      <div class="service-icon">▶</div>
-      <div class="service-title">Direção Audiovisual</div>
-      <p class="service-desc">Vídeo com ponto de vista. Não fazemos "filmagem de produto" — fazemos narrativa em movimento. Do roteiro à direção, com identidade de cada frame.</p>
-      <ul class="service-list">
-        <li>Roteiro e direção criativa</li>
-        <li>Produção de vídeo institucional</li>
-        <li>Conteúdo para redes e campanhas</li>
-        <li>Reels, VTs e conteúdo cinematográfico</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- O QUE NÃO FAZEMOS -->
-<section class="diff" id="metodo">
-  <div class="section-label reveal" style="color: var(--orange)">Filtro de cliente</div>
-  <div class="section-title light reveal reveal-delay-1">O que fazemos.<br>O que não fazemos.</div>
-  <div class="diff-table">
-    <div class="diff-row">
-      <div class="diff-col diff-col-header yes"><span class="diff-col-header yes">✓ Tomorrow faz</span></div>
-      <div class="diff-col diff-col-header no"><span class="diff-col-header no">✗ Tomorrow não faz</span></div>
-    </div>
-    <div class="diff-row reveal">
-      <div class="diff-col yes-col"><p>Comunicação com narrativa e intenção de venda</p></div>
-      <div class="diff-col no-col"><p>Post bonito sem estratégia por trás</p></div>
-    </div>
-    <div class="diff-row reveal reveal-delay-1">
-      <div class="diff-col yes-col"><p>Marca com ponto de vista e voz própria</p></div>
-      <div class="diff-col no-col"><p>Identidade visual genérica que serve pra qualquer empresa</p></div>
-    </div>
-    <div class="diff-row reveal reveal-delay-2">
-      <div class="diff-col yes-col"><p>Campanhas com conceito criativo real</p></div>
-      <div class="diff-col no-col"><p>Impulsionamento de post sem estratégia</p></div>
-    </div>
-    <div class="diff-row reveal reveal-delay-3">
-      <div class="diff-col yes-col"><p>Clientes que acreditam no processo criativo</p></div>
-      <div class="diff-col no-col"><p>Cliente que quer aprovar tudo antes de postar</p></div>
-    </div>
-    <div class="diff-row reveal">
-      <div class="diff-col yes-col"><p>Parceria de longo prazo com visão de negócio</p></div>
-      <div class="diff-col no-col"><p>"Faz igual ao concorrente, mas mais barato"</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- PROCESSO -->
-<section class="process">
+<section class="numbers-section">
   <div style="max-width:1200px; margin: 0 auto;">
-    <div class="section-label reveal">Como trabalhamos</div>
-    <div class="section-title reveal reveal-delay-1">Do diagnóstico<br>à execução.</div>
+    <div class="section-label reveal">Sem Achismos</div>
+    <div class="section-title reveal reveal-delay-1">O que realmente importa?<br>Os números que avaliamos.</div>
+  </div>
+  
+  <div class="numbers-grid">
+    <div class="number-card reveal">
+      <div class="card-icon">💰</div>
+      <h4>Qual o lucro líquido?</h4>
+    </div>
+    <div class="number-card reveal reveal-delay-1">
+      <div class="card-icon">📈</div>
+      <h4>Quanto faturamos?</h4>
+    </div>
+    <div class="number-card reveal reveal-delay-2">
+      <div class="card-icon">🎯</div>
+      <h4>Quanto foi investido?</h4>
+    </div>
+    <div class="number-card reveal reveal-delay-3">
+      <div class="card-icon">🚀</div>
+      <h4>Qual o retorno sobre o investimento (ROI)?</h4>
+    </div>
+  </div>
+  
+  <div class="numbers-footer reveal">
+    Como podemos aumentar esses resultados? Simples assim.
+  </div>
+</section>
+
+<section class="process" id="metodo">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal">Metodologia TMW</div>
+    <div class="section-title reveal reveal-delay-1">Nosso método é 100%<br>focado em vendas.</div>
   </div>
   <div class="process-steps">
     <div class="process-step reveal">
-      <div class="step-num">01</div>
-      <div class="step-title">Diagnóstico</div>
-      <p class="step-desc">Entendemos o negócio, o mercado, o cliente e onde está o gap de comunicação real.</p>
+      <span class="step-num">01</span>
+      <h3 class="step-title">Exploração</h3>
+      <p class="step-desc">O primeiro passo é fazer um processo rigoroso de testes, ofertando o seu produto ou serviço de diferentes maneiras, em diferentes canais, para diferentes pessoas, e assim coletar os dados que vão nos mostrar onde está a “mina de ouro” do seu negócio.</p>
     </div>
     <div class="process-step reveal reveal-delay-1">
-      <div class="step-num">02</div>
-      <div class="step-title">Posicionamento</div>
-      <p class="step-desc">Definimos o ponto de vista da marca — a voz, o tom, o que se diz e o que nunca se diz.</p>
+      <span class="step-num">02</span>
+      <h3 class="step-title">Lapidação</h3>
+      <p class="step-desc">Agora que sabemos exatamente o que funciona, o próximo passo é lapidar o processo para otimizar os custos e aumentar a conversão. É o famoso conceito de "fazer muito mais com bem menos".</p>
     </div>
     <div class="process-step reveal reveal-delay-2">
-      <div class="step-num">03</div>
-      <div class="step-title">Estratégia</div>
-      <p class="step-desc">Construímos o plano — canais, formatos, narrativa e como cada peça se conecta ao próximo passo.</p>
+      <span class="step-num">03</span>
+      <h3 class="step-title">Escala</h3>
+      <p class="step-desc">Com as métricas validadas e os resultados otimizados, aumentamos estrategicamente o investimento e o retorno, implementando o que foi validado para dominar e explorar novas oportunidades de mercado.</p>
     </div>
     <div class="process-step reveal reveal-delay-3">
-      <div class="step-num">04</div>
-      <div class="step-title">Execução</div>
-      <p class="step-desc">Criamos, produzimos e entregamos com autonomia criativa e responsabilidade pelos resultados.</p>
+      <span class="step-num">04</span>
+      <h3 class="step-title">Extração</h3>
+      <p class="step-desc">As três primeiras etapas geram tração e caixa. Porém, é o processo de extração que garante o lucro máximo da sua base de leads e clientes, usando estratégias robustas de retenção, remarketing ativo e uma esteira de produtos eficiente.</p>
     </div>
   </div>
 </section>
 
-<!-- CASE DESTAQUE — CARIJÓ -->
 <section class="case-destaque" id="trabalhos">
   <div style="max-width:1200px; margin: 0 auto;">
-    <div class="section-label reveal">Case em destaque</div>
+    <div class="section-label reveal">Histórias de Sucesso</div>
     <div class="section-title light reveal reveal-delay-1">Restaurante Carijó.<br>Arceburgo, MG.</div>
   </div>
   <div class="case-grid">
@@ -1504,14 +580,12 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- PORTFOLIO -->
 <section class="portfolio">
   <div style="max-width:1200px; margin: 0 auto;">
-    <div class="section-label reveal">Mais trabalhos</div>
-    <div class="section-title reveal reveal-delay-1">O que já<br>construímos.</div>
+    <div class="section-label reveal">Mais Resultados</div>
+    <div class="section-title reveal reveal-delay-1">Provas Reais de<br>Crescimento Comercial.</div>
   </div>
 
-  <!-- Razze Turismo -->
   <div style="max-width:1200px; margin: 32px auto 0;">
     <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:16px;" class="reveal">Rebranding · Razze Turismo</div>
   </div>
@@ -1524,7 +598,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
       <img src="4_3_03.png" alt="Razze Turismo depoimento">
       <span class="portfolio-tag">Resultado · Contrato fechado</span>
     </div>
-    <div class="portfolio-item soon-item reveal reveal-delay-2">
+    <div class="portfolio-item reveal reveal-delay-2">
       <div class="portfolio-soon">
         <div class="soon-ring"><div class="soon-dot"></div></div>
         <div class="soon-text">Em breve</div>
@@ -1532,7 +606,6 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     </div>
   </div>
 
-  <!-- Método Start -->
   <div style="max-width:1200px; margin: 0 auto;">
     <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:16px;" class="reveal">Identidade · Método Start</div>
   </div>
@@ -1545,7 +618,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
       <img src="4_3_05.png" alt="Método Start depoimento">
       <span class="portfolio-tag">Resultado · 20 alunos matriculados</span>
     </div>
-    <div class="portfolio-item soon-item reveal reveal-delay-2">
+    <div class="portfolio-item reveal reveal-delay-2">
       <div class="portfolio-soon">
         <div class="soon-ring"><div class="soon-dot"></div></div>
         <div class="soon-text">Em breve</div>
@@ -1554,90 +627,62 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- SISTEMA TMW -->
-<section class="sistema" id="sistema">
-  <div class="sistema-header reveal">
-    <div class="section-label" style="color:var(--orange)">Sistema TMW</div>
-    <div class="section-title light">Antes da estratégia,<br>você precisa de clareza.</div>
-    <p class="sistema-intro">4 diagnósticos gratuitos que revelam o que está travando seu marketing — posicionamento, marca, cliente e conteúdo. Faça antes da nossa conversa.</p>
+<section class="diff">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal" style="color: var(--orange)">Projetos Exclusivos</div>
+    <div class="section-title light reveal reveal-delay-1">Por que não temos<br>“planos Premium, Gold e Start”?</div>
   </div>
-
-  <div class="sistema-grid">
-    <a href="diagnostico.html" class="sistema-card reveal">
-      <div class="sistema-card-arrow">↗</div>
-      <div class="sistema-card-num">01 — Diagnóstico de Marketing</div>
-      <div class="sistema-card-title">Onde está o gap.</div>
-      <p class="sistema-card-desc">15 perguntas que mapeiam 5 áreas do seu marketing e identificam onde você está perdendo resultado agora.</p>
-      <div class="sistema-card-reveal"><strong>Você descobre:</strong> posicionamento, conteúdo, audiência, distribuição e métricas — tudo em um relatório visual.</div>
-      <div class="sistema-card-btn">Fazer diagnóstico →</div>
-    </a>
-
-    <a href="arquetipo.html" class="sistema-card reveal reveal-delay-1">
-      <div class="sistema-card-arrow">↗</div>
-      <div class="sistema-card-num">02 — Arquétipo de Marca</div>
-      <div class="sistema-card-title">Quem você é de verdade.</div>
-      <p class="sistema-card-desc">17 perguntas que mapeiam o arquétipo do dono e da marca — e revelam se os dois estão alinhados.</p>
-      <div class="sistema-card-reveal"><strong>Você descobre:</strong> seu arquétipo dominante, o da marca, e o gap entre os dois — o que explica inconsistências na comunicação.</div>
-      <div class="sistema-card-btn">Descobrir arquétipo →</div>
-    </a>
-
-    <a href="persona.html" class="sistema-card reveal reveal-delay-2">
-      <div class="sistema-card-arrow">↗</div>
-      <div class="sistema-card-num">03 — Persona do Cliente Ideal</div>
-      <div class="sistema-card-title">Como seu cliente decide.</div>
-      <p class="sistema-card-desc">10 perguntas que revelam o perfil comportamental de quem compra de você — e o que o faz não comprar.</p>
-      <div class="sistema-card-reveal"><strong>Você descobre:</strong> como o cliente descobre, decide, o que trava e o que convence — e o que sua comunicação precisa mudar.</div>
-      <div class="sistema-card-btn">Mapear persona →</div>
-    </a>
-
-    <a href="linha-editorial.html" class="sistema-card reveal reveal-delay-3">
-      <div class="sistema-card-arrow">↗</div>
-      <div class="sistema-card-num">04 — Linha Editorial</div>
-      <div class="sistema-card-title">O que publicar.</div>
-      <p class="sistema-card-desc">8 perguntas que avaliam a maturidade da sua estratégia de conteúdo e entregam os pilares certos para o seu segmento.</p>
-      <div class="sistema-card-reveal"><strong>Você descobre:</strong> o gargalo do seu conteúdo e um preview de 2 semanas de publicações prontas para usar.</div>
-      <div class="sistema-card-btn">Analisar linha editorial →</div>
-    </a>
-  </div>
-
-  <div class="sistema-cta reveal">
-    <p>Prefere fazer os 4 diagnósticos de uma vez? Acesse o Sistema TMW completo e chegue na nossa conversa com clareza total.</p>
-    <a href="sistema.html" class="btn-sistema">Acessar o Sistema TMW →</a>
+  <div class="diff-content reveal">
+    <p class="diff-text">Porque seguindo a lógica totalmente contrária do que o mercado de marketing tradicional faz — que é vender pacotes padronizados e engessados focados em volume de entregas —, nós trabalhamos única e exclusivamente com <strong>projetos 100% personalizados.</strong></p>
+    <p class="diff-text">Com mais de 5 anos de atuação sólida no mercado, nós entendemos que empresas reais e maduras não escalam com base em “receitinhas de bolo” prontas, copiadas e coladas de um negócio para o outro.</p>
+    <p class="diff-highlight">Sua empresa precisa de um plano desenhado sob medida, que contemple o seu ecossistema comercial e de vendas de ponta a ponta. Por isso, o diagnóstico, a estratégia e a execução que apresentamos são exclusivos para a sua realidade.</p>
   </div>
 </section>
 
-<!-- CTA BANNER -->
-<section class="cta-banner" id="contato">
-  <h2>Pronto pra<br>assumir posição?</h2>
-  <p>Se você quer uma agência que concorda com tudo e faz o que você pede — a Tomorrow não é pra você. Se quer uma parceria que vai fazer sua marca crescer de verdade, fala com a gente.</p>
-  <a href="https://wa.me/5535984468504" class="btn-white">Começar conversa →</a>
+<section class="sistema" id="sistema-tmw">
+  <div style="max-width: 800px; margin: 0 auto;">
+    <div class="section-label reveal" style="color:var(--orange)">Sistema TMW</div>
+    <div class="section-title light reveal reveal-delay-1">Onde está o gap.</div>
+    <p class="reveal reveal-delay-2" style="font-size: 18px; color: rgba(250,250,250,0.6); line-height: 1.6; font-weight: 300; margin-bottom: 40px;">
+      15 perguntas que mapeiam 5 áreas do seu fluxo de vendas e identificam onde você está perdendo dinheiro agora.
+    </p>
+    <a href="diagnostico.html" class="btn-primary reveal reveal-delay-3" style="font-size: 16px; padding: 20px 48px;">Iniciar Diagnóstico Gratuito →</a>
+  </div>
 </section>
 
-<!-- FOOTER -->
+<section class="sistema" id="diagnostico" style="border-top: 1px solid rgba(255,255,255,0.06);">
+  <div class="sistema-layout">
+    <div class="sistema-info reveal">
+      <div class="section-label" style="color:var(--orange)">Acelere Seu Negócio</div>
+      <div class="section-title light">Agende uma reunião<br>online estratégica.</div>
+      <p>Agende uma reunião online estratégica com nosso time, receba um diagnóstico detalhado do seu fluxo atual de vendas e descubra exatamente onde estão os gargalos travando o crescimento do seu negócio.</p>
+    </div>
+
+    <div class="form-container reveal reveal-delay-1">
+      <form action="https://wa.me/5535984468504" method="GET" target="_blank">
+        <div class="form-group">
+          <label for="nome">Seu Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Seu E-mail Profissional</label>
+          <input type="email" id="email" name="email" placeholder="Ex: joao@empresa.com" required>
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">Seu WhatsApp</label>
+          <input type="text" id="whatsapp" name="whatsapp" placeholder="Ex: (16) 99999-9999" required>
+        </div>
+        <button type="submit" class="btn-submit">Agendar Reunião Comercial →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <footer>
   <div class="footer-top">
     <div class="footer-logo">
       <img src="tmw-logo.png" alt="Tomorrow Marketing" style="height:48px; width:auto;">
-      <p class="footer-tagline">Marketing com ponto de vista — Ribeirão Preto, SP</p>
-    </div>
-    <div class="footer-links">
-      <div class="footer-col">
-        <h5>Serviços</h5>
-        <ul>
-          <li><a href="#servicos">Identidade</a></li>
-          <li><a href="#servicos">Presença Estratégica</a></li>
-          <li><a href="#servicos">Campanha</a></li>
-          <li><a href="#servicos">Direção Audiovisual</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h5>Tomorrow</h5>
-        <ul>
-          <li><a href="#metodo">Método</a></li>
-          <li><a href="#trabalhos">Trabalhos</a></li>
-          <li><a href="#contato">Contato</a></li>
-        </ul>
-      </div>
+      <p class="footer-tagline">Estruturas Comerciais e de Vendas de Ponta a Ponta — Ribeirão Preto, SP</p>
     </div>
   </div>
   <div class="footer-bottom">
@@ -1655,7 +700,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
         e.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.1 });
   reveals.forEach(el => observer.observe(el));
 
   // Nav scroll effect
@@ -1670,3 +715,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 </script>
 </body>
 </html>
+
+```
+
+Agora a estrutura da página principal ficou perfeita e super estratégica! O próximo passo é prepararmos a nova página interativa `diagnostico.html` com o formulário de 15 perguntas de fluxo de vendas. Quando quiser, mande as perguntas comerciais por aqui!
