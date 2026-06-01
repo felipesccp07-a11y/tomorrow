@@ -20,11 +20,11 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 /></noscript>
 <title>Tomorrow Marketing — Estrutura Comercial e Vendas em 60 Dias</title>
-<meta name="description" content="Construa uma estrutura comercial de vendas que leve sua empresa a fase de crescimento em 60 dias. Foco total em faturamento e ROI.">
+<meta name="description" content="Construa uma estrutura comercial de vendas que leve sua empresa a fase de crescimento inabalável. Foco total em faturamento e ROI.">
 <meta name="keywords" content="estrutura comercial, alavancagem de vendas, tráfego pago, processo de vendas, time comercial, amadurecimento digital, amadurecimento comercial">
 <meta name="author" content="Tomorrow Marketing">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://agenciatomorrow.com/">
+<link class="canonical" href="https://agenciatomorrow.com/">
 
 <meta name="geo.region" content="BR-SP">
 <meta name="geo.placename" content="Ribeirão Preto">
@@ -268,8 +268,18 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   .manifesto-item h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
   .manifesto-item p { font-size: 15px; color: rgba(250,250,250,0.65); line-height: 1.6; font-weight: 300; }
 
+  /* ── SEÇÃO NOVA: JORNADA COMPLETA (ICEBERG) ── */
+  .jornada-section { background: var(--white); color: var(--black); border-top: 1px solid rgba(0,0,0,0.05); }
+  .jornada-grid { max-width: 1200px; margin: 40px auto 0; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
+  .jornada-text-block { display: flex; flex-direction: column; gap: 32px; }
+  .jornada-item-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .jornada-subitem h4 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--orange); margin-bottom: 6px; letter-spacing: 0.05em; }
+  .jornada-subitem p { font-size: 14px; color: var(--text-muted); line-height: 1.5; font-weight: 300; }
+  .jornada-img-container { width: 100%; border-radius: 4px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.12); border: 1px solid rgba(0,0,0,0.05); }
+  .jornada-img-container img { width: 100%; height: auto; display: block; }
+
   /* ── NUMBERS (SEÇÃO 3) ── */
-  .numbers-section { background: var(--white); }
+  .numbers-section { background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
   .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 1200px; margin: 56px auto; }
   .number-card { background: var(--white); border: 1px solid rgba(0,0,0,0.08); padding: 40px 32px; border-radius: 2px; transition: transform 0.3s, border-color 0.3s; }
   .number-card:hover { transform: translateY(-4px); border-color: var(--orange); }
@@ -365,8 +375,8 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     nav { padding: 18px 24px; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    section, .hero, .manifesto, .diff, .portfolio, .sistema, footer, .case-destaque { padding-left: 24px; padding-right: 24px; }
-    .manifesto-grid, .case-grid, .sistema-layout { grid-template-columns: 1fr; gap: 40px; }
+    section, .hero, .manifesto, .jornada-section, .diff, .portfolio, .sistema, footer, .case-destaque { padding-left: 24px; padding-right: 24px; }
+    .manifesto-grid, .jornada-grid, .case-grid, .sistema-layout { grid-template-columns: 1fr; gap: 40px; }
     .process-steps { grid-template-columns: repeat(2, 1fr); }
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item.large { grid-column: span 1; }
@@ -388,6 +398,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   </div>
   <ul class="nav-links">
     <li><a href="#foco">O que Importa</a></li>
+    <li><a href="#jornada">A Jornada</a></li>
     <li><a href="#metodo">Nosso Método</a></li>
     <li><a href="#trabalhos">Resultados</a></li>
     <li><a href="#diagnostico" class="nav-cta">Fazer Diagnóstico</a></li>
@@ -400,6 +411,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
   <a href="#foco" onclick="document.getElementById('mobileMenu').classList.remove('open')">O que Importa</a>
+  <a href="#jornada" onclick="document.getElementById('mobileMenu').classList.remove('open')">A Jornada</a>
   <a href="#metodo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosso Método</a>
   <a href="#trabalhos" onclick="document.getElementById('mobileMenu').classList.remove('open')">Resultados</a>
   <a href="#diagnostico" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--orange);">Fazer Diagnóstico</a>
@@ -479,6 +491,44 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
         <h4>Injeção de Caixa Rápida</h4>
         <p>Aumentamos a demanda de novos clientes usando estratégias combinadas de marketing direto e vendas agressivas para gerar resultados imediatos.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="jornada-section" id="jornada">
+  <div class="jornada-grid">
+    <div class="jornada-text-block reveal">
+      <div class="section-label" style="text-align: left;">Jornada de Compra Completa</div>
+      <h2 class="section-title" style="text-align: left; margin-bottom: 16px;">O Efeito Iceberg<br>nas suas Vendas.</h2>
+      <p style="font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
+        O marketing tradicional só enxerga a ponta visível do iceberg: o tráfego pago e as publicações em redes sociais. Mas trazer atenção sem ter estrutura embaixo d'água é queimar dinheiro.
+      </p>
+      <p style="font-size: 16px; font-weight: 400; color: var(--black); line-height: 1.6; margin-bottom: 24px;">
+        A Tomorrow projeta e calibra os 90% invisíveis que sustentam o crescimento e geram lucro real líquido:
+      </p>
+      
+      <div class="jornada-item-row">
+        <div class="jornada-subitem">
+          <h4>Construção & Oferta</h4>
+          <p>O alicerce. Lapidamos o formato do seu produto e estruturamos uma oferta impossível de ser ignorada pelo mercado.</p>
+        </div>
+        <div class="jornada-subitem">
+          <h4>PDV & Funil de Ponta a Ponta</h4>
+          <p>O caminho exato que o cliente percorre desde o primeiro clique até o momento em que abre a carteira para pagar.</p>
+        </div>
+        <div class="jornada-subitem">
+          <h4>Time de Vendas</h4>
+          <p>Playbooks, scripts e treinamento comercial intensivo para transformar novos contatos digitais em dinheiro no caixa.</p>
+        </div>
+        <div class="jornada-subitem">
+          <h4>Logística & Caixa</h4>
+          <p>Garantimos que a estrutura suporte o crescimento de demanda mantendo o fluxo de caixa previsível e saudável.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="jornada-img-container reveal reveal-delay-1">
+      <img src="iceberg.jpg" alt="O Efeito Iceberg no Marketing e Vendas — Tomorrow">
     </div>
   </div>
 </section>
@@ -628,7 +678,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   <div class="diff-content reveal">
     <p class="diff-text">Porque seguindo a lógica totalmente contrária do que o mercado de marketing tradicional faz — que é vender pacotes padronizados e engessados focados em volume de entregas —, nós trabalhamos única e exclusivamente com <strong>projetos 100% personalizados.</strong></p>
     <p class="diff-text">Com mais de 5 anos de atuação sólida no mercado, nós entendemos que empresas reais e maduras não escalam com base em “receitinhas de bolo” prontas, copiadas e coladas de um negócio para o outro.</p>
-    <p class="diff-highlight">Sua empresa precisa de um plano desenhado sob medida, que contemple o seu ecossistema comercial e de vendas de ponta a ponta. Por isso, o diagnóstico, a estratégia e a execução que apresentamos são exclusivos para a sua realidade.</p>
+    <p class="diff-highlight">Sua empresa precisa de um plan desenhado sob medida, que contemple o seu ecossistema comercial e de vendas de ponta a ponta. Por isso, o diagnóstico, a estratégia e a execução que apresentamos são exclusivos para a sua realidade.</p>
   </div>
 </section>
 
