@@ -268,6 +268,17 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   .manifesto-item h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
   .manifesto-item p { font-size: 15px; color: rgba(250,250,250,0.65); line-height: 1.6; font-weight: 300; }
 
+  /* ── SEÇÃO NOVA: LINHA DO TEMPO DA JORNADA DE COMPRA ── */
+  .timeline-section { background: var(--white); color: var(--black); border-top: 1px solid rgba(0,0,0,0.05); }
+  .timeline-container { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; position: relative; }
+  .timeline-container::before { content: ''; position: absolute; top: 24px; left: 40px; right: 40px; height: 1px; background: rgba(0,0,0,0.08); z-index: 0; }
+  .timeline-card { background: var(--white); border: 1px solid rgba(0,0,0,0.08); padding: 32px 24px; border-radius: 4px; position: relative; z-index: 1; display: flex; flex-direction: column; gap: 12px; transition: transform 0.3s, border-color 0.3s; }
+  .timeline-card:hover { transform: translateY(-4px); border-color: var(--orange); }
+  .timeline-card-num { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--orange); line-height: 1; }
+  .timeline-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: var(--black); letter-spacing: 0.02em; line-height: 1.1; }
+  .timeline-bubble { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; color: var(--orange); border-bottom: 1px dashed rgba(255,107,0,0.2); padding-bottom: 8px; margin-bottom: 4px; }
+  .timeline-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; font-weight: 300; }
+
   /* ── SEÇÃO NOVA: JORNADA COMPLETA (ICEBERG) ── */
   .jornada-section { background: var(--white); color: var(--black); border-top: 1px solid rgba(0,0,0,0.05); }
   .jornada-grid { max-width: 1200px; margin: 40px auto 0; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
@@ -375,8 +386,9 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     nav { padding: 18px 24px; }
     .nav-links { display: none; }
     .hamburger { display: flex; }
-    section, .hero, .manifesto, .jornada-section, .diff, .portfolio, .sistema, footer, .case-destaque { padding-left: 24px; padding-right: 24px; }
-    .manifesto-grid, .jornada-grid, .case-grid, .sistema-layout { grid-template-columns: 1fr; gap: 40px; }
+    section, .hero, .manifesto, .timeline-section, .jornada-section, .diff, .portfolio, .sistema, footer, .case-destaque { padding-left: 24px; padding-right: 24px; }
+    .manifesto-grid, .timeline-container, .jornada-grid, .case-grid, .sistema-layout { grid-template-columns: 1fr; gap: 40px; }
+    .timeline-container::before { display: none; }
     .process-steps { grid-template-columns: repeat(2, 1fr); }
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item.large { grid-column: span 1; }
@@ -495,7 +507,54 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   </div>
 </section>
 
-<section class="jornada-section" id="jornada">
+<section class="timeline-section" id="jornada">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal">Mecânica Comercial</div>
+    <h2 class="section-title reveal reveal-delay-1">Como uma venda<br>realmente acontece?</h2>
+    <p style="font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 1.6; max-width: 600px;" class="reveal reveal-delay-2">
+      Antes de estruturar processos complexos, sua empresa precisa dominar o comportamento natural de compra do consumidor. Cada etapa exige uma influência exata.
+    </p>
+  </div>
+
+  <div class="timeline-container">
+    <div class="timeline-card reveal">
+      <div class="timeline-card-num">01</div>
+      <h3>Descoberta</h3>
+      <div class="timeline-bubble">"Quero saber mais"</div>
+      <p>Exposição do consumidor à marca através de anúncios online direcionados ou recomendações estratégicas de mercado.</p>
+    </div>
+
+    <div class="timeline-card reveal reveal-delay-1">
+      <div class="timeline-card-num">02</div>
+      <h3>Atração</h3>
+      <div class="timeline-bubble">"Eu gosto"</div>
+      <p>O despertar do interesse real. O design de impacto prende a atenção do lead o suficiente para fazê-lo lembrar da marca.</p>
+    </div>
+
+    <div class="timeline-card reveal reveal-delay-2">
+      <div class="timeline-card-num">03</div>
+      <h3>Consideração</h3>
+      <div class="timeline-bubble">"Vou comprar"</div>
+      <p>O filtro do mercado. O consumidor pesquisa ativamente, avalia cases, tira dúvidas e valida se a empresa é confiável.</p>
+    </div>
+
+    <div class="timeline-card reveal reveal-delay-3">
+      <div class="timeline-card-num">04</div>
+      <h3>Ação</h3>
+      <div class="timeline-bubble">"Eu seleciono"</div>
+      <p>O fechamento comercial. O cliente toma a decisão final de compra, assina o contrato ou conclui o pagamento do serviço.</p>
+    </div>
+
+    <div class="timeline-card reveal">
+      <div class="timeline-card-num">05</div>
+      <h3>Apologia</h3>
+      <div class="timeline-bubble">"Eu recomendo"</div>
+      <p>A engrenagem de lucro máximo. A experiência gera fidelidade cega, ativando recompra imediata e indicação orgânica.</p>
+    </div>
+  </div>
+</section>
+
+<section class="jornada-section">
   <div class="jornada-grid">
     <div class="jornada-text-block reveal">
       <div class="section-label" style="text-align: left;">Jornada de Compra Completa</div>
@@ -582,7 +641,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     <div class="process-step reveal reveal-delay-2">
       <span class="step-num">03</span>
       <h3 class="step-title">Escala</h3>
-      <p class="step-desc">Com as métricas validadas e os resultados otimizados, aumentamos estrategicamente o investimento e o retorno, implementando o que foi validado para dominar e explorar novas oportunidades de mercado.</p>
+      <p class="step-desc">Com as métricas validadas e os resultados otimizados, aumentamos estrategicamente o investmento e o retorno, implementando o que foi validado para dominar e explorar novas oportunidades de mercado.</p>
     </div>
     <div class="process-step reveal reveal-delay-3">
       <span class="step-num">04</span>
@@ -678,7 +737,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   <div class="diff-content reveal">
     <p class="diff-text">Porque seguindo a lógica totalmente contrária do que o mercado de marketing tradicional faz — que é vender pacotes padronizados e engessados focados em volume de entregas —, nós trabalhamos única e exclusivamente com <strong>projetos 100% personalizados.</strong></p>
     <p class="diff-text">Com mais de 5 anos de atuação sólida no mercado, nós entendemos que empresas reais e maduras não escalam com base em “receitinhas de bolo” prontas, copiadas e coladas de um negócio para o outro.</p>
-    <p class="diff-highlight">Sua empresa precisa de um plano desenhado sob medida, que contemple o seu ecossistema comercial e de vendas de ponta a ponta. Por isso, o diagnóstico, a estratégia e a execução que apresentamos são exclusivos para a sua realidade.</p>
+    <p class="diff-highlight">Sua empresa precisa de um plan desenhado sob medida, que contemple o seu ecossistema comercial e de vendas de ponta a ponta. Por isso, o diagnóstico, a estratégia e a execução que apresentamos são exclusivos para a sua realidade.</p>
   </div>
 </section>
 
