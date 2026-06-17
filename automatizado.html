@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Tomorrow</title>
+    <style>
+        /* DESIGN PREMIUM BASEADO EM RENDERIZAÇÃO NEO-GROTESQUE */
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+            font-family: 'Neue Haas Grotesk Display', 'Neue Haas Grotesk Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+            letter-spacing: -0.025em; 
+        }
+        
+        body { display: flex; height: 100vh; background-color: #fafafa; color: #18181b; }
+
+        /* Barra Lateral Premium */
+        .sidebar { 
+            width: 320px; 
+            background-color: #000000; 
+            display: flex; 
+            flex-direction: column; 
+            padding: 35px 20px; 
+            flex-shrink: 0;
+            border-right: 1px solid #18181b;
+        }
+        .logo-container { padding: 10px 15px; margin-bottom: 35px; }
+        .logo-container img { width: 170px; opacity: 0.95; }
+
+        .menu-item { 
+            padding: 14px 20px; 
+            color: #71717a; 
+            cursor: pointer; 
+            font-size: 14px; 
+            margin-bottom: 6px; 
+            border-radius: 10px; 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
+            font-weight: 500; 
+        }
+        .menu-item:hover { color: #f4f4f5; background-color: #0c0c0e; }
+        
+        /* Efeito Ativo Glassmorphic Avançado */
+        .menu-item.active { 
+            background-color: #121214; 
+            color: #ff6b00; 
+            border-left: 3px solid #ff6b00; 
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            font-weight: 600;
+        }
+
+        /* Área de Conteúdo Principal */
+        .main-content { flex: 1; padding: 50px 60px; overflow-y: auto; display: flex; justify-content: center; }
+        
+        .container { 
+            width: 100%; 
+            max-width: 720px; 
+            background: #ffffff; 
+            padding: 45px; 
+            border-radius: 24px; 
+            border: 1px solid #e4e4e7;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.04); 
+            height: fit-content; 
+        }
+
+        .content-section { display: none; }
+        .content-section.active { display: block; animation: sectionFade 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+        @keyframes sectionFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Customização Avançada de Formulários Premium */
+        h2 { margin-bottom: 6px; color: #09090b; font-weight: 700; font-size: 26px; }
+        .subtitle { font-size: 14px; color: #71717a; margin-bottom: 35px; line-height: 1.5; }
+        
+        /* Container para agrupar as seções por blocos limpos */
+        .form-section {
+            border-top: 1px solid #f4f4f5;
+            padding-top: 25px;
+            margin-top: 25px;
+        }
+        .form-section:first-of-type {
+            border-top: none;
+            padding-top: 0;
+            margin-top: 0;
+        }
+
+        h3 { 
+            font-size: 12px; 
+            margin-bottom: 16px; 
+            color: #ff6b00; 
+            font-weight: 700; 
+            text-transform: uppercase; 
+            letter-spacing: 0.08em; 
+        }
+
+        input, select, textarea { 
+            width: 100%; 
+            padding: 14px 16px; 
+            margin-bottom: 16px; 
+            border: 1px solid #e4e4e7; 
+            border-radius: 10px; 
+            background: #ffffff; 
+            font-size: 14px; 
+            color: #09090b;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            outline: none;
+        }
+        
+        input::placeholder, textarea::placeholder { color: #a1a1aa; }
+
+        /* Customização Premium das setas de Seleção */
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 16px;
+            padding-right: 45px;
+        }
+
+        /* Efeito de Brilho Dinâmico */
+        input:focus, select:focus, textarea:focus { 
+            border-color: #ff6b00; 
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.02);
+        }
+        
+        .btn-submit { 
+            background: #ff6b00; 
+            color: white; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 12px; 
+            width: 100%; 
+            font-weight: 600; 
+            cursor: pointer; 
+            margin-top: 15px; 
+            font-size: 15px; 
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.15);
+            transition: all 0.2s; 
+        }
+        .btn-submit:hover { background: #e05e00; transform: translateY(-1px); box-shadow: 0 6px 16px rgba(255, 107, 0, 0.2); }
+        .btn-submit:active { transform: translateY(0); }
+
+        .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-bottom: 15px; padding: 4px 2px; }
+        .checkbox-item { display: flex; align-items: center; font-size: 14px; color: #27272a; cursor: pointer; font-weight: 500; }
+        .checkbox-item input[type="checkbox"] { 
+            width: auto; 
+            margin-bottom: 0; 
+            margin-right: 10px; 
+            accent-color: #ff6b00; 
+            cursor: pointer;
+            box-shadow: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="logo-container"><img src="tomorrow..png" alt="Tomorrow Logo"></div>
+        <div class="menu-item active" onclick="switchTab(this, 'instagram')">Instagram / Facebook</div>
+        <div class="menu-item" onclick="switchTab(this, 'tiktok')">TikTok / Reels / Shorts</div>
+        <div class="menu-item" onclick="switchTab(this, 'linha-editorial')">Linha Editorial Completa</div>
+        <div class="menu-item" onclick="switchTab(this, 'oferta')">Oferta Magnética</div>
+        <div class="menu-item" onclick="switchTab(this, 'metricas')">Análise de Métricas</div>
+        <div class="menu-item" onclick="switchTab(this, 'mercado')">Diagnóstico de Mercado</div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            
+            <div id="instagram" class="content-section active">
+                <h2>Instagram / Facebook</h2>
+                <p class="subtitle">Defina os 4 pilares estratégicos para carregar a inteligência artificial com insumos de alta conversão.</p>
+                
+                <div class="form-section">
+                    <h3>1. Contexto do Negócio</h3>
+                    <input type="text" placeholder="Subnicho/Especialidade (ex: Moda fitness feminina para alta performance)">
+                    <input type="text" placeholder="Produto ou serviço em foco (ex: Consulta de Harmonização Facial)">
+                </div>
+
+                <div class="form-section">
+                    <h3>2. Público-Alvo</h3>
+                    <input type="text" placeholder="Quem é a persona? (ex: Mães empreendedoras)">
+                    <input type="text" placeholder="Dor ou desejo principal (ex: Falta de tempo para se organizar)">
+                </div>
+
+                <div class="form-section">
+                    <h3>3. Estratégia do Post</h3>
+                    <select>
+                        <option>Objetivo: Atração / Viral (Para trazer novos seguidores)</option>
+                        <option>Objetivo: Retenção / Educacional (Para gerar autoridade)</option>
+                        <option>Objetivo: Conexão / Storytelling (Para humanizar a marca)</option>
+                        <option>Objetivo: Conversão / Venda (Para oferecer direto)</option>
+                    </select>
+                    <input type="text" placeholder="Chamada para ação desejada (ex: Comente 'QUERO')">
+                </div>
+
+                <div class="form-section">
+                    <h3>4. Formato e Estilo</h3>
+                    <select>
+                        <option>Formato: Carrossel (Texto dividido em slides)</option>
+                        <option>Formato: Legenda para Imagem Única</option>
+                        <option>Formato: Roteiro de Stories (Sequência de 3 a 5)</option>
+                    </select>
+                    <select>
+                        <option>Tom: Profissional</option>
+                        <option>Tom: Descontraído/Amigável</option>
+                        <option>Tom: Motivacional</option>
+                        <option>Tom: Técnico/Especialista</option>
+                        <option>Tom: Direto/Sem Rodeios</option>
+                    </select>
+                </div>
+                <button class="btn-submit">Gerar Conteúdo Inteligente</button>
+            </div>
+
+            <div id="tiktok" class="content-section">
+                <h2>TikTok / Reels / Shorts</h2>
+                <p class="subtitle">Estrutura de roteirização dinâmica focada em travar a retenção do usuário nos primeiros 3 segundos.</p>
+                
+                <div class="form-section">
+                    <h3>1. O Miolo do Conteúdo</h3>
+                    <input type="text" placeholder="Tema Central / A 'Sacada' (ex: 3 erros comuns ao tentar emagrecer)">
+                    <input type="text" placeholder="A Grande Promessa (ex: Aprender a economizar R$ 500 por mês)">
+                </div>
+
+                <div class="form-section">
+                    <h3>2. A Retenção (Gancho)</h3>
+                    <select>
+                        <option>Polêmico / Alerta ("Pare de fazer isso imediatamente...")</option>
+                        <option>Curiosidade ("O segredo que as marcas não te contam...")</option>
+                        <option>Filtro de Público ("Se você tem mais de 30 anos, escuta isso...")</option>
+                        <option>Visual / Prático ("Fiquei chocado quando descobri essa função...")</option>
+                    </select>
+                </div>
+
+                <div class="form-section">
+                    <h3>3. Formato de Produção</h3>
+                    <select>
+                        <option>Talking Head (Falando direto para a câmera)</option>
+                        <option>Voiceover (Narração sobre imagens/estética do dia a dia)</option>
+                        <option>Texto na Tela (Apenas vídeo estético com texto dinâmico)</option>
+                        <option>Tutorial / POV (Mostrando a tela, as mãos ou processo)</option>
+                    </select>
+                    <select>
+                        <option>Ritmo: Rápido e Enérgico (Estilo TikTok nativo)</option>
+                        <option>Ritmo: Didático / Calmo</option>
+                        <option>Ritmo: Humor / Sarcástico</option>
+                        <option>Ritmo: Inspiracional</option>
+                    </select>
+                </div>
+
+                <div class="form-section">
+                    <h3>4. Objetivo e Desfecho</h3>
+                    <select>
+                        <option>CTA: Comentar palavra-chave para receber no direct (Automação)</option>
+                        <option>CTA: Seguir para não perder a Parte 2</option>
+                        <option>CTA: Salvar para assistir quando for aplicar</option>
+                        <option>CTA: Compartilhar com um amigo que precisa ver isso</option>
+                    </select>
+                </div>
+                <button class="btn-submit">Gerar Roteiro de Vídeo</button>
+            </div>
+
+            <div id="linha-editorial" class="content-section">
+                <h2>Linha Editorial Completa</h2>
+                <p class="subtitle">Mapeie a engrenagem macro e alinhe seu ecossistema comercial para alimentar o perfil o mês inteiro.</p>
+                
+                <div class="form-section">
+                    <h3>1. Posicionamento e Essência</h3>
+                    <input type="text" placeholder="Diferencial Competitivo (ex: Agência focada em lucro, não em curtidas)">
+                    <textarea placeholder="Bandeiras e Valores (O que a sua marca defende vs. O que ela odeia)"></textarea>
+                </div>
+
+                <div class="form-section">
+                    <h3>2. Ecossistema de Vendas</h3>
+                    <input type="text" placeholder="Produto de entrada / Baixo Ticket (Ex: E-book de R$ 47)">
+                    <input type="text" placeholder="Produto principal / Meio de Funil (Ex: Curso Online de R$ 497)">
+                    <input type="text" placeholder="Produto Premium / High-Ticket (Ex: Mentoria de R$ 5.000)">
+                    <input type="text" placeholder="Foco Comercial do Mês (Qual produto receberá 80% da atenção?)">
+                </div>
+
+                <div class="form-section">
+                    <h3>3. Maturidade do Público</h3>
+                    <select>
+                        <option disabled selected hidden>Nível de Consciência Predominante</option>
+                        <option>Inconsciente (Não sabe que tem o problema ainda)</option>
+                        <option>Consciente do Problema (Sente a dor, mas não sabe como resolver)</option>
+                        <option>Consciente da Solução (Sabe o que resolve, mas pesquisa quem contratar)</option>
+                        <option>Consciente do Produto (Já te conhece e só precisa de um empurrão)</option>
+                    </select>
+                    <textarea placeholder="Maiores Objeções do Cliente (Por que as pessoas hesitam em comprar de você?)"></textarea>
+                </div>
+
+                <div class="form-section">
+                    <h3>4. Ritmo e Distribuição</h3>
+                    <input type="text" placeholder="Frequência de Postagem Desejada (Ex: 3 posts por semana)">
+                    <p style="font-size: 13px; font-weight: 600; margin-bottom: 12px; color: #444;">Canais de Distribuição:</p>
+                    <div class="checkbox-grid">
+                        <label class="checkbox-item"><input type="checkbox" value="Instagram"> Instagram</label>
+                        <label class="checkbox-item"><input type="checkbox" value="TikTok"> TikTok</label>
+                        <label class="checkbox-item"><input type="checkbox" value="YouTube"> YouTube</label>
+                        <label class="checkbox-item"><input type="checkbox" value="LinkedIn"> LinkedIn</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Blog"> Blog</label>
+                        <label class="checkbox-item"><input type="checkbox" value="Pinterest"> Pinterest</label>
+                    </div>
+                </div>
+                <button class="btn-submit">Gerar Linha Editorial Estratégica</button>
+            </div>
+
+            <div id="oferta" class="content-section">
+                <h2>Oferta Magnética</h2>
+                <p class="subtitle">Refine a arquitetura de valor e inverta o risco técnico para construir uma proposta comercial irrecusável.</p>
+                
+                <div class="form-section">
+                    <h3>1. A Grande Promessa (O Valor Real)</h3>
+                    <textarea placeholder="A Transformação Central (O resultado palpável na vida do comprador. Ex: Falar inglês em 6 meses)"></textarea>
+                    <input type="text" placeholder="O Mecanismo Único / O 'Como' (Nome do método exclusivo de entrega)"></input>
+                </div>
+
+                <div class="form-section">
+                    <h3>2. O Empacotamento</h3>
+                    <textarea placeholder="O que está incluso / Entregáveis (Módulos, encontros, suportes)"></textarea>
+                    <textarea placeholder="Bônus Injustos / Matadores de Objeções (Presentes estratégicos que resolvem o próximo obstáculo)"></textarea>
+                </div>
+
+                <div class="form-section">
+                    <h3>3. A Engenharia Financeira</h3>
+                    <input type="text" placeholder="Ancoragem de Preço (Quanto custaria se contratado isoladamente)">
+                    <input type="text" placeholder="O Preço da Oferta (Valor real estruturado e condições de parcelamento)">
+                    <textarea placeholder="Inversão de Risco / Garantia (Cláusulas fortes de proteção ao consumidor)"></textarea>
+                </div>
+
+                <div class="form-section">
+                    <h3>4. O Empurrão Final</h3>
+                    <select>
+                        <option disabled selected hidden>Gatilho de Urgência / Escassez</option>
+                        <option>Vagas Limitadas (Mentoria ou turmas pequenas)</option>
+                        <option>Tempo Limitado (O carrinho fecha em X dias)</option>
+                        <option>Virada de Lote (O preço vai subir na data X)</option>
+                        <option>Bônus Especial (Os 20 primeiros ganham uma análise individual)</option>
+                    </select>
+                </div>
+                <button class="btn-submit">Gerar Proposta Irresistível</button>
+            </div>
+
+            <div id="metricas" class="content-section">
+                <h2>Análise de Métricas</h2>
+                <p class="subtitle">Alimente o sistema com os KPIs reais de tráfego e engajamento para rodar uma varredura de gargalos.</p>
+                
+                <div class="form-section">
+                    <h3>Parâmetros de Controle</h3>
+                    <input type="text" placeholder="Período da Análise (Ex: Últimos 30 dias)">
+                    <input type="text" placeholder="Meta Principal do Período (Ex: Otimizar o custo por aquisição)">
+                </div>
+
+                <div class="form-section">
+                    <h3>1. Alcance e Atração (Topo do Funil)</h3>
+                    <input type="number" placeholder="Total de Impressões Brutas">
+                    <input type="number" placeholder="Alcance Único (Pessoas únicas atingidas)">
+                    <input type="number" placeholder="Taxa de Crescimento (Novos seguidores líquidos)">
+                    <input type="text" placeholder="Origem do Tráfego (Ex: 70% Não-Seguidores / 30% Seguidores)">
+                </div>
+
+                <div class="form-section">
+                    <h3>2. Engajamento e Qualificação (Meio do Funil)</h3>
+                    <input type="number" placeholder="Volume de Interações (Soma de Curtidas, Comentários, Salvamentos e Envios)">
+                    <input type="number" placeholder="Taxa Média de Retenção de Vídeos (%) (Ex: 45%)">
+                </div>
+
+                <div class="form-section">
+                    <h3>3. Conversão e Caixa (Fundo do Funil)</h3>
+                    <input type="number" placeholder="Cliques Totais no Link da Bio / CTA">
+                    <input type="number" placeholder="Volume de Conversões (Vendas validadas ou Leads gerados)">
+                    <input type="number" placeholder="Custo Total por Lead / Aquisição (CAC) se houver investimento em Ads">
+                </div>
+
+                <div class="form-section">
+                    <h3>Tabela de Inserção Rápida</h3>
+                    <textarea placeholder="Cole aqui os dados crus brutos da sua planilha para mineração sintática da IA (Opcional)"></textarea>
+                </div>
+                <button class="btn-submit">Executar Auditoria de Métricas</button>
+            </div>
+
+            <div id="mercado" class="content-section">
+                <h2>Diagnóstico de Mercado</h2>
+                <p class="subtitle">Avalie a saturação competitiva geográfica do seu nicho e encontre brechas de escala premium.</p>
+                
+                <div class="form-section">
+                    <h3>1. Abrangência e Localização</h3>
+                    <select>
+                        <option disabled selected hidden>Modelo de Atuação</option>
+                        <option>Local / Físico (Atende apenas uma região específica)</option>
+                        <option>Nacional / Digital (Atende o país inteiro)</option>
+                        <option>Híbrido (Tem sede física, mas vende para fora)</option>
+                    </select>
+                    <input type="text" placeholder="Localização Base (Cidade e Estado. Ex: Belo Horizonte - MG)">
+                    <input type="text" placeholder="Raio de Atendimento se aplicável (Ex: Até 15 km)">
+                </div>
+
+                <div class="form-section">
+                    <h3>2. Cenário de Concorrência</h3>
+                    <input type="text" placeholder="Principais Concorrentes (Quem são os 2 ou 3 maiores no nicho ou região)">
+                    <textarea placeholder="O 'Calcanhar de Aquiles' do Concorrente (O que o concorrente faz de errado que você faz melhor? Ex: Custo baixo mas atendimento péssimo)"></textarea>
+                </div>
+
+                <div class="form-section">
+                    <h3>3. Demanda e Maturidade</h3>
+                    <select>
+                        <option disabled selected hidden>Nível de Conhecimento do Público sobre o Produto</option>
+                        <option>Demanda Alta / Mercado Educado (Todo mundo já quer e sabe o que é. Ex: Barbearia, Hamburgueria)</option>
+                        <option>Demanda Inexplorada / Mercado Novo (O produto é inovador e as pessoas não sabem que precisam)</option>
+                    </select>
+                    <input type="number" placeholder="Preço Médio Praticado (Ticket Médio atual do seu produto principal em R$)">
+                </div>
+
+                <div class="form-section">
+                    <h3>4. Meta de Escala</h3>
+                    <select>
+                        <option disabled selected hidden>O Próximo Passo do Negócio</option>
+                        <option>Lotar a agenda / Abrir filial física</option>
+                        <option>Aumentar o preço (Posicionamento Premium) sem perder clientes</option>
+                        <option>Nacionalizar a marca (Ir de vez para o digital)</option>
+                    </select>
+                </div>
+                <button class="btn-submit">Gerar Matriz de Crescimento</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // 1. TROCA DE ABAS
+        function switchTab(element, tabId) {
+            document.querySelectorAll('.menu-item').forEach(i => i.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+            element.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // 2. CONFIGURAÇÃO DA IA (Chave via Header para contornar OAuth)
+        const API_KEY = "AQ.Ab8RN6KSt66wvazvSKTktU8b7i4qowslj8RCdhJNGCQsHxKUHA"; 
+        const MODEL_NAME = "gemini-1.5-flash"; 
+        
+        // Removemos o '?key=...' da URL.
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent`;
+
+        // 3. LÓGICA DO BOTÃO INSTAGRAM
+        const btnInstagram = document.querySelector('#instagram .btn-submit');
+
+        btnInstagram.addEventListener('click', async () => {
+            const inputs = document.querySelectorAll('#instagram input, #instagram select');
+            
+            // Capturando os dados
+            const subnicho = inputs[0].value;
+            const produto = inputs[1].value;
+            const persona = inputs[2].value;
+            const dor = inputs[3].value;
+            const estrategia = inputs[4].value;
+            const cta = inputs[5].value;
+            const formato = inputs[6].value;
+            const tom = inputs[7].value;
+
+            if (!subnicho || !produto) {
+                alert("Preencha pelo menos o Subnicho e o Produto!");
+                return;
+            }
+
+            btnInstagram.innerText = "Tomorrow está pensando...";
+            btnInstagram.disabled = true;
+
+            const promptMestre = `Aja como um copywriter sênior da agência Tomorrow. 
+            Crie um conteúdo para Instagram baseado nestes pilares:
+            - Nicho: ${subnicho}
+            - Produto: ${produto}
+            - Persona: ${persona}
+            - Dor/Desejo: ${dor}
+            - Objetivo: ${estrategia}
+            - Formato: ${formato}
+            - Tom de voz: ${tom}
+            - Chamada (CTA): ${cta}
+            
+            Entregue apenas o conteúdo pronto para postar, usando emojis estratégicos e formatação limpa.`;
+
+            try {
+                // Fetch com a chave passando pelo cabeçalho
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json",
+                        "x-goog-api-key": API_KEY // A chave vai aqui!
+                    },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: promptMestre }] }]
+                    })
+                });
+
+                const dados = await response.json();
+
+                if (!response.ok) {
+                    console.error("Erro do Google:", dados);
+                    alert(`Falha na API: ${dados.error?.message || "Verifique o Console"}`);
+                    return;
+                }
+
+                const textoGerado = dados.candidates[0].content.parts[0].text;
+                alert(textoGerado);
+
+            } catch (erro) {
+                console.error("Erro de Rede:", erro);
+                alert("A conexão caiu ou a requisição foi bloqueada.");
+            } finally {
+                btnInstagram.innerText = "Gerar Conteúdo Inteligente";
+                btnInstagram.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
