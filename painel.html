@@ -172,6 +172,7 @@
     <div class="main-content">
         <div class="container">
             
+            <!-- ABA 1: INSTAGRAM / FACEBOOK -->
             <div id="instagram" class="content-section active">
                 <h2>Instagram / Facebook</h2>
                 <p class="subtitle">Defina os 4 pilares estratégicos para carregar a inteligência artificial com insumos de alta conversão.</p>
@@ -217,6 +218,7 @@
                 <button class="btn-submit">Gerar Conteúdo Inteligente</button>
             </div>
 
+            <!-- ABA 2: TIKTOK / REELS / SHORTS -->
             <div id="tiktok" class="content-section">
                 <h2>TikTok / Reels / Shorts</h2>
                 <p class="subtitle">Estrutura de roteirização dinâmica focada em travar a retenção do usuário nos primeiros 3 segundos.</p>
@@ -265,6 +267,7 @@
                 <button class="btn-submit">Gerar Roteiro de Vídeo</button>
             </div>
 
+            <!-- ABA 3: LINHA EDITORIAL COMPLETA -->
             <div id="linha-editorial" class="content-section">
                 <h2>Linha Editorial Completa</h2>
                 <p class="subtitle">Mapeie a engrenagem macro e alinhe seu ecossistema comercial para alimentar o perfil o mês inteiro.</p>
@@ -311,6 +314,7 @@
                 <button class="btn-submit">Gerar Linha Editorial Estratégica</button>
             </div>
 
+            <!-- ABA 4: OFERTA MAGNÉTICA -->
             <div id="oferta" class="content-section">
                 <h2>Oferta Magnética</h2>
                 <p class="subtitle">Refine a arquitetura de valor e inverta o risco técnico para construir uma proposta comercial irrecusável.</p>
@@ -347,6 +351,7 @@
                 <button class="btn-submit">Gerar Proposta Irresistível</button>
             </div>
 
+            <!-- ABA 5: ANÁLISE DE MÉTRICAS -->
             <div id="metricas" class="content-section">
                 <h2>Análise de Métricas</h2>
                 <p class="subtitle">Alimente o sistema com os KPIs reais de tráfego e engajamento para rodar uma varredura de gargalos.</p>
@@ -385,6 +390,7 @@
                 <button class="btn-submit">Executar Auditoria de Métricas</button>
             </div>
 
+            <!-- ABA 6: DIAGNÓSTICO DE MERCADO -->
             <div id="mercado" class="content-section">
                 <h2>Diagnóstico de Mercado</h2>
                 <p class="subtitle">Avalie a saturação competitiva geográfica do seu nicho e encontre brechas de escala premium.</p>
@@ -441,12 +447,12 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // 2. CONFIGURAÇÃO DA IA (Chave via Header para contornar OAuth)
-        const API_KEY = "AQ.Ab8RN6KSt66wvazvSKTktU8b7i4qowslj8RCdhJNGCQsHxKUHA"; 
+        // 2. CONFIGURAÇÃO DA IA ATUALIZADA COM A SUA CHAVE DEFINITIVA AIzaSy
+        const API_KEY = "AIzaSyBYeCwa2FMz_WT7Kj-n_Q9dFoeBah0bk9I"; 
         const MODEL_NAME = "gemini-1.5-flash"; 
         
-        // Removemos o '?key=...' da URL.
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent`;
+        // Autenticação direta via URL padrão do Google (à prova de erros)
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
 
         // 3. LÓGICA DO BOTÃO INSTAGRAM
         const btnInstagram = document.querySelector('#instagram .btn-submit');
@@ -454,7 +460,7 @@
         btnInstagram.addEventListener('click', async () => {
             const inputs = document.querySelectorAll('#instagram input, #instagram select');
             
-            // Capturando os dados
+            // Capturando os dados da tela
             const subnicho = inputs[0].value;
             const produto = inputs[1].value;
             const persona = inputs[2].value;
@@ -486,18 +492,16 @@
             Entregue apenas o conteúdo pronto para postar, usando emojis estratégicos e formatação limpa.`;
 
             try {
-                // Troque a API_URL para usar o endpoint v1 (que é menos restritivo que o v1beta)
-const MODEL_NAME = "gemini-1.5-flash";
-const API_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
-
-// No fetch, remova qualquer cabeçalho de Authorization
-const response = await fetch(API_URL, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-        contents: [{ parts: [{ text: promptMestre }] }]
-    })
-});
+                // Requisição Fetch direta
+                const response = await fetch(API_URL, {
+                    method: "POST",
+                    headers: { 
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: promptMestre }] }]
+                    })
+                });
 
                 const dados = await response.json();
 
@@ -508,6 +512,8 @@ const response = await fetch(API_URL, {
                 }
 
                 const textoGerado = dados.candidates[0].content.parts[0].text;
+                
+                // Abre o alerta nativo com o post perfeito gerado pela IA
                 alert(textoGerado);
 
             } catch (erro) {
