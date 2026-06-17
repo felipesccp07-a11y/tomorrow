@@ -172,7 +172,6 @@
     <div class="main-content">
         <div class="container">
             
-            <!-- ABA 1: INSTAGRAM / FACEBOOK -->
             <div id="instagram" class="content-section active">
                 <h2>Instagram / Facebook</h2>
                 <p class="subtitle">Defina os 4 pilares estratégicos para carregar a inteligência artificial com insumos de alta conversão.</p>
@@ -218,7 +217,6 @@
                 <button class="btn-submit">Gerar Conteúdo Inteligente</button>
             </div>
 
-            <!-- ABA 2: TIKTOK / REELS / SHORTS -->
             <div id="tiktok" class="content-section">
                 <h2>TikTok / Reels / Shorts</h2>
                 <p class="subtitle">Estrutura de roteirização dinâmica focada em travar a retenção do usuário nos primeiros 3 segundos.</p>
@@ -267,7 +265,6 @@
                 <button class="btn-submit">Gerar Roteiro de Vídeo</button>
             </div>
 
-            <!-- ABA 3: LINHA EDITORIAL COMPLETA -->
             <div id="linha-editorial" class="content-section">
                 <h2>Linha Editorial Completa</h2>
                 <p class="subtitle">Mapeie a engrenagem macro e alinhe seu ecossistema comercial para alimentar o perfil o mês inteiro.</p>
@@ -290,7 +287,7 @@
                     <h3>3. Maturidade do Público</h3>
                     <select>
                         <option disabled selected hidden>Nível de Consciência Predominante</option>
-                        <option>Inconsciente (Não sabe que tem o problema ainda)</option>
+                        <option>Inconsciente (Não sabe que tem o problem ainda)</option>
                         <option>Consciente do Problema (Sente a dor, mas não sabe como resolver)</option>
                         <option>Consciente da Solução (Sabe o que resolve, mas pesquisa quem contratar)</option>
                         <option>Consciente do Produto (Já te conhece e só precisa de um empurrão)</option>
@@ -314,7 +311,6 @@
                 <button class="btn-submit">Gerar Linha Editorial Estratégica</button>
             </div>
 
-            <!-- ABA 4: OFERTA MAGNÉTICA -->
             <div id="oferta" class="content-section">
                 <h2>Oferta Magnética</h2>
                 <p class="subtitle">Refine a arquitetura de valor e inverta o risco técnico para construir uma proposta comercial irrecusável.</p>
@@ -351,7 +347,6 @@
                 <button class="btn-submit">Gerar Proposta Irresistível</button>
             </div>
 
-            <!-- ABA 5: ANÁLISE DE MÉTRICAS -->
             <div id="metricas" class="content-section">
                 <h2>Análise de Métricas</h2>
                 <p class="subtitle">Alimente o sistema com os KPIs reais de tráfego e engajamento para rodar uma varredura de gargalos.</p>
@@ -390,7 +385,6 @@
                 <button class="btn-submit">Executar Auditoria de Métricas</button>
             </div>
 
-            <!-- ABA 6: DIAGNÓSTICO DE MERCADO -->
             <div id="mercado" class="content-section">
                 <h2>Diagnóstico de Mercado</h2>
                 <p class="subtitle">Avalie a saturação competitiva geográfica do seu nicho e encontre brechas de escala premium.</p>
@@ -447,12 +441,11 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // 2. CONFIGURAÇÃO DA IA ATUALIZADA COM A SUA CHAVE DEFINITIVA AIzaSy
-        const API_KEY = "AIzaSyBYeCwa2FMz_WT7Kj-n_Q9dFoeBah0bk9I"; 
+        // 2. CONFIGURAÇÃO DA IA REVISADA COM A SUA CHAVE CORPORATIVA AQ.
+        const API_KEY = "AQ.Ab8RN6L4gXlwfKXY1Z67EyGL2A4fgOIVA1QzynlW9klthC4Ujw"; 
         const MODEL_NAME = "gemini-1.5-flash"; 
         
-        // Autenticação direta via URL padrão do Google (à prova de erros)
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL_NAME}:generateContent`;
 
         // 3. LÓGICA DO BOTÃO INSTAGRAM
         const btnInstagram = document.querySelector('#instagram .btn-submit');
@@ -460,7 +453,7 @@
         btnInstagram.addEventListener('click', async () => {
             const inputs = document.querySelectorAll('#instagram input, #instagram select');
             
-            // Capturando os dados da tela
+            // Capturando os dados
             const subnicho = inputs[0].value;
             const produto = inputs[1].value;
             const persona = inputs[2].value;
@@ -492,11 +485,12 @@
             Entregue apenas o conteúdo pronto para postar, usando emojis estratégicos e formatação limpa.`;
 
             try {
-                // Requisição Fetch direta
+                // Fetch estruturado com o cabeçalho x-goog-api-key exigido pela chave AQ.
                 const response = await fetch(API_URL, {
                     method: "POST",
                     headers: { 
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+                        "x-goog-api-key": API_KEY
                     },
                     body: JSON.stringify({
                         contents: [{ parts: [{ text: promptMestre }] }]
@@ -512,8 +506,6 @@
                 }
 
                 const textoGerado = dados.candidates[0].content.parts[0].text;
-                
-                // Abre o alerta nativo com o post perfeito gerado pela IA
                 alert(textoGerado);
 
             } catch (erro) {
