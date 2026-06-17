@@ -486,17 +486,18 @@
             Entregue apenas o conteúdo pronto para postar, usando emojis estratégicos e formatação limpa.`;
 
             try {
-                // Fetch com a chave passando pelo cabeçalho
-                const response = await fetch(API_URL, {
-                    method: "POST",
-                    headers: { 
-                        "Content-Type": "application/json",
-                        "x-goog-api-key": API_KEY // A chave vai aqui!
-                    },
-                    body: JSON.stringify({
-                        contents: [{ parts: [{ text: promptMestre }] }]
-                    })
-                });
+                // Troque a API_URL para usar o endpoint v1 (que é menos restritivo que o v1beta)
+const MODEL_NAME = "gemini-1.5-flash";
+const API_URL = `https://generativelanguage.googleapis.com/v1/models/${MODEL_NAME}:generateContent?key=${API_KEY}`;
+
+// No fetch, remova qualquer cabeçalho de Authorization
+const response = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+        contents: [{ parts: [{ text: promptMestre }] }]
+    })
+});
 
                 const dados = await response.json();
 
