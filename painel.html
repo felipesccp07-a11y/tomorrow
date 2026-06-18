@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -5,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Painel Tomorrow</title>
     <style>
-        /* DESIGN PREMIUM BASEADO EM RENDERIZAÇÃO NEO-GROTESQUE */
+        /* DESIGN PREMIUM DARK MINIMALIST & GLASSMORPHISM (ESTILO BESTCONTENT AI) */
         * { 
             margin: 0; 
             padding: 0; 
@@ -14,14 +15,16 @@
             letter-spacing: -0.025em; 
         }
         
-        body { display: flex; height: 100vh; background-color: #fafafa; color: #18181b; overflow: hidden; }
+        body { display: flex; height: 100vh; background-color: #09090b; color: #f4f4f5; overflow: hidden; }
 
-        /* HEADER MOBILE (Fixo no topo) */
+        /* HEADER MOBILE (Fixo no topo - Glassmorphism Escuro) */
         .mobile-header { 
             display: none; 
             width: 100%; 
             height: 60px; 
-            background-color: #000000; 
+            background-color: rgba(3, 3, 3, 0.8); 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             padding: 0 20px; 
             justify-content: space-between; 
             align-items: center; 
@@ -29,19 +32,19 @@
             top: 0; 
             left: 0; 
             z-index: 2000; 
-            border-bottom: 1px solid #18181b; 
+            border-bottom: 1px solid #1f1f23; 
         }
         .mobile-header img { height: 26px; opacity: 0.95; }
         
         /* Divisor e Título da Aba Atual no Mobile Header */
         .mobile-route-indicator {
             color: #ff6b00; 
-            font-size: 12px; 
-            font-weight: 600; 
+            font-size: 11px; 
+            font-weight: 700; 
             border-left: 1px solid #27272a; 
             padding-left: 12px; 
             text-transform: uppercase; 
-            letter-spacing: 0.05em;
+            letter-spacing: 0.08em;
             max-width: 180px;
             white-space: nowrap;
             overflow: hidden;
@@ -50,15 +53,15 @@
 
         .hamburger { font-size: 28px; color: #ff6b00; cursor: pointer; user-select: none; }
 
-        /* Barra Lateral Premium (Desktop) */
+        /* Barra Lateral Premium (Desktop - Deep Black) */
         .sidebar { 
             width: 320px; 
-            background-color: #000000; 
+            background-color: #030303; 
             display: flex; 
             flex-direction: column; 
             padding: 35px 20px; 
             flex-shrink: 0;
-            border-right: 1px solid #18181b;
+            border-right: 1px solid #121214;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1000;
         }
@@ -67,7 +70,7 @@
 
         .menu-item { 
             padding: 14px 20px; 
-            color: #71717a; 
+            color: #a1a1aa; 
             cursor: pointer; 
             font-size: 14px; 
             margin-bottom: 6px; 
@@ -75,94 +78,114 @@
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
             font-weight: 500; 
         }
-        .menu-item:hover { color: #f4f4f5; background-color: #0c0c0e; }
+        .menu-item:hover { color: #ffffff; background-color: #0c0c0e; }
         
         .menu-item.active { 
             background-color: #121214; 
             color: #ff6b00; 
             border-left: 3px solid #ff6b00; 
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.02);
             font-weight: 600;
         }
 
         /* Área de Conteúdo Principal (Desktop) */
-        .main-content { flex: 1; padding: 50px 60px; overflow-y: auto; display: flex; justify-content: center; position: relative; }
+        .main-content { flex: 1; padding: 50px 60px; overflow-y: auto; display: flex; justify-content: center; position: relative; background: radial-gradient(circle at top right, rgba(255, 107, 0, 0.03), transparent 45%); }
         
+        /* Container Form Metamórfico (Efeito Neumorfismo Dark/Vidro) */
         .container { 
             width: 100%; 
             max-width: 720px; 
-            background: #ffffff; 
+            background: #121216; 
             padding: 45px; 
             border-radius: 24px; 
-            border: 1px solid #e4e4e7;
-            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.04); 
+            border: 1px solid #1f1f23;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 50px -10px rgba(255, 107, 0, 0.02); 
             height: fit-content; 
         }
 
         .content-section { display: none; }
         .content-section.active { display: block; animation: sectionFade 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
-        @keyframes sectionFade { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes sectionFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Customização de Formulários */
-        h2 { margin-bottom: 6px; color: #09090b; font-weight: 700; font-size: 26px; }
-        .subtitle { font-size: 14px; color: #71717a; margin-bottom: 35px; line-height: 1.5; }
+        /* Customização de Tipografia Dinâmica */
+        h2 { margin-bottom: 6px; color: #ffffff; font-weight: 700; font-size: 26px; }
+        .subtitle { font-size: 14px; color: #a1a1aa; margin-bottom: 35px; line-height: 1.5; }
         
-        .form-section { border-top: 1px solid #f4f4f5; padding-top: 25px; margin-top: 25px; }
+        .form-section { border-top: 1px solid #1f1f23; padding-top: 25px; margin-top: 25px; }
         .form-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
-        h3 { font-size: 12px; margin-bottom: 16px; color: #ff6b00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+        h3 { font-size: 11px; margin-bottom: 16px; color: #ff6b00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
 
+        /* Inputs e Textareas Estilo Cyber Dark */
         input, select, textarea { 
             width: 100%; 
             padding: 14px 16px; 
             margin-bottom: 16px; 
-            border: 1px solid #e4e4e7; 
+            border: 1px solid #27272a; 
             border-radius: 10px; 
-            background: #ffffff; 
+            background: #18181b; 
             font-size: 14px; 
-            color: #09090b;
+            color: #fafafa;
             outline: none;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        input:focus, select:focus, textarea:focus { border-color: #ff6b00; box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.08); }
+        input:focus, select:focus, textarea:focus { 
+            border-color: #ff6b00; 
+            background: #1c1c21;
+            box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1), 0 0 12px rgba(255, 107, 0, 0.2); 
+        }
         
+        /* Placeholder mais suave para o modo dark */
+        input::placeholder, textarea::placeholder { color: #52525b; }
+
         select {
             -webkit-appearance: none; -moz-appearance: none; appearance: none;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2371717a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
             background-repeat: no-repeat; background-position: right 16px center; background-size: 16px; padding-right: 45px;
         }
 
+        /* Botão de Disparo Neon Autopilot */
         .btn-submit { 
-            background: #ff6b00; color: white; padding: 16px; border: none; border-radius: 12px; 
-            width: 100%; font-weight: 600; cursor: pointer; margin-top: 15px; font-size: 15px; 
-            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.15); transition: all 0.2s; 
+            background: #ff6b00; 
+            color: #ffffff; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 12px; 
+            width: 100%; 
+            font-weight: 600; 
+            cursor: pointer; 
+            margin-top: 15px; 
+            font-size: 15px; 
+            box-shadow: 0 4px 25px rgba(255, 107, 0, 0.25); 
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
-        .btn-submit:hover { background: #e05e00; transform: translateY(-1px); }
+        .btn-submit:hover { background: #e05e00; box-shadow: 0 4px 30px rgba(255, 107, 0, 0.4); transform: translateY(-1px); }
+        .btn-submit:active { transform: translateY(0); }
 
         .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-bottom: 15px; padding: 4px 2px; }
-        .checkbox-item { display: flex; align-items: center; font-size: 14px; color: #27272a; cursor: pointer; font-weight: 500; }
+        .checkbox-item { display: flex; align-items: center; font-size: 14px; color: #e4e4e7; cursor: pointer; font-weight: 500; }
         .checkbox-item input[type="checkbox"] { width: auto; margin-bottom: 0; margin-right: 10px; accent-color: #ff6b00; cursor: pointer; }
 
-        /* TELA DE TRANSIÇÃO SPA (BARRA DE CARREGAMENTO) */
+        /* TELA DE TRANSIÇÃO SPA (BARRA DE CARREGAMENTO NEON) */
         .loading-screen {
             display: none; flex-direction: column; align-items: center; justify-content: center;
             width: 100%; max-width: 600px; text-align: center; margin: auto; animation: fadeIn 0.4s ease;
         }
-        .loading-title { font-size: 22px; font-weight: 700; color: #09090b; margin-bottom: 8px; }
-        .loading-subtitle { font-size: 14px; color: #71717a; margin-bottom: 35px; }
+        .loading-title { font-size: 22px; font-weight: 700; color: #ffffff; margin-bottom: 8px; }
+        .loading-subtitle { font-size: 14px; color: #a1a1aa; margin-bottom: 35px; }
         
-        .progress-container { width: 100%; height: 6px; background-color: #e4e4e7; border-radius: 10px; overflow: hidden; position: relative; margin-bottom: 15px; }
-        .progress-bar { width: 0%; height: 100%; background-color: #ff6b00; border-radius: 10px; transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1); }
-        .progress-number { font-size: 14px; font-weight: 700; color: #ff6b00; font-variant-numeric: tabular-nums; }
+        .progress-container { width: 100%; height: 6px; background-color: #18181b; border-radius: 10px; overflow: hidden; position: relative; margin-bottom: 15px; border: 1px solid #27272a; }
+        .progress-bar { width: 0%; height: 100%; background-color: #ff6b00; border-radius: 10px; transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 12px #ff6b00; }
+        .progress-number { font-size: 14px; font-weight: 700; color: #ff6b00; font-variant-numeric: tabular-nums; text-shadow: 0 0 8px rgba(255, 107, 0, 0.3); }
 
-        /* PÁGINA DE RESULTADOS DELIVERED WORKSPACE */
+        /* PÁGINA DE RESULTADOS DELIVERED WORKSPACE (DARK PREMIUM PORTFOLIO) */
         .results-screen { display: none; width: 100%; max-width: 1100px; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-        .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; border-bottom: 1px solid #e4e4e7; padding-bottom: 20px; }
+        .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; border-bottom: 1px solid #1f1f23; padding-bottom: 20px; }
         
         .btn-back {
-            background: #000000; color: #ffffff; padding: 10px 18px; border: none; border-radius: 8px;
+            background: #ffffff; color: #000000; padding: 10px 18px; border: none; border-radius: 8px;
             font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s;
         }
-        .btn-back:hover { background: #222222; }
+        .btn-back:hover { background: #e4e4e7; transform: translateY(-1px); }
 
         /* LAYOUTS DE EXIBIÇÃO DETECTÁVEIS */
         .cards-container-stack { display: flex; flex-direction: column; width: 100%; max-width: 760px; margin: 0 auto; }
@@ -174,33 +197,34 @@
             width: 100%;
         }
 
+        /* Cards Das Variantes Editáveis com Glow Real */
         .variation-card {
-            background: #ffffff; border: 1px solid #e4e4e7; border-radius: 16px; padding: 22px;
-            margin-bottom: 15px; box-shadow: 0 4px 12px rgba(0,0,0,0.01); transition: all 0.2s ease;
+            background: #121216; border: 1px solid #1f1f23; border-radius: 16px; padding: 22px;
+            margin-bottom: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
             display: flex; flex-direction: column; height: 100%;
         }
-        .variation-card:hover { border-color: #ff6b00; box-shadow: 0 10px 20px -10px rgba(255,107,0,0.05); }
+        .variation-card:hover { border-color: #ff6b00; box-shadow: 0 15px 35px -10px rgba(255, 107, 0, 0.1); }
         
         .variation-badge {
-            align-self: flex-start; background: rgba(255, 107, 0, 0.08); color: #ff6b00;
-            font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
-            padding: 4px 10px; border-radius: 20px; margin-bottom: 15px;
+            align-self: flex-start; background: rgba(255, 107, 0, 0.1); color: #ff6b00;
+            font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;
+            padding: 4px 12px; border-radius: 20px; margin-bottom: 15px; border: 1px solid rgba(255, 107, 0, 0.15);
         }
         
         .variation-editor {
             width: 100%; flex: 1; min-height: 180px; border: none; resize: vertical;
-            font-size: 14px; line-height: 1.6; color: #27272a; background: transparent;
+            font-size: 14px; line-height: 1.6; color: #e4e4e7; background: transparent;
             outline: none; padding: 0; margin-bottom: 15px; font-family: inherit;
         }
         
-        .card-actions { display: flex; justify-content: flex-end; border-top: 1px solid #f4f4f5; padding-top: 15px; margin-top: auto; }
+        .card-actions { display: flex; justify-content: flex-end; border-top: 1px solid #1f1f23; padding-top: 15px; margin-top: auto; }
         .btn-copy {
-            background: #fafafa; border: 1px solid #e4e4e7; color: #3f3f46; padding: 8px 14px;
+            background: #18181b; border: 1px solid #27272a; color: #a1a1aa; padding: 8px 14px;
             border-radius: 8px; font-size: 12px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 6px; transition: all 0.2s;
         }
-        .btn-copy:hover { background: #ff6b00; color: white; border-color: #ff6b00; }
+        .btn-copy:hover { background: #ff6b00; color: white; border-color: #ff6b00; box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2); }
 
-        /* RESPONSIVIDADE ADAPTATIVA MOBILE */
+        /* RESPONSIVIDADE ADAPTATIVA MOBILE COM GAVETA OFF-CANVAS DARK */
         @media (max-width: 992px) {
             body { flex-direction: column; overflow: hidden; height: 100vh; }
             .mobile-header { display: flex; }
@@ -212,7 +236,8 @@
                 width: 290px;
                 height: calc(100vh - 60px);
                 transform: translateX(-100%);
-                border-right: 1px solid #18181b;
+                background-color: #030303;
+                border-right: 1px solid #1f1f23;
                 border-bottom: none;
                 padding: 25px 20px;
                 flex-direction: column;
@@ -227,8 +252,8 @@
             .menu-item { margin-bottom: 6px; display: block; padding: 14px 20px; font-size: 14px; }
             .menu-item.active { border-left: 3px solid #ff6b00; border-bottom: none; border-radius: 10px; }
 
-            .main-content { padding: 90px 15px 30px 15px; overflow-y: auto; width: 100%; }
-            .container { padding: 30px 20px; border-radius: 20px; }
+            .main-content { padding: 90px 15px 30px 15px; overflow-y: auto; width: 100%; background: #09090b; }
+            .container { padding: 30px 20px; border-radius: 20px; border-color: #1f1f23; }
             
             .cards-container-grid { grid-template-columns: 1fr; gap: 15px; }
             .results-header { flex-direction: column; align-items: flex-start; gap: 15px; }
@@ -240,7 +265,7 @@
 </head>
 <body>
 
-    <!-- HEADER MOBILE (Atualizado com indicador de rota ativa baseado em image_36b6fc.jpg) -->
+    <!-- HEADER MOBILE (Com indicador de rota ativa baseado em image_36b6fc.jpg) -->
     <div class="mobile-header">
         <div style="display: flex; align-items: center; gap: 12px;">
             <img src="tomorrow.png" alt="Tomorrow Logo">
@@ -451,8 +476,6 @@
                     <h3>Tabela de Inserção Rápida</h3>
                     <textarea id="me-brutos" placeholder="Cole aqui os dados crus brutos da sua planilha para mineração sintática da IA (Opcional)"></textarea>
                 </div>
-                <div class="form-section">
-                </div>
                 <button class="btn-submit" onclick="executarEngine('metricas')">Executar Auditoria de Métricas</button>
             </div>
 
@@ -512,7 +535,7 @@
             <div class="results-header">
                 <div>
                     <h2 id="results-main-title">Estratégias Geradas</h2>
-                    <p style="font-size: 13px; color: #71717a; margin-top: 4px;">Clique dentro de qualquer bloco para fazer alterações personalizadas antes de copiar.</p>
+                    <p style="font-size: 13px; color: #a1a1aa; margin-top: 4px;">Clique dentro de qualquer bloco para fazer alterações personalizadas antes de copiar.</p>
                 </div>
                 <button class="btn-back" id="btn-back-form">← Voltar ao Formulário</button>
             </div>
@@ -522,7 +545,7 @@
     </div>
 
     <script>
-        // CONFIGURAÇÕES DO NÚCLEO E CHAVE CORPORATIVA VALIDADA[cite: 1]
+        // CONFIGURAÇÕES DO NÚCLEO E CHAVE CORPORATIVA VALIDADA[cite: 2]
         const API_KEY = "AQ.Ab8RN6L4gXlwfKXY1Z67EyGL2A4fgOIVA1QzynlW9klthC4Ujw"; 
         
         const viewForm = document.getElementById('workspace-form');
@@ -537,17 +560,17 @@
         const resultsMainTitle = document.getElementById('results-main-title');
         const mobileRouteIndicator = document.getElementById('mobile-current-route');
 
-        // INTERFACE DINÂMICA DO INSTAGRAM (ITEM 4)[cite: 1]
+        // INTERFACE DINÂMICA DO INSTAGRAM (ITEM 4)[cite: 2]
         document.getElementById('insta-formato').addEventListener('change', function() {
             document.getElementById('volume-section').style.display = this.value === 'pacote' ? 'block' : 'none';
         });
 
-        // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER (MOBILE)[cite: 1]
+        // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER (MOBILE)[cite: 2]
         function toggleMenu() {
             sidebar.classList.toggle('open');
         }
 
-        // CONTROLADOR GLOBAL DE ABAS CORTA-BUG[cite: 1]
+        // CONTROLADOR GLOBAL DE ABAS CORTA-BUG[cite: 2]
         function switchTab(element, tabId) {
             viewResults.style.display = 'none';
             viewLoading.style.display = 'none';
@@ -564,16 +587,16 @@
             // ATUALIZAÇÃO DO INDICADOR DE ROTA NO MOBILE HEADER
             mobileRouteIndicator.innerText = element.innerText;
             
-            // Se estiver no mobile, fecha a gaveta do menu de forma automática ao escolher o painel[cite: 1]
+            // Se estiver no mobile, fecha a gaveta do menu de forma automática ao escolher o painel[cite: 2]
             if (window.innerWidth <= 992) {
                 sidebar.classList.remove('open');
             }
             
-            // Auto-scroll para o topo nas trocas de abas em dispositivos mobile[cite: 1]
+            // Auto-scroll para o topo nas trocas de abas em dispositivos mobile[cite: 2]
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // RETORNO DE TELA MANUAL[cite: 1]
+        // RETORNO DE TELA MANUAL[cite: 2]
         document.getElementById('btn-back-form').addEventListener('click', () => {
             viewResults.style.display = 'none';
             viewForm.style.display = 'block';
@@ -582,7 +605,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // COPIAR CLIPBOARD PREMIUM[cite: 1]
+        // COPIAR CLIPBOARD PREMIUM[cite: 2]
         function copiarCard(id, botao) {
             const textarea = document.getElementById(`txt-content-${id}`);
             navigator.clipboard.writeText(textarea.value).then(() => {
@@ -591,13 +614,14 @@
                 botao.style.background = "#ff6b00"; botao.style.color = "#ffffff";
                 setTimeout(() => {
                     botao.innerHTML = labelOriginal;
-                    botao.style.background = "#fafafa"; botao.style.color = "#3f3f46";
+                    botao.style.background = "#18181b"; botao.style.color = "#a1a1aa";
+                    botao.style.borderColor = "#27272a";
                 }, 1500);
             });
         }
 
         // ========================================================
-        // MOTOR DE EXECUÇÃO CENTRALIZADO (ENGINE ADAPTATIVO COMPLETO)[cite: 1]
+        // MOTOR DE EXECUÇÃO CENTRALIZADO (ENGINE ADAPTATIVO COMPLETO)[cite: 2]
         // ========================================================
         async function executarEngine(painelAtivo) {
             let promptMestre = "";
@@ -606,7 +630,7 @@
             let txtCarregando = "Estruturando análises de mercado Tomorrow...";
             let layoutModoGrid = false;
 
-            // 1. PROCESSADOR DA ABA: INSTAGRAM[cite: 1]
+            // 1. PROCESSADOR DA ABA: INSTAGRAM[cite: 2]
             if (painelAtivo === 'instagram') {
                 const empresa = document.getElementById('insta-empresa').value;
                 const subnicho = document.getElementById('insta-subnicho').value;
@@ -636,7 +660,7 @@
                 }
                 promptMestre += `\nDados do Negócio: Empresa: ${empresa}, Subnicho/Mercado: ${subnicho}, Produto: ${produto}, Persona: ${persona}, Dor: ${dor}, Objetivo: ${estrategia}, Tom: ${tom}, CTA: ${cta}. Não use inglês. Escreva apenas o conteúdo final em português incorporando o nome da marca de forma natural quando oportuno.`;
 
-            // 2. PROCESSADOR DA ABA: TIKTOK / REELS[cite: 1]
+            // 2. PROCESSADOR DA ABA: TIKTOK / REELS[cite: 2]
             } else if (painelAtivo === 'tiktok') {
                 const empresa = document.getElementById('tk-empresa').value;
                 const tema = document.getElementById('tk-tema').value;
@@ -653,7 +677,7 @@
                 promptMestre = `Aja como estrategista sênior de TikTok da Tomorrow. Crie exatamente 3 Variações Completas de Roteiros de Vídeo Curtos focados em retenção para a marca/empresa "${empresa}". Separe cada roteiro com o delimitador: [DIVIDIR_ROTEIRO].
                 Parâmetros: Tema: ${tema}, Promessa: ${promessa}, Gancho Base: ${gancho}, Formato: ${formato}, Ritmo: ${ritmo}, Desfecho: ${cta}. Escreva exclusivamente em português, direto ao ponto, estruturando falas e indicações visuais.`;
 
-            // 3. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA[cite: 1]
+            // 3. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA[cite: 2]
             } else if (painelAtivo === 'linha-editorial') {
                 const empresa = document.getElementById('le-empresa').value;
                 const diferencial = document.getElementById('le-diferencial').value;
@@ -671,7 +695,7 @@
 
                 let totalCardsExigidos = 6;
                 if (duracaoCampanha == "30") totalCardsExigidos = 12;
-                if (duracaoCampanha == "60") totalCardsExigidos = 18;
+                if (duracaoCampCampaign == "60") totalCardsExigidos = 18;
 
                 promptMestre = `Você é o Diretor de Criação da agência Tomorrow. Sua missão é criar exatamente ${totalCardsExigidos} blocos estratégicos sequenciais de publicação distribuídos ao longo de um plano de ${duracaoCampanha} dias para a empresa "${empresa}".
 
@@ -690,7 +714,7 @@
                 - Produto/Oferta em Foco: ${principal}
                 - Objeções para Destruir: ${objecoes}`;
 
-            // 4. PROCESSADOR DA ABA: OFERTA MAGNÉTICA[cite: 1]
+            // 4. PROCESSADOR DA ABA: OFERTA MAGNÉTICA[cite: 2]
             } else if (painelAtivo === 'oferta') {
                 const empresa = document.getElementById('of-empresa').value;
                 const transformacao = document.getElementById('of-transformacao').value;
@@ -709,7 +733,7 @@
                 promptMestre = `Construa uma Proposta Comercial Irrecusável baseada em Engenharia de Valor para os produtos/serviços da empresa "${empresa}". Divida em 3 seções completas (Seção 1: Pitch da Promessa e Método, Seção 2: Empacotamento de Bônus, Seção 3: Inversão de Risco e Fechamento Comercial). Separe as seções usando: [DIVIDIR_OFERTA].
                 Parâmetros: Transformação: ${transformacao}, Mecanismo: ${mecanismo}, Entregáveis: ${entregaveis}, Bônus: ${bonus}, Ancoragem: ${ancoragem}, Preço Real: ${preco}, Garantia: ${garantia}, Gatilho: ${gatilho}. Escreva em português do Brasil, focado em alta conversão.`;
 
-            // 5. PROCESSADOR DA ABA: ANÁLISE DE MÉTRICAS[cite: 1]
+            // 5. PROCESSADOR DA ABA: ANÁLISE DE MÉTRICAS[cite: 2]
             } else if (painelAtivo === 'metricas') {
                 const empresa = document.getElementById('me-empresa').value;
                 const periodo = document.getElementById('me-periodo').value;
@@ -732,7 +756,7 @@
                 promptMestre = `Você é um Cientista de Dados e Growth Hacker da Tomorrow. Faça um diagnóstico analítico e frio das métricas de marketing digital da empresa "${empresa}", aponte os gargalos reais do funil e dê um plano de ação imediato. Separe o diagnóstico em 3 blocos (Bloco 1: Varredura de Gargalos, Bloco 2: Otimização de Conversão, Bloco 3: Plano de Execução). Use o delimitador: [DIVIDIR_AUDITORIA].
                 Dados: Período: ${periodo}, Meta: ${meta}, Impressões: ${imp}, Alcance: ${alc}, Crescimento: ${cresc}, Origem: ${ori}, Interações: ${inter}, Retenção: ${ret}%, Cliques: ${cliq}, Conversões: ${conv}, CAC: ${cac}. Dados Extras: ${brutos}. Responda em português.`;
 
-            // 6. PROCESSADOR DA ABA: DIAGNÓSTICO DE MERCADO[cite: 1]
+            // 6. PROCESSADOR DA ABA: DIAGNÓSTICO DE MERCADO[cite: 2]
             } else if (painelAtivo === 'mercado') {
                 const empresa = document.getElementById('dm-empresa').value;
                 const modelo = document.getElementById('dm-modelo').value;
@@ -752,7 +776,7 @@
                 Parâmetros: Atuação: ${modelo}, Sede: ${loc}, Raio: ${raio}, Concorrentes diretos: ${conc}, Calcanhar do rival: ${calcanhar}, Maturidade do público: ${conhec}, Ticket médio: R$ ${ticket}, Próximo Passo desejado: ${passo}. Tudo estruturado e finalizado direto em português.`;
             }
 
-            // TRANSIÇÃO PROGRESSIVA CINEMATOGRÁFICA SPA[cite: 1]
+            // TRANSIÇÃO PROGRESSIVA CINEMATOGRÁFICA SPA[cite: 2]
             viewForm.style.display = 'none';
             sidebar.style.opacity = '0';
             sidebar.style.pointerEvents = 'none';
@@ -772,7 +796,7 @@
                 }
             }, 130);
 
-            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ[cite: 1]
+            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ[cite: 2]
             let canaisDeModelos = [
                 "models/gemini-2.5-flash",
                 "models/gemini-2.5-pro",
@@ -808,7 +832,7 @@
 
             clearInterval(animarBarra);
 
-            // INJEÇÃO INTERATIVA DOS CARDS NAS VIEWS DE SAÍDA SPA[cite: 1]
+            // INJEÇÃO INTERATIVA DOS CARDS NAS VIEWS DE SAÍDA SPA[cite: 2]
             if (apiSucessoCompleto) {
                 barFill.style.width = '100%';
                 barText.innerText = '100%';
