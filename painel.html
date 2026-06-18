@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -64,15 +63,16 @@
             border-right: 1px solid #121214;
             transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 1000;
+            overflow-y: auto;
         }
-        .logo-container { padding: 10px 15px; margin-bottom: 35px; }
+        .logo-container { padding: 10px 15px; margin-bottom: 35px; flex-shrink: 0; }
         .logo-container img { width: 170px; opacity: 0.95; }
 
         .menu-item { 
-            padding: 14px 20px; 
+            padding: 12px 20px; 
             color: #a1a1aa; 
             cursor: pointer; 
-            font-size: 14px; 
+            font-size: 13px; 
             margin-bottom: 6px; 
             border-radius: 10px; 
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
@@ -192,7 +192,7 @@
         
         .cards-container-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             width: 100%;
         }
@@ -224,7 +224,7 @@
         }
         .btn-copy:hover { background: #ff6b00; color: white; border-color: #ff6b00; box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2); }
 
-        /* RESPONSIVIDADE ADAPTATIVA MOBILE COM GAVETA OFF-CANVAS DARK */
+        /* RESPONSIVIDADE ADAPTATIVA MOBILE GAVETA */
         @media (max-width: 992px) {
             body { flex-direction: column; overflow: hidden; height: 100vh; }
             .mobile-header { display: flex; }
@@ -280,7 +280,11 @@
         <div class="menu-item active" onclick="switchTab(this, 'instagram')">Instagram / Facebook</div>
         <div class="menu-item" onclick="switchTab(this, 'tiktok')">TikTok / Reels / Shorts</div>
         <div class="menu-item" onclick="switchTab(this, 'linha-editorial')">Linha Editorial Completa</div>
+        <div class="menu-item" onclick="switchTab(this, 'exportador-carrossel')">Exportador de Carrossel</div>
+        <div class="menu-item" onclick="switchTab(this, 'radar-hype')">Radar de Hype</div>
         <div class="menu-item" onclick="switchTab(this, 'oferta')">Oferta Magnética</div>
+        <div class="menu-item" onclick="switchTab(this, 'objecoes-live')">Destruidor de Objeções</div>
+        <div class="menu-item" onclick="switchTab(this, 'trafego-pago')">Copiloto de Tráfego Pago</div>
         <div class="menu-item" onclick="switchTab(this, 'metricas')">Análise de Métricas</div>
         <div class="menu-item" onclick="switchTab(this, 'mercado')">Diagnóstico de Mercado</div>
     </div>
@@ -411,7 +415,53 @@
                 <button class="btn-submit" onclick="executarEngine('linha-editorial')">Gerar Calendário Estratégico</button>
             </div>
 
-            <!-- 4. OFERTA MAGNÉTICA -->
+            <!-- 4. EXPORTADOR DE CARROSSEL (NOVO RECURSO) -->
+            <div id="exportador-carrossel" class="content-section">
+                <h2>Exportador de Carrossel</h2>
+                <p class="subtitle">Crie o mapa estrutural exato slide por slide para montar apresentações de altíssimo engajamento visual.</p>
+                <div class="form-section">
+                    <h3>1. Contexto</h3>
+                    <input type="text" id="car-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
+                    <input type="text" id="car-tema" placeholder="Tema Central do Carrossel (ex: 5 Passos para escalar seu faturamento)">
+                </div>
+                <div class="form-section">
+                    <h3>2. Configuração</h3>
+                    <input type="number" id="car-slides" min="3" max="10" value="5" placeholder="Quantidade de Slides desejada (De 3 a 10)">
+                    <select id="car-tom">
+                        <option>Tom: Agressivo / Comercial</option>
+                        <option>Tom: Educacional / Técnico</option>
+                        <option>Tom: Narrativo / Storytelling</option>
+                    </select>
+                </div>
+                <button class="btn-submit" onclick="executarEngine('exportador-carrossel')">Montar Slides do Carrossel</button>
+            </div>
+
+            <!-- 5. RADAR DE HYPE (NOVO RECURSO) -->
+            <div id="radar-hype" class="content-section">
+                <h2>Radar de Hype</h2>
+                <p class="subtitle">Adapte ganchos virais e tendências de alto tráfego validadas para o contexto do seu produto.</p>
+                <div class="form-section">
+                    <h3>1. Direcionamento</h3>
+                    <input type="text" id="hype-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
+                    <input type="text" id="hype-nicho" placeholder="Seu Segmento/Nicho (ex: Nutrição Esportiva, Advocacia Trabalhista)">
+                </div>
+                <div class="form-section">
+                    <h3>2. Canal de Distribuição</h3>
+                    <select id="hype-canal">
+                        <option>Instagram Reels</option>
+                        <option>TikTok Nativo</option>
+                        <option>YouTube Shorts</option>
+                    </select>
+                    <select id="hype-estilo">
+                        <option>Estilo: Humor Ácido / Quebra de Expectativa</option>
+                        <option>Estilo: Educacional "O Segredo Revelado"</option>
+                        <option>Estilo: Estético / Vlog Cinematográfico Corporativo</option>
+                    </select>
+                </div>
+                <button class="btn-submit" onclick="executarEngine('radar-hype')">Rastrear Tendências do Ano</button>
+            </div>
+
+            <!-- 6. OFERTA MAGNÉTICA -->
             <div id="oferta" class="content-section">
                 <h2>Oferta Magnética</h2>
                 <p class="subtitle">Refine a arquitetura de valor e inverta o risco técnico para construir uma proposta comercial irrecusável.</p>
@@ -444,7 +494,44 @@
                 <button class="btn-submit" onclick="executarEngine('oferta')">Gerar Proposta Irresistível</button>
             </div>
 
-            <!-- 5. ANÁLISE DE MÉTRICAS -->
+            <!-- 7. DESTRUIDOR DE OBJEÇÕES (NOVO RECURSO) -->
+            <div id="objecoes-live" class="content-section">
+                <h2>Destruidor de Objeções</h2>
+                <p class="subtitle">Simulador Crítico. Deixe a inteligência artificial assumir sua persona mais dura para atacar e criar contra-scripts.</p>
+                <div class="form-section">
+                    <h3>1. Mapeamento de Ataque</h3>
+                    <input type="text" id="obj-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
+                    <input type="text" id="obj-persona" placeholder="Sua Persona Alvo (ex: Profissionais liberais sem tempo livre)">
+                </div>
+                <div class="form-section">
+                    <h3>2. O Alvo</h3>
+                    <textarea id="obj-oferta" placeholder="Qual é o seu Produto e Preço? (ex: Mentoria Individual de Escala por R$ 3.000 à vista)"></textarea>
+                </div>
+                <button class="btn-submit" onclick="executarEngine('objecoes-live')">Iniciar Interrogatório da Persona</button>
+            </div>
+
+            <!-- 8. COPILOTO DE TRÁFEGO PAGO (NOVO RECURSO) -->
+            <div id="trafego-pago" class="content-section">
+                <h2>Copiloto de Tráfego Pago</h2>
+                <p class="subtitle">Gere variações de criativos de alta conversão estruturados para quebrar o padrão de rolagem dos feeds de anúncios.</p>
+                <div class="form-section">
+                    <h3>1. Base do Anúncio</h3>
+                    <input type="text" id="traf-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
+                    <input type="text" id="traf-produto" placeholder="Nome do Produto/Página de Destino (ex: Curso Método Lucro Rápido)">
+                </div>
+                <div class="form-section">
+                    <h3>2. Estratégia de Copy</h3>
+                    <textarea id="traf-dor" placeholder="Qual é a dor mais latente que esse anúncio vai atacar? (ex: Medo de perder o emprego por causa de novas tecnologias)"></textarea>
+                    <select id="traf-framework">
+                        <option value="AIDA">Framework: AIDA (Atenção, Interesse, Desejo, Ação)</option>
+                        <option value="PAS">Framework: PAS (Problema, Agitação, Solução)</option>
+                        <option value="PPPP">Framework: PPPP (Picture, Promise, Prove, Push)</option>
+                    </select>
+                </div>
+                <button class="btn-submit" onclick="executarEngine('trafego-pago')">Gerar Scripts de Criativos</button>
+            </div>
+
+            <!-- 9. ANÁLISE DE MÉTRICAS -->
             <div id="metricas" class="content-section">
                 <h2>Análise de Métricas</h2>
                 <p class="subtitle">Alimente o sistema com os KPIs reais de tráfego e engajamento para rodar uma varredura de gargalos.</p>
@@ -455,64 +542,64 @@
                     <input type="text" id="me-meta" placeholder="Meta Principal do Período (Ex: Otimizar o custo por aquisição)">
                 </div>
                 <div class="form-section">
-                    <h3>1. Alcance e Atração (Topo do Funil)</h3>
+                    <h3>1. Topo do Funil</h3>
                     <input type="number" id="me-impressoes" placeholder="Total de Impressões Brutas">
-                    <input type="number" id="me-alcance" placeholder="Alcance Único (Pessoas únicas atingidas)">
-                    <input type="number" id="me-crescimento" placeholder="Taxa de Crescimento (Novos seguidores líquidos)">
-                    <input type="text" id="me-origem" placeholder="Origem do Tráfego (Ex: 70% Não-Seguidores / 30% Seguidores)">
+                    <input type="number" id="me-alcance" placeholder="Alcance Único">
+                    <input type="number" id="me-crescimento" placeholder="Taxa de Crescimento Líquido">
+                    <input type="text" id="me-origem" placeholder="Origem do Tráfego">
                 </div>
                 <div class="form-section">
-                    <h3>2. Engajamento e Qualificação (Meio do Funil)</h3>
-                    <input type="number" id="me-interacoes" placeholder="Volume de Interações (Soma de Curtidas, Comentários, Salvamentos e Envios)">
-                    <input type="number" id="me-retencao" placeholder="Taxa Média de Retenção de Vídeos (%) (Ex: 45)">
+                    <h3>2. Meio do Funil</h3>
+                    <input type="number" id="me-interacoes" placeholder="Soma de Curtidas, Comentários, Salvamentos e Envios">
+                    <input type="number" id="me-retencao" placeholder="Taxa Média de Retenção de Vídeos (%)">
                 </div>
                 <div class="form-section">
-                    <h3>3. Conversão e Caixa (Fundo do Funil)</h3>
+                    <h3>3. Fundo do Funil</h3>
                     <input type="number" id="me-cliques" placeholder="Cliques Totais no Link da Bio / CTA">
-                    <input type="number" id="me-conversoes" placeholder="Volume de Conversões (Vendas validadas ou Leads gerados)">
-                    <input type="number" id="me-cac" placeholder="Custo Total por Lead / Aquisição (CAC) se houver tráfego pago">
+                    <input type="number" id="me-conversoes" placeholder="Volume de Conversões (Vendas validadas)">
+                    <input type="number" id="me-cac" placeholder="Custo por Lead / Aquisição (CAC)">
                 </div>
                 <div class="form-section">
                     <h3>Tabela de Inserção Rápida</h3>
-                    <textarea id="me-brutos" placeholder="Cole aqui os dados crus brutos da sua planilha para mineração sintática da IA (Opcional)"></textarea>
+                    <textarea id="me-brutos" placeholder="Cole aqui os dados crus brutos da sua planilha para mineração sintática (Opcional)"></textarea>
                 </div>
                 <button class="btn-submit" onclick="executarEngine('metricas')">Executar Auditoria de Métricas</button>
             </div>
 
-            <!-- 6. DIAGNÓSTICO DE MERCADO -->
+            <!-- 10. DIAGNÓSTICO DE MERCADO -->
             <div id="mercado" class="content-section">
                 <h2>Diagnóstico de Mercado</h2>
                 <p class="subtitle">Avalie a saturação competitiva geográfica do seu nicho e encontre brechas de escala premium.</p>
                 <div class="form-section">
-                    <h3>1. Abrangência e Localização</h3>
+                    <h3>1. Abrangência</h3>
                     <input type="text" id="dm-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
                     <select id="dm-modelo">
-                        <option>Local / Físico (Atende apenas uma região específica)</option>
-                        <option>Nacional / Digital (Atende o país inteiro)</option>
-                        <option>Híbrido (Tem sede física, mas vende para fora)</option>
+                        <option>Local / Físico</option>
+                        <option>Nacional / Digital</option>
+                        <option>Híbrido</option>
                     </select>
-                    <input type="text" id="dm-localizacao" placeholder="Localização Base (Cidade e Estado. Ex: Belo Horizonte - MG)">
-                    <input type="text" id="dm-raio" placeholder="Raio de Atendimento se aplicável (Ex: Até 15 km)">
+                    <input type="text" id="dm-localizacao" placeholder="Localização Base (Cidade e Estado)">
+                    <input type="text" id="dm-raio" placeholder="Raio de Atendimento se aplicável">
                 </div>
                 <div class="form-section">
-                    <h3>2. Cenário de Concorrência</h3>
-                    <input type="text" id="dm-concorrentes" placeholder="Principais Concorrentes (Quem são os 2 ou 3 maiores no nicho ou região)">
-                    <textarea id="dm-calcanhar" placeholder="O 'Calcanhar de Aquiles' do Concorrente (O que o concorrente faz de errado que você faz melhor?)"></textarea>
+                    <h3>2. Cenário</h3>
+                    <input type="text" id="dm-concorrentes" placeholder="Principais Concorrentes">
+                    <textarea id="dm-calcanhar" placeholder="O 'Calcanhar de Aquiles' do Concorrente (O que você faz melhor?)"></textarea>
                 </div>
                 <div class="form-section">
-                    <h3>3. Demanda e Maturidade</h3>
+                    <h3>3. Parâmetros</h3>
                     <select id="dm-conhecimento">
-                        <option>Demanda Alta / Mercado Educado (Todo mundo já quer e sabe o que é. Ex: Barbearia, Hamburgueria)</option>
-                        <option>Demanda Inexplorada / Mercado Novo (O produto é inovador e as pessoas não sabem que precisam)</option>
+                        <option>Demanda Alta / Mercado Educado</option>
+                        <option>Demanda Inexplorada / Mercado Novo</option>
                     </select>
-                    <input type="number" id="dm-ticket" placeholder="Preço Médio Praticado (Ticket Médio atual do seu produto principal em R$)">
+                    <input type="number" id="dm-ticket" placeholder="Ticket Médio atual em R$">
                 </div>
                 <div class="form-section">
-                    <h3>4. Meta de Escala</h3>
+                    <h3>4. Meta</h3>
                     <select id="dm-passo">
                         <option>Lotar a agenda / Abrir filial física</option>
-                        <option>Aumentar o preço (Posicionamento Premium) sem perder clientes</option>
-                        <option>Nacionalizar a marca (Ir de vez para o digital)</option>
+                        <option>Aumentar o preço (Posicionamento Premium)</option>
+                        <option>Nacionalizar a marca</option>
                     </select>
                 </div>
                 <button class="btn-submit" onclick="executarEngine('mercado')">Gerar Matriz de Crescimento</button>
@@ -560,12 +647,12 @@
         const resultsMainTitle = document.getElementById('results-main-title');
         const mobileRouteIndicator = document.getElementById('mobile-current-route');
 
-        // INTERFACE DINÂMICA DO INSTAGRAM (ITEM 4)[cite: 2]
+        // INTERFACE DINÂMICA DO INSTAGRAM[cite: 2]
         document.getElementById('insta-formato').addEventListener('change', function() {
             document.getElementById('volume-section').style.display = this.value === 'pacote' ? 'block' : 'none';
         });
 
-        // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER (MOBILE)[cite: 2]
+        // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER[cite: 2]
         function toggleMenu() {
             sidebar.classList.toggle('open');
         }
@@ -584,15 +671,12 @@
             element.classList.add('active');
             document.getElementById(tabId).classList.add('active');
             
-            // ATUALIZAÇÃO DO INDICADOR DE ROTA NO MOBILE HEADER
             mobileRouteIndicator.innerText = element.innerText;
             
-            // Se estiver no mobile, fecha a gaveta do menu de forma automática ao escolher o painel[cite: 2]
             if (window.innerWidth <= 992) {
                 sidebar.classList.remove('open');
             }
             
-            // Auto-scroll para o topo nas trocas de abas em dispositivos mobile[cite: 2]
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
@@ -630,7 +714,7 @@
             let txtCarregando = "Estruturando análises de mercado Tomorrow...";
             let layoutModoGrid = false;
 
-            // 1. PROCESSADOR DA ABA: INSTAGRAM[cite: 2]
+            // 1. INSTAGRAM[cite: 2]
             if (painelAtivo === 'instagram') {
                 const empresa = document.getElementById('insta-empresa').value;
                 const subnicho = document.getElementById('insta-subnicho').value;
@@ -660,7 +744,7 @@
                 }
                 promptMestre += `\nDados do Negócio: Empresa: ${empresa}, Subnicho/Mercado: ${subnicho}, Produto: ${produto}, Persona: ${persona}, Dor: ${dor}, Objetivo: ${estrategia}, Tom: ${tom}, CTA: ${cta}. Não use inglês. Escreva apenas o conteúdo final em português incorporando o nome da marca de forma natural quando oportuno.`;
 
-            // 2. PROCESSADOR DA ABA: TIKTOK / REELS[cite: 2]
+            // 2. TIKTOK / REELS[cite: 2]
             } else if (painelAtivo === 'tiktok') {
                 const empresa = document.getElementById('tk-empresa').value;
                 const tema = document.getElementById('tk-tema').value;
@@ -677,7 +761,7 @@
                 promptMestre = `Aja como estrategista sênior de TikTok da Tomorrow. Crie exatamente 3 Variações Completas de Roteiros de Vídeo Curtos focados em retenção para a marca/empresa "${empresa}". Separe cada roteiro com o delimitador: [DIVIDIR_ROTEIRO].
                 Parâmetros: Tema: ${tema}, Promessa: ${promessa}, Gancho Base: ${gancho}, Formato: ${formato}, Ritmo: ${ritmo}, Desfecho: ${cta}. Escreva exclusivamente em português, direto ao ponto, estruturando falas e indicações visuais.`;
 
-            // 3. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA[cite: 2]
+            // 3. LINHA EDITORIAL COMPLETA[cite: 2]
             } else if (painelAtivo === 'linha-editorial') {
                 const empresa = document.getElementById('le-empresa').value;
                 const diferencial = document.getElementById('le-diferencial').value;
@@ -695,7 +779,7 @@
 
                 let totalCardsExigidos = 6;
                 if (duracaoCampanha == "30") totalCardsExigidos = 12;
-                if (duracaoCampCampaign == "60") totalCardsExigidos = 18;
+                if (duracaoCampanha == "60") totalCardsExigidos = 18;
 
                 promptMestre = `Você é o Diretor de Criação da agência Tomorrow. Sua missão é criar exatamente ${totalCardsExigidos} blocos estratégicos sequenciais de publicação distribuídos ao longo de um plano de ${duracaoCampanha} dias para a empresa "${empresa}".
 
@@ -714,7 +798,46 @@
                 - Produto/Oferta em Foco: ${principal}
                 - Objeções para Destruir: ${objecoes}`;
 
-            // 4. PROCESSADOR DA ABA: OFERTA MAGNÉTICA[cite: 2]
+            // 4. EXPORTADOR DE CARROSSEL (NOVO INTERPRETADOR)
+            } else if (painelAtivo === 'exportador-carrossel') {
+                const empresa = document.getElementById('car-empresa').value;
+                const tema = document.getElementById('car-tema').value;
+                const slides = parseInt(document.getElementById('car-slides').value) || 5;
+                const tom = document.getElementById('car-tom').value;
+
+                if (!empresa || !tema) return alert("Preencha o Nome da Empresa e o Tema!");
+                layoutModoGrid = true;
+                delimitador = "[DIVIDIR_SLIDE]";
+                txtCarregando = `Diagramando arquitetura de ${slides} slides para ${empresa}...`;
+                tituloPagina = `Estrutura de Carrossel: ${tema}`;
+                promptMestre = `Você é o Copywriter e Designer Estratégico da Tomorrow. Escreva o conteúdo slide por slide para um carrossel de exatamente ${slides} páginas para a marca "${empresa}". 
+                Separe estritamente cada slide com o delimitador: [DIVIDIR_SLIDE]
+                Não use introduções. Foque no tema: ${tema} utilizando o tom: ${tom}.
+                Formato de cada bloco:
+                CONTEÚDO VISUAL (O que vai escrito grande no slide)
+                TEXTO DE APOIO (Legenda curta interna do slide)
+                DIREÇÃO CRIATIVA (Orientação para o designer sobre cores ou elementos)`;
+
+            // 5. RADAR DE HYPE (NOVO INTERPRETADOR)
+            } else if (painelAtivo === 'radar-hype') {
+                const empresa = document.getElementById('hype-empresa').value;
+                const nicho = document.getElementById('hype-nicho').value;
+                const canal = document.getElementById('hype-canal').value;
+                const estilo = document.getElementById('hype-estilo').value;
+
+                if (!empresa || !nicho) return alert("Preencha o Nome da Empresa e o Nicho!");
+                delimitador = "[DIVIDIR_TREND]";
+                txtCarregando = `Varrendo tendências em tempo real de 2026 para o nicho ${nicho}...`;
+                tituloPagina = `Radar de Tendências: ${canal}`;
+                promptMestre = `Você é o Diretor de Tendências Digitais da Tomorrow. Crie 3 estratégias de vídeos curtos altamente virais adaptadas para o nicho "${nicho}" da empresa "${empresa}" com foco no canal ${canal}.
+                Utilize estruturas de ganchos criativos de alta retenção no ano de 2026, baseados no estilo: ${estilo}.
+                Separe cada uma das 3 tendências estruturadas usando rigorosamente o delimitador: [DIVIDIR_TREND]
+                Formato do bloco:
+                GANCHO (Primeiros 3 segundos)
+                DESENVOLVIMENTO DO PRODUTO (O miolo da trend)
+                ÁUDIO/MÚSICA RECOMENDADA E CTA`;
+
+            // 6. OFERTA MAGNÉTICA[cite: 2]
             } else if (painelAtivo === 'oferta') {
                 const empresa = document.getElementById('of-empresa').value;
                 const transformacao = document.getElementById('of-transformacao').value;
@@ -726,14 +849,51 @@
                 const garantia = document.getElementById('of-garantia').value;
                 const gatilho = document.getElementById('of-gatilho').value;
 
-                if (!empresa || !transformacao || !preco) return alert("Por favor, preencha o Nome da Empresa, Transformation e o Preço!");
+                if (!empresa || !transformacao || !preco) return alert("Por favor, preencha o Nome da Empresa, Transformação e o Preço!");
                 delimitador = "[DIVIDIR_OFERTA]";
                 txtCarregando = `Calculando engenharia de valor comercial para a empresa ${empresa}...`;
                 tituloPagina = "Arquitetura da Oferta Magnética";
                 promptMestre = `Construa uma Proposta Comercial Irrecusável baseada em Engenharia de Valor para os produtos/serviços da empresa "${empresa}". Divida em 3 seções completas (Seção 1: Pitch da Promessa e Método, Seção 2: Empacotamento de Bônus, Seção 3: Inversão de Risco e Fechamento Comercial). Separe as seções usando: [DIVIDIR_OFERTA].
                 Parâmetros: Transformação: ${transformacao}, Mecanismo: ${mecanismo}, Entregáveis: ${entregaveis}, Bônus: ${bonus}, Ancoragem: ${ancoragem}, Preço Real: ${preco}, Garantia: ${garantia}, Gatilho: ${gatilho}. Escreva em português do Brasil, focado em alta conversão.`;
 
-            // 5. PROCESSADOR DA ABA: ANÁLISE DE MÉTRICAS[cite: 2]
+            // 7. DESTRUIDOR DE OBJEÇÕES (NOVO INTERPRETADOR COGNITIVO)
+            } else if (painelAtivo === 'objecoes-live') {
+                const empresa = document.getElementById('obj-empresa').value;
+                const persona = document.getElementById('obj-persona').value;
+                const oferta = document.getElementById('obj-oferta').value;
+
+                if (!empresa || !persona || !oferta) return alert("Por favor, preencha todos os campos do Destruidor de Objeções!");
+                delimitador = "[DIVIDIR_OBJECAO]";
+                txtCarregando = `Iniciando simulação de quebra de padrão com a persona...`;
+                tituloPagina = `Ataque de Objeções Silenciosas: ${empresa}`;
+                promptMestre = `Aja como o cliente mais cético, duro e desconfiado da empresa "${empresa}". Sua persona é: ${persona}. O produto oferecido é: ${oferta}.
+                Gere exatamente 4 blocos de ataques críticos de objeção que esse cliente faria em segredo para não comprar, seguidos imediatamente pelos scripts cirúrgicos de resposta que o vendedor deve usar para fechar o caixa.
+                Separe cada par (Ataque + Contra-Ataque) usando o delimitador: [DIVIDIR_OBJECAO]
+                Formato do bloco:
+                O ATAQUE CRÍTICO DA PERSONA: [Escreva em primeira pessoa o que o cliente pensa/fala para recusar]
+                A RESPOSTA DO SCRIPT DE COPY: [Escreva a quebra da objeção com copy refinada]`;
+
+            // 8. COPILOTO DE TRÁFEGO PAGO (NOVO INTERPRETADOR DE CONVERSÃO)
+            } else if (painelAtivo === 'trafego-pago') {
+                const empresa = document.getElementById('traf-empresa').value;
+                const produto = document.getElementById('traf-produto').value;
+                const dor = document.getElementById('traf-dor').value;
+                const framework = document.getElementById('traf-framework').value;
+
+                if (!empresa || !produto || !dor) return alert("Por favor, preencha os campos básicos de Tráfego Pago!");
+                delimitador = "[DIVIDIR_ANUNCIO]";
+                txtCarregando = `Calculando ganchos de conversão e estruturando scripts de criativos...`;
+                tituloPagina = `Copiloto de Anúncios: ${framework}`;
+                promptMestre = `Você é o Gestor de Tráfego e Copywriter de Elite da Tomorrow. Crie exatamente 3 variações completas de roteiros de anúncios altamente persuasivos para a marca "${empresa}" vendendo o produto "${produto}".
+                Você deve focar na dor crítica: ${dor}. Escreva os 3 anúncios utilizando estritamente a metodologia de persuasão: ${framework}.
+                Separe cada roteiro completo de anúncio usando o delimitador: [DIVIDIR_ANUNCIO]
+                Formato do bloco:
+                GANCHO INICIAL (0 a 3 segundos)
+                CONTEÚDO DO DESENVOLVIMENTO (Focado no framework)
+                CHAMADA DE FECHAMENTO (CTA de Clique)
+                TEXTO DE APOIO DA LEGENDA DO ANÚNCIO`;
+
+            // 9. ANÁLISE DE MÉTRICAS[cite: 2]
             } else if (painelAtivo === 'metricas') {
                 const empresa = document.getElementById('me-empresa').value;
                 const periodo = document.getElementById('me-periodo').value;
@@ -756,7 +916,7 @@
                 promptMestre = `Você é um Cientista de Dados e Growth Hacker da Tomorrow. Faça um diagnóstico analítico e frio das métricas de marketing digital da empresa "${empresa}", aponte os gargalos reais do funil e dê um plano de ação imediato. Separe o diagnóstico em 3 blocos (Bloco 1: Varredura de Gargalos, Bloco 2: Otimização de Conversão, Bloco 3: Plano de Execução). Use o delimitador: [DIVIDIR_AUDITORIA].
                 Dados: Período: ${periodo}, Meta: ${meta}, Impressões: ${imp}, Alcance: ${alc}, Crescimento: ${cresc}, Origem: ${ori}, Interações: ${inter}, Retenção: ${ret}%, Cliques: ${cliq}, Conversões: ${conv}, CAC: ${cac}. Dados Extras: ${brutos}. Responda em português.`;
 
-            // 6. PROCESSADOR DA ABA: DIAGNÓSTICO DE MERCADO[cite: 2]
+            // 10. DIAGNÓSTICO DE MERCADO[cite: 2]
             } else if (painelAtivo === 'mercado') {
                 const empresa = document.getElementById('dm-empresa').value;
                 const modelo = document.getElementById('dm-modelo').value;
@@ -858,6 +1018,14 @@
                             badgeLabel = `Post Magnético #${String(num).padStart(2, '0')}`;
                         } else if (painelAtivo === 'linha-editorial') {
                             badgeLabel = `Dia ${String(num).padStart(2, '0')}`;
+                        } else if (painelAtivo === 'exportador-carrossel') {
+                            badgeLabel = `Slide ${String(num).padStart(2, '0')}`;
+                        } else if (painelAtivo === 'objecoes-live') {
+                            badgeLabel = `Gargalo Objeção ${num}`;
+                        } else if (painelAtivo === 'radar-hype') {
+                            badgeLabel = `Trend Viral 0${num}`;
+                        } else if (painelAtivo === 'trafego-pago') {
+                            badgeLabel = `Script Criativo 0${num}`;
                         }
                         
                         const cardElement = document.createElement('div');
