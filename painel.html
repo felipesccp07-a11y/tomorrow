@@ -308,7 +308,7 @@
                 <button class="btn-submit" onclick="executarEngine('linha-editorial')">Gerar Calendário Estratégico</button>
             </div>
 
-            <!-- 2. ROTEIRIZADOR DE REELS & TIKTOK (ROTEIRO TÉCNICO + HYPE INTEGRADO) -->
+            <!-- 2. ROTEIRIZADOR DE REELS & TIKTOK (ROTEIRO TÉCNICO COMPATIVEL COM FIREWALL) -->
             <div id="roteirizador-video" class="content-section">
                 <h2>Roteirizador de Reels & TikTok</h2>
                 <p class="subtitle">Estrutura técnica de gravação otimizada para reter a atenção do usuário nos primeiros 3 segundos.</p>
@@ -334,7 +334,7 @@
                 <button class="btn-submit" onclick="executarEngine('roteirizador-video')">Gerar Roteiros Técnicos</button>
             </div>
 
-            <!-- 3. COPILOTO DE TRÁFEGO PAGO (CRIATIVOS DE ALTA CONVERSÃO) -->
+            <!-- 3. COPILOTO DE TRÁFEGO PAGO -->
             <div id="trafego-pago" class="content-section">
                 <h2>Copiloto de Tráfego Pago</h2>
                 <p class="subtitle">Crie variações cirúrgicas de anúncios focadas na quebra do padrão de rolagem dos feeds.</p>
@@ -360,7 +360,7 @@
                 <button class="btn-submit" onclick="executarEngine('trafego-pago')">Gerar Scripts de Criativos</button>
             </div>
 
-            <!-- 4. DESTRUIDOR DE OBJEÇÕES (ENGENHARIA DE VENDAS) -->
+            <!-- 4. DESTRUIDOR DE OBJEÇÕES -->
             <div id="objecoes-live" class="content-section">
                 <h2>Destruidor de Objeções</h2>
                 <p class="subtitle">Mapeie falhas de oferta através de uma simulação crítica da mente da persona.</p>
@@ -481,7 +481,7 @@
             let txtCarregando = "Estruturando análises de mercado Tomorrow...";
             let layoutModoGrid = false;
 
-            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA (INTEGRADA COM BRIEFING)
+            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA
             if (painelAtivo === 'linha-editorial') {
                 const empresa = document.getElementById('le-empresa').value;
                 const principal = document.getElementById('le-principal').value;
@@ -517,7 +517,7 @@
                 - Persona Alvo: ${persona}
                 - Objetivo Estratégico do Mês: ${objetivo}`;
 
-            // 2. PROCESSADOR DA ABA: ROTEIRIZADOR DE VIDEO (REELS & TIKTOK + RADAR DE HYPE INTEGRADO)
+            // 2. PROCESSADOR DA ABA: ROTEIRIZADOR DE VIDEO (PROMPT CORRIGIDO PARA EVITAR SAFETY BLOCK)
             } else if (painelAtivo === 'roteirizador-video') {
                 const empresa = document.getElementById('vid-empresa').value;
                 const tema = document.getElementById('vid-tema').value;
@@ -527,17 +527,18 @@
 
                 if (!empresa || !tema || !promessa) return alert("Por favor, preencha todos os campos do Roteirizador!");
                 delimitador = "[DIVIDIR_ROTEIRO]";
-                txtCarregando = `Roteirizando dinâmicas de retenção forçada para a marca ${empresa}...`;
+                txtCarregando = `Roteirizando dinâmicas de alto impacto para a marca ${empresa}...`;
                 tituloPagina = "Roteiros Técnicos de Alta Retenção (2026)";
-                promptMestre = `Você é o Roteirista de Vídeos Curtos Mais Viral da Tomorrow (Ano: 2026). Crie exatamente 3 variações completas de roteiros técnicos de alta retenção para a marca "${empresa}".
-                Separe cada roteiro com o delimitador exato: [DIVIDIR_ROTEIRO]
-                Parâmetros Contextuais: Tema Central: ${tema}, Grande Promessa: ${promessa}, Estilo de Gravação: ${estilo}, Chamada de Ação: ${cta}.
-                Formato por Bloco (Rígido):
-                GANCHO DE RETENÇÃO (0 a 3 segundos): [Frase de alto impacto baseada em tendências atuais de 2026 para prender o scroll]
-                CONTEÚDO DINÂMICO (3 a 25 segundos): [Falas curtas intercaladas com indicações de corte e inserções de texto na tela]
-                CTA DE CONVERSÃO (25 a 30 segundos): [Script de fechamento focado na ação escolhida]`;
+                
+                promptMestre = `Aja como um especialista sênior em roteirização de vídeos curtos e engajamento para redes sociais da agência Tomorrow (Ano: 2026). Desenvolva exatamente 3 variações estratégicas de roteiros técnicos focados em alto engajamento para a empresa "${empresa}".
+                Separe cada roteiro completo obrigatoriamente com o delimitador exato: [DIVIDIR_ROTEIRO]
+                Contexto do projeto: Tema do Conteúdo: ${tema}, Promessa de Valor: ${promessa}, Estilo de Produção: ${estilo}, Objetivo de Conversão (CTA): ${cta}.
+                Formatador por Bloco (Siga rigorosamente):
+                GANCHO DE ENGAJAMENTO (0 a 3 segundos): [Frase profissional de alto impacto estruturada para reter a atenção inicial]
+                CONTEÚDO E DESENVOLVIMENTO (3 a 25 segundos): [Falas dinâmicas e direcionadas com indicações de corte de cena e letterings na tela]
+                CHAMADA DE AÇÃO (25 a 30 segundos): [Script final de encerramento alinhado ao objetivo de conversão]`;
 
-            // 3. PROCESSADOR DA ABA: COPILOTO DE TRÁFEGO PAGO
+            // 3. PROCESSADOR DA ABA: COPiloto DE TRÁFEGO PAGO
             } else if (painelAtivo === 'trafego-pago') {
                 const empresa = document.getElementById('traf-empresa').value;
                 const produto = document.getElementById('traf-produto').value;
