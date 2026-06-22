@@ -158,7 +158,7 @@
         .progress-bar { width: 0%; height: 100%; background-color: #ff6b00; border-radius: 10px; transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 12px #ff6b00; }
         .progress-number { font-size: 14px; font-weight: 700; color: #ff6b00; font-variant-numeric: tabular-nums; text-shadow: 0 0 8px rgba(255, 107, 0, 0.3); }
 
-        /* NOVO: INTERFACE DO PAYWALL BLOQUEADO DE ALTA SEGURANÇA */
+        /* INTERFACE DO PAYWALL BLOQUEADO */
         .paywall-screen { 
             display: none; width: 100%; max-width: 580px; margin: auto; 
             animation: fadeIn 0.5s ease; text-align: center; 
@@ -175,7 +175,7 @@
         }
         .secure-badge { font-size: 12px; color: #71717a; display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 20px; }
 
-        /* NOVO: MODAL GLASSMORPHISM CAPTURA DE LEADS (ANTI-CRASH) */
+        /* MODAL GLASSMORPHISM CAPTURA DE LEADS (ANTI-CRASH) */
         .lead-gate { 
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
             background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(16px); 
@@ -225,7 +225,7 @@
         }
         .btn-copy:hover { background: #ff6b00; color: white; border-color: #ff6b00; box-shadow: 0 4px 15px rgba(255, 107, 0, 0.2); }
 
-        /* RESPONSIVIDADE ADAPTATIVA MOBILE GAVETA */
+        /* RESPONSIVIDADE ADAPTATIVA MOBILE */
         @media (max-width: 992px) {
             body { flex-direction: column; overflow: hidden; height: 100vh; }
             .mobile-header { display: flex; }
@@ -292,7 +292,7 @@
             <!-- 1. LINHA EDITORIAL COMPLETA -->
             <div id="linha-editorial" class="content-section active">
                 <h2>Linha Editorial Premium</h2>
-                <p class="subtitle">Gere um planejamento tático mensal completo estruturado em um grid visual pronto para postagem.</p>
+                <p class="subtitle">Gere um planejamento tático mensal completo estruturado in um grid visual pronto para postagem.</p>
                 <div class="form-section">
                     <h3>1. Alinhamento Estratégico</h3>
                     <input type="text" id="le-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
@@ -326,7 +326,7 @@
                     <input type="text" id="vid-promessa" placeholder="A Grande Promessa do Conteúdo (ex: Economizar R$ 500 por mês)">
                 </div>
                 <div class="form-section">
-                    <h3>2. Dinâmica de Production</h3>
+                    <h3>2. Dinâmica de Produção</h3>
                     <select id="vid-estilo">
                         <option value="Talking Head">Estilo: Talking Head (Falando direto para a câmera)</option>
                         <option value="Vlog">Estilo: Vlog estético cinematográfico com voz narrada</option>
@@ -381,6 +381,8 @@
                     <h3>2. Mapeamento de Barreiras</h3>
                     <textarea id="obj-desculpa" placeholder="Qual é a desculpa mais comum que você ouve no fechamento? (ex: 'Está caro', 'Vou falar com meu sócio')"></textarea>
                 </div>
+                <div class="form-section">
+                </div>
                 <button class="btn-submit" onclick="dispararGateDeSeguranca('objecoes-live')">Iniciar Interrogatório da Persona</button>
             </div>
 
@@ -396,7 +398,7 @@
             <div class="progress-number" id="bar-text">0%</div>
         </div>
 
-        <!-- NOVO: VIEWPORT DO PAYWALL DE SEGURANÇA (BLOQUEADO ANTES DO PAGAMENTO) -->
+        <!-- VIEWPORT DO PAYWALL DE SEGURANÇA -->
         <div class="paywall-screen" id="workspace-paywall">
             <div class="paywall-box">
                 <div class="lock-icon">🔒</div>
@@ -408,12 +410,10 @@
                     <div class="method-card">💳 Cartão em até 12x</div>
                 </div>
 
-                <!-- Insira o link real da Kiwify/Stripe/MercadoPago no href abaixo -->
                 <a href="https://seu-link-de-pagamento.com" target="_blank" style="text-decoration: none;">
                     <button class="btn-submit" style="box-shadow: 0 0 20px rgba(255,107,0,0.4);">Liberar Acesso Agora</button>
                 </a>
 
-                <!-- Botão de simulação local para testes internos (Remover ou ocultar quando colocar link real) -->
                 <p style="font-size: 11px; color: #52525b; margin-top: 15px; cursor: pointer; text-decoration: underline;" onclick="forçarDesbloqueioDev()">Simular Confirmação de API de Pagamento (Apenas Dev)</p>
 
                 <div class="secure-badge">
@@ -462,9 +462,8 @@
             sidebar.classList.toggle('open');
         }
 
-        // NOVO: SISTEMA DE TRAVA DE SEGURANÇA E DATA CAPTURE (ANTI-CRASH)
+        // SISTEMA DE TRAVA DE SEGURANÇA E DATA CAPTURE (ANTI-CRASH)
         function dispararGateDeSeguranca(painelAtivo) {
-            // Validações básicas de preenchimento antes do gate
             if (painelAtivo === 'linha-editorial' && (!document.getElementById('le-empresa').value || !document.getElementById('le-principal').value)) return alert("Preencha os campos obrigatórios do formulário!");
             if (painelAtivo === 'roteirizador-video' && (!document.getElementById('vid-empresa').value || !document.getElementById('vid-tema').value)) return alert("Preencha os campos obrigatórios do formulário!");
             if (painelAtivo === 'trafego-pago' && (!document.getElementById('traf-empresa').value || !document.getElementById('traf-produto').value)) return alert("Preencha os campos obrigatórios do formulário!");
@@ -472,7 +471,6 @@
 
             painelPendenteExecucao = painelAtivo;
 
-            // Se o usuário já tiver se cadastrado nesta sessão, pula o modal
             if (localStorage.getItem('tomorrow_lead_email')) {
                 executarEngine(painelPendenteExecucao);
             } else {
@@ -486,7 +484,6 @@
 
             if (!email || !whatsapp) return alert("Insira um E-mail e WhatsApp válidos para garantir a sincronização do backup!");
 
-            // Salvaguarda imediata no storage local contra travamentos de hardware do cliente
             localStorage.setItem('tomorrow_lead_email', email);
             localStorage.setItem('tomorrow_lead_whatsapp', whatsapp);
 
@@ -559,7 +556,7 @@
             let txtCarregando = "Estruturando análises de mercado Tomorrow...";
             let layoutModoGrid = false;
 
-            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA
+            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA (CORRIGIDO ERRO DE VARIAVEL)
             if (painelAtivo === 'linha-editorial') {
                 const empresa = document.getElementById('le-empresa').value;
                 const principal = document.getElementById('le-principal').value;
@@ -593,7 +590,7 @@
                 - Persona Alvo: ${persona}
                 - Objetivo Estratégico do Mês: ${objetivo}`;
 
-            // 2. PROCESSADOR DA ABA: ROTEIRIZADOR DE VIDEO (ANTI-SAFETY BLOCK)
+            // 2. PROCESSADOR DA ABA: ROTEIRIZADOR DE VIDEO
             } else if (painelAtivo === 'roteirizador-video') {
                 const empresa = document.getElementById('vid-empresa').value;
                 const tema = document.getElementById('vid-tema').value;
@@ -671,7 +668,7 @@
                 }
             }, 130);
 
-            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ[cite: 4]
+            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ (CORRIGIDO CONFLITO DE HEADER)[cite: 4]
             let canaisDeModelos = [
                 "models/gemini-2.5-flash",
                 "models/gemini-2.5-pro",
@@ -687,7 +684,7 @@
                     console.log(`[Tomorrow Network] Conectando ao barramento: ${canal_modelo}`);
                     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/${canal_modelo}:generateContent?key=${API_KEY}`, {
                         method: "POST",
-                        headers: { "Content-Type": "application/json", "x-goog-api-key": API_KEY },
+                        headers: { "Content-Type": "application/json" }, // Removido x-goog-api-key para evitar conflito de CORS local
                         body: JSON.stringify({ 
                             contents: [{ parts: [{ text: promptMestre }] }],
                             generationConfig: {
@@ -754,9 +751,8 @@
                         cardsContainer.appendChild(cardElement);
                     });
 
-                    // NOVO: GATILHO DA BARREIRA DE RETENÇÃO DO PAYWALL ANTES DO RESULTADO FINAL
                     viewLoading.style.display = 'none';
-                    viewPaywall.style.display = 'block'; // Joga a barreira de pagamento na tela
+                    viewPaywall.style.display = 'block'; 
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 400);
 
