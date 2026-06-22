@@ -249,7 +249,6 @@
 </head>
 <body>
 
-    <!-- GAVETA DE CAPTURA DE LEADS (ANTI-CRASH) -->
     <div class="lead-gate" id="workspace-gate">
         <div class="lead-box">
             <h2 style="font-size: 22px; margin-bottom: 8px;">Garantia de Sincronização</h2>
@@ -265,7 +264,6 @@
         </div>
     </div>
 
-    <!-- HEADER MOBILE -->
     <div class="mobile-header">
         <div style="display: flex; align-items: center; gap: 12px;">
             <img src="tomorrow.png" alt="Tomorrow Logo">
@@ -274,7 +272,6 @@
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
 
-    <!-- Barra Lateral Premium -->
     <div class="sidebar" id="main-sidebar">
         <div class="logo-container"><img src="tomorrow.png" alt="Tomorrow Logo"></div>
         <div class="menu-item active" onclick="switchTab(this, 'linha-editorial')">Linha Editorial Premium</div>
@@ -283,16 +280,13 @@
         <div class="menu-item" onclick="switchTab(this, 'objecoes-live')">Destruidor de Objeções</div>
     </div>
 
-    <!-- Área de Conteúdo Principal -->
     <div class="main-content">
         
-        <!-- PAINEL DE FORMULÁRIOS CENTRALIZADO -->
         <div class="container" id="workspace-form">
             
-            <!-- 1. LINHA EDITORIAL COMPLETA -->
             <div id="linha-editorial" class="content-section active">
                 <h2>Linha Editorial Premium</h2>
-                <p class="subtitle">Gere um planejamento tático mensal completo estruturado in um grid visual pronto para postagem.</p>
+                <p class="subtitle">Gere um planejamento tático mensal completo estruturado em um grid visual pronto para postagem.</p>
                 <div class="form-section">
                     <h3>1. Alinhamento Estratégico</h3>
                     <input type="text" id="le-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
@@ -315,7 +309,6 @@
                 <button class="btn-submit" onclick="dispararGateDeSeguranca('linha-editorial')">Gerar Calendário Estratégico</button>
             </div>
 
-            <!-- 2. ROTEIRIZADOR DE REELS & TIKTOK -->
             <div id="roteirizador-video" class="content-section">
                 <h2>Roteirizador de Reels & TikTok</h2>
                 <p class="subtitle">Estrutura técnica de gravação otimizada para reter a atenção do usuário nos primeiros 3 segundos.</p>
@@ -341,7 +334,6 @@
                 <button class="btn-submit" onclick="dispararGateDeSeguranca('roteirizador-video')">Gerar Roteiros Técnicos</button>
             </div>
 
-            <!-- 3. COPILOTO DE TRÁFEGO PAGO -->
             <div id="trafego-pago" class="content-section">
                 <h2>Copiloto de Tráfego Pago</h2>
                 <p class="subtitle">Crie variações cirúrgicas de anúncios focadas na quebra do padrão de rolagem dos feeds.</p>
@@ -367,7 +359,6 @@
                 <button class="btn-submit" onclick="dispararGateDeSeguranca('trafego-pago')">Gerar Scripts de Criativos</button>
             </div>
 
-            <!-- 4. DESTRUIDOR DE OBJEÇÕES -->
             <div id="objecoes-live" class="content-section">
                 <h2>Destruidor de Objeções</h2>
                 <p class="subtitle">Mapeie falhas de oferta através de uma simulação crítica da mente da persona.</p>
@@ -381,14 +372,11 @@
                     <h3>2. Mapeamento de Barreiras</h3>
                     <textarea id="obj-desculpa" placeholder="Qual é a desculpa mais comum que você ouve no fechamento? (ex: 'Está caro', 'Vou falar com meu sócio')"></textarea>
                 </div>
-                <div class="form-section">
-                </div>
                 <button class="btn-submit" onclick="dispararGateDeSeguranca('objecoes-live')">Iniciar Interrogatório da Persona</button>
             </div>
 
         </div>
 
-        <!-- TELA DE TRANSIÇÃO SPA (BARRA DE CARREGAMENTO) -->
         <div class="loading-screen" id="workspace-loading">
             <div class="loading-title">Varrendo canais criativos...</div>
             <div class="loading-subtitle" id="loading-txt-dinamico">Estruturando inteligência sob demanda...</div>
@@ -398,7 +386,6 @@
             <div class="progress-number" id="bar-text">0%</div>
         </div>
 
-        <!-- VIEWPORT DO PAYWALL DE SEGURANÇA -->
         <div class="paywall-screen" id="workspace-paywall">
             <div class="paywall-box">
                 <div class="lock-icon">🔒</div>
@@ -410,11 +397,9 @@
                     <div class="method-card">💳 Cartão em até 12x</div>
                 </div>
 
-                <a href="https://seu-link-de-pagamento.com" target="_blank" style="text-decoration: none;">
+                <a href="https://seu-link-de-pagamento.com" id="checkout-link" target="_blank" style="text-decoration: none;">
                     <button class="btn-submit" style="box-shadow: 0 0 20px rgba(255,107,0,0.4);">Liberar Acesso Agora</button>
                 </a>
-
-                <p style="font-size: 11px; color: #52525b; margin-top: 15px; cursor: pointer; text-decoration: underline;" onclick="forçarDesbloqueioDev()">Simular Confirmação de API de Pagamento (Apenas Dev)</p>
 
                 <div class="secure-badge">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
@@ -423,7 +408,6 @@
             </div>
         </div>
 
-        <!-- VIEWPORT DE ENTREGA PREMIUM (EDITÁVEL) -->
         <div class="results-screen" id="workspace-results">
             <div class="results-header">
                 <div>
@@ -438,7 +422,7 @@
     </div>
 
     <script>
-        // CONFIGURAÇÕES DO NÚCLEO E CHAVE CORPORATIVA VALIDADA[cite: 4]
+        // CONFIGURAÇÕES DO NÚCLEO E CHAVE CORPORATIVA VALIDADA
         const API_KEY = "AQ.Ab8RN6L4gXlwfKXY1Z67EyGL2A4fgOIVA1QzynlW9klthC4Ujw"; 
         
         const viewForm = document.getElementById('workspace-form');
@@ -457,7 +441,20 @@
 
         let painelPendenteExecucao = "";
 
-        // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER[cite: 4]
+        // ========================================================
+        // NOVO: VALIDADOR AUTOMÁTICO DE REDIRECIONAMENTO DE CHECKOUT
+        // ========================================================
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            // Se o link contiver o token de sucesso enviado pela sua plataforma de pagamento
+            if (urlParams.get('access') === 'tomorrow_premium_2026') {
+                localStorage.setItem('tomorrow_premium_unlocked', 'true');
+                // Limpa o token da barra de endereço para o usuário não ficar compartilhando o link ativo
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        });
+
+        // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER
         function toggleMenu() {
             sidebar.classList.toggle('open');
         }
@@ -491,13 +488,7 @@
             executarEngine(painelPendenteExecucao);
         }
 
-        function forçarDesbloqueioDev() {
-            viewPaywall.style.display = 'none';
-            viewResults.style.display = 'block';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // CONTROLADOR GLOBAL DE ABAS CORTA-BUG[cite: 4]
+        // CONTROLADOR GLOBAL DE ABAS CORTA-BUG
         function switchTab(element, tabId) {
             viewResults.style.display = 'none';
             viewLoading.style.display = 'none';
@@ -522,7 +513,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // RETORNO DE TELA MANUAL[cite: 4]
+        // RETORNO DE TELA MANUAL
         document.getElementById('btn-back-form').addEventListener('click', () => {
             viewResults.style.display = 'none';
             viewForm.style.display = 'block';
@@ -531,7 +522,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // COPIAR CLIPBOARD PREMIUM[cite: 4]
+        // COPIAR CLIPBOARD PREMIUM
         function copiarCard(id, botao) {
             const textarea = document.getElementById(`txt-content-${id}`);
             navigator.clipboard.writeText(textarea.value).then(() => {
@@ -549,14 +540,14 @@
         // ========================================================
         // MOTOR DE EXECUÇÃO CENTRALIZADO (4 MOTORES DE ELITE)
         // ========================================================
-        async function executarEngine(painelAtivo) {
+        async function ejecutarEngine(painelAtivo) {
             let promptMestre = "";
             let delimitador = "[DIVIDIR_BLOCO]";
             let tituloPagina = "Estratégias Geradas";
             let txtCarregando = "Estruturando análises de mercado Tomorrow...";
             let layoutModoGrid = false;
 
-            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA (CORRIGIDO ERRO DE VARIAVEL)
+            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA (CORRIGIDO)
             if (painelAtivo === 'linha-editorial') {
                 const empresa = document.getElementById('le-empresa').value;
                 const principal = document.getElementById('le-principal').value;
@@ -604,7 +595,7 @@
                 
                 promptMestre = `Aja como um especialista sênior em roteirização de vídeos curtos e engajamento para redes sociais da agência Tomorrow (Ano: 2026). Desenvolva exatamente 3 variações estratégicas de roteiros técnicos focados em alto engajamento para a empresa "${empresa}".
                 Separe cada roteiro completo obrigatoriamente com o delimitador exato: [DIVIDIR_ROTEIRO]
-                Contexto do projeto: Tema do Conteúdo: ${tema}, Promessa de Valor: ${promessa}, Estilo de Produção: ${estilo}, Objetivo de Conversão (CTA): ${cta}.
+                Contexto do projeto: Tema do Conteúdo: ${tema}, Promessa de Valor: ${promessa}, Estilo de Production: ${estilo}, Objetivo de Conversão (CTA): ${cta}.
                 Formatador por Bloco (Siga rigorosamente):
                 GANCHO DE ENGAJAMENTO (0 a 3 segundos): [Frase profissional de alto impacto estruturada para reter a atenção inicial]
                 CONTEÚDO E DESENVOLVIMENTO (3 a 25 segundos): [Falas dinâmicas e direcionadas com indicações de corte de cena e letterings na tela]
@@ -648,7 +639,7 @@
                 SCRIPT DE REVERSÃO MAGNÉTICA (A copy exata em parágrafo pronto para falar na reunião ou enviar no WhatsApp para inverter o risco e fechar a venda)`;
             }
 
-            // TRANSIÇÃO PROGRESSIVA CINEMATOGRÁFICA SPA[cite: 4]
+            // TRANSIÇÃO PROGRESSIVA CINEMATOGRÁFICA SPA
             viewForm.style.display = 'none';
             sidebar.style.opacity = '0';
             sidebar.style.pointerEvents = 'none';
@@ -668,7 +659,7 @@
                 }
             }, 130);
 
-            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ (CORRIGIDO CONFLITO DE HEADER)[cite: 4]
+            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ (CORRIGIDO CONFLITO DE CABEÇALHO)
             let canaisDeModelos = [
                 "models/gemini-2.5-flash",
                 "models/gemini-2.5-pro",
@@ -684,7 +675,7 @@
                     console.log(`[Tomorrow Network] Conectando ao barramento: ${canal_modelo}`);
                     const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/${canal_modelo}:generateContent?key=${API_KEY}`, {
                         method: "POST",
-                        headers: { "Content-Type": "application/json" }, // Removido x-goog-api-key para evitar conflito de CORS local
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ 
                             contents: [{ parts: [{ text: promptMestre }] }],
                             generationConfig: {
@@ -704,7 +695,7 @@
 
             clearInterval(animarBarra);
 
-            // INJEÇÃO INTERATIVA DOS CARDS NAS VIEWS DE SAÍDA SPA[cite: 4]
+            // INJEÇÃO INTERATIVA DOS CARDS NAS VIEWS DE SAÍDA SPA
             if (apiSucessoCompleto) {
                 barFill.style.width = '100%';
                 barText.innerText = '100%';
@@ -752,7 +743,16 @@
                     });
 
                     viewLoading.style.display = 'none';
-                    viewPaywall.style.display = 'block'; 
+
+                    // VERIFICAÇÃO AUTOMÁTICA DE PAYWALL ATIVO
+                    if (localStorage.getItem('tomorrow_premium_unlocked') === 'true') {
+                        // Se já comprou, pula a tela de bloqueio e vai direto pros resultados
+                        viewResults.style.display = 'block';
+                    } else {
+                        // Se não comprou, trava na tela de pagamento seguro
+                        viewPaywall.style.display = 'block';
+                    }
+                    
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 400);
 
