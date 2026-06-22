@@ -35,7 +35,6 @@
         }
         .mobile-header img { height: 26px; opacity: 0.95; }
         
-        /* Divisor e Título da Aba Atual no Mobile Header */
         .mobile-route-indicator {
             color: #ff6b00; 
             font-size: 11px; 
@@ -88,10 +87,9 @@
             font-weight: 600;
         }
 
-        /* Área de Conteúdo Principal (Desktop) */
+        /* Área de Conteúdo Principal */
         .main-content { flex: 1; padding: 50px 60px; overflow-y: auto; display: flex; justify-content: center; position: relative; background: radial-gradient(circle at top right, rgba(255, 107, 0, 0.03), transparent 45%); }
         
-        /* Container Form Metamórfico (Efeito Neumorfismo Dark/Vidro) */
         .container { 
             width: 100%; 
             max-width: 720px; 
@@ -107,7 +105,6 @@
         .content-section.active { display: block; animation: sectionFade 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
         @keyframes sectionFade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* Customização de Tipografia Dinâmica */
         h2 { margin-bottom: 6px; color: #ffffff; font-weight: 700; font-size: 26px; }
         .subtitle { font-size: 14px; color: #a1a1aa; margin-bottom: 35px; line-height: 1.5; }
         
@@ -115,7 +112,6 @@
         .form-section:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
         h3 { font-size: 11px; margin-bottom: 16px; color: #ff6b00; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; }
 
-        /* Inputs e Textareas Estilo Cyber Dark */
         input, select, textarea { 
             width: 100%; 
             padding: 14px 16px; 
@@ -134,15 +130,6 @@
             box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1), 0 0 12px rgba(255, 107, 0, 0.2); 
         }
         
-        input::placeholder, textarea::placeholder { color: #52525b; }
-
-        select {
-            -webkit-appearance: none; -moz-appearance: none; appearance: none;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-            background-repeat: no-repeat; background-position: right 16px center; background-size: 16px; padding-right: 45px;
-        }
-
-        /* Botão de Disparo Neon Autopilot */
         .btn-submit { 
             background: #ff6b00; 
             color: #ffffff; 
@@ -159,7 +146,7 @@
         }
         .btn-submit:hover { background: #e05e00; box-shadow: 0 4px 30px rgba(255, 107, 0, 0.4); transform: translateY(-1px); }
 
-        /* TELA DE TRANSIÇÃO SPA (BARRA DE CARREGAMENTO NEON) */
+        /* TELA DE TRANSIÇÃO SPA */
         .loading-screen {
             display: none; flex-direction: column; align-items: center; justify-content: center;
             width: 100%; max-width: 600px; text-align: center; margin: auto; animation: fadeIn 0.4s ease;
@@ -171,7 +158,35 @@
         .progress-bar { width: 0%; height: 100%; background-color: #ff6b00; border-radius: 10px; transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 12px #ff6b00; }
         .progress-number { font-size: 14px; font-weight: 700; color: #ff6b00; font-variant-numeric: tabular-nums; text-shadow: 0 0 8px rgba(255, 107, 0, 0.3); }
 
-        /* PÁGINA DE RESULTADOS DELIVERED WORKSPACE */
+        /* NOVO: INTERFACE DO PAYWALL BLOQUEADO DE ALTA SEGURANÇA */
+        .paywall-screen { 
+            display: none; width: 100%; max-width: 580px; margin: auto; 
+            animation: fadeIn 0.5s ease; text-align: center; 
+        }
+        .paywall-box { 
+            background: #121216; border: 1px solid #ff6b00; padding: 40px; border-radius: 24px; 
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), 0 0 30px rgba(255, 107, 0, 0.1); 
+        }
+        .lock-icon { font-size: 40px; color: #ff6b00; margin-bottom: 20px; }
+        .payment-methods { display: flex; gap: 15px; margin: 25px 0; justify-content: center; }
+        .method-card { 
+            flex: 1; padding: 15px; background: #18181b; border: 1px solid #27272a; 
+            border-radius: 12px; font-size: 13px; font-weight: 600; color: #fafafa; 
+        }
+        .secure-badge { font-size: 12px; color: #71717a; display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 20px; }
+
+        /* NOVO: MODAL GLASSMORPHISM CAPTURA DE LEADS (ANTI-CRASH) */
+        .lead-gate { 
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(9, 9, 11, 0.85); backdrop-filter: blur(16px); 
+            -webkit-backdrop-filter: blur(16px); z-index: 3000; align-items: center; justify-content: center; 
+        }
+        .lead-box { 
+            background: #121216; border: 1px solid #27272a; padding: 40px; border-radius: 24px; 
+            max-width: 460px; width: 90%; box-shadow: 0 30px 60px rgba(0,0,0,0.8); 
+        }
+
+        /* VIEWPORT DE ENTREGA PREMIUM */
         .results-screen { display: none; width: 100%; max-width: 1100px; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; border-bottom: 1px solid #1f1f23; padding-bottom: 20px; }
         
@@ -181,15 +196,8 @@
         }
         .btn-back:hover { background: #e4e4e7; transform: translateY(-1px); }
 
-        /* LAYOUTS DE EXIBIÇÃO DETECTÁVEIS */
         .cards-container-stack { display: flex; flex-direction: column; width: 100%; max-width: 760px; margin: 0 auto; }
-        
-        .cards-container-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            width: 100%;
-        }
+        .cards-container-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; width: 100%; }
 
         .variation-card {
             background: #121216; border: 1px solid #1f1f23; border-radius: 16px; padding: 22px;
@@ -223,42 +231,41 @@
             .mobile-header { display: flex; }
             
             .sidebar { 
-                position: fixed;
-                top: 60px;
-                left: 0;
-                width: 290px;
-                height: calc(100vh - 60px);
-                transform: translateX(-100%);
-                background-color: #030303;
-                border-right: 1px solid #1f1f23;
-                border-bottom: none;
-                padding: 25px 20px;
-                flex-direction: column;
-                overflow-y: auto;
-                z-index: 1999;
-                white-space: normal;
-                gap: 0;
+                position: fixed; top: 60px; left: 0; width: 290px; height: calc(100vh - 60px);
+                transform: translateX(-100%); background-color: #030303; border-right: 1px solid #1f1f23;
+                padding: 25px 20px; flex-direction: column; overflow-y: auto; z-index: 1999;
             }
             .sidebar.open { transform: translateX(0); }
-            
             .logo-container { display: none; } 
             .menu-item { margin-bottom: 6px; display: block; padding: 14px 20px; font-size: 14px; }
-            .menu-item.active { border-left: 3px solid #ff6b00; border-bottom: none; border-radius: 10px; }
-
+            .menu-item.active { border-left: 3px solid #ff6b00; border-radius: 10px; }
             .main-content { padding: 90px 15px 30px 15px; overflow-y: auto; width: 100%; background: #09090b; }
-            .container { padding: 30px 20px; border-radius: 20px; border-color: #1f1f23; }
-            
+            .container { padding: 30px 20px; border-radius: 20px; }
             .cards-container-grid { grid-template-columns: 1fr; gap: 15px; }
             .results-header { flex-direction: column; align-items: flex-start; gap: 15px; }
             .btn-back { width: 100%; text-align: center; }
-            
-            .loading-screen { padding: 40px 10px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER MOBILE (Indicador de rota ativa unificado) -->
+    <!-- GAVETA DE CAPTURA DE LEADS (ANTI-CRASH) -->
+    <div class="lead-gate" id="workspace-gate">
+        <div class="lead-box">
+            <h2 style="font-size: 22px; margin-bottom: 8px;">Garantia de Sincronização</h2>
+            <p style="font-size: 14px; color: #a1a1aa; margin-bottom: 25px; line-height: 1.4;">Insira seus dados de contato obrigatórios. Eles garantem o disparo do backup do seu material caso ocorra alguma oscilação de navegador.</p>
+            
+            <h3 style="font-size: 10px; color: #ff6b00; margin-bottom: 8px;">E-mail Corporativo</h3>
+            <input type="email" id="gate-email" placeholder="seuemail@empresa.com">
+            
+            <h3 style="font-size: 10px; color: #ff6b00; margin-bottom: 8px;">WhatsApp com DDD</h3>
+            <input type="text" id="gate-whatsapp" placeholder="(00) 99999-0000">
+            
+            <button class="btn-submit" style="margin-top: 10px;" onclick="confirmarLeadEAvancar()">Confirmar e Processar</button>
+        </div>
+    </div>
+
+    <!-- HEADER MOBILE -->
     <div class="mobile-header">
         <div style="display: flex; align-items: center; gap: 12px;">
             <img src="tomorrow.png" alt="Tomorrow Logo">
@@ -267,7 +274,7 @@
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
 
-    <!-- Barra Lateral Premium (Enxugada para 4 Itens de Elite) -->
+    <!-- Barra Lateral Premium -->
     <div class="sidebar" id="main-sidebar">
         <div class="logo-container"><img src="tomorrow.png" alt="Tomorrow Logo"></div>
         <div class="menu-item active" onclick="switchTab(this, 'linha-editorial')">Linha Editorial Premium</div>
@@ -282,7 +289,7 @@
         <!-- PAINEL DE FORMULÁRIOS CENTRALIZADO -->
         <div class="container" id="workspace-form">
             
-            <!-- 1. LINHA EDITORIAL COMPLETA (UNIFICADA E PREMIUM) -->
+            <!-- 1. LINHA EDITORIAL COMPLETA -->
             <div id="linha-editorial" class="content-section active">
                 <h2>Linha Editorial Premium</h2>
                 <p class="subtitle">Gere um planejamento tático mensal completo estruturado em um grid visual pronto para postagem.</p>
@@ -305,10 +312,10 @@
                         <option value="60">Campanha Longa: Grid de 60 Dias</option>
                     </select>
                 </div>
-                <button class="btn-submit" onclick="executarEngine('linha-editorial')">Gerar Calendário Estratégico</button>
+                <button class="btn-submit" onclick="dispararGateDeSeguranca('linha-editorial')">Gerar Calendário Estratégico</button>
             </div>
 
-            <!-- 2. ROTEIRIZADOR DE REELS & TIKTOK (ROTEIRO TÉCNICO COMPATIVEL COM FIREWALL) -->
+            <!-- 2. ROTEIRIZADOR DE REELS & TIKTOK -->
             <div id="roteirizador-video" class="content-section">
                 <h2>Roteirizador de Reels & TikTok</h2>
                 <p class="subtitle">Estrutura técnica de gravação otimizada para reter a atenção do usuário nos primeiros 3 segundos.</p>
@@ -319,7 +326,7 @@
                     <input type="text" id="vid-promessa" placeholder="A Grande Promessa do Conteúdo (ex: Economizar R$ 500 por mês)">
                 </div>
                 <div class="form-section">
-                    <h3>2. Dinâmica de Produção</h3>
+                    <h3>2. Dinâmica de Production</h3>
                     <select id="vid-estilo">
                         <option value="Talking Head">Estilo: Talking Head (Falando direto para a câmera)</option>
                         <option value="Vlog">Estilo: Vlog estético cinematográfico com voz narrada</option>
@@ -331,7 +338,7 @@
                         <option value="Salvar">CTA: Salvar o post para consultar no momento da aplicação</option>
                     </select>
                 </div>
-                <button class="btn-submit" onclick="executarEngine('roteirizador-video')">Gerar Roteiros Técnicos</button>
+                <button class="btn-submit" onclick="dispararGateDeSeguranca('roteirizador-video')">Gerar Roteiros Técnicos</button>
             </div>
 
             <!-- 3. COPILOTO DE TRÁFEGO PAGO -->
@@ -357,7 +364,7 @@
                         <option value="PPPP">Framework Rígido: PPPP (Picture, Promise, Prove, Push)</option>
                     </select>
                 </div>
-                <button class="btn-submit" onclick="executarEngine('trafego-pago')">Gerar Scripts de Criativos</button>
+                <button class="btn-submit" onclick="dispararGateDeSeguranca('trafego-pago')">Gerar Scripts de Criativos</button>
             </div>
 
             <!-- 4. DESTRUIDOR DE OBJEÇÕES -->
@@ -374,7 +381,7 @@
                     <h3>2. Mapeamento de Barreiras</h3>
                     <textarea id="obj-desculpa" placeholder="Qual é a desculpa mais comum que você ouve no fechamento? (ex: 'Está caro', 'Vou falar com meu sócio')"></textarea>
                 </div>
-                <button class="btn-submit" onclick="executarEngine('objecoes-live')">Iniciar Interrogatório da Persona</button>
+                <button class="btn-submit" onclick="dispararGateDeSeguranca('objecoes-live')">Iniciar Interrogatório da Persona</button>
             </div>
 
         </div>
@@ -387,6 +394,33 @@
                 <div class="progress-bar" id="bar-fill"></div>
             </div>
             <div class="progress-number" id="bar-text">0%</div>
+        </div>
+
+        <!-- NOVO: VIEWPORT DO PAYWALL DE SEGURANÇA (BLOQUEADO ANTES DO PAGAMENTO) -->
+        <div class="paywall-screen" id="workspace-paywall">
+            <div class="paywall-box">
+                <div class="lock-icon">🔒</div>
+                <h2>Estratégia Pronta e Bloqueada</h2>
+                <p style="font-size: 14px; color: #a1a1aa; margin-top: 6px; line-height: 1.4;">Nossa IA concluiu o processamento dos seus cards proprietários. Conclua a ativação do seu plano seguro para liberar o acesso imediato.</p>
+                
+                <div class="payment-methods">
+                    <div class="method-card">⚡ PIX Automático</div>
+                    <div class="method-card">💳 Cartão em até 12x</div>
+                </div>
+
+                <!-- Insira o link real da Kiwify/Stripe/MercadoPago no href abaixo -->
+                <a href="https://seu-link-de-pagamento.com" target="_blank" style="text-decoration: none;">
+                    <button class="btn-submit" style="box-shadow: 0 0 20px rgba(255,107,0,0.4);">Liberar Acesso Agora</button>
+                </a>
+
+                <!-- Botão de simulação local para testes internos (Remover ou ocultar quando colocar link real) -->
+                <p style="font-size: 11px; color: #52525b; margin-top: 15px; cursor: pointer; text-decoration: underline;" onclick="forçarDesbloqueioDev()">Simular Confirmação de API de Pagamento (Apenas Dev)</p>
+
+                <div class="secure-badge">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    Ambiente Criptografado de Alta Segurança Certificado
+                </div>
+            </div>
         </div>
 
         <!-- VIEWPORT DE ENTREGA PREMIUM (EDITÁVEL) -->
@@ -410,6 +444,8 @@
         const viewForm = document.getElementById('workspace-form');
         const viewLoading = document.getElementById('workspace-loading');
         const viewResults = document.getElementById('workspace-results');
+        const viewPaywall = document.getElementById('workspace-paywall');
+        const viewGate = document.getElementById('workspace-gate');
         const sidebar = document.getElementById('main-sidebar');
         
         const barFill = document.getElementById('bar-fill');
@@ -419,15 +455,57 @@
         const resultsMainTitle = document.getElementById('results-main-title');
         const mobileRouteIndicator = document.getElementById('mobile-current-route');
 
+        let painelPendenteExecucao = "";
+
         // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER[cite: 4]
         function toggleMenu() {
             sidebar.classList.toggle('open');
+        }
+
+        // NOVO: SISTEMA DE TRAVA DE SEGURANÇA E DATA CAPTURE (ANTI-CRASH)
+        function dispararGateDeSeguranca(painelAtivo) {
+            // Validações básicas de preenchimento antes do gate
+            if (painelAtivo === 'linha-editorial' && (!document.getElementById('le-empresa').value || !document.getElementById('le-principal').value)) return alert("Preencha os campos obrigatórios do formulário!");
+            if (painelAtivo === 'roteirizador-video' && (!document.getElementById('vid-empresa').value || !document.getElementById('vid-tema').value)) return alert("Preencha os campos obrigatórios do formulário!");
+            if (painelAtivo === 'trafego-pago' && (!document.getElementById('traf-empresa').value || !document.getElementById('traf-produto').value)) return alert("Preencha os campos obrigatórios do formulário!");
+            if (painelAtivo === 'objecoes-live' && (!document.getElementById('obj-empresa').value || !document.getElementById('obj-oferta').value)) return alert("Preencha os campos obrigatórios do formulário!");
+
+            painelPendenteExecucao = painelAtivo;
+
+            // Se o usuário já tiver se cadastrado nesta sessão, pula o modal
+            if (localStorage.getItem('tomorrow_lead_email')) {
+                executarEngine(painelPendenteExecucao);
+            } else {
+                viewGate.style.display = 'flex';
+            }
+        }
+
+        function confirmarLeadEAvancar() {
+            const email = document.getElementById('gate-email').value;
+            const whatsapp = document.getElementById('gate-whatsapp').value;
+
+            if (!email || !whatsapp) return alert("Insira um E-mail e WhatsApp válidos para garantir a sincronização do backup!");
+
+            // Salvaguarda imediata no storage local contra travamentos de hardware do cliente
+            localStorage.setItem('tomorrow_lead_email', email);
+            localStorage.setItem('tomorrow_lead_whatsapp', whatsapp);
+
+            viewGate.style.display = 'none';
+            executarEngine(painelPendenteExecucao);
+        }
+
+        function forçarDesbloqueioDev() {
+            viewPaywall.style.display = 'none';
+            viewResults.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // CONTROLADOR GLOBAL DE ABAS CORTA-BUG[cite: 4]
         function switchTab(element, tabId) {
             viewResults.style.display = 'none';
             viewLoading.style.display = 'none';
+            viewPaywall.style.display = 'none';
+            viewGate.style.display = 'none';
             viewForm.style.display = 'block';
             sidebar.style.opacity = '1';
             sidebar.style.pointerEvents = 'auto';
@@ -489,8 +567,6 @@
                 const objetivo = document.getElementById('le-objetivo').value;
                 const duracaoCampanha = document.getElementById('le-duracao').value;
 
-                if (!empresa || !principal || !persona) return alert("Por favor, preencha todos os campos da Linha Editorial!");
-                
                 layoutModoGrid = true; 
                 delimitador = "[DIVIDIR_DIA]";
                 txtCarregando = `Calculando calendário tático de ${duracaoCampanha} dias para a marca ${empresa}...`;
@@ -517,7 +593,7 @@
                 - Persona Alvo: ${persona}
                 - Objetivo Estratégico do Mês: ${objetivo}`;
 
-            // 2. PROCESSADOR DA ABA: ROTEIRIZADOR DE VIDEO (PROMPT CORRIGIDO PARA EVITAR SAFETY BLOCK)
+            // 2. PROCESSADOR DA ABA: ROTEIRIZADOR DE VIDEO (ANTI-SAFETY BLOCK)
             } else if (painelAtivo === 'roteirizador-video') {
                 const empresa = document.getElementById('vid-empresa').value;
                 const tema = document.getElementById('vid-tema').value;
@@ -525,7 +601,6 @@
                 const estilo = document.getElementById('vid-estilo').value;
                 const cta = document.getElementById('vid-cta').value;
 
-                if (!empresa || !tema || !promessa) return alert("Por favor, preencha todos os campos do Roteirizador!");
                 delimitador = "[DIVIDIR_ROTEIRO]";
                 txtCarregando = `Roteirizando dinâmicas de alto impacto para a marca ${empresa}...`;
                 tituloPagina = "Roteiros Técnicos de Alta Retenção (2026)";
@@ -538,7 +613,7 @@
                 CONTEÚDO E DESENVOLVIMENTO (3 a 25 segundos): [Falas dinâmicas e direcionadas com indicações de corte de cena e letterings na tela]
                 CHAMADA DE AÇÃO (25 a 30 segundos): [Script final de encerramento alinhado ao objetivo de conversão]`;
 
-            // 3. PROCESSADOR DA ABA: COPiloto DE TRÁFEGO PAGO
+            // 3. PROCESSADOR DA ABA: COPILOTO DE TRÁFEGO PAGO
             } else if (painelAtivo === 'trafego-pago') {
                 const empresa = document.getElementById('traf-empresa').value;
                 const produto = document.getElementById('traf-produto').value;
@@ -546,7 +621,6 @@
                 const temperatura = document.getElementById('traf-temperatura').value;
                 const framework = document.getElementById('traf-framework').value;
 
-                if (!empresa || !produto || !dor) return alert("Por favor, preencha todos os campos de Tráfego Pago!");
                 delimitador = "[DIVIDIR_ANUNCIO]";
                 txtCarregando = `Calculando ganchos de conversão sob a metodologia ${framework}...`;
                 tituloPagina = `Roteiros de Anúncios: Funil ${temperatura}`;
@@ -566,7 +640,6 @@
                 const oferta = document.getElementById('obj-oferta').value;
                 const desculpa = document.getElementById('obj-desculpa').value;
 
-                if (!empresa || !persona || !oferta || !desculpa) return alert("Por favor, preencha todos os campos do Destruidor de Objeções!");
                 delimitador = "[DIVIDIR_OBJECAO]";
                 txtCarregando = `Simulando barreiras psicológicas da persona...`;
                 tituloPagina = "Manual Antídoto de Objeções";
@@ -681,8 +754,9 @@
                         cardsContainer.appendChild(cardElement);
                     });
 
+                    // NOVO: GATILHO DA BARREIRA DE RETENÇÃO DO PAYWALL ANTES DO RESULTADO FINAL
                     viewLoading.style.display = 'none';
-                    viewResults.style.display = 'block';
+                    viewPaywall.style.display = 'block'; // Joga a barreira de pagamento na tela
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                 }, 400);
 
