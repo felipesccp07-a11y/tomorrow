@@ -134,7 +134,6 @@
             box-shadow: 0 0 0 4px rgba(255, 107, 0, 0.1), 0 0 12px rgba(255, 107, 0, 0.2); 
         }
         
-        /* Placeholder mais suave para o modo dark */
         input::placeholder, textarea::placeholder { color: #52525b; }
 
         select {
@@ -159,11 +158,6 @@
             transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1); 
         }
         .btn-submit:hover { background: #e05e00; box-shadow: 0 4px 30px rgba(255, 107, 0, 0.4); transform: translateY(-1px); }
-        .btn-submit:active { transform: translateY(0); }
-
-        .checkbox-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; margin-bottom: 15px; padding: 4px 2px; }
-        .checkbox-item { display: flex; align-items: center; font-size: 14px; color: #e4e4e7; cursor: pointer; font-weight: 500; }
-        .checkbox-item input[type="checkbox"] { width: auto; margin-bottom: 0; margin-right: 10px; accent-color: #ff6b00; cursor: pointer; }
 
         /* TELA DE TRANSIÇÃO SPA (BARRA DE CARREGAMENTO NEON) */
         .loading-screen {
@@ -177,7 +171,7 @@
         .progress-bar { width: 0%; height: 100%; background-color: #ff6b00; border-radius: 10px; transition: width 0.15s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 0 12px #ff6b00; }
         .progress-number { font-size: 14px; font-weight: 700; color: #ff6b00; font-variant-numeric: tabular-nums; text-shadow: 0 0 8px rgba(255, 107, 0, 0.3); }
 
-        /* PÁGINA DE RESULTADOS DELIVERED WORKSPACE (DARK PREMIUM PORTFOLIO) */
+        /* PÁGINA DE RESULTADOS DELIVERED WORKSPACE */
         .results-screen { display: none; width: 100%; max-width: 1100px; animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
         .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 35px; border-bottom: 1px solid #1f1f23; padding-bottom: 20px; }
         
@@ -197,7 +191,6 @@
             width: 100%;
         }
 
-        /* Cards Das Variantes Editáveis com Glow Real */
         .variation-card {
             background: #121216; border: 1px solid #1f1f23; border-radius: 16px; padding: 22px;
             margin-bottom: 15px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -265,28 +258,22 @@
 </head>
 <body>
 
-    <!-- HEADER MOBILE (Com indicador de rota ativa baseado em image_36b6fc.jpg) -->
+    <!-- HEADER MOBILE (Indicador de rota ativa unificado) -->
     <div class="mobile-header">
         <div style="display: flex; align-items: center; gap: 12px;">
             <img src="tomorrow.png" alt="Tomorrow Logo">
-            <span id="mobile-current-route" class="mobile-route-indicator">Instagram / Facebook</span>
+            <span id="mobile-current-route" class="mobile-route-indicator">Linha Editorial Premium</span>
         </div>
         <div class="hamburger" onclick="toggleMenu()">☰</div>
     </div>
 
-    <!-- Barra Lateral Premium -->
+    <!-- Barra Lateral Premium (Enxugada para 4 Itens de Elite) -->
     <div class="sidebar" id="main-sidebar">
         <div class="logo-container"><img src="tomorrow.png" alt="Tomorrow Logo"></div>
-        <div class="menu-item active" onclick="switchTab(this, 'instagram')">Instagram / Facebook</div>
-        <div class="menu-item" onclick="switchTab(this, 'tiktok')">TikTok / Reels / Shorts</div>
-        <div class="menu-item" onclick="switchTab(this, 'linha-editorial')">Linha Editorial Completa</div>
-        <div class="menu-item" onclick="switchTab(this, 'exportador-carrossel')">Exportador de Carrossel</div>
-        <div class="menu-item" onclick="switchTab(this, 'radar-hype')">Radar de Hype</div>
-        <div class="menu-item" onclick="switchTab(this, 'oferta')">Oferta Magnética</div>
-        <div class="menu-item" onclick="switchTab(this, 'objecoes-live')">Destruidor de Objeções</div>
+        <div class="menu-item active" onclick="switchTab(this, 'linha-editorial')">Linha Editorial Premium</div>
+        <div class="menu-item" onclick="switchTab(this, 'roteirizador-video')">Roteirizador de Reels & TikTok</div>
         <div class="menu-item" onclick="switchTab(this, 'trafego-pago')">Copiloto de Tráfego Pago</div>
-        <div class="menu-item" onclick="switchTab(this, 'metricas')">Análise de Métricas</div>
-        <div class="menu-item" onclick="switchTab(this, 'mercado')">Diagnóstico de Mercado</div>
+        <div class="menu-item" onclick="switchTab(this, 'objecoes-live')">Destruidor de Objeções</div>
     </div>
 
     <!-- Área de Conteúdo Principal -->
@@ -295,117 +282,23 @@
         <!-- PAINEL DE FORMULÁRIOS CENTRALIZADO -->
         <div class="container" id="workspace-form">
             
-            <!-- 1. INSTAGRAM / FACEBOOK -->
-            <div id="instagram" class="content-section active">
-                <h2>Instagram / Facebook</h2>
-                <p class="subtitle">Defina os pilares estratégicos para carregar a inteligência artificial com insumos de alta conversão.</p>
+            <!-- 1. LINHA EDITORIAL COMPLETA (UNIFICADA E PREMIUM) -->
+            <div id="linha-editorial" class="content-section active">
+                <h2>Linha Editorial Premium</h2>
+                <p class="subtitle">Gere um planejamento tático mensal completo estruturado em um grid visual pronto para postagem.</p>
                 <div class="form-section">
-                    <h3>1. Contexto do Negócio</h3>
-                    <input type="text" id="insta-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <input type="text" id="insta-subnicho" placeholder="Subnicho/Especialidade (ex: Moda Gestante Premium)">
-                    <input type="text" id="insta-produto" placeholder="Produto ou serviço em foco (ex: Coleção Abraço de Mãe)">
-                </div>
-                <div class="form-section">
-                    <h3>2. Público-Alvo</h3>
-                    <input type="text" id="insta-persona" placeholder="Quem é a persona? (ex: Grávidas elegantes e vaidosas)">
-                    <input type="text" id="insta-dor" placeholder="Dor ou desejo principal (ex: Vestir-se bem sem usar roupas largas)">
-                </div>
-                <div class="form-section">
-                    <h3>3. Estratégia do Post</h3>
-                    <select id="insta-estrategia">
-                        <option>Objetivo: Atração / Viral (Para trazer novos seguidores)</option>
-                        <option>Objetivo: Retenção / Educacional (Para gerar autoridade)</option>
-                        <option>Objetivo: Conexão / Storytelling (Para humanizar a marca)</option>
-                        <option>Objetivo: Conversão / Venda (Para oferecer direto)</option>
-                    </select>
-                    <input type="text" id="insta-cta" placeholder="Chamada para ação desejada (ex: Comente 'Quero saber mais!')">
-                </div>
-                <div class="form-section">
-                    <h3>4. Formato e Estilo</h3>
-                    <select id="insta-formato">
-                        <option value="carrossel">Formato: Carrossel (Texto dividido em slides)</option>
-                        <option value="legenda">Formato: Legenda para Imagem Única</option>
-                        <option value="stories">Formato: Roteiro de Stories (Sequência de 3 a 5)</option>
-                        <option value="pacote">Formato: Pacote Magnético (Briefing completo de 1 a 20 posts)</option>
-                    </select>
-                    <select id="insta-tom">
-                        <option>Tom: Profissional</option>
-                        <option>Tom: Descontraído/Amigável</option>
-                        <option>Tom: Motivacional</option>
-                        <option>Tom: Técnico/Especialista</option>
-                        <option>Tom: Direto/Sem Rodeios</option>
-                    </select>
-                </div>
-                <div class="form-section" id="volume-section" style="display: none;">
-                    <h3>5. Volume do Pacote Magnético</h3>
-                    <input type="number" id="insta-qtd" min="1" max="20" value="5" placeholder="Quantidade de posts do pacote (Escolha de 1 a 20)">
-                </div>
-                <button class="btn-submit" onclick="executarEngine('instagram')">Gerar Conteúdo Inteligente</button>
-            </div>
-
-            <!-- 2. TIKTOK / REELS / SHORTS -->
-            <div id="tiktok" class="content-section">
-                <h2>TikTok / Reels / Shorts</h2>
-                <p class="subtitle">Estrutura de roteirização dinâmica focada em travar a retenção do usuário nos primeiros 3 segundos.</p>
-                <div class="form-section">
-                    <h3>1. O Miolo do Conteúdo</h3>
-                    <input type="text" id="tk-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <input type="text" id="tk-tema" placeholder="Tema Central / A 'Sacada' (ex: 3 erros comuns ao tentar emagrecer)">
-                    <input type="text" id="tk-promessa" placeholder="A Grande Promessa (ex: Aprender a economizar R$ 500 por mês)">
-                </div>
-                <div class="form-section">
-                    <h3>2. A Retenção (Gancho)</h3>
-                    <select id="tk-gancho">
-                        <option>Polêmico / Alerta ("Pare de fazer isso imediatamente...")</option>
-                        <option>Curiosidade ("O segredo que as marcas não te contam...")</option>
-                        <option>Filtro de Público ("Se você tem mais de 30 anos, escuta isso...")</option>
-                        <option>Visual / Prático ("Fiquei chocado quando descobri essa função...")</option>
-                    </select>
-                </div>
-                <div class="form-section">
-                    <h3>3. Formato de Produção</h3>
-                    <select id="tk-formato">
-                        <option>Talking Head (Falando direto para a câmera)</option>
-                        <option>Voiceover (Narração sobre imagens/estética do dia a dia)</option>
-                        <option>Texto na Tela (Apenas vídeo estético com texto dinâmico)</option>
-                        <option>Tutorial / POV (Mostrando a tela, as mãos ou processo)</option>
-                    </select>
-                    <select id="tk-ritmo">
-                        <option>Ritmo: Rápido e Enérgico (Estilo TikTok nativo)</option>
-                        <option>Ritmo: Didático / Calmo</option>
-                        <option>Ritmo: Humor / Sarcástico</option>
-                        <option>Ritmo: Inspiracional</option>
-                    </select>
-                </div>
-                <div class="form-section">
-                    <h3>4. Objetivo e Desfecho</h3>
-                    <select id="tk-cta">
-                        <option>CTA: Comentar palavra-chave para receber no direct (Automação)</option>
-                        <option>CTA: Seguir para não perder a Parte 2</option>
-                        <option>CTA: Salvar para assistir quando for aplicar</option>
-                        <option>CTA: Compartilhar com um amigo que precisa ver isso</option>
-                    </select>
-                </div>
-                <button class="btn-submit" onclick="executarEngine('tiktok')">Gerar Roteiro de Vídeo</button>
-            </div>
-
-            <!-- 3. LINHA EDITORIAL COMPLETA -->
-            <div id="linha-editorial" class="content-section">
-                <h2>Linha Editorial Completa</h2>
-                <p class="subtitle">Planeje o cronograma tático do seu perfil em um formato de calendário de quadradinhos sequenciais.</p>
-                <div class="form-section">
-                    <h3>1. Posicionamento de Marca</h3>
+                    <h3>1. Alinhamento Estratégico</h3>
                     <input type="text" id="le-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <input type="text" id="le-diferencial" placeholder="Diferencial Competitivo (ex: Agência focada em ROI e lucro)">
-                    <textarea id="le-valores" placeholder="Valores da Marca (O que seu perfil defende vs. O que ele abomina)"></textarea>
-                </div>
-                <div class="form-section">
-                    <h3>2. Funil de Conteúdo</h3>
                     <input type="text" id="le-principal" placeholder="Produto ou serviço principal em foco comercial">
-                    <textarea id="le-objecoes" placeholder="Maiores Objeções do Público (Por que eles hesitam em comprar?)"></textarea>
+                    <input type="text" id="le-persona" placeholder="Quem é a persona ideal? (ex: Grávidas elegantes e vaidosas)">
                 </div>
                 <div class="form-section">
-                    <h3>3. Período da Campanha</h3>
+                    <h3>2. Parâmetros da Campanha</h3>
+                    <select id="le-objetivo">
+                        <option value="Atracao">Objetivo: Atração de novos seguidores e branding</option>
+                        <option value="Aquecimento">Objetivo: Aquecimento de audiência para lançamento</option>
+                        <option value="Venda">Objetivo: Conversão agressiva e queima de estoque</option>
+                    </select>
                     <select id="le-duracao">
                         <option value="15">Campanha Curta: Grid de 15 Dias</option>
                         <option value="30" selected>Campanha Padrão: Grid de 30 Dias</option>
@@ -415,194 +308,73 @@
                 <button class="btn-submit" onclick="executarEngine('linha-editorial')">Gerar Calendário Estratégico</button>
             </div>
 
-            <!-- 4. EXPORTADOR DE CARROSSEL (NOVO RECURSO) -->
-            <div id="exportador-carrossel" class="content-section">
-                <h2>Exportador de Carrossel</h2>
-                <p class="subtitle">Crie o mapa estrutural exato slide por slide para montar apresentações de altíssimo engajamento visual.</p>
+            <!-- 2. ROTEIRIZADOR DE REELS & TIKTOK (ROTEIRO TÉCNICO + HYPE INTEGRADO) -->
+            <div id="roteirizador-video" class="content-section">
+                <h2>Roteirizador de Reels & TikTok</h2>
+                <p class="subtitle">Estrutura técnica de gravação otimizada para reter a atenção do usuário nos primeiros 3 segundos.</p>
                 <div class="form-section">
-                    <h3>1. Contexto</h3>
-                    <input type="text" id="car-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <input type="text" id="car-tema" placeholder="Tema Central do Carrossel (ex: 5 Passos para escalar seu faturamento)">
+                    <h3>1. Direcionamento do Vídeo</h3>
+                    <input type="text" id="vid-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
+                    <input type="text" id="vid-tema" placeholder="Tema Central / A Sacada Prática (ex: 3 erros ao tentar emagrecer)">
+                    <input type="text" id="vid-promessa" placeholder="A Grande Promessa do Conteúdo (ex: Economizar R$ 500 por mês)">
                 </div>
                 <div class="form-section">
-                    <h3>2. Configuração</h3>
-                    <input type="number" id="car-slides" min="3" max="10" value="5" placeholder="Quantidade de Slides desejada (De 3 a 10)">
-                    <select id="car-tom">
-                        <option>Tom: Agressivo / Comercial</option>
-                        <option>Tom: Educacional / Técnico</option>
-                        <option>Tom: Narrativo / Storytelling</option>
+                    <h3>2. Dinâmica de Produção</h3>
+                    <select id="vid-estilo">
+                        <option value="Talking Head">Estilo: Talking Head (Falando direto para a câmera)</option>
+                        <option value="Vlog">Estilo: Vlog estético cinematográfico com voz narrada</option>
+                        <option value="Text Overlay">Estilo: Apenas texto dinâmico na tela com fundo estético</option>
+                    </select>
+                    <select id="vid-cta">
+                        <option value="Direct">CTA: Comentar palavra-chave para receber no direct (Automação)</option>
+                        <option value="Perfil">CTA: Seguir o perfil para não perder a sequência tática</option>
+                        <option value="Salvar">CTA: Salvar o post para consultar no momento da aplicação</option>
                     </select>
                 </div>
-                <button class="btn-submit" onclick="executarEngine('exportador-carrossel')">Montar Slides do Carrossel</button>
+                <button class="btn-submit" onclick="executarEngine('roteirizador-video')">Gerar Roteiros Técnicos</button>
             </div>
 
-            <!-- 5. RADAR DE HYPE (NOVO RECURSO) -->
-            <div id="radar-hype" class="content-section">
-                <h2>Radar de Hype</h2>
-                <p class="subtitle">Adapte ganchos virais e tendências de alto tráfego validadas para o contexto do seu produto.</p>
-                <div class="form-section">
-                    <h3>1. Direcionamento</h3>
-                    <input type="text" id="hype-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <input type="text" id="hype-nicho" placeholder="Seu Segmento/Nicho (ex: Nutrição Esportiva, Advocacia Trabalhista)">
-                </div>
-                <div class="form-section">
-                    <h3>2. Canal de Distribuição</h3>
-                    <select id="hype-canal">
-                        <option>Instagram Reels</option>
-                        <option>TikTok Nativo</option>
-                        <option>YouTube Shorts</option>
-                    </select>
-                    <select id="hype-estilo">
-                        <option>Estilo: Humor Ácido / Quebra de Expectativa</option>
-                        <option>Estilo: Educacional "O Segredo Revelado"</option>
-                        <option>Estilo: Estético / Vlog Cinematográfico Corporativo</option>
-                    </select>
-                </div>
-                <button class="btn-submit" onclick="executarEngine('radar-hype')">Rastrear Tendências do Ano</button>
-            </div>
-
-            <!-- 6. OFERTA MAGNÉTICA -->
-            <div id="oferta" class="content-section">
-                <h2>Oferta Magnética</h2>
-                <p class="subtitle">Refine a arquitetura de valor e inverta o risco técnico para construir uma proposta comercial irrecusável.</p>
-                <div class="form-section">
-                    <h3>1. A Grande Promessa (O Valor Real)</h3>
-                    <input type="text" id="of-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <textarea id="of-transformacao" placeholder="A Transformação Central (O resultado palpável na vida do comprador. Ex: Falar inglês em 6 meses)"></textarea>
-                    <input type="text" id="of-mecanismo" placeholder="O Mecanismo Único / O 'Como' (Nome do método exclusivo de entrega)"></input>
-                </div>
-                <div class="form-section">
-                    <h3>2. O Empacotamento</h3>
-                    <textarea id="of-entregaveis" placeholder="O que está incluso / Entregáveis (Módulos, encontros, suportes)"></textarea>
-                    <textarea id="of-bonus" placeholder="Bônus Injustos / Matadores de Objeções (Presentes estratégicos que resolvem o próximo obstáculo)"></textarea>
-                </div>
-                <div class="form-section">
-                    <h3>3. A Engenharia Financeira</h3>
-                    <input type="text" id="of-ancoragem" placeholder="Ancoragem de Preço (Quanto custaria se contratado isoladamente)">
-                    <input type="text" id="of-preco" placeholder="O Preço da Oferta (Valor real estruturado e condições de parcelamento)">
-                    <textarea id="of-garantia" placeholder="Inversão de Risco / Garantia (Cláusulas fortes de proteção ao consumidor)"></textarea>
-                </div>
-                <div class="form-section">
-                    <h3>4. O Empurrão Final</h3>
-                    <select id="of-gatilho">
-                        <option>Vagas Limitadas (Mentoria ou turmas pequenas)</option>
-                        <option>Tempo Limitado (O carrinho fecha em X dias)</option>
-                        <option>Virada de Lote (O preço vai subir na data X)</option>
-                        <option>Bônus Especial (Os 20 primeiros ganham uma análise individual)</option>
-                    </select>
-                </div>
-                <button class="btn-submit" onclick="executarEngine('oferta')">Gerar Proposta Irresistível</button>
-            </div>
-
-            <!-- 7. DESTRUIDOR DE OBJEÇÕES (NOVO RECURSO) -->
-            <div id="objecoes-live" class="content-section">
-                <h2>Destruidor de Objeções</h2>
-                <p class="subtitle">Simulador Crítico. Deixe a inteligência artificial assumir sua persona mais dura para atacar e criar contra-scripts.</p>
-                <div class="form-section">
-                    <h3>1. Mapeamento de Ataque</h3>
-                    <input type="text" id="obj-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <input type="text" id="obj-persona" placeholder="Sua Persona Alvo (ex: Profissionais liberais sem tempo livre)">
-                </div>
-                <div class="form-section">
-                    <h3>2. O Alvo</h3>
-                    <textarea id="obj-oferta" placeholder="Qual é o seu Produto e Preço? (ex: Mentoria Individual de Escala por R$ 3.000 à vista)"></textarea>
-                </div>
-                <button class="btn-submit" onclick="executarEngine('objecoes-live')">Iniciar Interrogatório da Persona</button>
-            </div>
-
-            <!-- 8. COPILOTO DE TRÁFEGO PAGO (NOVO RECURSO) -->
+            <!-- 3. COPILOTO DE TRÁFEGO PAGO (CRIATIVOS DE ALTA CONVERSÃO) -->
             <div id="trafego-pago" class="content-section">
                 <h2>Copiloto de Tráfego Pago</h2>
-                <p class="subtitle">Gere variações de criativos de alta conversão estruturados para quebrar o padrão de rolagem dos feeds de anúncios.</p>
+                <p class="subtitle">Crie variações cirúrgicas de anúncios focadas na quebra do padrão de rolagem dos feeds.</p>
                 <div class="form-section">
-                    <h3>1. Base do Anúncio</h3>
+                    <h3>1. Parâmetros de Campanha</h3>
                     <input type="text" id="traf-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <input type="text" id="traf-produto" placeholder="Nome do Produto/Página de Destino (ex: Curso Método Lucro Rápido)">
+                    <input type="text" id="traf-produto" placeholder="Nome do Produto ou Página de Vendas">
+                    <textarea id="traf-dor" placeholder="Qual é a maior dor oculta ou desejo reprimido do cliente?"></textarea>
                 </div>
                 <div class="form-section">
-                    <h3>2. Estratégia de Copy</h3>
-                    <textarea id="traf-dor" placeholder="Qual é a dor mais latente que esse anúncio vai atacar? (ex: Medo de perder o emprego por causa de novas tecnologias)"></textarea>
+                    <h3>2. Engenharia de Persuasão</h3>
+                    <select id="traf-temperatura">
+                        <option value="Frio">Público Frio (Não conhece a marca ou o problema)</option>
+                        <option value="Morno">Público Morno (Sabe o problema, mas hesita na solução)</option>
+                        <option value="Quente">Público Quente (Já engajou, precisa de um empurrão final)</option>
+                    </select>
                     <select id="traf-framework">
-                        <option value="AIDA">Framework: AIDA (Atenção, Interesse, Desejo, Ação)</option>
-                        <option value="PAS">Framework: PAS (Problema, Agitação, Solução)</option>
-                        <option value="PPPP">Framework: PPPP (Picture, Promise, Prove, Push)</option>
+                        <option value="AIDA">Framework Rígido: AIDA (Atenção, Interesse, Desejo, Ação)</option>
+                        <option value="PAS">Framework Rígido: PAS (Problema, Agitação, Solução)</option>
+                        <option value="PPPP">Framework Rígido: PPPP (Picture, Promise, Prove, Push)</option>
                     </select>
                 </div>
                 <button class="btn-submit" onclick="executarEngine('trafego-pago')">Gerar Scripts de Criativos</button>
             </div>
 
-            <!-- 9. ANÁLISE DE MÉTRICAS -->
-            <div id="metricas" class="content-section">
-                <h2>Análise de Métricas</h2>
-                <p class="subtitle">Alimente o sistema com os KPIs reais de tráfego e engajamento para rodar uma varredura de gargalos.</p>
+            <!-- 4. DESTRUIDOR DE OBJEÇÕES (ENGENHARIA DE VENDAS) -->
+            <div id="objecoes-live" class="content-section">
+                <h2>Destruidor de Objeções</h2>
+                <p class="subtitle">Mapeie falhas de oferta através de uma simulação crítica da mente da persona.</p>
                 <div class="form-section">
-                    <h3>Parâmetros de Controle</h3>
-                    <input type="text" id="me-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <input type="text" id="me-periodo" placeholder="Período da Análise (Ex: Últimos 30 dias)">
-                    <input type="text" id="me-meta" placeholder="Meta Principal do Período (Ex: Otimizar o custo por aquisição)">
+                    <h3>1. Dados de Ancoragem</h3>
+                    <input type="text" id="obj-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
+                    <input type="text" id="obj-persona" placeholder="Sua Persona Alvo (ex: Empresários sem tempo livre)">
+                    <input type="text" id="obj-oferta" placeholder="Seu Produto e Preço Real (ex: Mentoria de Escala por R$ 3.000)">
                 </div>
                 <div class="form-section">
-                    <h3>1. Topo do Funil</h3>
-                    <input type="number" id="me-impressoes" placeholder="Total de Impressões Brutas">
-                    <input type="number" id="me-alcance" placeholder="Alcance Único">
-                    <input type="number" id="me-crescimento" placeholder="Taxa de Crescimento Líquido">
-                    <input type="text" id="me-origem" placeholder="Origem do Tráfego">
+                    <h3>2. Mapeamento de Barreiras</h3>
+                    <textarea id="obj-desculpa" placeholder="Qual é a desculpa mais comum que você ouve no fechamento? (ex: 'Está caro', 'Vou falar com meu sócio')"></textarea>
                 </div>
-                <div class="form-section">
-                    <h3>2. Meio do Funil</h3>
-                    <input type="number" id="me-interacoes" placeholder="Soma de Curtidas, Comentários, Salvamentos e Envios">
-                    <input type="number" id="me-retencao" placeholder="Taxa Média de Retenção de Vídeos (%)">
-                </div>
-                <div class="form-section">
-                    <h3>3. Fundo do Funil</h3>
-                    <input type="number" id="me-cliques" placeholder="Cliques Totais no Link da Bio / CTA">
-                    <input type="number" id="me-conversoes" placeholder="Volume de Conversões (Vendas validadas)">
-                    <input type="number" id="me-cac" placeholder="Custo por Lead / Aquisição (CAC)">
-                </div>
-                <div class="form-section">
-                    <h3>Tabela de Inserção Rápida</h3>
-                    <textarea id="me-brutos" placeholder="Cole aqui os dados crus brutos da sua planilha para mineração sintática (Opcional)"></textarea>
-                </div>
-                <button class="btn-submit" onclick="executarEngine('metricas')">Executar Auditoria de Métricas</button>
-            </div>
-
-            <!-- 10. DIAGNÓSTICO DE MERCADO -->
-            <div id="mercado" class="content-section">
-                <h2>Diagnóstico de Mercado</h2>
-                <p class="subtitle">Avalie a saturação competitiva geográfica do seu nicho e encontre brechas de escala premium.</p>
-                <div class="form-section">
-                    <h3>1. Abrangência</h3>
-                    <input type="text" id="dm-empresa" placeholder="Nome da Empresa (ex: Alfa Semijoias)">
-                    <select id="dm-modelo">
-                        <option>Local / Físico</option>
-                        <option>Nacional / Digital</option>
-                        <option>Híbrido</option>
-                    </select>
-                    <input type="text" id="dm-localizacao" placeholder="Localização Base (Cidade e Estado)">
-                    <input type="text" id="dm-raio" placeholder="Raio de Atendimento se aplicável">
-                </div>
-                <div class="form-section">
-                    <h3>2. Cenário</h3>
-                    <input type="text" id="dm-concorrentes" placeholder="Principais Concorrentes">
-                    <textarea id="dm-calcanhar" placeholder="O 'Calcanhar de Aquiles' do Concorrente (O que você faz melhor?)"></textarea>
-                </div>
-                <div class="form-section">
-                    <h3>3. Parâmetros</h3>
-                    <select id="dm-conhecimento">
-                        <option>Demanda Alta / Mercado Educado</option>
-                        <option>Demanda Inexplorada / Mercado Novo</option>
-                    </select>
-                    <input type="number" id="dm-ticket" placeholder="Ticket Médio atual em R$">
-                </div>
-                <div class="form-section">
-                    <h3>4. Meta</h3>
-                    <select id="dm-passo">
-                        <option>Lotar a agenda / Abrir filial física</option>
-                        <option>Aumentar o preço (Posicionamento Premium)</option>
-                        <option>Nacionalizar a marca</option>
-                    </select>
-                </div>
-                <button class="btn-submit" onclick="executarEngine('mercado')">Gerar Matriz de Crescimento</button>
+                <button class="btn-submit" onclick="executarEngine('objecoes-live')">Iniciar Interrogatório da Persona</button>
             </div>
 
         </div>
@@ -632,7 +404,7 @@
     </div>
 
     <script>
-        // CONFIGURAÇÕES DO NÚCLEO E CHAVE CORPORATIVA VALIDADA[cite: 2]
+        // CONFIGURAÇÕES DO NÚCLEO E CHAVE CORPORATIVA VALIDADA[cite: 4]
         const API_KEY = "AQ.Ab8RN6L4gXlwfKXY1Z67EyGL2A4fgOIVA1QzynlW9klthC4Ujw"; 
         
         const viewForm = document.getElementById('workspace-form');
@@ -647,17 +419,12 @@
         const resultsMainTitle = document.getElementById('results-main-title');
         const mobileRouteIndicator = document.getElementById('mobile-current-route');
 
-        // INTERFACE DINÂMICA DO INSTAGRAM[cite: 2]
-        document.getElementById('insta-formato').addEventListener('change', function() {
-            document.getElementById('volume-section').style.display = this.value === 'pacote' ? 'block' : 'none';
-        });
-
-        // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER[cite: 2]
+        // CONTROLADOR MANUAL DO CLIQUE NO MENU HAMBÚRGUER[cite: 4]
         function toggleMenu() {
             sidebar.classList.toggle('open');
         }
 
-        // CONTROLADOR GLOBAL DE ABAS CORTA-BUG[cite: 2]
+        // CONTROLADOR GLOBAL DE ABAS CORTA-BUG[cite: 4]
         function switchTab(element, tabId) {
             viewResults.style.display = 'none';
             viewLoading.style.display = 'none';
@@ -680,7 +447,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // RETORNO DE TELA MANUAL[cite: 2]
+        // RETORNO DE TELA MANUAL[cite: 4]
         document.getElementById('btn-back-form').addEventListener('click', () => {
             viewResults.style.display = 'none';
             viewForm.style.display = 'block';
@@ -689,7 +456,7 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
-        // COPIAR CLIPBOARD PREMIUM[cite: 2]
+        // COPIAR CLIPBOARD PREMIUM[cite: 4]
         function copiarCard(id, botao) {
             const textarea = document.getElementById(`txt-content-${id}`);
             navigator.clipboard.writeText(textarea.value).then(() => {
@@ -705,7 +472,7 @@
         }
 
         // ========================================================
-        // MOTOR DE EXECUÇÃO CENTRALIZADO (ENGINE ADAPTATIVO COMPLETO)[cite: 2]
+        // MOTOR DE EXECUÇÃO CENTRALIZADO (4 MOTORES DE ELITE)
         // ========================================================
         async function executarEngine(painelAtivo) {
             let promptMestre = "";
@@ -714,229 +481,103 @@
             let txtCarregando = "Estruturando análises de mercado Tomorrow...";
             let layoutModoGrid = false;
 
-            // 1. INSTAGRAM[cite: 2]
-            if (painelAtivo === 'instagram') {
-                const empresa = document.getElementById('insta-empresa').value;
-                const subnicho = document.getElementById('insta-subnicho').value;
-                const produto = document.getElementById('insta-produto').value;
-                const persona = document.getElementById('insta-persona').value;
-                const dor = document.getElementById('insta-dor').value;
-                const estrategia = document.getElementById('insta-estrategia').value;
-                const cta = document.getElementById('insta-cta').value;
-                const formatoVal = document.getElementById('insta-formato').value;
-                const tom = document.getElementById('insta-tom').value;
-                const qtd = parseInt(document.getElementById('insta-qtd').value) || 5;
-
-                if (!empresa || !subnicho || !produto) return alert("Por favor, preencha o Nome da Empresa, Subnicho e o Produto!");
-
-                if (formatoVal === 'pacote') {
-                    delimitador = "[DIVIDIR_POST]";
-                    txtCarregando = `Estruturando lote da empresa ${empresa} com ${qtd} briefings magnéticos...`;
-                    tituloPagina = "Briefings Magnéticos Gerados";
-                    promptMestre = `Você é o Diretor Criativo da agência Tomorrow. Crie exatamente ${qtd} ESTRATÉGIAS COMPLETAS DE BRIEFINGS DE POSTS MAGNÉTICOS para a empresa/marca "${empresa}".
-                    Separe cada bloco usando rigorosamente o delimitador: [DIVIDIR_POST]. Formato por bloco:
-                    TÍTULO (Capa): [Texto] \n SUBTÍTULO: [Texto] \n DIREÇÃO DO DESIGN: [Briefing Visual] \n CTA: [Texto Legenda]`;
-                } else {
-                    delimitador = "[DIVIDIR_VARIACAO]";
-                    txtCarregando = `Calculando 5 variações premium para a marca ${empresa}...`;
-                    tituloPagina = "Variações de Conteúdo";
-                    promptMestre = `Crie exatamente 5 VARIAÇÕES DIFERENTES de copy para redes sociais voltadas para a empresa/marca "${empresa}". Ângulos comerciais diferentes (emocional, viral, técnico...). Separe cada variação usando rigorosamente: [DIVIDIR_VARIACAO]`;
-                }
-                promptMestre += `\nDados do Negócio: Empresa: ${empresa}, Subnicho/Mercado: ${subnicho}, Produto: ${produto}, Persona: ${persona}, Dor: ${dor}, Objetivo: ${estrategia}, Tom: ${tom}, CTA: ${cta}. Não use inglês. Escreva apenas o conteúdo final em português incorporando o nome da marca de forma natural quando oportuno.`;
-
-            // 2. TIKTOK / REELS[cite: 2]
-            } else if (painelAtivo === 'tiktok') {
-                const empresa = document.getElementById('tk-empresa').value;
-                const tema = document.getElementById('tk-tema').value;
-                const promessa = document.getElementById('tk-promessa').value;
-                const gancho = document.getElementById('tk-gancho').value;
-                const formato = document.getElementById('tk-formato').value;
-                const ritmo = document.getElementById('tk-ritmo').value;
-                const cta = document.getElementById('tk-cta').value;
-
-                if (!empresa || !tema || !promessa) return alert("Por favor, preencha o Nome da Empresa, Tema e a Grande Promessa!");
-                delimitador = "[DIVIDIR_ROTEIRO]";
-                txtCarregando = `Roteirizando dinâmicas de retenção para a marca ${empresa}...`;
-                tituloPagina = "Roteiros de Alta Retenção";
-                promptMestre = `Aja como estrategista sênior de TikTok da Tomorrow. Crie exatamente 3 Variações Completas de Roteiros de Vídeo Curtos focados em retenção para a marca/empresa "${empresa}". Separe cada roteiro com o delimitador: [DIVIDIR_ROTEIRO].
-                Parâmetros: Tema: ${tema}, Promessa: ${promessa}, Gancho Base: ${gancho}, Formato: ${formato}, Ritmo: ${ritmo}, Desfecho: ${cta}. Escreva exclusivamente em português, direto ao ponto, estruturando falas e indicações visuais.`;
-
-            // 3. LINHA EDITORIAL COMPLETA[cite: 2]
-            } else if (painelAtivo === 'linha-editorial') {
+            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA (INTEGRADA COM BRIEFING)
+            if (painelAtivo === 'linha-editorial') {
                 const empresa = document.getElementById('le-empresa').value;
-                const diferencial = document.getElementById('le-diferencial').value;
-                const valores = document.getElementById('le-valores').value;
                 const principal = document.getElementById('le-principal').value;
-                const objecoes = document.getElementById('le-objecoes').value;
+                const persona = document.getElementById('le-persona').value;
+                const objetivo = document.getElementById('le-objetivo').value;
                 const duracaoCampanha = document.getElementById('le-duracao').value;
 
-                if (!empresa || !diferencial || !principal) return alert("Por favor, preencha o Nome da Empresa, Diferencial e o Produto Principal!");
+                if (!empresa || !principal || !persona) return alert("Por favor, preencha todos os campos da Linha Editorial!");
                 
                 layoutModoGrid = true; 
                 delimitador = "[DIVIDIR_DIA]";
-                txtCarregando = `Calculando grid estratégico de ${duracaoCampanha} dias para a marca ${empresa}...`;
-                tituloPagina = `Calendário: Lote de ${duracaoCampanha} Dias`;
+                txtCarregando = `Calculando calendário tático de ${duracaoCampanha} dias para a marca ${empresa}...`;
+                tituloPagina = `Calendário Integrado: Lote de ${duracaoCampanha} Dias`;
 
                 let totalCardsExigidos = 6;
                 if (duracaoCampanha == "30") totalCardsExigidos = 12;
                 if (duracaoCampanha == "60") totalCardsExigidos = 18;
 
-                promptMestre = `Você é o Diretor de Criação da agência Tomorrow. Sua missão é criar exatamente ${totalCardsExigidos} blocos estratégicos sequenciais de publicação distribuídos ao longo de um plano de ${duracaoCampanha} dias para a empresa "${empresa}".
+                promptMestre = `Você é o Diretor de Criação Estratégica da agência Tomorrow (Ano: 2026). Sua missão é criar exatamente ${totalCardsExigidos} blocos sequenciais de publicações estruturadas distribuídos estrategicamente ao longo de um plano de ${duracaoCampanha} dias para a marca "${empresa}".
 
                 REGRAS DE CONSTRUÇÃO ABSOLUTAS:
-                1. Escreva 100% em português do Brasil. Proibido responder em inglês.
-                2. NÃO use textos introdutórios ou resumos teóricos. Vá direto ao primeiro bloco.
-                3. Separe estritamente cada bloco usando o delimitador exato: [DIVIDIR_DIA]
-                4. O formato de cada bloco individual deve ser exatamente este:
-                   TEMA: [Título do Tema Magnético do dia]
-                   DIRETRIZ TÁTICA: [Explique de forma prática o que escrever e postar nesse dia alinhado à marca]
+                1. Escreva 100% em português do Brasil. Não utilize introduções, explicações ou resumos teóricos. Vá direto ao primeiro bloco.
+                2. Separe estritamente cada bloco usando o delimitador exato: [DIVIDIR_DIA]
+                3. O formato interno de cada bloco individual deve ser exatamente este estruturado com parágrafos limpos:
+                   TEMA: [Título ou Gancho de Atração]
+                   DIREÇÃO DE ARTE: [Diretriz visual detalhada da imagem ou capa para o designer]
+                   LEGENDA PRONTA: [Cópia completa e persuasiva formatada com espaçamentos para postagem]
+                   CTA: [Chamada de ação tática direcionada ao objetivo da campanha]
 
-                CONTEXTO COMERCIAL:
-                - Marca/Empresa: ${empresa}
-                - Diferencial de Marca: ${diferencial}
-                - Crenças e Valores: ${valores}
-                - Produto/Oferta em Foco: ${principal}
-                - Objeções para Destruir: ${objecoes}`;
+                CONTEXTO DO NEGÓCIO:
+                - Empresa/Marca: ${empresa}
+                - Produto/Serviço em Foco: ${principal}
+                - Persona Alvo: ${persona}
+                - Objetivo Estratégico do Mês: ${objetivo}`;
 
-            // 4. EXPORTADOR DE CARROSSEL (NOVO INTERPRETADOR)
-            } else if (painelAtivo === 'exportador-carrossel') {
-                const empresa = document.getElementById('car-empresa').value;
-                const tema = document.getElementById('car-tema').value;
-                const slides = parseInt(document.getElementById('car-slides').value) || 5;
-                const tom = document.getElementById('car-tom').value;
+            // 2. PROCESSADOR DA ABA: ROTEIRIZADOR DE VIDEO (REELS & TIKTOK + RADAR DE HYPE INTEGRADO)
+            } else if (painelAtivo === 'roteirizador-video') {
+                const empresa = document.getElementById('vid-empresa').value;
+                const tema = document.getElementById('vid-tema').value;
+                const promessa = document.getElementById('vid-promessa').value;
+                const estilo = document.getElementById('vid-estilo').value;
+                const cta = document.getElementById('vid-cta').value;
 
-                if (!empresa || !tema) return alert("Preencha o Nome da Empresa e o Tema!");
-                layoutModoGrid = true;
-                delimitador = "[DIVIDIR_SLIDE]";
-                txtCarregando = `Diagramando arquitetura de ${slides} slides para ${empresa}...`;
-                tituloPagina = `Estrutura de Carrossel: ${tema}`;
-                promptMestre = `Você é o Copywriter e Designer Estratégico da Tomorrow. Escreva o conteúdo slide por slide para um carrossel de exatamente ${slides} páginas para a marca "${empresa}". 
-                Separe estritamente cada slide com o delimitador: [DIVIDIR_SLIDE]
-                Não use introduções. Foque no tema: ${tema} utilizando o tom: ${tom}.
-                Formato de cada bloco:
-                CONTEÚDO VISUAL (O que vai escrito grande no slide)
-                TEXTO DE APOIO (Legenda curta interna do slide)
-                DIREÇÃO CRIATIVA (Orientação para o designer sobre cores ou elementos)`;
+                if (!empresa || !tema || !promessa) return alert("Por favor, preencha todos os campos do Roteirizador!");
+                delimitador = "[DIVIDIR_ROTEIRO]";
+                txtCarregando = `Roteirizando dinâmicas de retenção forçada para a marca ${empresa}...`;
+                tituloPagina = "Roteiros Técnicos de Alta Retenção (2026)";
+                promptMestre = `Você é o Roteirista de Vídeos Curtos Mais Viral da Tomorrow (Ano: 2026). Crie exatamente 3 variações completas de roteiros técnicos de alta retenção para a marca "${empresa}".
+                Separe cada roteiro com o delimitador exato: [DIVIDIR_ROTEIRO]
+                Parâmetros Contextuais: Tema Central: ${tema}, Grande Promessa: ${promessa}, Estilo de Gravação: ${estilo}, Chamada de Ação: ${cta}.
+                Formato por Bloco (Rígido):
+                GANCHO DE RETENÇÃO (0 a 3 segundos): [Frase de alto impacto baseada em tendências atuais de 2026 para prender o scroll]
+                CONTEÚDO DINÂMICO (3 a 25 segundos): [Falas curtas intercaladas com indicações de corte e inserções de texto na tela]
+                CTA DE CONVERSÃO (25 a 30 segundos): [Script de fechamento focado na ação escolhida]`;
 
-            // 5. RADAR DE HYPE (NOVO INTERPRETADOR)
-            } else if (painelAtivo === 'radar-hype') {
-                const empresa = document.getElementById('hype-empresa').value;
-                const nicho = document.getElementById('hype-nicho').value;
-                const canal = document.getElementById('hype-canal').value;
-                const estilo = document.getElementById('hype-estilo').value;
-
-                if (!empresa || !nicho) return alert("Preencha o Nome da Empresa e o Nicho!");
-                delimitador = "[DIVIDIR_TREND]";
-                txtCarregando = `Varrendo tendências em tempo real de 2026 para o nicho ${nicho}...`;
-                tituloPagina = `Radar de Tendências: ${canal}`;
-                promptMestre = `Você é o Diretor de Tendências Digitais da Tomorrow. Crie 3 estratégias de vídeos curtos altamente virais adaptadas para o nicho "${nicho}" da empresa "${empresa}" com foco no canal ${canal}.
-                Utilize estruturas de ganchos criativos de alta retenção no ano de 2026, baseados no estilo: ${estilo}.
-                Separe cada uma das 3 tendências estruturadas usando rigorosamente o delimitador: [DIVIDIR_TREND]
-                Formato do bloco:
-                GANCHO (Primeiros 3 segundos)
-                DESENVOLVIMENTO DO PRODUTO (O miolo da trend)
-                ÁUDIO/MÚSICA RECOMENDADA E CTA`;
-
-            // 6. OFERTA MAGNÉTICA[cite: 2]
-            } else if (painelAtivo === 'oferta') {
-                const empresa = document.getElementById('of-empresa').value;
-                const transformacao = document.getElementById('of-transformacao').value;
-                const mecanismo = document.getElementById('of-mecanismo').value;
-                const entregaveis = document.getElementById('of-entregaveis').value;
-                const bonus = document.getElementById('of-bonus').value;
-                const ancoragem = document.getElementById('of-ancoragem').value;
-                const preco = document.getElementById('of-preco').value;
-                const garantia = document.getElementById('of-garantia').value;
-                const gatilho = document.getElementById('of-gatilho').value;
-
-                if (!empresa || !transformacao || !preco) return alert("Por favor, preencha o Nome da Empresa, Transformação e o Preço!");
-                delimitador = "[DIVIDIR_OFERTA]";
-                txtCarregando = `Calculando engenharia de valor comercial para a empresa ${empresa}...`;
-                tituloPagina = "Arquitetura da Oferta Magnética";
-                promptMestre = `Construa uma Proposta Comercial Irrecusável baseada em Engenharia de Valor para os produtos/serviços da empresa "${empresa}". Divida em 3 seções completas (Seção 1: Pitch da Promessa e Método, Seção 2: Empacotamento de Bônus, Seção 3: Inversão de Risco e Fechamento Comercial). Separe as seções usando: [DIVIDIR_OFERTA].
-                Parâmetros: Transformação: ${transformacao}, Mecanismo: ${mecanismo}, Entregáveis: ${entregaveis}, Bônus: ${bonus}, Ancoragem: ${ancoragem}, Preço Real: ${preco}, Garantia: ${garantia}, Gatilho: ${gatilho}. Escreva em português do Brasil, focado em alta conversão.`;
-
-            // 7. DESTRUIDOR DE OBJEÇÕES (NOVO INTERPRETADOR COGNITIVO)
-            } else if (painelAtivo === 'objecoes-live') {
-                const empresa = document.getElementById('obj-empresa').value;
-                const persona = document.getElementById('obj-persona').value;
-                const oferta = document.getElementById('obj-oferta').value;
-
-                if (!empresa || !persona || !oferta) return alert("Por favor, preencha todos os campos do Destruidor de Objeções!");
-                delimitador = "[DIVIDIR_OBJECAO]";
-                txtCarregando = `Iniciando simulação de quebra de padrão com a persona...`;
-                tituloPagina = `Ataque de Objeções Silenciosas: ${empresa}`;
-                promptMestre = `Aja como o cliente mais cético, duro e desconfiado da empresa "${empresa}". Sua persona é: ${persona}. O produto oferecido é: ${oferta}.
-                Gere exatamente 4 blocos de ataques críticos de objeção que esse cliente faria em segredo para não comprar, seguidos imediatamente pelos scripts cirúrgicos de resposta que o vendedor deve usar para fechar o caixa.
-                Separe cada par (Ataque + Contra-Ataque) usando o delimitador: [DIVIDIR_OBJECAO]
-                Formato do bloco:
-                O ATAQUE CRÍTICO DA PERSONA: [Escreva em primeira pessoa o que o cliente pensa/fala para recusar]
-                A RESPOSTA DO SCRIPT DE COPY: [Escreva a quebra da objeção com copy refinada]`;
-
-            // 8. COPILOTO DE TRÁFEGO PAGO (NOVO INTERPRETADOR DE CONVERSÃO)
+            // 3. PROCESSADOR DA ABA: COPILOTO DE TRÁFEGO PAGO
             } else if (painelAtivo === 'trafego-pago') {
                 const empresa = document.getElementById('traf-empresa').value;
                 const produto = document.getElementById('traf-produto').value;
                 const dor = document.getElementById('traf-dor').value;
+                const temperatura = document.getElementById('traf-temperatura').value;
                 const framework = document.getElementById('traf-framework').value;
 
-                if (!empresa || !produto || !dor) return alert("Por favor, preencha os campos básicos de Tráfego Pago!");
+                if (!empresa || !produto || !dor) return alert("Por favor, preencha todos os campos de Tráfego Pago!");
                 delimitador = "[DIVIDIR_ANUNCIO]";
-                txtCarregando = `Calculando ganchos de conversão e estruturando scripts de criativos...`;
-                tituloPagina = `Copiloto de Anúncios: ${framework}`;
-                promptMestre = `Você é o Gestor de Tráfego e Copywriter de Elite da Tomorrow. Crie exatamente 3 variações completas de roteiros de anúncios altamente persuasivos para a marca "${empresa}" vendendo o produto "${produto}".
-                Você deve focar na dor crítica: ${dor}. Escreva os 3 anúncios utilizando estritamente a metodologia de persuasão: ${framework}.
-                Separe cada roteiro completo de anúncio usando o delimitador: [DIVIDIR_ANUNCIO]
-                Formato do bloco:
-                GANCHO INICIAL (0 a 3 segundos)
-                CONTEÚDO DO DESENVOLVIMENTO (Focado no framework)
-                CHAMADA DE FECHAMENTO (CTA de Clique)
-                TEXTO DE APOIO DA LEGENDA DO ANÚNCIO`;
+                txtCarregando = `Calculando ganchos de conversão sob a metodologia ${framework}...`;
+                tituloPagina = `Roteiros de Anúncios: Funil ${temperatura}`;
+                promptMestre = `Você é o Copywriter de Tráfego de Alta Conversão da Tomorrow. Gere exatamente 3 variações cirúrgicas de scripts de anúncios para a marca "${empresa}" com foco no produto "${produto}".
+                A cópia deve atacar diretamente a dor oculta: ${dor}. Adapte a linguagem para a temperatura do público: ${temperatura}.
+                O roteiro deve seguir de forma rígida a estrutura do framework: ${framework}.
+                Separe cada variação com o delimitador exato: [DIVIDIR_ANUNCIO]
+                Formato interno:
+                ROTEIRO DO LOCUTOR/ATOR (Falas otimizadas com quebra de padrão de feed)
+                TEXT OVERLAYS (Frases que devem ser escritas na tela para retenção silenciosa)
+                TEXTO PRINCIPAL DA LEGENDA (Cópia que acompanha o criativo no gerenciador)`;
 
-            // 9. ANÁLISE DE MÉTRICAS[cite: 2]
-            } else if (painelAtivo === 'metricas') {
-                const empresa = document.getElementById('me-empresa').value;
-                const periodo = document.getElementById('me-periodo').value;
-                const meta = document.getElementById('me-meta').value;
-                const imp = document.getElementById('me-impressoes').value;
-                const alc = document.getElementById('me-alcance').value;
-                const cresc = document.getElementById('me-crescimento').value;
-                const ori = document.getElementById('me-origem').value;
-                const inter = document.getElementById('me-interacoes').value;
-                const ret = document.getElementById('me-retencao').value;
-                const cliq = document.getElementById('me-cliques').value;
-                const conv = document.getElementById('me-conversoes').value;
-                const cac = document.getElementById('me-cac').value;
-                const brutos = document.getElementById('me-brutos').value;
+            // 4. PROCESSADOR DA ABA: DESTRUIDOR DE OBJEÇÕES
+            } else if (painelAtivo === 'objecoes-live') {
+                const empresa = document.getElementById('obj-empresa').value;
+                const persona = document.getElementById('obj-persona').value;
+                const oferta = document.getElementById('obj-oferta').value;
+                const desculpa = document.getElementById('obj-desculpa').value;
 
-                if (!empresa) return alert("Por favor, informe o Nome da Empresa!");
-                delimitador = "[DIVIDIR_AUDITORIA]";
-                txtCarregando = `Auditando funil de dados e performance de ${empresa}...`;
-                tituloPagina = "Auditoria Digital de Performance";
-                promptMestre = `Você é um Cientista de Dados e Growth Hacker da Tomorrow. Faça um diagnóstico analítico e frio das métricas de marketing digital da empresa "${empresa}", aponte os gargalos reais do funil e dê um plano de ação imediato. Separe o diagnóstico em 3 blocos (Bloco 1: Varredura de Gargalos, Bloco 2: Otimização de Conversão, Bloco 3: Plano de Execução). Use o delimitador: [DIVIDIR_AUDITORIA].
-                Dados: Período: ${periodo}, Meta: ${meta}, Impressões: ${imp}, Alcance: ${alc}, Crescimento: ${cresc}, Origem: ${ori}, Interações: ${inter}, Retenção: ${ret}%, Cliques: ${cliq}, Conversões: ${conv}, CAC: ${cac}. Dados Extras: ${brutos}. Responda em português.`;
-
-            // 10. DIAGNÓSTICO DE MERCADO[cite: 2]
-            } else if (painelAtivo === 'mercado') {
-                const empresa = document.getElementById('dm-empresa').value;
-                const modelo = document.getElementById('dm-modelo').value;
-                const loc = document.getElementById('dm-localizacao').value;
-                const raio = document.getElementById('dm-raio').value;
-                const conc = document.getElementById('dm-concorrentes').value;
-                const calcanhar = document.getElementById('dm-calcanhar').value;
-                const conhec = document.getElementById('dm-conhecimento').value;
-                const ticket = document.getElementById('dm-ticket').value;
-                const passo = document.getElementById('dm-passo').value;
-
-                if (!empresa || !loc || !conc) return alert("Por favor, preencha o Nome da Empresa, Localização e os Concorrentes!");
-                delimitador = "[DIVIDIR_DIAGNOSTICO]";
-                txtCarregando = `Analisando forças macro e brechas competitivas para ${empresa}...`;
-                tituloPagina = "Matriz de Escala Competitiva";
-                promptMestre = `Faça um Diagnóstico de Mercado Competitivo Premium focado em Diferenciação de Posicionamento para a empresa "${empresa}". Forneça 3 blocos analíticos estrategicamente separados pelo delimitador: [DIVIDIR_DIAGNOSTICO].
-                Parâmetros: Atuação: ${modelo}, Sede: ${loc}, Raio: ${raio}, Concorrentes diretos: ${conc}, Calcanhar do rival: ${calcanhar}, Maturidade do público: ${conhec}, Ticket médio: R$ ${ticket}, Próximo Passo desejado: ${passo}. Tudo estruturado e finalizado direto em português.`;
+                if (!empresa || !persona || !oferta || !desculpa) return alert("Por favor, preencha todos os campos do Destruidor de Objeções!");
+                delimitador = "[DIVIDIR_OBJECAO]";
+                txtCarregando = `Simulando barreiras psicológicas da persona...`;
+                tituloPagina = "Manual Antídoto de Objeções";
+                promptMestre = `Assuma a persona de um comprador extremamente cético, duro e defensivo da marca "${empresa}". Dados da Persona: ${persona}. Produto e Preço Ofertado: ${oferta}. A desculpa superficial que a persona mais usa é: "${desculpa}".
+                Gere exatamente 4 blocos profundos de quebra de barreiras de vendas. Separe cada bloco com o delimitador exato: [DIVIDIR_OBJECAO]
+                Formato interno:
+                A OBJEÇÃO OCULTA REAL (O que a persona pensa em segredo quando usa a desculpa superficial)
+                O ERRO FATAL DO VENDEDOR (O que o mercado responde de forma errada e mata o caixa)
+                SCRIPT DE REVERSÃO MAGNÉTICA (A copy exata em parágrafo pronto para falar na reunião ou enviar no WhatsApp para inverter o risco e fechar a venda)`;
             }
 
-            // TRANSIÇÃO PROGRESSIVA CINEMATOGRÁFICA SPA[cite: 2]
+            // TRANSIÇÃO PROGRESSIVA CINEMATOGRÁFICA SPA[cite: 4]
             viewForm.style.display = 'none';
             sidebar.style.opacity = '0';
             sidebar.style.pointerEvents = 'none';
@@ -956,7 +597,7 @@
                 }
             }, 130);
 
-            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ[cite: 2]
+            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ[cite: 4]
             let canaisDeModelos = [
                 "models/gemini-2.5-flash",
                 "models/gemini-2.5-pro",
@@ -992,7 +633,7 @@
 
             clearInterval(animarBarra);
 
-            // INJEÇÃO INTERATIVA DOS CARDS NAS VIEWS DE SAÍDA SPA[cite: 2]
+            // INJEÇÃO INTERATIVA DOS CARDS NAS VIEWS DE SAÍDA SPA[cite: 4]
             if (apiSucessoCompleto) {
                 barFill.style.width = '100%';
                 barText.innerText = '100%';
@@ -1013,19 +654,15 @@
                     arrayDeCards.forEach((conteudoTexto, i) => {
                         const num = i + 1;
                         
-                        let badgeLabel = `Módulo de Entrega 0${num}`;
-                        if (painelAtivo === 'instagram' && document.getElementById('insta-formato').value === 'pacote') {
-                            badgeLabel = `Post Magnético #${String(num).padStart(2, '0')}`;
-                        } else if (painelAtivo === 'linha-editorial') {
+                        let badgeLabel = `Entrega 0${num}`;
+                        if (painelAtivo === 'linha-editorial') {
                             badgeLabel = `Dia ${String(num).padStart(2, '0')}`;
-                        } else if (painelAtivo === 'exportador-carrossel') {
-                            badgeLabel = `Slide ${String(num).padStart(2, '0')}`;
-                        } else if (painelAtivo === 'objecoes-live') {
-                            badgeLabel = `Gargalo Objeção ${num}`;
-                        } else if (painelAtivo === 'radar-hype') {
-                            badgeLabel = `Trend Viral 0${num}`;
+                        } else if (painelAtivo === 'roteirizador-video') {
+                            badgeLabel = `Roteiro 0${num}`;
                         } else if (painelAtivo === 'trafego-pago') {
-                            badgeLabel = `Script Criativo 0${num}`;
+                            badgeLabel = `Criativo 0${num}`;
+                        } else if (painelAtivo === 'objecoes-live') {
+                            badgeLabel = `Gargalo Objeção 0${num}`;
                         }
                         
                         const cardElement = document.createElement('div');
