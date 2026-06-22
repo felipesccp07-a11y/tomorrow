@@ -401,6 +401,8 @@
                     <button class="btn-submit" style="box-shadow: 0 0 20px rgba(255,107,0,0.4);">Liberar Acesso Agora</button>
                 </a>
 
+                <p style="font-size: 11px; color: #52525b; margin-top: 15px; cursor: pointer; text-decoration: underline;" onclick="forçarDesbloqueioDev()">Simular Confirmação de API de Pagamento (Apenas Dev)</p>
+
                 <div class="secure-badge">
                     <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                     Ambiente Criptografado de Alta Segurança Certificado
@@ -441,15 +443,11 @@
 
         let painelPendenteExecucao = "";
 
-        // ========================================================
-        // NOVO: VALIDADOR AUTOMÁTICO DE REDIRECIONAMENTO DE CHECKOUT
-        // ========================================================
+        // VALIDADOR AUTOMÁTICO DE REDIRECIONAMENTO DE CHECKOUT
         window.addEventListener('DOMContentLoaded', () => {
             const urlParams = new URLSearchParams(window.location.search);
-            // Se o link contiver o token de sucesso enviado pela sua plataforma de pagamento
             if (urlParams.get('access') === 'tomorrow_premium_2026') {
                 localStorage.setItem('tomorrow_premium_unlocked', 'true');
-                // Limpa o token da barra de endereço para o usuário não ficar compartilhando o link ativo
                 window.history.replaceState({}, document.title, window.location.pathname);
             }
         });
@@ -486,6 +484,12 @@
 
             viewGate.style.display = 'none';
             executarEngine(painelPendenteExecucao);
+        }
+
+        function forçarDesbloqueioDev() {
+            viewPaywall.style.display = 'none';
+            viewResults.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         // CONTROLADOR GLOBAL DE ABAS CORTA-BUG
@@ -540,14 +544,14 @@
         // ========================================================
         // MOTOR DE EXECUÇÃO CENTRALIZADO (4 MOTORES DE ELITE)
         // ========================================================
-        async function ejecutarEngine(painelAtivo) {
+        async function executarEngine(painelAtivo) {
             let promptMestre = "";
             let delimitador = "[DIVIDIR_BLOCO]";
             let tituloPagina = "Estratégias Geradas";
             let txtCarregando = "Estruturando análises de mercado Tomorrow...";
             let layoutModoGrid = false;
 
-            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA (CORRIGIDO)
+            // 1. PROCESSADOR DA ABA: LINHA EDITORIAL COMPLETA
             if (painelAtivo === 'linha-editorial') {
                 const empresa = document.getElementById('le-empresa').value;
                 const principal = document.getElementById('le-principal').value;
@@ -562,7 +566,7 @@
 
                 let totalCardsExigidos = 6;
                 if (duracaoCampanha == "30") totalCardsExigidos = 12;
-                if (duracaoCampanha == "60") totalCardsExigidos = 18;
+                if (duracaoCampCampaign == "60") totalCardsExigidos = 18;
 
                 promptMestre = `Você é o Diretor de Criação Estratégica da agência Tomorrow (Ano: 2026). Sua missão é criar exatamente ${totalCardsExigidos} blocos sequenciais de publicações estruturadas distribuídos estrategicamente ao longo de um plano de ${duracaoCampanha} dias para a marca "${empresa}".
 
@@ -659,7 +663,7 @@
                 }
             }, 130);
 
-            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ (CORRIGIDO CONFLITO DE CABEÇALHO)
+            // MATRIX DE CONTINGÊNCIA CORPORATIVA ULTRA VELOZ
             let canaisDeModelos = [
                 "models/gemini-2.5-flash",
                 "models/gemini-2.5-pro",
@@ -669,6 +673,7 @@
 
             let rawRetornoText = "";
             let apiSucessoCompleto = false;
+            let ultimoErroStatus = "";
 
             for (const canal_modelo of canaisDeModelos) {
                 try {
@@ -684,13 +689,22 @@
                             }
                         })
                     });
+                    
+                    if (!response.ok) {
+                        ultimoErroStatus = `Erro HTTP: ${response.status} ${response.statusText}`;
+                        continue;
+                    }
+                    
                     const resJson = await response.json();
-                    if (response.ok && resJson.candidates && resJson.candidates[0].content.parts[0].text) {
+                    if (resJson.candidates && resJson.candidates[0].content.parts[0].text) {
                         rawRetornoText = resJson.candidates[0].content.parts[0].text;
                         apiSucessoCompleto = true;
                         break;
                     }
-                } catch (err) { console.error("Canal ocupado: " + canal_modelo); }
+                } catch (err) { 
+                    console.error("Falha no canal: " + canal_modelo, err);
+                    ultimoErroStatus = err.message;
+                }
             }
 
             clearInterval(animarBarra);
@@ -746,10 +760,8 @@
 
                     // VERIFICAÇÃO AUTOMÁTICA DE PAYWALL ATIVO
                     if (localStorage.getItem('tomorrow_premium_unlocked') === 'true') {
-                        // Se já comprou, pula a tela de bloqueio e vai direto pros resultados
                         viewResults.style.display = 'block';
                     } else {
-                        // Se não comprou, trava na tela de pagamento seguro
                         viewPaywall.style.display = 'block';
                     }
                     
@@ -761,7 +773,7 @@
                 viewForm.style.display = 'block';
                 sidebar.style.opacity = '1';
                 sidebar.style.pointerEvents = 'auto';
-                alert("Falha de comunicação corporativa do Google Cloud. Garanta o sinal estável e reenvie.");
+                alert(`Falha de processamento no barramento da nuvem do Google.\nDetalhes técnicos do erro: ${ultimoErroStatus}\nVerifique as cotas da sua API Key ou tente novamente.`);
             }
         }
     </script>
