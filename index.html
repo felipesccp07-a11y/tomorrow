@@ -19,10 +19,10 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 /></noscript>
-<title>Tomorrow Marketing — Estrutura Comercial e Vendas em 60 Dias</title>
-<meta name="description" content="Construa uma estrutura comercial de vendas que leve sua empresa a fase de crescimento inabalável. Foco total em faturamento e ROI.">
-<meta name="keywords" content="estrutura comercial, alavancagem de vendas, tráfego pago, processo de vendas, time comercial, amadurecimento digital, amadurecimento comercial">
-<meta name="author" content="Tomorrow Marketing">
+<title>Tomorrow — Campanhas que ninguém mais criaria.</title>
+<meta name="description" content="A Tomorrow cria e opera campanhas publicitárias autorais orientadas a objetivos de negócio. Ideia, estrutura de conversão e métrica — sem escolher entre criatividade e crescimento.">
+<meta name="keywords" content="campanhas autorais, publicidade orientada a resultado, jornada de compra, branding, estrutura comercial, marketing de resultado">
+<meta name="author" content="Tomorrow">
 <meta name="robots" content="index, follow">
 <link class="canonical" href="https://agenciatomorrow.com/">
 
@@ -31,20 +31,20 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://agenciatomorrow.com/">
-<meta property="og:title" content="Tomorrow Marketing — Estrutura Comercial de Vendas">
-<meta property="og:description" content="Você não precisa de mais marketing, você precisa de mais vendas. Descubra nosso método focado 100% em escala e lucro.">
+<meta property="og:title" content="Tomorrow — Campanhas que ninguém mais criaria.">
+<meta property="og:description" content="Ideia sem resultado é vaidade. Resultado sem ideia é commodity. Conheça a Tomorrow.">
 <meta property="og:image" content="https://agenciatomorrow.com/Principal.jpg">
 <meta property="og:locale" content="pt_BR">
-<meta property="og:site_name" content="Tomorrow Marketing">
+<meta property="og:site_name" content="Tomorrow">
 
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "MarketingAgency",
-  "name": "Tomorrow Marketing",
+  "name": "Tomorrow",
   "url": "https://agenciatomorrow.com",
   "logo": "https://agenciatomorrow.com/tmw-logo.png",
-  "description": "Consultoria e implementação de estrutura comercial de vendas ponta a ponta.",
+  "description": "Criação e operação de campanhas publicitárias autorais orientadas a objetivos de negócio.",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Ribeirão Preto",
@@ -75,7 +75,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     --gray: #1A1A1A;
     --gray-mid: #2E2E2E;
     --gray-light: #F0F0F0;
-    --text-muted: #888;
+    --text-muted: #545454;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -102,23 +102,24 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     transition: all 0.3s;
   }
   .nav-logo img { height: 32px; width: auto; }
-  .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
   .nav-links a {
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 500;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
     color: var(--black);
     text-decoration: none;
     opacity: 0.7;
     transition: opacity 0.2s;
+    white-space: nowrap;
   }
   .nav-links a:hover { opacity: 1; }
   .nav-cta {
     background: var(--orange);
     color: white !important;
     opacity: 1 !important;
-    padding: 10px 22px;
+    padding: 10px 20px;
     border-radius: 2px;
     font-weight: 700 !important;
   }
@@ -169,11 +170,11 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   }
   .hero h1 {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: clamp(54px, 8.5vw, 120px);
+    font-size: clamp(54px, 8.5vw, 118px);
     line-height: 0.95;
     letter-spacing: -0.01em;
     color: var(--white);
-    max-width: 1000px;
+    max-width: 1050px;
     margin-bottom: 32px;
   }
   .hero h1 span {
@@ -185,45 +186,41 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     font-size: clamp(16px, 2vw, 22px);
     font-weight: 300;
     color: rgba(250,250,250,0.75);
-    max-width: 600px;
+    max-width: 620px;
     line-height: 1.6;
     margin-bottom: 40px;
   }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 56px; }
+  .btn-ghost {
+    background: transparent;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 17px 36px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--orange); color: var(--orange); }
 
-  /* Timeline Horizontal na Hero */
-  .hero-timeline {
+  /* Nota do paradoxo, na hero */
+  .paradox-note {
+    max-width: 780px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
     display: flex;
     gap: 20px;
-    max-width: 900px;
-    margin-top: 48px;
-    padding-top: 32px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    flex-wrap: wrap;
+    align-items: flex-start;
   }
-  .timeline-step {
-    flex: 1;
-    min-width: 160px;
-  }
-  .timeline-day {
-    font-family: 'Bebas Neue', sans-serif;
-    color: var(--orange);
-    font-size: 18px;
-    letter-spacing: 0.05em;
-    margin-bottom: 4px;
-  }
-  .timeline-text {
-    font-size: 12px;
-    color: rgba(250,250,250,0.5);
-    line-height: 1.4;
-  }
-  .timeline-step.final .timeline-day {
-    color: var(--white);
-    background: var(--orange);
-    display: inline-block;
-    padding: 2px 8px;
-    border-radius: 2px;
-    font-size: 14px;
-  }
+  .paradox-note .mark { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--orange); line-height: 1; flex-shrink: 0; }
+  .paradox-note p { font-size: 14.5px; color: rgba(250,250,250,0.55); font-weight: 300; line-height: 1.6; }
+  .paradox-note strong { color: rgba(250,250,250,0.85); font-weight: 500; }
 
   .btn-primary {
     background: var(--orange);
@@ -245,7 +242,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 
   /* ── MARQUEE ── */
   .marquee-wrap { background: var(--orange); padding: 14px 0; overflow: hidden; white-space: nowrap; }
-  .marquee-track { display: inline-flex; animation: marquee 22s linear infinite; }
+  .marquee-track { display: inline-flex; animation: marquee 26s linear infinite; }
   .marquee-track span { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: white; padding: 0 40px; }
   .marquee-track span.dot { color: rgba(255,255,255,0.5); padding: 0; font-size: 10px; }
   @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -253,22 +250,51 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   /* ── SECTIONS COMMON ── */
   section { padding: 100px 48px; }
   .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); margin-bottom: 20px; }
-  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(40px, 5.5vw, 76px); line-height: 0.95; letter-spacing: -0.01em; color: var(--black); margin-bottom: 24px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 5.2vw, 72px); line-height: 0.98; letter-spacing: -0.01em; color: var(--black); margin-bottom: 24px; }
   .section-title.light { color: var(--white); }
-  .section-desc { font-size: 17px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 560px; }
+  .section-desc { font-size: 17px; font-weight: 300; color: var(--text-muted); line-height: 1.7; max-width: 640px; }
+  .section-desc.on-dark { color: rgba(250,250,250,0.55); }
 
-  /* ── MANIFESTO (SEÇÃO 2) ── */
+  /* ── MANIFESTO / CRENÇA FUNDADORA ── */
   .manifesto { background: var(--black); padding: 100px 48px; }
   .manifesto-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: start; max-width: 1200px; margin: 60px auto 0; }
-  .manifesto-left .big-quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(28px, 3.5vw, 44px); color: var(--white); line-height: 1.3; border-left: 3px solid var(--orange); padding-left: 32px; }
+  .manifesto-left .big-quote { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(26px, 3.2vw, 40px); color: var(--white); line-height: 1.35; border-left: 3px solid var(--orange); padding-left: 32px; }
   .manifesto-left .big-quote em { color: var(--orange); font-style: normal; }
-  .manifesto-left .context-text { font-size: 16px; color: rgba(250,250,250,0.5); font-weight: 300; line-height: 1.6; margin-top: 32px; padding-left: 35px; }
+  .manifesto-left .context-text { font-size: 16px; color: rgba(250,250,250,0.5); font-weight: 300; line-height: 1.65; margin-top: 32px; padding-left: 35px; }
+  .manifesto-left .context-text + .context-text { margin-top: 16px; }
   .manifesto-right { display: flex; flex-direction: column; gap: 32px; }
   .manifesto-item { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; }
   .manifesto-item h4 { font-size: 13px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 8px; }
   .manifesto-item p { font-size: 15px; color: rgba(250,250,250,0.65); line-height: 1.6; font-weight: 300; }
 
-  /* ── SEÇÃO NOVA: LINHA DO TEMPO DA JORNADA DE COMPRA ── */
+  /* ── AS 7 CRENÇAS ── */
+  .crencas { background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
+  .crencas-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(0,0,0,0.08); border: 1px solid rgba(0,0,0,0.08); }
+  .crenca-card { background: var(--white); padding: 36px 30px; display: flex; flex-direction: column; gap: 14px; transition: background 0.25s; }
+  .crenca-card:hover { background: var(--gray-light); }
+  .crenca-num { font-family: 'Bebas Neue', sans-serif; font-size: 40px; color: var(--orange); line-height: 1; }
+  .crenca-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.01em; color: var(--black); line-height: 1.15; }
+  .crenca-card p { font-size: 14px; color: #3d3d3d; line-height: 1.6; font-weight: 300; }
+
+  /* ── O QUE VENDEMOS / NÃO VENDEMOS ── */
+  .oferta { background: var(--black); }
+  .oferta-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.08); }
+  .oferta-col { padding: 44px 40px; }
+  .oferta-col.yes { background: #111; }
+  .oferta-col.no { background: #0d0d0d; }
+  .oferta-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.03em; margin-bottom: 24px; }
+  .oferta-col.yes h4 { color: var(--orange); }
+  .oferta-col.no h4 { color: rgba(250,250,250,0.35); }
+  .oferta-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .oferta-col li { font-size: 14.5px; font-weight: 300; line-height: 1.55; padding-left: 22px; position: relative; }
+  .oferta-col.yes li { color: rgba(250,250,250,0.8); }
+  .oferta-col.no li { color: rgba(250,250,250,0.4); }
+  .oferta-col.yes li::before { content: '+'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .oferta-col.no li::before { content: '–'; position: absolute; left: 0; color: rgba(250,250,250,0.3); font-weight: 700; }
+  .oferta-summary { max-width: 1200px; margin: 40px auto 0; text-align: center; font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(18px, 2.2vw, 24px); color: rgba(250,250,250,0.7); }
+  .oferta-summary strong { color: var(--orange); font-style: normal; }
+
+  /* ── SEÇÃO NOVA: LINHA DO TEMPO DA JORNADA DE COMPRA (comportamento do consumidor) ── */
   .timeline-section { background: var(--white); color: var(--black); border-top: 1px solid rgba(0,0,0,0.05); }
   .timeline-container { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 20px; position: relative; }
   .timeline-container::before { content: ''; position: absolute; top: 24px; left: 40px; right: 40px; height: 1px; background: rgba(0,0,0,0.08); z-index: 0; }
@@ -279,7 +305,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   .timeline-bubble { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 14px; color: var(--orange); border-bottom: 1px dashed rgba(255,107,0,0.2); padding-bottom: 8px; margin-bottom: 4px; }
   .timeline-card p { font-size: 13px; color: var(--text-muted); line-height: 1.5; font-weight: 300; }
 
-  /* ── SEÇÃO NOVA: JORNADA COMPLETA (ICEBERG) ── */
+  /* ── SEÇÃO: JORNADA COMPLETA (ICEBERG) ── */
   .jornada-section { background: var(--white); color: var(--black); border-top: 1px solid rgba(0,0,0,0.05); }
   .jornada-grid { max-width: 1200px; margin: 40px auto 0; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
   .jornada-text-block { display: flex; flex-direction: column; gap: 32px; }
@@ -289,25 +315,43 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   .jornada-img-container { width: 100%; border-radius: 4px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.12); border: 1px solid rgba(0,0,0,0.05); }
   .jornada-img-container img { width: 100%; height: auto; display: block; }
 
-  /* ── NUMBERS (SEÇÃO 3) ── */
-  .numbers-section { background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
-  .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 1200px; margin: 56px auto; }
-  .number-card { background: var(--white); border: 1px solid rgba(0,0,0,0.08); padding: 40px 32px; border-radius: 2px; transition: transform 0.3s, border-color 0.3s; }
-  .number-card:hover { transform: translateY(-4px); border-color: var(--orange); }
-  .number-card .card-icon { font-size: 24px; color: var(--orange); margin-bottom: 16px; }
-  .number-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--black); letter-spacing: 0.02em; }
-  .numbers-footer { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 24px; text-align: center; color: var(--orange); margin-top: 40px; }
-
-  /* ── METODO (SEÇÃO 4) ── */
+  /* ── 8 FASES DA OPERAÇÃO ── */
   .process { background: var(--gray-light); }
-  .process-steps { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; position: relative; }
-  .process-step { padding: 32px 24px; background: var(--white); border-radius: 2px; border-top: 3px solid transparent; transition: all 0.3s; }
+  .process-steps { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; position: relative; }
+  .process-step { padding: 30px 22px; background: var(--white); border-radius: 2px; border-top: 3px solid transparent; transition: all 0.3s; }
   .process-step:hover { border-top-color: var(--orange); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
-  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: var(--orange); margin-bottom: 16px; display: block; }
-  .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.05em; color: var(--black); margin-bottom: 12px; }
-  .step-desc { font-size: 13.5px; color: var(--text-muted); line-height: 1.6; font-weight: 300; }
+  .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 30px; color: var(--orange); margin-bottom: 14px; display: block; }
+  .step-title { font-family: 'Bebas Neue', sans-serif; font-size: 21px; letter-spacing: 0.04em; color: var(--black); margin-bottom: 10px; }
+  .step-desc { font-size: 13px; color: var(--text-muted); line-height: 1.55; font-weight: 300; }
 
-  /* ── DEPOIMENTOS (SEÇÃO 5) ── */
+  /* ── ARSENAL ── */
+  .arsenal { background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
+  .arsenal-note { font-size: 15px; color: var(--text-muted); font-weight: 300; max-width: 640px; margin-top: -8px; margin-bottom: 8px; }
+  .arsenal-grid { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .arsenal-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.03em; color: var(--orange); margin-bottom: 18px; padding-bottom: 14px; border-bottom: 2px solid var(--black); }
+  .arsenal-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .arsenal-col li { font-size: 14.5px; color: var(--black); font-weight: 400; padding: 10px 0; border-bottom: 1px dashed rgba(0,0,0,0.1); }
+
+  /* ── MÉTODO IMPACT ── */
+  .impact { background: var(--black); }
+  .impact-flow { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; }
+  .impact-step { background: #111; padding: 28px 18px; text-align: left; position: relative; transition: background 0.25s; }
+  .impact-step:hover { background: #161616; }
+  .impact-letter { font-family: 'Bebas Neue', sans-serif; font-size: 46px; color: var(--orange); line-height: 1; margin-bottom: 10px; }
+  .impact-step h4 { font-size: 12.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--white); margin-bottom: 10px; }
+  .impact-step p { font-size: 12.5px; color: rgba(250,250,250,0.45); font-weight: 300; line-height: 1.5; }
+  .impact-note { max-width: 700px; margin: 32px auto 0; text-align: center; font-size: 14px; color: rgba(250,250,250,0.4); font-weight: 300; line-height: 1.6; }
+
+  /* ── NUMBERS / MÉTRICAS ── */
+  .numbers-section { background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
+  .numbers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1200px; margin: 56px auto 40px; }
+  .number-card { background: var(--white); border: 1px solid rgba(0,0,0,0.08); padding: 28px 26px; border-radius: 2px; transition: transform 0.3s, border-color 0.3s; }
+  .number-card:hover { transform: translateY(-4px); border-color: var(--orange); }
+  .number-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.02em; color: var(--orange); margin-bottom: 10px; }
+  .number-card p { font-size: 13.5px; color: var(--text-muted); font-weight: 300; line-height: 1.5; }
+  .numbers-footer { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 22px; text-align: center; color: var(--orange); margin-top: 32px; max-width: 720px; margin-left: auto; margin-right: auto; }
+
+  /* ── DEPOIMENTOS / CASE ── */
   .case-destaque { background: var(--black); padding: 100px 48px; }
   .case-grid { max-width: 1200px; margin: 60px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
   .case-story h3 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 4vw, 56px); color: var(--white); line-height: 0.95; margin-bottom: 24px; }
@@ -323,7 +367,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   .case-img:hover img { transform: scale(1.02); }
   .case-img.large { grid-column: span 2; }
 
-  /* PORTFOLIO (MANTER PROVAS) */
+  /* PORTFOLIO */
   .portfolio { background: var(--white); padding: 100px 48px; border-top: 1px solid rgba(0,0,0,0.05); }
   .portfolio-grid { max-width: 1200px; margin: 40px auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .portfolio-item { background: #111; border-radius: 4px; position: relative; overflow: hidden; cursor: pointer; transition: transform 0.3s; }
@@ -339,17 +383,39 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   .soon-dot { width: 10px; height: 10px; background: var(--orange); border-radius: 50%; }
   .soon-text { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.15em; text-transform: uppercase; }
 
-  /* ── DIFERENCIAL (SEÇÃO 6) ── */
+  /* ── ICP (quem aceitamos / quem recusamos) ── */
+  .icp { background: var(--gray-light); }
+  .icp-grid { max-width: 1200px; margin: 56px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .icp-col { background: var(--white); padding: 40px 36px; border-radius: 2px; }
+  .icp-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.02em; margin-bottom: 22px; }
+  .icp-col.aceita h4 { color: var(--orange); }
+  .icp-col.recusa h4 { color: var(--text-muted); }
+  .icp-col ul { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+  .icp-col li { font-size: 14px; font-weight: 300; line-height: 1.55; color: var(--black); padding-left: 20px; position: relative; }
+  .icp-col.aceita li::before { content: '✓'; position: absolute; left: 0; color: var(--orange); font-weight: 700; }
+  .icp-col.recusa li::before { content: '✕'; position: absolute; left: 0; color: var(--text-muted); font-weight: 700; }
+
+  /* ── ORIGEM (POR TRÁS DA TOMORROW) ── */
+  .origem { background: var(--white); border-top: 1px solid rgba(0,0,0,0.05); }
+  .origem-layout { max-width: 1100px; margin: 48px auto 0; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+  .origem-photo { width: 100%; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; background: var(--gray-light); border: 1px solid rgba(0,0,0,0.06); position: sticky; top: 110px; }
+  .origem-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .origem-content { max-width: none; margin: 0; }
+  .origem-text { font-size: 17px; color: #333; font-weight: 300; line-height: 1.75; margin-bottom: 22px; }
+  .origem-highlight { font-family: 'DM Serif Display', serif; font-style: italic; font-size: clamp(20px, 2.4vw, 26px); color: var(--black); border-left: 3px solid var(--orange); padding-left: 28px; margin: 36px 0; }
+  .origem-signature { font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--orange); margin-top: 12px; }
+
+  /* ── DIFERENCIAL ── */
   .diff { background: var(--black); padding: 100px 48px; }
   .diff-content { max-width: 800px; margin: 48px auto 0; text-align: left; }
   .diff-text { font-size: 18px; color: rgba(250,250,250,0.75); font-weight: 300; line-height: 1.7; margin-bottom: 24px; }
   .diff-highlight { border-left: 3px solid var(--orange); padding-left: 24px; color: var(--white); font-size: 20px; font-weight: 400; margin-top: 32px; }
 
-  /* ── SEÇÃO 7 (SISTEMA TMW - REDIRECIONAMENTO) ── */
+  /* ── SISTEMA (REDIRECIONAMENTO PARA DIAGNÓSTICO) ── */
   .sistema { background: var(--black); padding: 100px 48px; border-top: 1px solid rgba(255,255,255,0.06); text-align: center; }
   .sistema-layout { max-width: 1200px; margin: 48px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; text-align: left; }
   .sistema-info p { font-size: 18px; color: rgba(250,250,250,0.6); line-height: 1.6; font-weight: 300; }
-  
+
   /* Formulário de Conversão */
   .form-container { background: #111; padding: 48px; border: 1px solid rgba(255,107,0,0.15); border-radius: 4px; }
   .form-group { margin-bottom: 20px; }
@@ -377,9 +443,9 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   /* Hamburger Menu Mobile */
   .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
   .hamburger span { display: block; width: 24px; height: 2px; background: var(--black); border-radius: 2px; }
-  .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--black); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 40px; }
+  .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--black); z-index: 99; flex-direction: column; align-items: center; justify-content: center; gap: 28px; overflow-y: auto; padding: 60px 24px; }
   .mobile-menu.open { display: flex; }
-  .mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 42px; color: var(--white); text-decoration: none; letter-spacing: 0.05em; }
+  .mobile-menu a { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--white); text-decoration: none; letter-spacing: 0.05em; }
   .mobile-menu .close-btn { position: absolute; top: 24px; right: 24px; font-size: 32px; color: var(--white); background: none; border: none; }
 
   @media (max-width: 900px) {
@@ -387,18 +453,24 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     .nav-links { display: none; }
     .hamburger { display: flex; }
     section, .hero, .manifesto, .timeline-section, .jornada-section, .diff, .portfolio, .sistema, footer, .case-destaque { padding-left: 24px; padding-right: 24px; }
-    .manifesto-grid, .timeline-container, .jornada-grid, .case-grid, .sistema-layout { grid-template-columns: 1fr; gap: 40px; }
+    .manifesto-grid, .timeline-container, .jornada-grid, .case-grid, .sistema-layout, .oferta-grid, .icp-grid, .origem-layout { grid-template-columns: 1fr; gap: 40px; }
+    .origem-photo { position: static; aspect-ratio: 16/10; }
     .timeline-container::before { display: none; }
     .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .crencas-grid { grid-template-columns: 1fr; }
+    .arsenal-grid { grid-template-columns: 1fr; gap: 40px; }
+    .impact-flow { grid-template-columns: repeat(2, 1fr); }
     .portfolio-grid { grid-template-columns: 1fr; }
     .portfolio-item.large { grid-column: span 1; }
     .case-images { grid-template-columns: 1fr; }
     .case-img.large { grid-column: span 1; }
     .footer-top { flex-direction: column; gap: 32px; }
     .form-container { padding: 28px; }
+    .oferta-grid { gap: 2px; }
   }
   @media (max-width: 600px) {
     .process-steps { grid-template-columns: 1fr; }
+    .impact-flow { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -406,13 +478,14 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 
 <nav>
   <div class="nav-logo">
-    <img src="tmw-logo.png" alt="Tomorrow Marketing">
+    <img src="tmw-logo.png" alt="Tomorrow">
   </div>
   <ul class="nav-links">
-    <li><a href="#foco">O que Importa</a></li>
-    <li><a href="#jornada">A Jornada</a></li>
-    <li><a href="#metodo">Nosso Método</a></li>
+    <li><a href="#crenca">O Que Cremos</a></li>
+    <li><a href="#oferta">O Que Fazemos</a></li>
+    <li><a href="#operacao">Como Operamos</a></li>
     <li><a href="#trabalhos">Resultados</a></li>
+    <li><a href="#origem">Nossa Origem</a></li>
     <li><a href="#diagnostico" class="nav-cta">Fazer Diagnóstico</a></li>
   </ul>
   <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.add('open')" aria-label="Menu">
@@ -422,96 +495,170 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 
 <div class="mobile-menu" id="mobileMenu">
   <button class="close-btn" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
-  <a href="#foco" onclick="document.getElementById('mobileMenu').classList.remove('open')">O que Importa</a>
+  <a href="#crenca" onclick="document.getElementById('mobileMenu').classList.remove('open')">O Que Cremos</a>
+  <a href="#crencas" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nossas Crenças</a>
+  <a href="#oferta" onclick="document.getElementById('mobileMenu').classList.remove('open')">O Que Fazemos</a>
+  <a href="#operacao" onclick="document.getElementById('mobileMenu').classList.remove('open')">Como Operamos</a>
   <a href="#jornada" onclick="document.getElementById('mobileMenu').classList.remove('open')">A Jornada</a>
-  <a href="#metodo" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nosso Método</a>
   <a href="#trabalhos" onclick="document.getElementById('mobileMenu').classList.remove('open')">Resultados</a>
+  <a href="#origem" onclick="document.getElementById('mobileMenu').classList.remove('open')">Nossa Origem</a>
   <a href="#diagnostico" onclick="document.getElementById('mobileMenu').classList.remove('open')" style="color:var(--orange);">Fazer Diagnóstico</a>
 </div>
 
 <section class="hero" id="inicio">
-  <div class="hero-tag">Tomorrow Marketing — Estrutura de Vendas</div>
-  <h1>Construa uma<br>estrutura comercial<br>que escala em <span>60 dias.</span></h1>
-  <p class="hero-sub">Até para empresas que estão totalmente fora do digital.</p>
+  <div class="hero-tag">Tomorrow — Publicidade Autoral Orientada a Resultado</div>
+  <h1>Campanhas que <span>ninguém mais</span> criaria.</h1>
+  <p class="hero-sub">A produção de marketing virou commodity. Atenção, diferenciação e confiança, não. A Tomorrow cria e opera campanhas publicitárias autorais orientadas a objetivos reais de negócio.</p>
   <div class="hero-actions">
     <a href="#diagnostico" class="btn-primary">Fazer diagnóstico comercial</a>
+    <a href="#crenca" class="btn-ghost">Conhecer nossa tese</a>
   </div>
-  
-  <div class="hero-timeline reveal">
-    <div class="timeline-step">
-      <div class="timeline-day">1º Dia</div>
-      <div class="timeline-text">Diagnóstico profundo do fluxo de vendas.</div>
-    </div>
-    <div class="timeline-step">
-      <div class="timeline-day">5º Dia</div>
-      <div class="timeline-text">Aplicação e disparo dos primeiros testes ativos.</div>
-    </div>
-    <div class="timeline-step">
-      <div class="timeline-day">15º Dia</div>
-      <div class="timeline-text">Coleta detalhada e análise dos primeiros resultados.</div>
-    </div>
-    <div class="timeline-step">
-      <div class="timeline-day">20º Dia</div>
-      <div class="timeline-text">Otimização completa e ajustes do fluxo comercial.</div>
-    </div>
-    <div class="timeline-step final">
-      <div class="timeline-day">Resultado</div>
-      <div class="timeline-text" style="color:var(--white); font-weight:500;">Aumento consistente e previsibilidade real de receita.</div>
-    </div>
+
+  <div class="paradox-note reveal">
+    <div class="mark">"</div>
+    <p><strong>Quanto mais fácil ficou produzir, mais caro ficou ser notado.</strong> A inteligência artificial baixou o custo de criar textos, imagens e anúncios — não o custo de ser percebido, lembrado e escolhido. O recurso escasso virou atenção qualificada. É por isso que existimos.</p>
   </div>
 </section>
 
 <div class="marquee-wrap">
   <div class="marquee-track">
-    <span>ESTRUTURA COMERCIAL</span><span class="dot">◆</span>
-    <span>FOCO EM VENDAS</span><span class="dot">◆</span>
-    <span>CRESCIMENTO EM 60 DIAS</span><span class="dot">◆</span>
-    <span>PREVISIBILIDADE</span><span class="dot">◆</span>
-    <span>MÉTODO VALIDADO</span><span class="dot">◆</span>
-    <span>SEM ACHISMOS</span><span class="dot">◆</span>
-    <span>ESTRUTURA COMERCIAL</span><span class="dot">◆</span>
-    <span>FOCO EM VENDAS</span><span class="dot">◆</span>
-    <span>CRESCIMENTO EM 60 DIAS</span><span class="dot">◆</span>
-    <span>PREVISIBILIDADE</span><span class="dot">◆</span>
-    <span>MÉTODO VALIDADO</span><span class="dot">◆</span>
-    <span>SEM ACHISMOS</span><span class="dot">◆</span>
+    <span>CAMPANHAS AUTORAIS</span><span class="dot">◆</span>
+    <span>IDEIA COM OBJETIVO</span><span class="dot">◆</span>
+    <span>ESTRUTURA QUE CONVERTE</span><span class="dot">◆</span>
+    <span>SEM RECEITA DE BOLO</span><span class="dot">◆</span>
+    <span>RESULTADO MENSURÁVEL</span><span class="dot">◆</span>
+    <span>SEM PACOTES PRONTOS</span><span class="dot">◆</span>
+    <span>CAMPANHAS AUTORAIS</span><span class="dot">◆</span>
+    <span>IDEIA COM OBJETIVO</span><span class="dot">◆</span>
+    <span>ESTRUTURA QUE CONVERTE</span><span class="dot">◆</span>
+    <span>SEM RECEITA DE BOLO</span><span class="dot">◆</span>
+    <span>RESULTADO MENSURÁVEL</span><span class="dot">◆</span>
+    <span>SEM PACOTES PRONTOS</span><span class="dot">◆</span>
   </div>
 </div>
 
-<section class="manifesto" id="foco">
-  <div class="section-label reveal">O Fim da Vaidade</div>
-  <div class="section-title light reveal reveal-delay-1">Você não precisa de mais posts.<br>Precisa de mais vendas.</div>
+<section class="manifesto" id="crenca">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal">A Crença Fundadora</div>
+    <div class="section-title light reveal reveal-delay-1">A produção de marketing virou<br>commodity. Atenção, não.</div>
+  </div>
   <div class="manifesto-grid">
     <div class="manifesto-left reveal">
       <p class="big-quote">
-        As agências tradicionais prometem resultados extraordinários, mas no fim sua empresa só fica com <em>curtidas, comentários e seguidores.</em>
+        A inteligência artificial <em>não tornou o marketing barato.</em> Ela tornou a produção de marketing barata. O recurso escasso passou a ser atenção qualificada.
       </p>
       <p class="context-text">
-        É exatamente por isso que a estrutura de vendas ponta a ponta da Tomorrow dedica todos os recursos, estratégias e tempo disponível para o que realmente põe dinheiro no seu caixa:
+        A IA reduziu drasticamente o custo e o tempo de produzir textos, imagens, vídeos e anúncios. Essa eficiência não tornou o marketing mais eficaz — aumentou a quantidade de comunicação disponível, elevou o ruído e tornou mais difícil ser percebido, lembrado e escolhido.
+      </p>
+      <p class="context-text">
+        A consequência não é um colapso do marketing digital. É uma perda estrutural de eficiência em operações que dependem de volume, repetição e compra contínua de atenção — sem construir marca, confiança, relacionamento, conversão e retenção.
       </p>
     </div>
     <div class="manifesto-right">
       <div class="manifesto-item reveal reveal-delay-1">
-        <h4>Processos de Retenção</h4>
-        <p>Criamos mecanismos para reter clientes, garantindo que eles comprem mais vezes de você e ativamente indiquem o seu negócio.</p>
+        <h4>A produção baratou</h4>
+        <p>Ferramentas de IA tornaram criar peças, variações e conteúdo praticamente instantâneo e de custo marginal quase zero — para você e para todo concorrente seu, ao mesmo tempo.</p>
       </div>
       <div class="manifesto-item reveal reveal-delay-2">
-        <h4>Treinamento Comercial Comercial</h4>
-        <p>Treinamos o seu time comercial para transformar toda a nova demanda digital em oportunidades reais de fechamento, extraindo o máximo de valor de cada contato.</p>
+        <h4>O ruído explodiu</h4>
+        <p>Mais gente produzindo mais rápido significa mais conteúdo parecido disputando o mesmo segundo de atenção. O público desenvolve cegueira e anticorpos contra o que soa genérico.</p>
       </div>
       <div class="manifesto-item reveal reveal-delay-3">
-        <h4>Injeção de Caixa Rápida</h4>
-        <p>Aumentamos a demanda de novos clientes usando estratégias combinadas de marketing direto e vendas agressivas para gerar resultados imediatos.</p>
+        <h4>O custo de aquisição sobe</h4>
+        <p>Quando a conversão cai, a resposta do mercado é comprar mais mídia, mais volume, mais automação — o que pressiona o leilão e encarece o CAC de novo. Um ciclo que se retroalimenta.</p>
       </div>
     </div>
   </div>
+</section>
+
+<section class="crencas" id="crencas">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal">Sete Princípios</div>
+    <div class="section-title reveal reveal-delay-1">O que a Tomorrow<br>acredita.</div>
+    <p class="section-desc reveal reveal-delay-2">Estas são as crenças que orientam toda decisão de criação, execução e recusa — não slogans, critérios.</p>
+  </div>
+  <div class="crencas-grid">
+    <div class="crenca-card reveal">
+      <span class="crenca-num">01</span>
+      <h4>Produzir mais não é comunicar melhor</h4>
+      <p>Volume sem ideia aumenta ruído. O mercado não recompensa automaticamente quem publica mais — recompensa quem é percebido, compreendido, lembrado e escolhido.</p>
+    </div>
+    <div class="crenca-card reveal reveal-delay-1">
+      <span class="crenca-num">02</span>
+      <h4>Criatividade sem objetivo é vaidade</h4>
+      <p>Uma campanha bonita, premiável ou comentada não basta se não estiver ligada a um objetivo definido: vendas, posicionamento, demanda, lembrança, lançamento ou retenção.</p>
+    </div>
+    <div class="crenca-card reveal reveal-delay-2">
+      <span class="crenca-num">03</span>
+      <h4>Métrica sem criatividade é commodity</h4>
+      <p>Otimizar anúncios, funis e dashboards sem diferenciação pode gerar eficiência temporária, mas coloca a empresa na mesma disputa de preço, atenção e formato dos concorrentes.</p>
+    </div>
+    <div class="crenca-card reveal">
+      <span class="crenca-num">04</span>
+      <h4>Grandes ideias precisam de infraestrutura</h4>
+      <p>Atenção desperdiçada não é resultado. Toda campanha precisa de distribuição, caminho de conversão, capacidade comercial e medição compatíveis com o objetivo.</p>
+    </div>
+    <div class="crenca-card reveal reveal-delay-1">
+      <span class="crenca-num">05</span>
+      <h4>Não existe ferramenta soberana</h4>
+      <p>Branding, conteúdo, mídia paga, guerrilha, relações públicas, influenciadores, eventos, CRM, automação, vendas e retenção são alavancas. A escolha depende do contexto.</p>
+    </div>
+    <div class="crenca-card reveal reveal-delay-2">
+      <span class="crenca-num">06</span>
+      <h4>Nem todo cliente precisa de cinema</h4>
+      <p>A solução certa pode ser um filme autoral, uma ação urbana, um conteúdo recorrente, um anúncio direto, uma mudança de oferta ou uma jornada simples. Sofisticação sem necessidade é desperdício.</p>
+    </div>
+    <div class="crenca-card reveal" style="grid-column: 1 / -1;">
+      <span class="crenca-num">07</span>
+      <h4>Empresas fortes constroem mais de um motor de crescimento</h4>
+      <p>Dependência exclusiva de mídia paga, indicação, conteúdo ou qualquer canal isolado aumenta fragilidade. A Tomorrow busca combinar motores adequados ao estágio e à realidade de cada negócio.</p>
+    </div>
+  </div>
+</section>
+
+<section class="oferta" id="oferta">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal" style="color: var(--orange)">O Produto</div>
+    <div class="section-title light reveal reveal-delay-1">Campanhas que outras agências<br>não criariam.</div>
+    <p class="section-desc on-dark reveal reveal-delay-2">Com a estrutura necessária pra gerar resultado. Cliente compra a campanha — a campanha usa a jornada, a jornada usa ferramentas, a métrica prova o resultado.</p>
+  </div>
+  <div class="oferta-grid">
+    <div class="oferta-col yes reveal">
+      <h4>O que entregamos</h4>
+      <ul>
+        <li>Um problema ou oportunidade claramente definido</li>
+        <li>Um objetivo de negócio mensurável</li>
+        <li>Uma ideia central e um conceito criativo</li>
+        <li>Narrativa, mensagem e peças coordenadas</li>
+        <li>Plano de canais e distribuição</li>
+        <li>Mecanismo de aquisição e captura</li>
+        <li>Jornada de conversão compatível com a complexidade da compra</li>
+        <li>Estrutura de atendimento, CRM ou comercial quando necessária</li>
+        <li>Métricas de campanha e de negócio</li>
+        <li>Ciclo de otimização, aprendizagem e evolução</li>
+      </ul>
+    </div>
+    <div class="oferta-col no reveal reveal-delay-1">
+      <h4>O que não vendemos</h4>
+      <ul>
+        <li>Volume de posts como produto principal</li>
+        <li>Tráfego pago desconectado de oferta, criação e conversão</li>
+        <li>Criatividade ornamental, feita só pra parecer sofisticada</li>
+        <li>Relatórios de vaidade apresentados como resultado</li>
+        <li>Receitas fixas aplicadas igualmente a restaurantes, escolas, clínicas ou varejo</li>
+        <li>Uma grande tese abstrata sobre o futuro do marketing</li>
+        <li>Promessas de crescimento sem acesso a dados, operação e capacidade comercial do cliente</li>
+      </ul>
+    </div>
+  </div>
+  <p class="oferta-summary reveal reveal-delay-2">Ideia sem resultado é vaidade. <strong>Resultado sem ideia é commodity.</strong></p>
 </section>
 
 <section class="timeline-section" id="jornada">
   <div style="max-width:1200px; margin: 0 auto;">
     <div class="section-label reveal">Mecânica Comercial</div>
     <h2 class="section-title reveal reveal-delay-1">Como uma venda<br>realmente acontece?</h2>
-    <p style="font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 1.6; max-width: 600px;" class="reveal reveal-delay-2">
+    <p class="section-desc reveal reveal-delay-2">
       Antes de estruturar processos complexos, sua empresa precisa dominar o comportamento natural de compra do consumidor. Cada etapa exige uma influência exata.
     </p>
   </div>
@@ -549,7 +696,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
       <div class="timeline-card-num">05</div>
       <h3>Apologia</h3>
       <div class="timeline-bubble">"Eu recomendo"</div>
-      <p>A engrenagem de lucro máximo. A experiência gera fidelidade cega, ativando recompra imediata e indicação orgânica.</p>
+      <p>A engrenagem de lucro máximo. A experiência gera fidelidade, ativando recompra imediata e indicação orgânica.</p>
     </div>
   </div>
 </section>
@@ -557,15 +704,15 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 <section class="jornada-section">
   <div class="jornada-grid">
     <div class="jornada-text-block reveal">
-      <div class="section-label" style="text-align: left;">Jornada de Compra Completa</div>
+      <div class="section-label" style="text-align: left;">O Papel da Jornada de Compra</div>
       <h2 class="section-title" style="text-align: left; margin-bottom: 16px;">O Efeito Iceberg<br>nas suas Vendas.</h2>
       <p style="font-size: 16px; font-weight: 300; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px;">
-        O marketing tradicional só enxerga a ponta visível do iceberg: o tráfego pago e as publicações em redes sociais. Mas trazer atenção sem ter estrutura embaixo d'água é queimar dinheiro.
+        A jornada não é o nosso produto principal, e não é uma receita fixa. É a arquitetura que impede que a atenção gerada pela campanha seja desperdiçada.
       </p>
       <p style="font-size: 16px; font-weight: 400; color: var(--black); line-height: 1.6; margin-bottom: 24px;">
-        A Tomorrow projeta e calibra os 90% invisíveis que sustentam o crescimento e geram lucro real líquido:
+        A campanha gera movimento. A jornada transforma movimento em ação econômica. Sua complexidade varia conforme o negócio — um restaurante pode exigir anúncio, WhatsApp e pedido; uma escola pode exigir anúncio, vídeo, página, formulário, CRM, vendedor e matrícula:
       </p>
-      
+
       <div class="jornada-item-row">
         <div class="jornada-subitem">
           <h4>Construção & Oferta</h4>
@@ -576,90 +723,197 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
           <p>O caminho exato que o cliente percorre desde o primeiro clique até o momento em que abre a carteira para pagar.</p>
         </div>
         <div class="jornada-subitem">
-          <h4>Time de Vendas</h4>
-          <p>Playbooks, scripts e treinamento comercial intensivo para transformar novos contatos digitais em dinheiro no caixa.</p>
-        </div>
-        <div class="jornada-subitem">
           <h4>Logística & Caixa</h4>
           <p>Garantimos que a estrutura suporte o crescimento de demanda mantendo o fluxo de caixa previsível e saudável.</p>
         </div>
       </div>
     </div>
-    
+
     <div class="jornada-img-container reveal reveal-delay-1">
       <img src="iceberg.jpg" alt="O Efeito Iceberg no Marketing e Vendas — Tomorrow">
     </div>
   </div>
 </section>
 
-<section class="numbers-section">
+<section class="process" id="operacao">
   <div style="max-width:1200px; margin: 0 auto;">
-    <div class="section-label reveal">Sem Achismos</div>
-    <div class="section-title reveal reveal-delay-1">O que realmente importa?<br>Os números que avaliamos.</div>
-  </div>
-  
-  <div class="numbers-grid">
-    <div class="number-card reveal">
-      <div class="card-icon">💰</div>
-      <h4>Qual o lucro líquido?</h4>
-    </div>
-    <div class="number-card reveal reveal-delay-1">
-      <div class="card-icon">📈</div>
-      <h4>Quanto faturamos?</h4>
-    </div>
-    <div class="number-card reveal reveal-delay-2">
-      <div class="card-icon">🎯</div>
-      <h4>Quanto foi investido?</h4>
-    </div>
-    <div class="number-card reveal reveal-delay-3">
-      <div class="card-icon">🚀</div>
-      <h4>Qual o retorno sobre o investimento (ROI)?</h4>
-    </div>
-  </div>
-  
-  <div class="numbers-footer reveal">
-    Como podemos aumentar esses resultados? Simples assim.
-  </div>
-</section>
-
-<section class="process" id="metodo">
-  <div style="max-width:1200px; margin: 0 auto;">
-    <div class="section-label reveal">Metodologia TMW</div>
-    <div class="section-title reveal reveal-delay-1">Nosso método é 100%<br>focado em vendas.</div>
+    <div class="section-label reveal">Como a Operação se Organiza</div>
+    <div class="section-title reveal reveal-delay-1">Oito fases, do diagnóstico<br>à otimização.</div>
+    <p class="section-desc reveal reveal-delay-2">Nenhuma fase pula a anterior. É esse rigor que separa uma campanha autoral de um post bonito sem estrutura embaixo.</p>
   </div>
   <div class="process-steps">
     <div class="process-step reveal">
       <span class="step-num">01</span>
-      <h3 class="step-title">Exploração</h3>
-      <p class="step-desc">O primeiro passo é fazer um processo rigoroso de testes, ofertando o seu produto ou serviço de diferentes maneiras, em diferentes canais, para diferentes pessoas, e assim coletar os dados que vão nos mostrar onde está a “mina de ouro” do seu negócio.</p>
+      <h3 class="step-title">Diagnóstico</h3>
+      <p class="step-desc">Entendemos o negócio, o mercado, a oferta, o cliente, o estágio, os recursos, os gargalos reais e a oportunidade criativa escondida na operação.</p>
     </div>
     <div class="process-step reveal reveal-delay-1">
       <span class="step-num">02</span>
-      <h3 class="step-title">Lapidação</h3>
-      <p class="step-desc">Agora que sabemos exatamente o que funciona, o próximo passo é lapidar o processo para otimizar os custos e aumentar a conversão. É o famoso conceito de "fazer muito mais com bem menos".</p>
+      <h3 class="step-title">Definição do Objetivo</h3>
+      <p class="step-desc">Determinamos o que precisa mudar: vendas, demanda, posicionamento, tráfego, lembrança, lançamento, ticket, recorrência ou outra variável específica.</p>
     </div>
     <div class="process-step reveal reveal-delay-2">
       <span class="step-num">03</span>
-      <h3 class="step-title">Escala</h3>
-      <p class="step-desc">Com as métricas validadas e os resultados otimizados, aumentamos estrategicamente o investmento e o retorno, implementando o que foi validado para dominar e explorar novas oportunidades de mercado.</p>
+      <h3 class="step-title">Grande Ideia</h3>
+      <p class="step-desc">Criamos o conceito capaz de organizar narrativa, campanha, conteúdo, canais e chamada para ação num raciocínio único.</p>
     </div>
     <div class="process-step reveal reveal-delay-3">
       <span class="step-num">04</span>
-      <h3 class="step-title">Extração</h3>
-      <p class="step-desc">As três primeiras etapas geram tração e caixa. Porém, é o processo de extração que garante o lucro máximo da sua base de leads e clientes, usando estratégias robustas de retenção, remarketing ativo e uma esteira de produtos eficiente.</p>
+      <h3 class="step-title">Arquitetura da Campanha</h3>
+      <p class="step-desc">Definimos peças, mídia, cronograma, produção, canais, captação, jornada e responsabilidades de cada etapa.</p>
     </div>
+    <div class="process-step reveal">
+      <span class="step-num">05</span>
+      <h3 class="step-title">Execução</h3>
+      <p class="step-desc">Produzimos, publicamos, ativamos, anunciamos e articulamos parceiros, influenciadores, imprensa, eventos ou ações físicas quando necessário.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-1">
+      <span class="step-num">06</span>
+      <h3 class="step-title">Conversão</h3>
+      <p class="step-desc">Construímos ou ajustamos WhatsApp, página, formulário, CRM, scripts, vendedor, follow-up e fechamento.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-2">
+      <span class="step-num">07</span>
+      <h3 class="step-title">Medição</h3>
+      <p class="step-desc">Acompanhamos os indicadores ligados ao objetivo definido — não apenas as métricas disponíveis de forma automática na plataforma.</p>
+    </div>
+    <div class="process-step reveal reveal-delay-3">
+      <span class="step-num">08</span>
+      <h3 class="step-title">Otimização</h3>
+      <p class="step-desc">Alteramos criativos, canais, oferta, narrativa, orçamento, jornada e operação com base no que o mercado ensinou.</p>
+    </div>
+  </div>
+</section>
+
+<section class="arsenal" id="arsenal">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal">O Arsenal</div>
+    <div class="section-title reveal reveal-delay-1">Sem pacote fixo.<br>Sem hierarquia.</div>
+    <p class="arsenal-note reveal reveal-delay-2">As ferramentas não formam combos prontos e não têm ordem de importância permanente. São combinadas conforme o problema real de cada negócio.</p>
+  </div>
+  <div class="arsenal-grid">
+    <div class="arsenal-col reveal">
+      <h4>Criação & Percepção</h4>
+      <ul>
+        <li>Campanhas autorais</li>
+        <li>Branding / posicionamento</li>
+        <li>Roteiro / audiovisual</li>
+        <li>Guerrilha / ativações</li>
+        <li>Conceito / narrativa</li>
+      </ul>
+    </div>
+    <div class="arsenal-col reveal reveal-delay-1">
+      <h4>Distribuição & Aquisição</h4>
+      <ul>
+        <li>Meta Ads / Google Ads</li>
+        <li>Conteúdo orgânico</li>
+        <li>Influenciadores / comunidade</li>
+        <li>PR / imprensa / eventos</li>
+        <li>Parcerias / indicação</li>
+      </ul>
+    </div>
+    <div class="arsenal-col reveal reveal-delay-2">
+      <h4>Conversão & Valor</h4>
+      <ul>
+        <li>Landing pages / formulários</li>
+        <li>WhatsApp / CRM</li>
+        <li>Scripts / follow-up</li>
+        <li>Comercial / treinamento</li>
+        <li>Retenção / recompra / LTV</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="impact">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal" style="color:var(--orange)">Método Autoral</div>
+    <div class="section-title light reveal reveal-delay-1">O Método IMPACT.</div>
+    <p class="section-desc on-dark reveal reveal-delay-2">Reservado pra campanhas cujo mecanismo central envolve acontecimento, repercussão e propagação. Não se aplica a todo projeto — só quando o problema pede.</p>
+  </div>
+  <div class="impact-flow">
+    <div class="impact-step reveal">
+      <div class="impact-letter">I</div>
+      <h4>Impacto</h4>
+      <p>Criar um fato, gesto, peça ou acontecimento capaz de romper a indiferença.</p>
+    </div>
+    <div class="impact-step reveal reveal-delay-1">
+      <div class="impact-letter">M</div>
+      <h4>Mídia</h4>
+      <p>Transformar o acontecimento em conteúdo e material publicitário.</p>
+    </div>
+    <div class="impact-step reveal reveal-delay-2">
+      <div class="impact-letter">P</div>
+      <h4>Propagação</h4>
+      <p>Distribuir por comunidade, influenciadores, imprensa, parceiros e compartilhamento.</p>
+    </div>
+    <div class="impact-step reveal reveal-delay-3">
+      <div class="impact-letter">A</div>
+      <h4>Aquisição</h4>
+      <p>Capturar a atenção gerada por mídia, canais e mecanismos de entrada.</p>
+    </div>
+    <div class="impact-step reveal">
+      <div class="impact-letter">C</div>
+      <h4>Conversão</h4>
+      <p>Levar o interesse à ação comercial: compra, visita, contato ou cadastro.</p>
+    </div>
+    <div class="impact-step reveal reveal-delay-1">
+      <div class="impact-letter">T</div>
+      <h4>Transformação</h4>
+      <p>Converter o resultado em posicionamento, retenção, recompra, indicação ou ativo de marca.</p>
+    </div>
+  </div>
+  <p class="impact-note reveal reveal-delay-2">Ideia sem resultado é vaidade. Resultado sem ideia é commodity — o IMPACT existe pra unir os dois quando o acontecimento é o motor certo da campanha.</p>
+</section>
+
+<section class="numbers-section">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal">Sem Achismos</div>
+    <div class="section-title reveal reveal-delay-1">Métrica é prova.<br>Não decoração.</div>
+    <p class="section-desc reveal reveal-delay-2">A seleção de indicadores começa sempre pelo objetivo definido — nunca pelo que a plataforma mostra por padrão.</p>
+  </div>
+
+  <div class="numbers-grid">
+    <div class="number-card reveal">
+      <h4>Vendas</h4>
+      <p>Receita, margem, pedidos, matrículas, contratos, ticket, ROI.</p>
+    </div>
+    <div class="number-card reveal reveal-delay-1">
+      <h4>Aquisição</h4>
+      <p>CAC, CPL, custo por oportunidade, volume e qualidade dos contatos.</p>
+    </div>
+    <div class="number-card reveal reveal-delay-2">
+      <h4>Conversão</h4>
+      <p>Taxa por etapa, tempo de resposta, follow-up, fechamento.</p>
+    </div>
+    <div class="number-card reveal reveal-delay-3">
+      <h4>Posicionamento</h4>
+      <p>Buscas pela marca, tráfego direto, lembrança, preferência declarada.</p>
+    </div>
+    <div class="number-card reveal">
+      <h4>Atenção</h4>
+      <p>Alcance qualificado, retenção, compartilhamento, menções, repercussão.</p>
+    </div>
+    <div class="number-card reveal reveal-delay-1">
+      <h4>Retenção</h4>
+      <p>Recompra, recorrência, taxa de cancelamento, indicação e LTV.</p>
+    </div>
+  </div>
+
+  <div class="numbers-footer reveal">
+    O dashboard deve responder três perguntas: o que aconteceu, por que aconteceu e o que será alterado. Painel sem decisão é decoração.
   </div>
 </section>
 
 <section class="case-destaque" id="trabalhos">
   <div style="max-width:1200px; margin: 0 auto;">
-    <div class="section-label reveal">Histórias de Sucesso</div>
+    <div class="section-label reveal">Ideia Que Virou Movimento Real</div>
     <div class="section-title light reveal reveal-delay-1">Restaurante Carijó.<br>Arceburgo, MG.</div>
   </div>
   <div class="case-grid">
     <div class="case-story reveal">
       <h3>Um anúncio.<br>Um ônibus.<br><span>Uma rota que mudou.</span></h3>
-      <p>Um restaurante no interior de Minas Gerais. Invisível pra quem passava pela cidade. A gente mudou a narrativa — e no dia seguinte, uma excursão inteira mudou de rota só pra almoçar lá. A dona mandou esse áudio.</p>
+      <p>Um restaurante no interior de Minas Gerais. Invisível pra quem passava pela cidade. Não era um problema de tráfego — era um problema de ideia. A gente mudou a narrativa, e no dia seguinte uma excursão inteira mudou de rota só pra almoçar lá. A dona mandou esse áudio.</p>
       <div class="audio-player">
         <div class="audio-label">Depoimento da cliente — áudio original</div>
         <audio controls>
@@ -685,11 +939,11 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 <section class="portfolio">
   <div style="max-width:1200px; margin: 0 auto;">
     <div class="section-label reveal">Mais Resultados</div>
-    <div class="section-title reveal reveal-delay-1">Provas Reais de<br>Crescimento Comercial.</div>
+    <div class="section-title reveal reveal-delay-1">Provas Reais de<br>Ideia Aplicada.</div>
   </div>
 
   <div style="max-width:1200px; margin: 32px auto 0;">
-    <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:16px;" class="reveal">Rebranding · Razze Turismo</div>
+    <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:16px;" class="reveal">Branding · Razze Turismo</div>
   </div>
   <div class="portfolio-grid" style="max-width:1200px; margin: 0 auto 48px;">
     <div class="portfolio-item large reveal">
@@ -709,7 +963,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   </div>
 
   <div style="max-width:1200px; margin: 0 auto;">
-    <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:16px;" class="reveal">Identidade · Método Start</div>
+    <div style="font-size:11px; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; color:var(--orange); margin-bottom:16px;" class="reveal">Jornada de Compra · Método Start</div>
   </div>
   <div class="portfolio-grid" style="max-width:1200px; margin: 0 auto;">
     <div class="portfolio-item large reveal">
@@ -729,21 +983,76 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
   </div>
 </section>
 
+<section class="icp" id="icp">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal">Pra Quem Trabalhamos</div>
+    <div class="section-title reveal reveal-delay-1">O critério vem antes<br>do nicho.</div>
+    <p class="section-desc reveal reveal-delay-2">O critério não é o setor da empresa — é a condição econômica, operacional e comportamental do cliente.</p>
+  </div>
+  <div class="icp-grid">
+    <div class="icp-col aceita reveal">
+      <h4>Aceitamos quem</h4>
+      <ul>
+        <li>Possui orçamento compatível com contrato de serviço, produção e mídia</li>
+        <li>Tem margem e capacidade pra absorver crescimento</li>
+        <li>Quer sair do padrão do próprio mercado</li>
+        <li>Aceita criatividade subordinada a um objetivo claro</li>
+        <li>Concentra decisão no proprietário ou em liderança acessível</li>
+        <li>Fornece dados e acesso à operação comercial</li>
+        <li>Tem produto ou serviço minimamente validado</li>
+        <li>Entende que campanha exige participação, velocidade e coragem</li>
+      </ul>
+    </div>
+    <div class="icp-col recusa reveal reveal-delay-1">
+      <h4>Recusamos quem</h4>
+      <ul>
+        <li>Quer apenas preencher calendário de Instagram</li>
+        <li>Não possui verba além do contrato de serviço</li>
+        <li>Pede inovação, mas veta qualquer risco ou mudança</li>
+        <li>Não consegue atender a demanda gerada</li>
+        <li>Esconde dados comerciais e cobra responsabilidade integral pelo resultado</li>
+        <li>Espera que marketing compense produto ruim, atendimento ruim ou operação quebrada</li>
+        <li>Transforma a equipe em mão de obra pra pedidos aleatórios</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="origem" id="origem">
+  <div style="max-width:1200px; margin: 0 auto;">
+    <div class="section-label reveal">Por Trás da Tomorrow</div>
+    <div class="section-title reveal reveal-delay-1">De agência tradicional<br>a campanhas autorais.</div>
+  </div>
+  <div class="origem-layout">
+    <div class="origem-photo reveal">
+      <img src="foto_felipe.jpg" alt="Felipe Leandro, fundador da Tomorrow">
+    </div>
+    <div class="origem-content reveal reveal-delay-2">
+    <p class="origem-text">A Tomorrow nasceu em 2022 como uma agência de marketing tradicional, fundada por Felipe Leandro. Como milhares de outras, oferecia social media, gestão de tráfego, branding e criação de conteúdo. O objetivo era entregar um bom serviço e ajudar empresas a crescer.</p>
+    <p class="origem-text">Com o tempo, uma inquietação começou a aparecer. Mesmo executando o que o mercado considerava "o jeito certo", Felipe percebeu que boa parte do marketing estava se tornando previsível. Mais conteúdo, mais anúncios, mais automação e mais ferramentas nem sempre significavam mais resultado ou mais diferenciação.</p>
+    <p class="origem-text">Ao invés de aceitar isso como uma característica inevitável do mercado, decidiu estudar diferentes escolas de pensamento: publicidade, branding, growth, jornadas de compra, vendas, comportamento do consumidor e construção de marca. Mas nenhuma delas, isoladamente, respondia ao problema — a publicidade frequentemente valorizava campanhas memoráveis sem responsabilidade comercial, e o marketing de performance frequentemente valorizava eficiência sem construir diferenciação.</p>
+    <p class="origem-highlight">Foi dessa busca — e não de uma ideia pronta — que nasceu a nova direção da Tomorrow.</p>
+    <p class="origem-text">Hoje, Felipe acredita que empresas crescem quando conseguem unir duas coisas que normalmente são tratadas como opostas: grandes ideias e execução orientada a resultado. É isso que a Tomorrow busca construir.</p>
+    <p class="origem-signature">— Felipe Leandro, Fundador</p>
+    </div>
+  </div>
+</section>
+
 <section class="diff">
   <div style="max-width:1200px; margin: 0 auto;">
     <div class="section-label reveal" style="color: var(--orange)">Projetos Exclusivos</div>
-    <div class="section-title light reveal reveal-delay-1">Por que não temos<br>“planos Premium, Gold e Start”?</div>
+    <div class="section-title light reveal reveal-delay-1">Por que não temos<br>"planos Premium, Gold e Start"?</div>
   </div>
   <div class="diff-content reveal">
     <p class="diff-text">Porque seguindo a lógica totalmente contrária do que o mercado de marketing tradicional faz — que é vender pacotes padronizados e engessados focados em volume de entregas —, nós trabalhamos única e exclusivamente com <strong>projetos 100% personalizados.</strong></p>
-    <p class="diff-text">Com mais de 5 anos de atuação sólida no mercado, nós entendemos que empresas reais e maduras não escalam com base em “receitinhas de bolo” prontas, copiadas e coladas de um negócio para o outro.</p>
-    <p class="diff-highlight">Sua empresa precisa de um plan desenhado sob medida, que contemple o seu ecossistema comercial e de vendas de ponta a ponta. Por isso, o diagnóstico, a estratégia e a execução que apresentamos são exclusivos para a sua realidade.</p>
+    <p class="diff-text">Com mais de 5 anos de atuação sólida no mercado, entendemos que empresas reais e maduras não escalam com base em "receitinhas de bolo" prontas, copiadas e coladas de um negócio pra outro.</p>
+    <p class="diff-highlight">Sua empresa precisa de um plano desenhado sob medida, que contemple seu ecossistema comercial e de vendas de ponta a ponta. Por isso, diagnóstico, estratégia e execução são exclusivos pra sua realidade.</p>
   </div>
 </section>
 
 <section class="sistema" id="sistema-tmw">
   <div style="max-width: 800px; margin: 0 auto;">
-    <div class="section-label reveal" style="color:var(--orange)">Sistema TMW</div>
+    <div class="section-label reveal" style="color:var(--orange)">Sistema Tomorrow</div>
     <div class="section-title light reveal reveal-delay-1">Onde está o gap.</div>
     <p class="reveal reveal-delay-2" style="font-size: 18px; color: rgba(250,250,250,0.6); line-height: 1.6; font-weight: 300; margin-bottom: 40px;">
       15 perguntas que mapeiam 5 áreas do seu fluxo de vendas e identificam onde você está perdendo dinheiro agora.
@@ -757,7 +1066,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     <div class="sistema-info reveal">
       <div class="section-label" style="color:var(--orange)">Acelere Seu Negócio</div>
       <div class="section-title light">Agende uma reunião<br>online estratégica.</div>
-      <p>Agende uma reunião online estratégica com nosso time, receba um diagnóstico detalhado do seu fluxo atual de vendas e descubra exatamente onde estão os gargalos travando o crescimento do seu negócio.</p>
+      <p>Agende uma reunião online estratégica com nosso time, receba um diagnóstico detalhado do seu cenário atual — ideia, jornada e estrutura — e descubra exatamente onde estão os gargalos travando o crescimento do seu negócio.</p>
     </div>
 
     <div class="form-container reveal reveal-delay-1">
@@ -783,12 +1092,12 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
 <footer>
   <div class="footer-top">
     <div class="footer-logo">
-      <img src="tmw-logo.png" alt="Tomorrow Marketing" style="height:48px; width:auto;">
-      <p class="footer-tagline">Estruturas Comerciais e de Vendas de Ponta a Ponta — Ribeirão Preto, SP</p>
+      <img src="tmw-logo.png" alt="Tomorrow" style="height:48px; width:auto;">
+      <p class="footer-tagline">Campanhas Publicitárias Autorais Orientadas a Resultado — Ribeirão Preto, SP</p>
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Tomorrow Marketing. Todos os direitos reservados.</p>
+    <p>© 2026 Tomorrow. Todos os direitos reservados.</p>
     <p>Feito com <span>◆</span> em Ribeirão Preto</p>
   </div>
 </footer>

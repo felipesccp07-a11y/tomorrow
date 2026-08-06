@@ -3,426 +3,479 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '978557829967652');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
-/></noscript>
-<title>Diagnóstico Comercial — Tomorrow Marketing</title>
-<meta name="description" content="Descubra onde estão os gargalos do seu fluxo de vendas em 5 minutos.">
+<title>Diagnóstico Comercial — Tomorrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  :root{
-    --bg:#ffffff;--bg2:#f7f6f4;--bg3:#f0efe9;
-    --text:#1a1a1a;--text2:#555;--text3:#999;
-    --border:rgba(0,0,0,.1);--border2:rgba(0,0,0,.18);
-    --orange:#E8761E;--orange-bg:rgba(232,118,30,.08);--orange-ring:rgba(232,118,30,.15);
-    --radius:12px;--radius-sm:8px;
+  :root {
+    --orange: #FF6B00;
+    --orange-dim: #CC5500;
+    --black: #0A0A0A;
+    --white: #FAFAFA;
+    --gray-light: #F0F0F0;
+    --text-muted: #545454;
   }
-  html{scroll-behavior:smooth}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.5}
-  #app{max-width:660px;margin:0 auto;padding:2rem 1.25rem;min-height:100vh}
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--black); color: var(--white); min-height: 100vh; }
 
-  /* Cards */
-  .card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.5rem}
+  .wrap { max-width: 720px; margin: 0 auto; padding: 60px 24px 100px; }
 
-  /* Buttons */
-  .btn{display:block;width:100%;padding:.875rem 1.25rem;border-radius:var(--radius-sm);font-size:15px;font-weight:500;cursor:pointer;border:none;font-family:inherit;transition:opacity .15s,transform .1s;text-align:center}
-  .btn:active{transform:scale(.98)}
-  .btn-primary{background:var(--orange);color:#fff}
-  .btn-primary:hover{opacity:.9}
-  .btn-ghost{background:transparent;color:var(--text2);border:.5px solid var(--border2)}
-  .btn-ghost:hover{background:var(--bg2)}
-
-  /* Inputs */
-  input[type=text],input[type=email],input[type=tel]{
-    width:100%;padding:.75rem 1rem;border-radius:var(--radius-sm);
-    border:.5px solid var(--border2);background:var(--bg);
-    color:var(--text);font-size:15px;font-family:inherit;outline:none;display:block;
-    transition:border-color .15s,box-shadow .15s
-  }
-  input:focus{border-color:var(--orange);box-shadow:0 0 0 3px var(--orange-ring)}
-
-  /* Options */
-  .opt{
-    width:100%;text-align:left;padding:.875rem 1rem;
-    border:.5px solid var(--border);border-radius:var(--radius-sm);
-    background:var(--bg);color:var(--text);font-size:14px;
-    cursor:pointer;display:block;font-family:inherit;
-    margin-bottom:.5rem;transition:border-color .12s,background .12s,color .12s;
-    line-height:1.45
-  }
-  .opt:hover{border-color:var(--orange);background:rgba(232,118,30,.04)}
-  .opt.sel{border-color:var(--orange);background:rgba(232,118,30,.09);color:var(--orange);font-weight:500}
+  .top-logo { text-align: center; margin-bottom: 8px; font-family: 'Bebas Neue', sans-serif; font-size: 24px; letter-spacing: 0.1em; color: var(--white); }
+  .top-logo span { color: var(--orange); }
 
   /* Progress */
-  .progress-track{height:3px;background:var(--border);border-radius:2px;margin-bottom:1.5rem}
-  .progress-fill{height:100%;border-radius:2px;background:var(--orange);transition:width .45s ease}
+  .progress-wrap { margin: 32px 0 48px; }
+  .progress-bar-bg { width: 100%; height: 4px; background: rgba(255,255,255,0.08); border-radius: 2px; overflow: hidden; }
+  .progress-bar-fill { height: 100%; background: var(--orange); width: 0%; transition: width 0.4s ease; }
+  .progress-label { display: flex; justify-content: space-between; margin-top: 10px; font-size: 12px; color: rgba(250,250,250,0.4); letter-spacing: 0.05em; text-transform: uppercase; }
 
-  /* Tags */
-  .tag{display:inline-block;padding:2px 9px;border-radius:20px;font-size:11.5px;font-weight:500}
-  .tag-cr{background:rgba(226,75,74,.12);color:#A32D2D}
-  .tag-at{background:rgba(239,159,39,.12);color:#854F0B}
-  .tag-bm{background:rgba(99,153,34,.12);color:#3B6D11}
-  .tag-ex{background:rgba(29,158,117,.12);color:#0F6E56}
+  /* Intro */
+  .intro { text-align: center; }
+  .intro .tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--orange); border: 1px solid rgba(255,107,0,0.4); padding: 6px 14px; border-radius: 2px; margin-bottom: 28px; }
+  .intro h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(38px, 6vw, 56px); line-height: 1; margin-bottom: 20px; }
+  .intro h1 span { color: var(--orange); }
+  .intro p { font-size: 16px; font-weight: 300; color: rgba(250,250,250,0.6); line-height: 1.6; max-width: 520px; margin: 0 auto 40px; }
+  .area-preview { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-bottom: 44px; }
+  .area-preview div { font-size: 10.5px; color: rgba(250,250,250,0.4); text-align: center; border: 1px solid rgba(255,255,255,0.08); padding: 10px 4px; border-radius: 2px; line-height: 1.3; }
 
-  /* Logo */
-  .logo{font-size:32px;font-weight:800;color:var(--orange);letter-spacing:-2px;line-height:1}
+  /* Question card */
+  .q-card { display: none; }
+  .q-card.active { display: block; animation: fadeIn 0.4s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px);} to { opacity: 1; transform: translateY(0);} }
+  .q-area-label { font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 14px; }
+  .q-text { font-family: 'Bebas Neue', sans-serif; font-size: clamp(26px, 4vw, 36px); line-height: 1.1; margin-bottom: 32px; }
+  .q-options { display: flex; flex-direction: column; gap: 12px; }
+  .q-option { background: #141414; border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 18px 20px; cursor: pointer; font-size: 15px; font-weight: 400; transition: all 0.2s; }
+  .q-option:hover { border-color: rgba(255,107,0,0.4); background: #181818; }
+  .q-option.selected { border-color: var(--orange); background: rgba(255,107,0,0.08); }
 
-  /* Feature pills */
-  .pill-row{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem}
-  .pill{background:var(--bg2);border:.5px solid var(--border);border-radius:var(--radius);padding:1rem 1.125rem;text-align:center;flex:1;min-width:120px;max-width:175px}
-  .pill-num{font-size:24px;font-weight:600;color:var(--orange);margin-bottom:2px}
-  .pill-label{font-size:13px;color:var(--text2)}
+  /* Nav buttons */
+  .q-nav { display: flex; justify-content: space-between; margin-top: 36px; }
+  .btn { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; padding: 14px 28px; border-radius: 2px; cursor: pointer; border: none; }
+  .btn-primary { background: var(--orange); color: white; }
+  .btn-primary:hover { background: var(--orange-dim); }
+  .btn-primary:disabled { background: #333; color: #666; cursor: not-allowed; }
+  .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.15); color: rgba(250,250,250,0.6); }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.4); }
+  .btn-ghost:disabled { opacity: 0.3; cursor: not-allowed; }
+  .btn-start { display: block; margin: 0 auto; }
 
-  /* Dark header */
-  .dark-header{background:#0D1620;border-radius:var(--radius);padding:2.25rem 1.5rem;text-align:center;margin-bottom:1.25rem}
+  /* Lead capture */
+  .lead-form { display: none; }
+  .lead-form.active { display: block; animation: fadeIn 0.4s ease; }
+  .lead-form h2 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(30px, 4.5vw, 42px); line-height: 1.05; margin-bottom: 14px; }
+  .lead-form h2 span { color: var(--orange); }
+  .lead-form p.sub { font-size: 15px; color: rgba(250,250,250,0.55); font-weight: 300; margin-bottom: 32px; line-height: 1.6; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--orange); margin-bottom: 8px; }
+  .form-group input { width: 100%; background: #141414; border: 1px solid rgba(255,255,255,0.1); padding: 14px 16px; color: var(--white); font-family: 'DM Sans', sans-serif; font-size: 15px; border-radius: 4px; }
+  .form-group input:focus { outline: none; border-color: var(--orange); }
 
-  /* Category bar */
-  .bar-track{height:5px;background:rgba(0,0,0,.08);border-radius:3px;margin-bottom:1rem}
-  .bar-fill{height:100%;border-radius:3px;transition:width .6s ease}
+  /* Loading */
+  .loading { display: none; text-align: center; padding: 80px 20px; }
+  .loading.active { display: block; }
+  .spinner { width: 44px; height: 44px; border: 3px solid rgba(255,107,0,0.15); border-top-color: var(--orange); border-radius: 50%; margin: 0 auto 24px; animation: spin 0.9s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .loading p { font-size: 14px; color: rgba(250,250,250,0.5); font-weight: 300; }
 
-  /* Util */
-  .label{display:block;font-size:13.5px;color:var(--text2);margin-bottom:.5rem}
-  .sub{font-size:12px;color:var(--text3)}
-  .ghost-link{background:none;border:none;color:var(--text2);font-size:13px;cursor:pointer;font-family:inherit;padding:.25rem;text-decoration:underline;text-decoration-color:var(--border2)}
-  .ghost-link:hover{color:var(--text)}
+  /* Result */
+  .result { display: none; }
+  .result.active { display: block; animation: fadeIn 0.5s ease; }
 
-  @media(max-width:480px){
-    #app{padding:1.25rem 1rem}
-    .card{padding:1.25rem}
-    .pill{padding:.875rem .75rem}
+  #pdf-content { background: var(--white); color: var(--black); border-radius: 6px; overflow: hidden; }
+  .pdf-header { background: var(--black); padding: 40px 40px 32px; }
+  .pdf-header .brand { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.08em; color: var(--white); margin-bottom: 24px; }
+  .pdf-header .brand span { color: var(--orange); }
+  .pdf-header .tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+  .pdf-header h2 { font-family: 'Bebas Neue', sans-serif; font-size: 34px; color: var(--white); line-height: 1.05; }
+  .pdf-header .score-line { display: flex; align-items: baseline; gap: 12px; margin-top: 18px; }
+  .pdf-header .score-num { font-family: 'Bebas Neue', sans-serif; font-size: 54px; color: var(--orange); line-height: 1; }
+  .pdf-header .score-max { font-size: 14px; color: rgba(250,250,250,0.4); }
+  .pdf-header .score-tag { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; padding: 5px 12px; border-radius: 2px; margin-left: auto; }
+
+  .pdf-body { padding: 36px 40px 8px; }
+  .radar-wrap { max-width: 420px; margin: 0 auto 8px; }
+
+  .area-summary { display: grid; grid-template-columns: 1fr; gap: 14px; margin: 24px 0 32px; }
+  .area-row { display: grid; grid-template-columns: 1fr 90px; align-items: center; gap: 14px; border-bottom: 1px solid rgba(0,0,0,0.08); padding-bottom: 14px; }
+  .area-row-name { font-size: 13.5px; font-weight: 600; }
+  .area-row-bar-bg { width: 100%; height: 6px; background: var(--gray-light); border-radius: 3px; overflow: hidden; margin-top: 6px; }
+  .area-row-bar-fill { height: 100%; background: var(--orange); border-radius: 3px; }
+  .area-row-score { font-family: 'Bebas Neue', sans-serif; font-size: 20px; text-align: right; }
+
+  .pdf-section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--orange); margin: 28px 0 6px; }
+  .pdf-text { font-size: 13.5px; color: #333; line-height: 1.65; font-weight: 400; margin-bottom: 4px; }
+
+  .pdf-cta { background: var(--black); margin-top: 32px; padding: 32px 40px; text-align: center; }
+  .pdf-cta p { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 18px; color: var(--white); line-height: 1.5; max-width: 480px; margin: 0 auto 6px; }
+  .pdf-cta p span { color: var(--orange); font-style: normal; }
+  .pdf-footer { text-align: center; padding: 18px; font-size: 10px; color: rgba(0,0,0,0.35); background: var(--gray-light); }
+
+  .result-actions { display: flex; gap: 14px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+  .btn-outline-orange { background: transparent; border: 1px solid var(--orange); color: var(--orange); }
+  .btn-outline-orange:hover { background: rgba(255,107,0,0.1); }
+
+  @media (max-width: 640px) {
+    .wrap { padding: 40px 16px 80px; }
+    .area-preview { grid-template-columns: repeat(2, 1fr); }
+    .pdf-header, .pdf-body, .pdf-cta { padding-left: 22px; padding-right: 22px; }
+    .area-row { grid-template-columns: 1fr 70px; }
   }
 </style>
 </head>
 <body>
-<div id="app"></div>
-<script>
-const O='#E8761E';
 
-// 6 Categorias atualizadas (Blocos)
-const cats=[
-  {l:'Cenário & Objetivos'},
-  {l:'Mkt vs. Vendas Reais'},
-  {l:'Raio-X dos Números'},
-  {l:'Processo & Time'},
-  {l:'Maturidade de Escala'},
-  {l:'Retenção & Esteira'}
-];
+<div class="wrap">
+  <div class="top-logo">TOMORROW<span>·</span>DIAGNÓSTICO</div>
 
-// 15 Perguntas comerciais estruturadas
-const qs=[
-  // Bloco 1 (Cenário)
-  {c:0,q:'1. Qual a maturidade atual do seu negócio hoje?',o:[{l:'Totalmente offline e informal, sem processos claros',v:0},{l:'Offline, mas bem organizado e estruturado',v:2},{l:'Digitalizado, mas as vendas acontecem por acaso',v:3},{l:'Forte no digital e offline com processos de vendas claros',v:5}]},
-  {c:0,q:'2. Qual é a sua principal meta de crescimento e faturamento para os próximos 60 dias?',o:[{l:'Sobreviver, não tenho uma meta financeira clara',v:0},{l:'Apenas empatar as contas ou crescer muito pouco',v:1},{l:'Crescimento moderado, bater as metas habituais',v:3},{l:'Escala agressiva, previsível e com injeção rápida de caixa',v:5}]},
-  {c:0,q:'3. Como você define a sua receita atual?',o:[{l:'Oscila muito, vivo apagando incêndio e dependendo de indicações',v:0},{l:'Cobre os custos, mas a sobra é baixa e insegura',v:1},{l:'Cresce devagar, mas ainda não tenho segurança total',v:3},{l:'Aumento consistente e previsibilidade real de caixa todo mês',v:5}]},
-  
-  // Bloco 2 (Mkt vs Vendas)
-  {c:1,q:'4. Se você já contratou agências de marketing, sentiu que o resultado final ficou apenas na vaidade (curtidas/seguidores)?',o:[{l:'Sim, sempre entregaram só vaidade sem gerar vendas reais',v:0},{l:'Geraram algumas vendas, mas o foco sempre foi post bonito',v:2},{l:'Focaram em conversão, mas sem escalar o negócio',v:3},{l:'Nunca tive esse problema, minhas ações sempre geraram caixa',v:5}]},
-  {c:1,q:'5. Olhando para o seu momento atual, o que o seu negócio mais precisa com urgência?',o:[{l:'De mais seguidores, vídeos e publicações em redes sociais',v:0},{l:'De mais leads, mesmo que sejam desqualificados',v:1},{l:'De um alinhamento melhor entre marketing e vendas',v:3},{l:'De uma estrutura de vendas ponta a ponta focada em fechar negócios',v:5}]},
-  
-  // Bloco 3 (Números)
-  {c:2,q:'6. Você tem clareza e controle absoluto sobre qual é o lucro real e o faturamento da sua empresa hoje?',o:[{l:'Não, misturo contas ou só enxergo o faturamento bruto',v:0},{l:'Sei o faturamento, mas o lucro líquido exato é nebuloso',v:2},{l:'Tenho controle, mas não acompanho as margens em tempo real',v:3},{l:'Sim, tenho controle absoluto, sem achismos',v:5}]},
-  {c:2,q:'7. Você sabe exatamente quanto foi investido nas suas ações comerciais e qual é o Retorno Sobre o Investimento (ROI) atual?',o:[{l:'Não faço ideia de quanto invisto nem qual é o retorno',v:0},{l:'Sei o valor do investimento, mas não meço o ROI das campanhas',v:1},{l:'Calculo o retorno de algumas ações periodicamente',v:3},{l:'Acompanho ROI, CAC e indicadores rigorosamente todo mês',v:5}]},
-  
-  // Bloco 4 (Processo Comercial)
-  {c:3,q:'8. Como é feito o treinamento do seu time comercial hoje para extrair o máximo de valor de cada contato recebido?',o:[{l:'Não tenho time de vendas ou não existe nenhum treinamento',v:0},{l:'Treinamento básico apenas na entrada do vendedor',v:1},{l:'Temos reuniões esporádicas de alinhamento de vendas',v:3},{l:'Treinamento contínuo, scripts validados e meta clara',v:5}]},
-  {c:3,q:'9. Suas estratégias atuais conseguem gerar uma injeção de caixa rápida através do aumento de demanda?',o:[{l:'Não, dependo 100% de indicações e do fluxo natural',v:0},{l:'Raramente, minhas ações demoram muito para dar retorno',v:2},{l:'Sim, mas o custo por cliente adquirido ainda é alto',v:3},{l:'Sim, consigo gerar picos de caixa e demanda quando necessário',v:5}]},
-  
-  // Bloco 5 (Maturidade Comercial)
-  {c:4,q:'10. Você realiza testes rigorosos (ofertas e canais diferentes) para descobrir onde está a "mina de ouro" do negócio?',o:[{l:'Nunca testo nada, faço sempre do mesmo jeito',v:0},{l:'Faço testes por intuição, sem método ou coleta de dados',v:1},{l:'Realizo testes básicos em campanhas esporádicas',v:3},{l:'Temos um processo rigoroso e contínuo de testes validados',v:5}]},
-  {c:4,q:'11. Sua empresa consegue otimizar processos para "fazer mais com menos" antes de colocar mais dinheiro na operação?',o:[{l:'Não, se eu não gastar mais dinheiro, a empresa não cresce',v:0},{l:'Até tentamos, mas a operação é engessada e custosa',v:2},{l:'Conseguimos otimizar alguns gargalos isolados',v:3},{l:'Sim, lapidar conversão e cortar desperdício é nossa rotina',v:5}]},
-  {c:4,q:'12. Você se sente seguro hoje para aumentar o investimento e escalar o que já foi validado explorando novos mercados?',o:[{l:'Zero segurança, seria um tiro no escuro',v:0},{l:'Estou inseguro, a operação quebra se o volume aumentar muito',v:1},{l:'Segurança moderada, consigo escalar gradativamente',v:3},{l:'100% seguro, a estrutura comercial está pronta para escalar',v:5}]},
-  
-  // Bloco 6 (Extração e Retenção)
-  {c:5,q:'13. Além de buscar novos clientes, você tem um processo de extração para aproveitar ao máximo a sua lista de clientes antigos?',o:[{l:'Não, o cliente compra e nunca mais entro em contato',v:0},{l:'Mando uma mensagem em datas comemorativas e só',v:1},{l:'Faço campanhas esporádicas de remarketing na base',v:3},{l:'Processo ativo, contínuo e rentável com a carteira de clientes',v:5}]},
-  {c:5,q:'14. Você possui processos de retenção e uma esteira de produtos eficiente para o mesmo cliente comprar mais vezes?',o:[{l:'Tenho apenas um produto ou serviço, sem esteira',v:0},{l:'Até tenho outros serviços, mas não oferto ativamente',v:2},{l:'Oferto, mas a taxa de conversão em recompra é baixa',v:3},{l:'Esteira completa funcionando: o cliente sempre tem um próximo passo',v:5}]},
-  {c:5,q:'15. Existe uma estratégia ativa na sua empresa para fazer com que os clientes atuais indiquem o seu negócio?',o:[{l:'Indicações acontecem totalmente por acaso e sorte',v:0},{l:'Às vezes peço indicação de forma boca a boca informal',v:1},{l:'Temos um sistema muito básico de indicação',v:3},{l:'Estratégia ativa, incentivada e gamificada rodando todo mês',v:5}]}
-];
+  <div class="progress-wrap" id="progressWrap" style="display:none;">
+    <div class="progress-bar-bg"><div class="progress-bar-fill" id="progressFill"></div></div>
+    <div class="progress-label"><span id="progressText">Pergunta 1 de 15</span><span id="progressArea">Ideia & Diferenciação</span></div>
+  </div>
 
-// Recomendações por Categoria
-const recs=[
-  // 0 - Cenário e Objetivos
-  {cr:['Defina imediatamente uma meta financeira palpável para os próximos 60 dias.','Estabeleça indicadores de previsibilidade para sair do ciclo de oscilação.','Implemente organização comercial, mesmo fora do digital.'],at:['Aumente a ambição da meta: sair da sobrevivência para o crescimento ativo.','Crie rituais semanais para acompanhar se a receita está estabilizando.'],bm:['Estruture o ambiente digital para apoiar os bons processos físicos que já existem.','Crie projeções de caixa para os próximos 3 a 6 meses com segurança.'],ex:['Mantenha o rigor nos processos que garantem a previsibilidade atual.','Use seu caixa seguro para financiar testes de novos canais de tração.']},
-  // 1 - Mkt vs Vendas
-  {cr:['Pare imediatamente de investir em métricas de vaidade (likes/seguidores).','Redirecione todo o budget e esforço para campanhas de conversão direta.','Implemente uma estrutura de ponta a ponta focada apenas em fechar negócios.'],at:['Exija da sua equipe/agência relatórios baseados em leads e fechamentos.','Foque em qualificar a demanda antes de focar em volume de visualizações.'],bm:['Crie campanhas combinadas: posicionamento + oferta agressiva de venda.','Alinhe os discursos do marketing (anúncios) com o que o vendedor fala.'],ex:['Continue isolando o ruído das redes sociais e focando no caixa.','Dimensione o orçamento de branding sem comprometer a verba de vendas diretas.']},
-  // 2 - Raio-X dos Números
-  {cr:['Pare as campanhas agora e mapeie todo o seu fluxo de caixa real.','Separe contas pessoais da empresa e defina seu lucro líquido urgente.','Descubra o Retorno sobre Investimento (ROI) das suas últimas ações.'],at:['Implemente DRE mensal simples para saber de onde o dinheiro entra e sai.','Mapeie o Custo de Aquisição de Cliente (CAC) de todos os canais.'],bm:['Otimize os canais de marketing cortando os de baixo ROI.','Trabalhe para aumentar a margem de lucro líquido e não só o faturamento.'],ex:['Use seus dados de ROI previsível para alavancar e escalar novos investimentos.','Acompanhe o LTV (Lifetime Value) para saber o valor de longo prazo do cliente.']},
-  // 3 - Processo e Time
-  {cr:['Crie hoje um script básico de atendimento e quebra de objeções.','Pare de depender de boca a boca e crie campanhas ativas de demanda.','Implemente treinamento emergencial para quem atende seus leads.'],at:['Implemente uma rotina semanal de alinhamento com seu time de vendas.','Monitore as conversas do WhatsApp/CRM para auditar a qualidade do atendimento.'],bm:['Crie campanhas rápidas (flash sales) para injeção de caixa pontual.','Estabeleça metas diárias e premiações baseadas em conversão, não em esforço.'],ex:['Escale a equipe comercial mantendo a mesma qualidade do playbook atual.','Construa automações para acelerar a qualificação de leads antes de chegar no time.']},
-  // 4 - Maturidade de Escala
-  {cr:['Pare de gastar dinheiro sem antes testar pequenas ofertas validadas.','Implemente a fase de "Exploração": teste diferentes canais com orçamentos baixos.','Identifique e elimine os processos que estão encarecendo a sua operação.'],at:['Comece a fase de "Lapidação": pegue o que deu certo e tente diminuir o custo do lead.','Evite escalar investimentos até que a conversão base seja lucrativa.'],bm:['Valide processos em escala moderada para não sobrecarregar sua operação.','Aumente o investimento gradativamente focando apenas na "mina de ouro" validada.'],ex:['Vá para a fase de "Escala": aumente agressivamente a verba nos canais campeões.','Explore agressivamente novas regiões, novos formatos e aquisição de fatia de mercado.']},
-  // 5 - Retenção e Esteira
-  {cr:['Baixe sua base de clientes antigos hoje e faça uma oferta exclusiva para eles.','Crie um "Upsell" (produto superior) ou "Downsell" (produto mais barato) imediatamente.','Implemente a fase de "Extração" antes de gastar fortunas buscando novos leads.'],at:['Crie um processo estruturado de acompanhamento (pós-venda) para estimular recompras.','Comece a pedir indicações de forma sistêmica após cada entrega bem-sucedida.'],bm:['Desenhe uma Esteira de Produtos clara onde um serviço puxa a necessidade do próximo.','Implemente campanhas mensais de remarketing focadas exclusivamente na base de clientes.'],ex:['Gamifique a indicação: dê recompensas reais para clientes que trouxerem outros.','Transforme seu pós-venda em um canal de receita tão forte quanto a aquisição primária.']}
-];
-
-const S={screen:'landing',company:'',qi:0,ans:new Array(15).fill(-1),email:'',phone:''};
-
-function st(p){
-  if(p<40)return{l:'Crítico',cls:'cr',col:'#A32D2D'};
-  if(p<60)return{l:'Atenção',cls:'at',col:'#854F0B'};
-  if(p<80)return{l:'Bom',cls:'bm',col:'#3B6D11'};
-  return{l:'Excelente',cls:'ex',col:'#0F6E56'};
-}
-
-function calcS(){
-  // 6 categorias
-  const cp=[0,0,0,0,0,0];
-  // Máximo de pontos possíveis por categoria (baseado nas 15 perguntas)
-  // Bloco 1: 3 qs = 15 pts | Bloco 2: 2 qs = 10 pts | Bloco 3: 2 qs = 10 pts
-  // Bloco 4: 2 qs = 10 pts | Bloco 5: 3 qs = 15 pts | Bloco 6: 3 qs = 15 pts
-  const maxPts = [15, 10, 10, 10, 15, 15];
-  
-  qs.forEach((q,i)=>{if(S.ans[i]>=0)cp[q.c]+=S.ans[i];});
-  
-  return{
-    cp,
-    pct:cp.map((p,i)=>Math.round((p/maxPts[i])*100)),
-    tot:Math.round(cp.reduce((a,b)=>a+b,0)/75*100)
-  };
-}
-
-function arcSVG(score){
-  const r=70,cx=100,cy=100,circ=2*Math.PI*r;
-  const dash=(score/100*circ).toFixed(1),gap=(circ*(1-score/100)).toFixed(1);
-  const s=st(score);
-  return`<svg viewBox="0 0 200 210" style="width:160px;height:168px">
-    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="9"/>
-    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${s.col}" stroke-width="9"
-      stroke-dasharray="${dash} ${gap}" stroke-linecap="round"
-      transform="rotate(-90 ${cx} ${cy})"/>
-    <text x="${cx}" y="${cy-2}" text-anchor="middle" font-size="38" font-weight="600"
-      fill="#ffffff" font-family="-apple-system,sans-serif">${score}</text>
-    <text x="${cx}" y="${cy+18}" text-anchor="middle" font-size="12"
-      fill="rgba(255,255,255,0.4)" font-family="-apple-system,sans-serif">de 100</text>
-    <text x="${cx}" y="${cy+38}" text-anchor="middle" font-size="13" font-weight="500"
-      fill="${s.col}" font-family="-apple-system,sans-serif">${s.l}</text>
-  </svg>`;
-}
-
-function radarSVG(pct){
-  const cx=145,cy=145,R=95;
-  // 6 eixos (hexágono)
-  const angs=[-90, -30, 30, 90, 150, 210].map(a=>a*Math.PI/180);
-  const pt=(i,r)=>[cx+r*Math.cos(angs[i]),cy+r*Math.sin(angs[i])];
-  const labs=['Cenário','Foco Mkt','Números','Time','Escala','Retenção'];
-  
-  let s=`<svg viewBox="0 0 290 310" style="width:100%;max-width:270px">`;
-  
-  // Grade de fundo (linhas radiais do polígono)
-  [.25,.5,.75,1].forEach(sc=>{
-    const pts=angs.map((_,i)=>pt(i,R*sc).join(',')).join(' ');
-    s+=`<polygon points="${pts}" fill="none" stroke="rgba(0,0,0,.08)" stroke-width="0.5"/>`;
-  });
-  
-  // Eixos centrais
-  angs.forEach((_,i)=>{
-    const[x,y]=pt(i,R);
-    s+=`<line x1="${cx}" y1="${cy}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" stroke="rgba(0,0,0,.08)" stroke-width="0.5"/>`;
-  });
-  
-  // Shape preenchido com a pontuação
-  const dp=pct.map((p,i)=>pt(i,R*p/100).join(',')).join(' ');
-  s+=`<polygon points="${dp}" fill="${O}" fill-opacity="0.15" stroke="${O}" stroke-width="1.5"/>`;
-  pct.forEach((p,i)=>{
-    const[x,y]=pt(i,R*p/100);
-    s+=`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.5" fill="${O}"/>`;
-  });
-  
-  // Labels em volta do Hexágono
-  angs.forEach((a,i)=>{
-    const[x,y]=pt(i,R+28);
-    const anch=Math.cos(a)<-0.1?'end':Math.cos(a)>0.1?'start':'middle';
-    const dy=Math.sin(a)>0.1?12:Math.sin(a)< -0.1?-4:4;
-    s+=`<text x="${x.toFixed(1)}" y="${(y+dy).toFixed(1)}" text-anchor="${anch}"
-      font-size="11" fill="#777" font-family="-apple-system,sans-serif">${labs[i]}</text>`;
-  });
-  return s+'</svg>';
-}
-
-/* ── SCREENS ── */
-function Landing(){
-  return`<div style="text-align:center;padding:2.5rem 0 1rem">
-    <div class="logo" style="margin-bottom:2.5rem">tmw</div>
-    <h1 style="font-size:30px;font-weight:600;line-height:1.2;margin-bottom:.75rem">Diagnóstico Comercial</h1>
-    <p style="color:var(--text2);font-size:16px;margin-bottom:2.75rem;max-width:400px;margin-left:auto;margin-right:auto;line-height:1.7">
-      Descubra exatamente onde estão os gargalos do seu fluxo de vendas em menos de 5 minutos.
-    </p>
-    <div class="pill-row">
-      ${[['15','Perguntas estratégicas'],['6','Áreas analisadas'],['1','Relatório personalizado']].map(([n,l])=>
-        `<div class="pill"><div class="pill-num">${n}</div><div class="pill-label">${l}</div></div>`
-      ).join('')}
+  <!-- INTRO -->
+  <div class="intro" id="introScreen">
+    <div class="tag">Diagnóstico Comercial Gratuito</div>
+    <h1>Onde seu negócio está<br>perdendo <span>dinheiro</span>?</h1>
+    <p>15 perguntas. 5 áreas do seu ecossistema comercial. No final, um relatório com os números exatos de onde está o gargalo — e o que fazer com isso.</p>
+    <div class="area-preview">
+      <div>Ideia &<br>Diferenciação</div>
+      <div>Aquisição &<br>Atenção</div>
+      <div>Conversão</div>
+      <div>Estrutura<br>Comercial</div>
+      <div>Retenção &<br>Medição</div>
     </div>
-    <div class="card" style="max-width:420px;margin:0 auto">
-      <label class="label">Nome da sua empresa</label>
-      <input id="ci" type="text" placeholder="Ex: Minha Empresa LTDA" value="${S.company}" style="margin-bottom:1rem"
-        onkeydown="if(event.key==='Enter')go()">
-      <button class="btn btn-primary" onclick="go()">Iniciar diagnóstico gratuito →</button>
-    </div>
-  </div>`;
-}
+    <button class="btn btn-primary btn-start" onclick="startQuiz()">Começar Diagnóstico →</button>
+  </div>
 
-function Question(){
-  const q=qs[S.qi],cat=cats[q.c],n=S.qi+1,prog=S.qi/15*100;
-  return`<div>
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.375rem">
-      <span style="font-size:11.5px;font-weight:600;color:${O};text-transform:uppercase;letter-spacing:.08em">${cat.l}</span>
-      <span style="font-size:13px;color:var(--text2)">${n} / 15</span>
-    </div>
-    <div class="progress-track"><div class="progress-fill" style="width:${prog}%"></div></div>
-    <div class="card">
-      <p style="font-size:17px;font-weight:500;margin-bottom:1.25rem;line-height:1.45">${q.q}</p>
-      ${q.o.map(o=>`<button class="opt${S.ans[S.qi]===o.v?' sel':''}" onclick="pick(${o.v})">${o.l}</button>`).join('')}
-    </div>
-    ${S.qi>0?`<button class="btn btn-ghost" onclick="bk()" style="margin-top:.625rem;width:auto;padding:.5rem 1rem;font-size:13px">← Voltar</button>`:''}
-  </div>`;
-}
+  <!-- QUESTIONS -->
+  <div id="quizScreen"></div>
 
-function Gate(){
-  return`<div style="padding:1rem 0">
-    <div class="card" style="max-width:440px;margin:0 auto;text-align:center">
-      <div style="width:52px;height:52px;border-radius:50%;background:rgba(232,118,30,.1);
-        display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="${O}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-        </svg>
-      </div>
-      <h2 style="font-size:22px;font-weight:600;margin-bottom:.5rem">Diagnóstico concluído!</h2>
-      <p style="color:var(--text2);font-size:14px;margin-bottom:1.5rem;line-height:1.7">
-        ${S.company?`<strong>${S.company}</strong>, processamos`:'Processamos'} a análise do seu fluxo de vendas.
-        Preencha abaixo para liberar o acesso ao relatório de gargalos.
-      </p>
-      <label class="label" style="text-align:left">E-mail profissional</label>
-      <input id="ei" type="email" placeholder="seu@email.com" value="${S.email}" style="margin-bottom:1rem">
-      <label class="label" style="text-align:left">WhatsApp</label>
-      <input id="pi" type="tel" placeholder="(16) 99999-9999" value="${S.phone}" style="margin-bottom:1.25rem">
-      <button class="btn btn-primary" onclick="gate()">Liberar meu diagnóstico →</button>
-      <p class="sub" style="margin-top:.75rem">Dados seguros. Não enviamos spam.</p>
-      <button class="ghost-link" style="margin-top:.625rem" onclick="S.screen='questions';S.qi=14;render()">← Editar respostas</button>
+  <!-- LEAD CAPTURE -->
+  <div class="lead-form" id="leadForm">
+    <h2>Quase lá. <span>Pra onde enviamos o relatório?</span></h2>
+    <p class="sub">Seu diagnóstico está pronto pra ser gerado. Preenche seus dados e o PDF aparece na tela em segundos.</p>
+    <div class="form-group">
+      <label for="leadNome">Seu Nome</label>
+      <input type="text" id="leadNome" placeholder="Ex: João Silva">
     </div>
-  </div>`;
-}
-
-function Results(){
-  const{pct,tot}=calcS();
-  const ov=tot<40?'Seu fluxo comercial precisa de atenção urgente. Existem gargalos graves travando o crescimento e a entrada de dinheiro no caixa da empresa.':
-    tot<60?'Você possui uma base funcional, mas áreas vitais precisam ser corrigidas para você escalar o negócio sem perder margem.':
-    tot<80?'Sua estrutura de vendas é muito boa. Focar na otimização dos processos de extração e métricas trará resultados imensos de lucro líquido.':
-    'Estrutura comercial excelente, madura e pronta para escala agressiva. Foco 100% no processo de dominação e novas oportunidades de mercado.';
-    
-  return`<div>
-    <div class="dark-header">
-      <div style="font-size:11px;font-weight:600;color:${O};text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem">Relatório Comercial</div>
-      <div style="font-size:26px;font-weight:700;color:#fff;margin-bottom:.25rem">${S.company||'Sua Empresa'}</div>
-      <div style="font-size:13px;color:rgba(255,255,255,.35);margin-bottom:1.5rem">Estrutura & Fluxo de Vendas</div>
-      ${arcSVG(tot)}
+    <div class="form-group">
+      <label for="leadEmpresa">Empresa</label>
+      <input type="text" id="leadEmpresa" placeholder="Ex: Restaurante Carijó">
     </div>
-
-    <div class="card" style="margin-bottom:1rem">
-      <div style="font-size:15px;font-weight:600;margin-bottom:.625rem">Visão Geral Comercial</div>
-      <p style="color:var(--text2);font-size:14px;line-height:1.7;margin-bottom:1.5rem">${ov}</p>
-      <div style="display:flex;justify-content:center">${radarSVG(pct)}</div>
+    <div class="form-group">
+      <label for="leadWhats">WhatsApp</label>
+      <input type="text" id="leadWhats" placeholder="Ex: (16) 99999-9999">
     </div>
+    <div class="q-nav">
+      <button class="btn btn-ghost" onclick="backToQuiz()">← Voltar</button>
+      <button class="btn btn-primary" id="generateBtn" onclick="generateReport()">Gerar Meu Relatório →</button>
+    </div>
+  </div>
 
-    <div style="font-size:15px;font-weight:600;margin-bottom:.875rem">Análise e Recomendações por Bloco</div>
-    ${cats.map((cat,i)=>{
-      const p=pct[i], s=st(p), rk=p<40?'cr':p<60?'at':p<80?'bm':'ex';
-      // Ajuste de max pontos para UI exibição
-      const maxPts = [15, 10, 10, 10, 15, 15];
-      const ptsEarned = Math.round((p/100) * maxPts[i]);
-      
-      return`<div class="card" style="margin-bottom:.875rem">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:.625rem">
-          <div>
-            <div style="font-size:15px;font-weight:500;margin-bottom:4px">${cat.l}</div>
-            <span class="tag tag-${s.cls}">${s.l}</span>
-          </div>
-          <div style="text-align:right">
-            <div style="font-size:26px;font-weight:600;line-height:1;color:${s.col}">${p}%</div>
-            <div class="sub" style="margin-top:2px">${ptsEarned}/${maxPts[i]} pts</div>
-          </div>
+  <!-- LOADING -->
+  <div class="loading" id="loadingScreen">
+    <div class="spinner"></div>
+    <p id="loadingText">Calculando seu score comercial...</p>
+  </div>
+
+  <!-- RESULT -->
+  <div class="result" id="resultScreen">
+    <div id="pdf-content">
+      <div class="pdf-header">
+        <div class="brand">TOMORROW<span>·</span>DIAGNÓSTICO</div>
+        <div class="tag" id="rEmpresaTag">Relatório Comercial</div>
+        <h2 id="rTitulo">Diagnóstico de Estrutura Comercial</h2>
+        <div class="score-line">
+          <div class="score-num" id="rScoreTotal">0</div>
+          <div class="score-max">/ 135 pontos</div>
+          <div class="score-tag" id="rScoreTag">—</div>
         </div>
-        <div class="bar-track"><div class="bar-fill" style="width:${p}%;background:${s.col}"></div></div>
-        <div style="font-size:11px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem">Plano de Ação TMW</div>
-        ${recs[i][rk].map(r=>`
-          <div style="display:flex;gap:.5rem;margin-bottom:.375rem">
-            <span style="color:${O};flex-shrink:0;font-size:15px;line-height:1.4">›</span>
-            <span style="font-size:14px;color:var(--text);line-height:1.5">${r}</span>
-          </div>`).join('')}
-      </div>`;
-    }).join('')}
+      </div>
+      <div class="pdf-body">
+        <div class="radar-wrap"><canvas id="radarChart"></canvas></div>
 
-    <div class="card" style="text-align:center;border-color:rgba(232,118,30,.22);background:rgba(232,118,30,.04);margin-bottom:2rem">
-      <div style="font-size:16px;font-weight:600;margin-bottom:.375rem">Vamos consertar isso juntos?</div>
-      <p style="color:var(--text2);font-size:14px;margin-bottom:1.25rem;line-height:1.7">
-        A Tomorrow implanta estruturas de vendas de ponta a ponta focadas em escalabilidade e previsibilidade em 60 dias.
-      </p>
-      <a href="https://agenciatomorrow.com" target="_blank" rel="noopener"
-        style="display:block;max-width:300px;margin:0 auto;padding:.875rem 1.25rem;background:${O};
-        color:#fff;border-radius:8px;text-decoration:none;font-weight:500;font-size:15px;text-align:center">
-        Quero Falar com a Tomorrow →
-      </a>
+        <div class="pdf-section-title">Score por Área</div>
+        <div class="area-summary" id="areaSummary"></div>
+
+        <div class="pdf-section-title">Leitura do Cenário</div>
+        <div id="rAnalise"></div>
+      </div>
+      <div class="pdf-cta">
+        <p>Ideia sem resultado é vaidade. <span>Resultado sem ideia é commodity.</span></p>
+        <p style="font-size:13px; color:rgba(250,250,250,0.4); font-style:normal; margin-top:14px;">Esse relatório mostra o quê. Uma reunião mostra o como.</p>
+      </div>
+      <div class="pdf-footer">Tomorrow — Campanhas Publicitárias Autorais Orientadas a Resultado · Relatório gerado em <span id="rData"></span></div>
     </div>
-  </div>`;
+
+    <div class="result-actions">
+      <button class="btn btn-primary" onclick="downloadPDF()">Baixar PDF →</button>
+      <a class="btn btn-outline-orange" id="whatsCta" href="#" target="_blank" style="text-decoration:none; display:inline-flex; align-items:center;">Agendar Reunião no WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===================== DADOS DAS PERGUNTAS ===================== */
+const QUESTIONS = [
+  // ÁREA 1 — IDEIA & DIFERENCIAÇÃO
+  { area: 0, text: "Se sumisse amanhã, o mercado notaria por quê?", opts: [
+    { t: "Preço mais baixo", v: 1 }, { t: "Não sei dizer", v: 0 }, { t: "Algo específico que só eu faço", v: 3 } ] },
+  { area: 0, text: "Sua comunicação hoje é parecida com a do concorrente?", opts: [
+    { t: "Muito parecida", v: 0 }, { t: "Um pouco", v: 1 }, { t: "Claramente diferente", v: 3 } ] },
+  { area: 0, text: "Você já criou uma campanha que virou assunto na sua cidade ou nicho?", opts: [
+    { t: "Nunca", v: 0 }, { t: "Uma vez, há tempos", v: 2 }, { t: "Sim, recentemente", v: 3 } ] },
+
+  // ÁREA 2 — AQUISIÇÃO & ATENÇÃO
+  { area: 1, text: "De onde vêm seus clientes hoje, majoritariamente?", opts: [
+    { t: "Só indicação", v: 1 }, { t: "Só anúncio pago", v: 1 }, { t: "Múltiplos canais combinados", v: 3 } ] },
+  { area: 1, text: "Se parar de pagar anúncio hoje, o que acontece com as vendas?", opts: [
+    { t: "Caem quase a zero", v: 0 }, { t: "Caem bastante", v: 1 }, { t: "Seguem estáveis", v: 3 } ] },
+  { area: 1, text: "Quantas pessoas veem sua marca por mês, de forma qualificada?", opts: [
+    { t: "Não sei medir isso", v: 0 }, { t: "Tenho noção aproximada", v: 2 }, { t: "Sei o número exato", v: 3 } ] },
+
+  // ÁREA 3 — CONVERSÃO
+  { area: 2, text: "Quanto tempo leva pra responder um contato novo no WhatsApp?", opts: [
+    { t: "Mais de 1 hora", v: 0 }, { t: "Até 1 hora", v: 2 }, { t: "Minutos", v: 3 } ] },
+  { area: 2, text: "Você tem um caminho definido do primeiro contato até o fechamento?", opts: [
+    { t: "Não, é caso a caso", v: 0 }, { t: "Existe, mas informal", v: 2 }, { t: "Sim, documentado", v: 3 } ] },
+  { area: 2, text: "Qual sua taxa de conversão de contato em venda, hoje?", opts: [
+    { t: "Não sei", v: 0 }, { t: "Tenho estimativa", v: 2 }, { t: "Sei o número exato", v: 3 } ] },
+
+  // ÁREA 4 — ESTRUTURA COMERCIAL
+  { area: 3, text: "Quem vende hoje na sua empresa?", opts: [
+    { t: "Só o dono, sem processo", v: 1 }, { t: "Equipe, sem script", v: 1 }, { t: "Equipe com processo definido", v: 3 } ] },
+  { area: 3, text: "Existe follow-up estruturado pra quem não fecha na hora?", opts: [
+    { t: "Não", v: 0 }, { t: "Às vezes", v: 1 }, { t: "Sempre, com prazo definido", v: 3 } ] },
+  { area: 3, text: "Sua operação aguenta um pico repentino de demanda?", opts: [
+    { t: "Não, quebraria", v: 0 }, { t: "Aguentaria com dificuldade", v: 1 }, { t: "Sim, tranquilamente", v: 3 } ] },
+
+  // ÁREA 5 — RETENÇÃO & MEDIÇÃO
+  { area: 4, text: "Você tem dashboard ou planilha que mostra CAC, conversão e ROI?", opts: [
+    { t: "Não tenho nada disso", v: 0 }, { t: "Tenho parcialmente", v: 2 }, { t: "Tenho tudo isso", v: 3 } ] },
+  { area: 4, text: "Qual sua taxa de recompra ou indicação de clientes atuais?", opts: [
+    { t: "Não sei", v: 0 }, { t: "Baixa, sei que é fraca", v: 1 }, { t: "Boa, e eu acompanho", v: 3 } ] },
+  { area: 4, text: "Quando algo não funciona, você sabe exatamente por quê?", opts: [
+    { t: "Não, só percebo que não deu certo", v: 0 }, { t: "Tenho uma ideia", v: 2 }, { t: "Sim, com dado na mão", v: 3 } ] },
+];
+
+const AREAS = [
+  { name: "Ideia & Diferenciação", short: "Ideia" },
+  { name: "Aquisição & Atenção", short: "Aquisição" },
+  { name: "Conversão", short: "Conversão" },
+  { name: "Estrutura Comercial", short: "Estrutura" },
+  { name: "Retenção & Medição", short: "Retenção" },
+];
+
+// Textos determinísticos por faixa de score de área (0-9). IA não decide nada aqui — só o texto final pode ser reescrito por Groq no backend.
+const AREA_TEXTS = {
+  critico: [
+    "Não existe diferenciação perceptível. A comunicação hoje compete só por preço, e isso é o caminho mais curto pra virar commodity.",
+    "A aquisição depende de um único canal, e provavelmente de mídia paga. Sem isso, o negócio para.",
+    "A conversão está travada. Contato demora a ser respondido e não existe caminho definido até o fechamento.",
+    "Não existe processo comercial. Vendas acontecem por esforço individual, sem estrutura que sustente crescimento.",
+    "Não há medição nenhuma. Decisões são tomadas no escuro, sem dado que confirme ou refute a hipótese."
+  ],
+  atencao: [
+    "Existe algum traço de diferenciação, mas ainda não é claro o suficiente pra ser lembrado sem esforço.",
+    "Há mais de um canal de aquisição, mas a dependência de mídia paga ainda é alta.",
+    "Existe caminho de conversão, mas informal — funciona, mas não é replicável nem escalável.",
+    "Há processo comercial parcial. Falta padronização de follow-up e capacidade de absorver picos de demanda.",
+    "Existe medição parcial. Falta consolidar isso em um painel que realmente informe decisão."
+  ],
+  estruturado: [
+    "Existe diferenciação real e reconhecível. Esse é o ativo mais difícil de copiar — e o negócio já tem.",
+    "A aquisição é multicanal e resiliente. Parar um canal não quebra o fluxo de clientes.",
+    "A conversão é rápida, documentada e mensurável. O gargalo comercial não está aqui.",
+    "A estrutura comercial está pronta pra escalar. Processo, follow-up e capacidade operacional existem.",
+    "A medição é sólida. Decisões são tomadas com dado, não com achismo."
+  ]
+};
+
+function faixa(score) {
+  if (score <= 3) return 'critico';
+  if (score <= 6) return 'atencao';
+  return 'estruturado';
 }
 
-/* ── LOGIC ── */
-function render(){
-  const app=document.getElementById('app');
-  if(S.screen==='landing')app.innerHTML=Landing();
-  else if(S.screen==='questions')app.innerHTML=Question();
-  else if(S.screen==='gate')app.innerHTML=Gate();
-  else app.innerHTML=Results();
-  window.scrollTo({top:0,behavior:'smooth'});
+/* ===================== ESTADO ===================== */
+let current = 0;
+const answers = new Array(QUESTIONS.length).fill(null);
+
+function startQuiz() {
+  document.getElementById('introScreen').style.display = 'none';
+  document.getElementById('progressWrap').style.display = 'block';
+  renderQuestions();
+  showQuestion(0);
 }
 
-function go(){
-  const v=document.getElementById('ci')?.value?.trim();
-  if(!v){document.getElementById('ci').style.borderColor='#A32D2D';return;}
-  S.company=v;S.screen='questions';render();
+function renderQuestions() {
+  const container = document.getElementById('quizScreen');
+  container.innerHTML = QUESTIONS.map((q, i) => `
+    <div class="q-card" id="q-${i}">
+      <div class="q-area-label">${AREAS[q.area].name}</div>
+      <div class="q-text">${q.text}</div>
+      <div class="q-options">
+        ${q.opts.map((o, oi) => `<div class="q-option" data-val="${o.v}" onclick="selectOption(${i}, ${oi}, ${o.v})">${o.t}</div>`).join('')}
+      </div>
+      <div class="q-nav">
+        <button class="btn btn-ghost" onclick="prevQuestion()" ${i === 0 ? 'disabled' : ''}>← Voltar</button>
+        <button class="btn btn-primary" id="next-${i}" onclick="nextQuestion()" disabled>Próxima →</button>
+      </div>
+    </div>
+  `).join('');
 }
 
-function pick(v){
-  S.ans[S.qi]=v;
-  render();
-  setTimeout(()=>{
-    if(S.qi<14){S.qi++;render();}
-    else{S.screen='gate';render();}
-  },190);
+function selectOption(qIndex, optIndex, val) {
+  answers[qIndex] = val;
+  const card = document.getElementById(`q-${qIndex}`);
+  card.querySelectorAll('.q-option').forEach((el, i) => el.classList.toggle('selected', i === optIndex));
+  document.getElementById(`next-${qIndex}`).disabled = false;
 }
 
-function bk(){if(S.qi>0){S.qi--;render();}}
+function showQuestion(i) {
+  document.querySelectorAll('.q-card').forEach(c => c.classList.remove('active'));
+  document.getElementById(`q-${i}`).classList.add('active');
+  current = i;
+  const pct = ((i) / QUESTIONS.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressText').textContent = `Pergunta ${i + 1} de ${QUESTIONS.length}`;
+  document.getElementById('progressArea').textContent = AREAS[QUESTIONS[i].area].name;
+}
 
-function gate(){
-  const e=document.getElementById('ei')?.value?.trim();
-  const p=document.getElementById('pi')?.value?.trim();
-  if(!e){document.getElementById('ei').style.borderColor='#A32D2D';return;}
-  if(!p){document.getElementById('pi').style.borderColor='#A32D2D';return;}
-  S.email=e;
-  S.phone=p;
-  const {tot,pct}=calcS();
-  const getLvl=p=>p<40?'Crítico':p<60?'Atenção':p<80?'Bom':'Excelente';
-  const answers=qs.map((q,i)=>{const opt=q.o.find(o=>o.v===S.ans[i]);return{q:q.q,a:opt?opt.l:''};}).filter(({a})=>a);
-  const result=[{q:'Score Total Comercial',a:`${tot}/75`},...cats.map((cat,i)=>({q:cat.l,a:`${pct[i]}% — ${getLvl(pct[i])}`}))];
-  fetch('https://tmw-leads.felipe-ffa.workers.dev', {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({company:S.company,email:S.email,phone:S.phone,tool:'Diagnóstico Comercial',score:`${tot}/75`,answers,result})
+function nextQuestion() {
+  if (current < QUESTIONS.length - 1) {
+    showQuestion(current + 1);
+  } else {
+    document.querySelectorAll('.q-card').forEach(c => c.classList.remove('active'));
+    document.getElementById('progressFill').style.width = '100%';
+    document.getElementById('progressText').textContent = `Concluído`;
+    document.getElementById('leadForm').classList.add('active');
+  }
+}
+
+function prevQuestion() {
+  if (current > 0) showQuestion(current - 1);
+}
+
+function backToQuiz() {
+  document.getElementById('leadForm').classList.remove('active');
+  showQuestion(QUESTIONS.length - 1);
+}
+
+/* ===================== SCORE (determinístico) ===================== */
+function computeScores() {
+  const areaScores = [0, 0, 0, 0, 0];
+  QUESTIONS.forEach((q, i) => { areaScores[q.area] += (answers[i] || 0); });
+  const total = areaScores.reduce((a, b) => a + b, 0);
+  return { areaScores, total };
+}
+
+/* ===================== GERAR RELATÓRIO ===================== */
+function generateReport() {
+  const nome = document.getElementById('leadNome').value.trim();
+  const empresa = document.getElementById('leadEmpresa').value.trim();
+  const whats = document.getElementById('leadWhats').value.trim();
+
+  if (!nome || !whats) {
+    alert('Preenche nome e WhatsApp pra continuar.');
+    return;
+  }
+
+  document.getElementById('leadForm').classList.remove('active');
+  document.getElementById('loadingScreen').classList.add('active');
+
+  // Aqui entraria a chamada real ao backend (PHP -> Groq) pra gerar os textos.
+  // Por enquanto, textos determinísticos locais simulam o comportamento final.
+  setTimeout(() => {
+    renderResult(nome, empresa, whats);
+    document.getElementById('loadingScreen').classList.remove('active');
+    document.getElementById('resultScreen').classList.add('active');
+    document.getElementById('resultScreen').scrollIntoView({ behavior: 'smooth' });
+  }, 1800);
+}
+
+function renderResult(nome, empresa, whats) {
+  const { areaScores, total } = computeScores();
+
+  document.getElementById('rEmpresaTag').textContent = empresa ? `Relatório · ${empresa}` : 'Relatório Comercial';
+  document.getElementById('rTitulo').textContent = `Diagnóstico de ${nome.split(' ')[0]}`;
+  document.getElementById('rScoreTotal').textContent = total;
+  document.getElementById('rData').textContent = new Date().toLocaleDateString('pt-BR');
+
+  const totalFaixa = total <= 40 ? { label: 'Crítico', color: '#c0392b' } : total <= 80 ? { label: 'Atenção', color: '#e67e22' } : { label: 'Estruturado', color: '#27ae60' };
+  const tagEl = document.getElementById('rScoreTag');
+  tagEl.textContent = totalFaixa.label;
+  tagEl.style.background = totalFaixa.color;
+  tagEl.style.color = '#fff';
+
+  // Área a área
+  const areaSummary = document.getElementById('areaSummary');
+  areaSummary.innerHTML = AREAS.map((a, i) => `
+    <div class="area-row">
+      <div>
+        <div class="area-row-name">${a.name}</div>
+        <div class="area-row-bar-bg"><div class="area-row-bar-fill" style="width:${(areaScores[i]/9)*100}%"></div></div>
+      </div>
+      <div class="area-row-score">${areaScores[i]}<span style="font-size:12px;color:#999;"> /9</span></div>
+    </div>
+  `).join('');
+
+  // Análise textual por área
+  const analise = document.getElementById('rAnalise');
+  analise.innerHTML = AREAS.map((a, i) => `
+    <p class="pdf-text"><strong>${a.name}:</strong> ${AREA_TEXTS[faixa(areaScores[i])][i]}</p>
+  `).join('');
+
+  // Radar chart
+  const ctx = document.getElementById('radarChart').getContext('2d');
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: AREAS.map(a => a.short),
+      datasets: [{
+        data: areaScores,
+        backgroundColor: 'rgba(255,107,0,0.15)',
+        borderColor: '#FF6B00',
+        borderWidth: 2,
+        pointBackgroundColor: '#FF6B00',
+        pointRadius: 3,
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        r: {
+          min: 0, max: 9,
+          ticks: { display: false, stepSize: 3 },
+          grid: { color: 'rgba(0,0,0,0.08)' },
+          angleLines: { color: 'rgba(0,0,0,0.08)' },
+          pointLabels: { font: { size: 11, family: 'DM Sans' }, color: '#333' }
+        }
+      },
+      plugins: { legend: { display: false } }
+    }
   });
-  S.screen='results';render();
+
+  // CTA WhatsApp com dados pré-preenchidos
+  const msg = encodeURIComponent(`Olá! Sou ${nome}${empresa ? ' da ' + empresa : ''}. Fiz o diagnóstico comercial da Tomorrow e meu score foi ${total}/135. Quero agendar uma reunião.`);
+  document.getElementById('whatsCta').href = `https://wa.me/5535984468504?text=${msg}`;
 }
 
-render();
+function downloadPDF() {
+  const el = document.getElementById('pdf-content');
+  const opt = {
+    margin: 0,
+    filename: 'diagnostico-tomorrow.pdf',
+    image: { type: 'jpeg', quality: 0.95 },
+    html2canvas: { scale: 2, backgroundColor: '#ffffff' },
+    jsPDF: { unit: 'px', format: [794, el.scrollHeight + 40], orientation: 'portrait' }
+  };
+  html2pdf().set(opt).from(el).save();
+}
 </script>
 </body>
 </html>
