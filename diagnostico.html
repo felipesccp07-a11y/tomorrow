@@ -307,6 +307,7 @@ function faixa(score) {
 /* ===================== ESTADO ===================== */
 let current = 0;
 const answers = new Array(QUESTIONS.length).fill(null);
+const answersText = new Array(QUESTIONS.length).fill(null); // guarda o texto exato da opção marcada
 
 function startQuiz() {
   document.getElementById('introScreen').style.display = 'none';
@@ -334,6 +335,7 @@ function renderQuestions() {
 
 function selectOption(qIndex, optIndex, val) {
   answers[qIndex] = val;
+  answersText[qIndex] = QUESTIONS[qIndex].opts[optIndex].t;
   const card = document.getElementById(`q-${qIndex}`);
   card.querySelectorAll('.q-option').forEach((el, i) => el.classList.toggle('selected', i === optIndex));
   document.getElementById(`next-${qIndex}`).disabled = false;
@@ -375,12 +377,19 @@ const SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxylY_DiNreJ
 function enviarLeadParaPlanilha(nome, empresa, whatsapp, areaScores, total, textos) {
   const chaves = ['ideia', 'aquisicao', 'conversao', 'estrutura', 'retencao'];
 
+  const respostasDetalhadas = QUESTIONS.map((q, i) =>
+    `${i + 1}. ${q.text}\n   → ${answersText[i] || '(não respondido)'}`
+  ).join('\n');
+
   const detalhes = [
     `SCORE TOTAL: ${total}/135`,
     ``,
     ...AREAS.map((a, i) => `${a.name}: ${areaScores[i]}/9 — ${textos[chaves[i]] || ''}`),
     ``,
     `Resumo: ${textos.resumo || ''}`,
+    ``,
+    `── RESPOSTAS EXATAS (15 perguntas) ──`,
+    respostasDetalhadas,
   ].join('\n');
 
   fetch(SHEETS_WEBHOOK_URL, {
