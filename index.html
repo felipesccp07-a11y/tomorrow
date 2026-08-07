@@ -1070,7 +1070,7 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     </div>
 
     <div class="form-container reveal reveal-delay-1">
-      <form action="https://wa.me/5535984468504" method="GET" target="_blank">
+      <form id="reuniaoForm" onsubmit="return enviarReuniaoWhatsApp(event)">
         <div class="form-group">
           <label for="nome">Seu Nome</label>
           <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
@@ -1088,6 +1088,29 @@ src="https://www.facebook.com/tr?id=978557829967652&ev=PageView&noscript=1"
     </div>
   </div>
 </section>
+
+<script>
+  // Troque pela URL do seu Web App do Apps Script (passo 4 do apps-script-lead-webhook.js)
+  const SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxylY_DiNreJx6MVN8bf-fTPtDX67wdpCy9scWzfFPxL4fYDk5vtwHNQw-DjfS_-pS6/exec";
+
+  function enviarReuniaoWhatsApp(event) {
+    event.preventDefault();
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const whatsapp = document.getElementById('whatsapp').value.trim();
+
+    // Grava na planilha do Tomorrow OS, sem travar o redirecionamento pro WhatsApp
+    fetch(SHEETS_WEBHOOK_URL, {
+      method: 'POST',
+      body: JSON.stringify({ acao: 'landing_page', nome, email, whatsapp }),
+    }).catch(() => {}); // se falhar, não impede o lead de seguir pro WhatsApp
+
+    const mensagem = `Olá! Quero agendar uma reunião estratégica.\n\nNome: ${nome}\nE-mail: ${email}\nWhatsApp: ${whatsapp}`;
+    const url = `https://wa.me/5535984468504?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank');
+    return false;
+  }
+</script>
 
 <footer>
   <div class="footer-top">
