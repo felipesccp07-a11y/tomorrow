@@ -369,6 +369,33 @@ function backToQuiz() {
   showQuestion(QUESTIONS.length - 1);
 }
 
+/* URL do Apps Script — mesma planilha do Tomorrow OS */
+const SHEETS_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxylY_DiNreJx6MVN8bf-fTPtDX67wdpCy9scWzfFPxL4fYDk5vtwHNQw-DjfS_-pS6/exec";
+
+function enviarLeadParaPlanilha(nome, empresa, whatsapp, areaScores, total, textos) {
+  const chaves = ['ideia', 'aquisicao', 'conversao', 'estrutura', 'retencao'];
+
+  const detalhes = [
+    `SCORE TOTAL: ${total}/135`,
+    ``,
+    ...AREAS.map((a, i) => `${a.name}: ${areaScores[i]}/9 — ${textos[chaves[i]] || ''}`),
+    ``,
+    `Resumo: ${textos.resumo || ''}`,
+  ].join('\n');
+
+  fetch(SHEETS_WEBHOOK_URL, {
+    method: 'POST',
+    body: JSON.stringify({
+      acao: 'landing_page',
+      nome,
+      whatsapp,
+      email: empresa, // reaproveita o campo pra guardar a empresa, já que aqui não coletamos e-mail
+      detalhes,
+      campanha: 'Diagnóstico Comercial',
+    }),
+  }).catch(() => {}); // se falhar, não impede o lead de ver o relatório
+}
+
 /* ===================== SCORE (determinístico) ===================== */
 function computeScores() {
   const areaScores = [0, 0, 0, 0, 0];
@@ -402,6 +429,7 @@ async function generateReport() {
     const data = await response.json();
 
     renderResult(nome, empresa, whats, data.areaScores, data.total, data.textos);
+    enviarLeadParaPlanilha(nome, empresa, whats, data.areaScores, data.total, data.textos);
     document.getElementById('loadingScreen').classList.remove('active');
     document.getElementById('resultScreen').classList.add('active');
     document.getElementById('resultScreen').scrollIntoView({ behavior: 'smooth' });
@@ -414,6 +442,7 @@ async function generateReport() {
     textosFallback.resumo = 'Esse relatório mostra os números. Uma reunião mostra o que fazer com eles.';
 
     renderResult(nome, empresa, whats, areaScores, total, textosFallback);
+    enviarLeadParaPlanilha(nome, empresa, whats, areaScores, total, textosFallback);
     document.getElementById('loadingScreen').classList.remove('active');
     document.getElementById('resultScreen').classList.add('active');
     document.getElementById('resultScreen').scrollIntoView({ behavior: 'smooth' });
@@ -489,23 +518,23 @@ function renderResult(nome, empresa, whats, areaScores, total, textos) {
 function downloadPDF() {
   const el = document.getElementById('pdf-content');
 
-  // Corrige o bug clássico do html2canvas: captura na posição de scroll errada,
+  // Corrige o bug do html2canvas: captura na posição de scroll errada,
   // gerando espaço em branco no topo do PDF.
   window.scrollTo(0, 0);
 
   const opt = {
     margin: 0,
     filename: 'diagnostico-tomorrow.pdf',
-    image: { type: 'jpeg', quality: 0.95 },
+    image: { type: 'jpeg', quality: 0.98 },
     html2canvas: {
       scale: 2,
       backgroundColor: '#ffffff',
       scrollX: 0,
       scrollY: 0,
-      windowWidth: el.scrollWidth,
-      windowHeight: el.scrollHeight,
+      useCORS: true,
     },
-    jsPDF: { unit: 'px', format: [el.scrollWidth, el.scrollHeight], orientation: 'portrait' }
+    jsPDF: { unit: 'px', format: [el.offsetWidth, el.offsetHeight + 2], orientation: 'portrait' },
+    pagebreak: { mode: 'avoid-all' }
   };
 
   html2pdf().set(opt).from(el).save();
